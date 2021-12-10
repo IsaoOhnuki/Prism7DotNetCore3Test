@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ModelLibrary1\ModelLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="ApplicationLogics\" />
     <Folder Include="BusinessLogics\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
   </ItemGroup>
 
 </Project>
