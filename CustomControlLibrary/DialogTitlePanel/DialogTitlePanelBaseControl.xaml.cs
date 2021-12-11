@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomControlLibrary.MessageWindow
+namespace CustomControlLibrary.DialogTitlePanel
 {
     /// <summary>
-    /// MessageWindowBaseControl.xaml の相互作用ロジック
+    /// DialogPanerBaseControl.xaml の相互作用ロジック
     /// </summary>
-    public partial class MessageWindowBaseControl : UserControl
+    public partial class DialogTitlePanelBaseControl : UserControl
     {
-        public MessageWindowBaseControl()
+        public DialogTitlePanelBaseControl()
         {
             InitializeComponent();
         }

@@ -5,12 +5,16 @@
              xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:cb="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
-             xmlns:cc="clr-namespace:CustomControlLibrary.MessageWindow;assembly=CustomControlLibrary"
+             xmlns:md="clr-namespace:CustomControlLibrary.MessageDialog;assembly=CustomControlLibrary"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
              av:DesignWidth="1000" av:DesignHeight="700">
     <Grid>
         <cb:ShadePanelBaseControl/>
-        <cc:MessageWindowBaseControl Width="500" Height="300"/>
+        <md:MessageDialogBaseControl Width="500" Height="300"
+                                     Title="{Binding Title}"
+                                     Message="{Binding Message}"
+                                     LeftButtonText="{Binding LeftButtonText}"
+                                     RightButtonText="{Binding RightButtonText}"/>
     </Grid>
 </UserControl>

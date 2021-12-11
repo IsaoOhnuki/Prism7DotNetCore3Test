@@ -1,4 +1,5 @@
-﻿using Prism.Regions;
+﻿using ModelLibrary.Service;
+using Prism.Regions;
 using System;
 
 namespace MvvmLibrary.Mvvm
@@ -7,7 +8,8 @@ namespace MvvmLibrary.Mvvm
     {
         protected IRegionManager RegionManager { get; private set; }
 
-        public RegionViewModelBase(IRegionManager regionManager)
+        public RegionViewModelBase(ILogService logService, IRegionManager regionManager)
+            : base(logService)
         {
             RegionManager = regionManager;
         }

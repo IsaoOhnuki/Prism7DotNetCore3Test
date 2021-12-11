@@ -1,13 +1,22 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace CustomControlLibrary.CustomBaseControl
 {
     /// <summary>
-    /// ShadePanelBaseControl.xaml の相互作用ロジック
+    /// DialogPanelBase.xaml の相互作用ロジック
     /// </summary>
-    public partial class ShadePanelBaseControl : UserControl
+    public partial class DialogPanelBaseControl : UserControl
     {
         public new Brush Background
         {
@@ -19,10 +28,10 @@ namespace CustomControlLibrary.CustomBaseControl
             DependencyProperty.Register(
                 nameof(Background),
                 typeof(Brush),
-                typeof(ShadePanelBaseControl),
-                new PropertyMetadata(new SolidColorBrush(Color.FromArgb(0x7f, 0, 0, 0))));
+                typeof(DialogPanelBaseControl),
+                new PropertyMetadata(Brushes.White));
 
-        public ShadePanelBaseControl()
+        public DialogPanelBaseControl()
         {
             InitializeComponent();
         }

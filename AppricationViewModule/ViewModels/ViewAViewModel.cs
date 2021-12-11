@@ -5,19 +5,19 @@ using Prism.Regions;
 
 namespace AppricationViewModule.ViewModels
 {
-    public class ViewAViewModel : RegionViewModelBase
+    public class ViewAViewModel : CommonViewModel
     {
         private string _message;
         public string Message
         {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
+            get => _message;
+            set => SetProperty(ref _message, value);
         }
 
         protected IMessageService MessageService { get; private set; }
 
-        public ViewAViewModel(IRegionManager regionManager, IMessageService messageService)
-            : base(regionManager)
+        public ViewAViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService)
+            : base(logService, regionManager)
         {
             MessageService = messageService;
 

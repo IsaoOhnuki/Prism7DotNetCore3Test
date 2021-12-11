@@ -7,20 +7,20 @@ namespace CustomControlLibrary.CustomBaseControl
     /// <summary>
     /// DialogButtonBaseControl.xaml の相互作用ロジック
     /// </summary>
-    public partial class DialogButtonBaseControl : UserControl
+    public partial class CommandButtonBaseControl : UserControl
     {
-        public new string Content
+        public new object Content
         {
-            get => (string)GetValue(ContentProperty);
+            get => GetValue(ContentProperty);
             set => SetValue(ContentProperty, value);
         }
 
         public static readonly new DependencyProperty ContentProperty =
             DependencyProperty.Register(
                 nameof(Content),
-                typeof(string),
-                typeof(DialogButtonBaseControl),
-                new PropertyMetadata(default(string)));
+                typeof(object),
+                typeof(CommandButtonBaseControl),
+                new PropertyMetadata(default(object)));
 
         public ICommand Command
         {
@@ -32,7 +32,7 @@ namespace CustomControlLibrary.CustomBaseControl
             DependencyProperty.Register(
                 nameof(Command),
                 typeof(ICommand),
-                typeof(DialogButtonBaseControl),
+                typeof(CommandButtonBaseControl),
                 new PropertyMetadata(default(ICommand)));
 
         public object CommandParameter
@@ -45,10 +45,10 @@ namespace CustomControlLibrary.CustomBaseControl
             DependencyProperty.Register(
                 nameof(CommandParameter),
                 typeof(object),
-                typeof(DialogButtonBaseControl),
+                typeof(CommandButtonBaseControl),
                 new PropertyMetadata(default(object)));
 
-        public DialogButtonBaseControl()
+        public CommandButtonBaseControl()
         {
             InitializeComponent();
         }

@@ -1,5 +1,5 @@
 ﻿using AppricationViewModule.Views;
-using BlankCoreApp1;
+using MvvmLibrary;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -8,16 +8,16 @@ namespace AppricationViewModule
 {
     public class AppricationViewModule : IModule
     {
-        private readonly IRegionManager _regionManager;
+        public IRegionManager RegionManager { get; }
 
         public AppricationViewModule(IRegionManager regionManager)
         {
-            _regionManager = regionManager;
+            RegionManager = regionManager;
         }
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RequestNavigate(ViewConst.ContentRegion, "MessageDialogPage");
+            RegionManager.RequestNavigate(ViewConst.ContentRegion, ViewConst.TopPage);
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
