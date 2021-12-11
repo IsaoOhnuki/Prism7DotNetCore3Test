@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="MainWindowViewModel.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="CustomBaseControl\" />
+    <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
   </ItemGroup>
 
 </Project>

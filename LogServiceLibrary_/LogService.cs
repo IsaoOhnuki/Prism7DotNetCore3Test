@@ -1,7 +1,7 @@
 using ModelLibrary.Service;
 using System;
 
-namespace LogServiceModule
+namespace LogServiceLibrary
 {
     public class LogService : ILogService
     {

@@ -3,7 +3,6 @@ using BlankCoreApp1;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
-using System.Reflection.Metadata;
 
 namespace AppricationViewModule
 {
@@ -18,8 +17,8 @@ namespace AppricationViewModule
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RequestNavigate(ViewConstant.ContentRegion, "TopPage");
-            _regionManager.RequestNavigate(ViewConstant.ContentRegion, "ViewA");
+            _regionManager.RequestNavigate(ViewConst.ContentRegion, "TopPage");
+            //_regionManager.RequestNavigate(ViewConst.ContentRegion, "ViewA");
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

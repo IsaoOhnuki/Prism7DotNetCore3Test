@@ -1,7 +1,6 @@
-using ModelLibrary.Constant;
 using ModelLibrary.Service;
 
-namespace MessageServiceModule
+namespace MessageServiceLibrary
 {
     public class MessageService : IMessageService
     {
@@ -10,11 +9,6 @@ namespace MessageServiceModule
         public MessageService(ILogService logger)
         {
             Logger = logger;
-        }
-
-        public string GetMessage(MessageConst.MessageId messageId)
-        {
-            return "Message";
         }
     }
 }

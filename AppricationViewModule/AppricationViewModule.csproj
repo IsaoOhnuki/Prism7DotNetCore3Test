@@ -8,6 +8,7 @@
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomControlLibrary\CustomControlLibrary.csproj" />
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
     <ProjectReference Include="..\MvvmLibrary\MvvmLibrary.csproj" />
   </ItemGroup>

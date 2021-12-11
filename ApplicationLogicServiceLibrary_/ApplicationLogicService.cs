@@ -1,6 +1,6 @@
 using ModelLibrary.Service;
 
-namespace ApplicationLogicServiceModule
+namespace ApplicationLogicServiceLibrary
 {
     public class ApplicationLogicService : IApplicationLogicService
     {

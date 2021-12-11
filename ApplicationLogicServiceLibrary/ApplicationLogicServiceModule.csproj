@@ -2,12 +2,17 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyName>LogServiceLibrary</AssemblyName>
+    <AssemblyName>ApplicationLogicServiceLibrary</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ApplicationLogics\" />
+    <Folder Include="BusinessLogics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogServiceLibrary\LogServiceLibrary.csproj" />
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
   </ItemGroup>
 </Project>
