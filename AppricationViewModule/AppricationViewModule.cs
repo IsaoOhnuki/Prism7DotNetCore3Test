@@ -17,14 +17,14 @@ namespace AppricationViewModule
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RequestNavigate(ViewConst.ContentRegion, "TopPage");
-            //_regionManager.RequestNavigate(ViewConst.ContentRegion, "ViewA");
+            _regionManager.RequestNavigate(ViewConst.ContentRegion, "MessageDialogPage");
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<TopPage>();
             containerRegistry.RegisterForNavigation<ViewA>();
+            containerRegistry.RegisterForNavigation<MessageDialogPage>();
         }
     }
 }
