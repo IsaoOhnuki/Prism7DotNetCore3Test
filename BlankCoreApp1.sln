@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{8CFD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{E5B6C4A8-4CED-42F2-85F4-82C2423B5BDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlLibrary", "CustomControlLibrary\CustomControlLibrary.csproj", "{36C9CBF2-84C4-4102-8BBF-555E505E9C16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomControlLibrary", "CustomControlLibrary\CustomControlLibrary.csproj", "{36C9CBF2-84C4-4102-8BBF-555E505E9C16}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationLogicServiceLibrary", "ApplicationLogicServiceLibrary\ApplicationLogicServiceLibrary.csproj", "{887A7258-3AA3-4324-B49C-8EFD58F406A4}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelLibrary", "ModelLibrary\ModelLibrary.csproj", "{08EFED7B-7098-4625-8C74-DB093BBE6ADA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageServiceLibrary", "MessageServiceLibrary\MessageServiceLibrary.csproj", "{932F75AB-3935-40F0-9C5E-7DEBCEA75E02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppricationViewModule", "AppricationViewModule\AppricationViewModule.csproj", "{82A8C02B-928F-451F-BAE2-9927D429FBCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmLibrary", "MvvmLibrary\MvvmLibrary.csproj", "{87E2AF92-EDF3-4D7D-AA12-876C9EFF75C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{932F75AB-3935-40F0-9C5E-7DEBCEA75E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{932F75AB-3935-40F0-9C5E-7DEBCEA75E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{932F75AB-3935-40F0-9C5E-7DEBCEA75E02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82A8C02B-928F-451F-BAE2-9927D429FBCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82A8C02B-928F-451F-BAE2-9927D429FBCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82A8C02B-928F-451F-BAE2-9927D429FBCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82A8C02B-928F-451F-BAE2-9927D429FBCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87E2AF92-EDF3-4D7D-AA12-876C9EFF75C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E2AF92-EDF3-4D7D-AA12-876C9EFF75C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E2AF92-EDF3-4D7D-AA12-876C9EFF75C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E2AF92-EDF3-4D7D-AA12-876C9EFF75C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +74,8 @@ Global
 		{744641E8-11B2-4028-9732-6B7922579C5C} = {8CFD481D-5E2A-4BD5-ACCA-697F85419B01}
 		{08EFED7B-7098-4625-8C74-DB093BBE6ADA} = {E5B6C4A8-4CED-42F2-85F4-82C2423B5BDA}
 		{932F75AB-3935-40F0-9C5E-7DEBCEA75E02} = {8CFD481D-5E2A-4BD5-ACCA-697F85419B01}
+		{82A8C02B-928F-451F-BAE2-9927D429FBCF} = {88C25C84-A906-4BB1-A66A-9D03E2226B10}
+		{87E2AF92-EDF3-4D7D-AA12-876C9EFF75C9} = {88C25C84-A906-4BB1-A66A-9D03E2226B10}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5FA9ED04-964B-49B7-84FC-D049E9D55AD7}
