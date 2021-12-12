@@ -6,6 +6,13 @@
              xmlns:local="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -28,11 +35,13 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="label" Grid.Row="1" Grid.Column="1"/>
+            <Label x:Name="label" Grid.Row="1" Grid.Column="1"
+                   Style="{StaticResource BaseFontSetting}"
+                   Content="LabelBaseControl"/>
             <Image x:Name="topImage" Grid.Row="0" Grid.Column="1"/>
             <Image x:Name="leftImage" Grid.Row="1" Grid.Column="0"/>
             <Image x:Name="rightImage" Grid.Row="1" Grid.Column="2"/>
-            <Image x:Name="bottomImage" Grid.Row="2" Grid.Column="1" Source="/CustomControlLibrary;component/CustomBaseControl/dsdnormalize.bmp"/>
+            <Image x:Name="bottomImage" Grid.Row="2" Grid.Column="1" Source="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
         </Grid>
     </Grid>
 </UserControl>

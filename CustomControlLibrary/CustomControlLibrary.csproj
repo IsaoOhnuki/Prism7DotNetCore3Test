@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="CustomBaseControl\DefaultShaderEffectGraphTexture.png" />
-    <Resource Include="CustomBaseControl\dsdnormalize.bmp" />
-    <Resource Include="CustomBaseControl\SD2008base.bmp" />
+    <Resource Include="Images\DefaultShaderEffectGraphTexture.png" />
+    <Resource Include="Images\dsdnormalize.bmp" />
+    <Resource Include="Images\SD2008base.bmp" />
   </ItemGroup>
 
 </Project>

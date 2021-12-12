@@ -22,7 +22,8 @@ namespace CustomControlLibrary.DialogTitlePanel
                 typeof(DialogTitlePanelControl),
                 new PropertyMetadata(
                     default(Brush),
-                    (d, e) => {
+                    (d, e) =>
+                    {
                         if (d is DialogTitlePanelControl obj)
                         {
                             if (obj.dialogTitlePanel.Content != e.NewValue)
@@ -44,7 +45,7 @@ namespace CustomControlLibrary.DialogTitlePanel
                 typeof(object),
                 typeof(DialogTitlePanelControl),
                 new PropertyMetadata(
-                    default(object),
+                    default,
                     (d, e) =>
                     {
                         if (d is DialogTitlePanelControl obj)

@@ -14,24 +14,25 @@ namespace CustomControlLibrary.CustomBaseControl
             set => SetValue(ContentProperty, value);
         }
 
-        public static readonly new DependencyProperty ContentProperty =
+        public static new readonly DependencyProperty ContentProperty =
             DependencyProperty.Register(
                 nameof(Content),
                 typeof(object),
                 typeof(DialogTitleTextBaseControl),
                 new PropertyMetadata(
-                    default(object),
-                    (d, e) => {
+                    default,
+                    (d, e) =>
+                    {
                         if (d is DialogTitleTextBaseControl obj)
                         {
                             if (obj.dialogTitleText.Content != e.NewValue)
                             {
                                 obj.dialogTitleText.Content = e.NewValue;
                             }
-}
+                        }
                     }));
 
-public DialogTitleTextBaseControl()
+        public DialogTitleTextBaseControl()
         {
             InitializeComponent();
         }

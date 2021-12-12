@@ -21,7 +21,8 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(MessageTextBaseControl),
                 new PropertyMetadata(
                     default(string),
-                    (d, e) => {
+                    (d, e) =>
+                    {
                         if (d is MessageTextBaseControl obj)
                         {
                             if (obj.messageText.Text != (string)e.NewValue)

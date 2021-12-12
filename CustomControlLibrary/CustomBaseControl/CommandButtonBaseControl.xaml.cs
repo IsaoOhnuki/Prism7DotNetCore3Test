@@ -15,14 +15,15 @@ namespace CustomControlLibrary.CustomBaseControl
             set => SetValue(ContentProperty, value);
         }
 
-        public static readonly new DependencyProperty ContentProperty =
+        public static new readonly DependencyProperty ContentProperty =
             DependencyProperty.Register(
                 nameof(Content),
                 typeof(object),
                 typeof(CommandButtonBaseControl),
                 new PropertyMetadata(
-                    default(object),
-                    (d, e) => {
+                    default,
+                    (d, e) =>
+                    {
                         if (d is CommandButtonBaseControl obj)
                         {
                             if (obj.commandButtonLabel.Content != e.NewValue)
@@ -45,7 +46,8 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(CommandButtonBaseControl),
                 new PropertyMetadata(
                     default(ICommand),
-                    (d, e) => {
+                    (d, e) =>
+                    {
                         if (d is CommandButtonBaseControl obj)
                         {
                             if (obj.commandButton.Command != (ICommand)e.NewValue)
@@ -67,8 +69,9 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(object),
                 typeof(CommandButtonBaseControl),
                 new PropertyMetadata(
-                    default(object),
-                    (d, e) => {
+                    default,
+                    (d, e) =>
+                    {
                         if (d is CommandButtonBaseControl obj)
                         {
                             if (obj.commandButton.CommandParameter != e.NewValue)

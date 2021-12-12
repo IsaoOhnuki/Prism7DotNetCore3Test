@@ -6,7 +6,7 @@
              xmlns:cb="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="250">
-    <Button x:Name="dialogButton">
+    <Button x:Name="dialogButton" BorderBrush="{x:Null}" BorderThickness="0,0,0,0">
         <cb:LabelBaseControl x:Name="label"/>
     </Button>
 </UserControl>

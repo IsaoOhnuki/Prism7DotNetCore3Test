@@ -6,8 +6,15 @@
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-        <bc:DialogPanelBaseControl x:Name="dialogTitlePanel"/>
+        <bc:DialogPanelBaseControl x:Name="dialogTitlePanel" Background="{StaticResource DialogTitlePanelBrush}"/>
         <bc:DialogTitleTextBaseControl x:Name="dialogTitlePanelLabel"/>
     </Grid>
 </UserControl>

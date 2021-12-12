@@ -15,14 +15,15 @@ namespace CustomControlLibrary.CustomBaseControl
             set => SetValue(ContentProperty, value);
         }
 
-        public static readonly new DependencyProperty ContentProperty =
+        public static new readonly DependencyProperty ContentProperty =
             DependencyProperty.Register(
                 nameof(Content),
                 typeof(object),
                 typeof(LabelBaseControl),
                 new PropertyMetadata(
-                    default(object),
-                    (d, e) => {
+                    default,
+                    (d, e) =>
+                    {
                         if (d is LabelBaseControl obj)
                         {
                             if (obj.label.Content != e.NewValue)
@@ -44,8 +45,9 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(ImageSource),
                 typeof(LabelBaseControl),
                 new PropertyMetadata(
-                    default(object),
-                    (d, e) => {
+                    default,
+                    (d, e) =>
+                    {
                         if (d is LabelBaseControl obj)
                         {
                             if (obj.topImage.Source != (ImageSource)e.NewValue)
@@ -67,8 +69,9 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(ImageSource),
                 typeof(LabelBaseControl),
                 new PropertyMetadata(
-                    default(object),
-                    (d, e) => {
+                    default,
+                    (d, e) =>
+                    {
                         if (d is LabelBaseControl obj)
                         {
                             if (obj.bottomImage.Source != (ImageSource)e.NewValue)
@@ -90,8 +93,9 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(ImageSource),
                 typeof(LabelBaseControl),
                 new PropertyMetadata(
-                    default(object),
-                    (d, e) => {
+                    default,
+                    (d, e) =>
+                    {
                         if (d is LabelBaseControl obj)
                         {
                             if (obj.leftImage.Source != (ImageSource)e.NewValue)
@@ -113,8 +117,9 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(ImageSource),
                 typeof(LabelBaseControl),
                 new PropertyMetadata(
-                    default(object),
-                    (d, e) => {
+                    default,
+                    (d, e) =>
+                    {
                         if (d is LabelBaseControl obj)
                         {
                             if (obj.rightImage.Source != (ImageSource)e.NewValue)

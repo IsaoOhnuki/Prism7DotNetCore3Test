@@ -15,14 +15,15 @@ namespace CustomControlLibrary.CustomBaseControl
             set => SetValue(BackgroundProperty, value);
         }
 
-        public static readonly new DependencyProperty BackgroundProperty =
+        public static new readonly DependencyProperty BackgroundProperty =
             DependencyProperty.Register(
                 nameof(Background),
                 typeof(Brush),
                 typeof(ShadePanelBaseControl),
                 new PropertyMetadata(
                     new SolidColorBrush(Color.FromArgb(0x7f, 0, 0, 0)),
-                    (d, e) => {
+                    (d, e) =>
+                    {
                         if (d is ShadePanelBaseControl obj)
                         {
                             if (obj.shadePanel.Background != (Brush)e.NewValue)
