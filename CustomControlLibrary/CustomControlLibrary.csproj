@@ -11,4 +11,16 @@
     <Compile Remove="MainWindowViewModel.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="CustomBaseControl\DefaultShaderEffectGraphTexture.png" />
+    <None Remove="CustomBaseControl\dsdnormalize.bmp" />
+    <None Remove="CustomBaseControl\SD2008base.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="CustomBaseControl\DefaultShaderEffectGraphTexture.png" />
+    <Resource Include="CustomBaseControl\dsdnormalize.bmp" />
+    <Resource Include="CustomBaseControl\SD2008base.bmp" />
+  </ItemGroup>
+
 </Project>

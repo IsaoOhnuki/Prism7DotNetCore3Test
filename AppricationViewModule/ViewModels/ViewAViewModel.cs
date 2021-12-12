@@ -1,7 +1,10 @@
 ﻿using ModelLibrary.Constant;
 using ModelLibrary.Service;
+using MvvmLibrary;
 using MvvmLibrary.Mvvm;
+using Prism.Commands;
 using Prism.Regions;
+using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
 {
@@ -14,6 +17,8 @@ namespace AppricationViewModule.ViewModels
             set => SetProperty(ref _message, value);
         }
 
+        public ICommand BackCommand { get; }
+
         protected IMessageService MessageService { get; private set; }
 
         public ViewAViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService)
@@ -21,12 +26,18 @@ namespace AppricationViewModule.ViewModels
         {
             MessageService = messageService;
 
+            BackCommand = new DelegateCommand(TransitionBack);
+
             Message = MessageService.GetMessage(MessageConst.MessageId.Message);
         }
 
-        public override void OnNavigatedTo(NavigationContext navigationContext)
+        void TransitionBack()
         {
-            //do something
+            DoTransitionPage(GetViewName(), ViewConst.ViewA);
+        }
+
+        public override void InisiarizeView(NavigationParameters navigationParameters)
+        {
         }
     }
 }

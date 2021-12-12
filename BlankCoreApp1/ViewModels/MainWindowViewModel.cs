@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using MvvmLibrary;
+using Prism.Mvvm;
 
 namespace BlankCoreApp1.ViewModels
 {
@@ -11,9 +12,11 @@ namespace BlankCoreApp1.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        public string ContentRegionName { get; }
+
         public MainWindowViewModel()
         {
-
+            ContentRegionName = ViewConst.MainViewRegion_Content;
         }
     }
 }

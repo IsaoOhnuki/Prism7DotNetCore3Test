@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="AppricationViewModule.Views.ViewA"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:cb="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
+             xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
@@ -9,6 +9,19 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True" >
     <Grid>
-        <cb:LabelBaseControl Content="{Binding Message}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <bc:LabelBaseControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                             Content="{Binding Message}"/>
+        <bc:CommandButtonBaseControl Grid.Row="1" Grid.Column="1"
+                                     Margin="10,10,10,10"
+                                     Content="{Binding AcceptText}"
+                                     Command="{Binding BackCommand}"/>
     </Grid>
 </UserControl>

@@ -1,15 +1,25 @@
 ﻿using ModelLibrary.Service;
+using Prism.Mvvm;
+using Prism.Navigation;
 using Prism.Regions;
+using System;
 
 namespace MvvmLibrary.Mvvm
 {
-    public class CommonViewModel : RegionViewModelBase
+    public abstract class CommonViewModel : BindableBase, INavigationAware, IConfirmNavigationRequest, IDestructible
     {
+        protected ILogService LogService { get; private set; }
+
+        protected IRegionManager RegionManager { get; private set; }
+
         public string PreviousView { get; set; }
 
+        public string TransitionView { get; set; }
+
         public CommonViewModel(ILogService logService, IRegionManager regionManager)
-            : base(logService, regionManager)
         {
+            LogService = logService;
+            RegionManager = regionManager;
         }
 
         public string GetViewName()
@@ -18,27 +28,44 @@ namespace MvvmLibrary.Mvvm
             return vmName.Substring(0, vmName.IndexOf("ViewModel"));
         }
 
-        public NavigationParameters GetPageTransitionParameters()
+        public void DoTransitionPage(string fromPage, string toPage)
         {
             NavigationParameters navigationParam = new NavigationParameters
             {
-                { ViewConst.NavigationParameterKey_PreviousView, GetViewName() }
+                { ViewConst.NavigationParameterKey_PreviousView, fromPage },
+                { ViewConst.NavigationParameterKey_TransitionView, toPage },
             };
-            return navigationParam;
+            RegionManager.RequestNavigate(ViewConst.MainViewRegion_Content, toPage, navigationParam);
         }
 
-        public void PageTransition(string region, string page, NavigationParameters navigationParam)
+        public abstract void InisiarizeView(NavigationParameters navigationParameters);
+
+
+        public virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
         {
-            if (!string.IsNullOrEmpty(region) && !string.IsNullOrEmpty(page))
-            {
-                RegionManager.RequestNavigate(region, page, navigationParam);
-            }
+            continuationCallback(true);
         }
 
-        public override void OnNavigatedTo(NavigationContext navigationContext)
+        public virtual bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            base.OnNavigatedTo(navigationContext);
+            return true;
+        }
+
+        public virtual void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+
+        }
+
+        public virtual void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            TransitionView = navigationContext.Parameters[ViewConst.NavigationParameterKey_TransitionView] as string;
             PreviousView = navigationContext.Parameters[ViewConst.NavigationParameterKey_PreviousView] as string;
+            InisiarizeView(navigationContext.Parameters);
+        }
+
+        public virtual void Destroy()
+        {
+
         }
     }
 }

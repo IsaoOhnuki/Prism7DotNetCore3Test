@@ -10,6 +10,6 @@
         av:DesignWidth="500"
         av:DesignHeight="300">
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        <ContentControl prism:RegionManager.RegionName="{Binding ContentRegionName}"/>
     </Grid>
 </Window>

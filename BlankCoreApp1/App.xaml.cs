@@ -1,4 +1,5 @@
 ﻿using BlankCoreApp1.Views;
+using LogServiceModule;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;

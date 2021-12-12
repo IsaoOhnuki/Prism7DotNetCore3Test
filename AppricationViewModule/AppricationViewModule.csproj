@@ -12,4 +12,7 @@
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
     <ProjectReference Include="..\MvvmLibrary\MvvmLibrary.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
 </Project>

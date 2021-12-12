@@ -56,14 +56,16 @@ namespace AppricationViewModule.ViewModels
 
         void TransitionGo()
         {
-            NavigationParameters navigationParam = GetPageTransitionParameters();
-            PageTransition(ViewConst.ContentRegion, ViewConst.ViewA, navigationParam);
+            DoTransitionPage(GetViewName(), ViewConst.ViewA);
         }
 
         void TransitionBack()
         {
-            NavigationParameters navigationParam = GetPageTransitionParameters();
-            PageTransition(ViewConst.ContentRegion, PreviousView, navigationParam);
+            DoTransitionPage(GetViewName(), PreviousView);
+        }
+
+        public override void InisiarizeView(NavigationParameters navigationParameters)
+        {
         }
     }
 }

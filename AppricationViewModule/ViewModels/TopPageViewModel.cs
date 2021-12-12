@@ -36,13 +36,16 @@ namespace AppricationViewModule.ViewModels
 
         protected void DoAccept()
         {
-            NavigationParameters navigationParam = GetPageTransitionParameters();
-            PageTransition(ViewConst.ContentRegion, ViewConst.MessageDialogPage, navigationParam);
+            DoTransitionPage(GetViewName(), ViewConst.MessageDialogPage);
         }
 
         protected bool IsCanAccept()
         {
             return true;
+        }
+
+        public override void InisiarizeView(NavigationParameters navigationParameters)
+        {
         }
     }
 }
