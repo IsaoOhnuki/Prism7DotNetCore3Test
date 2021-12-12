@@ -19,7 +19,17 @@ namespace CustomControlLibrary.MessageDialog
                 nameof(Title),
                 typeof(string),
                 typeof(MessageDialogBaseControl),
-                new PropertyMetadata(default(string)));
+                new PropertyMetadata(
+                    default(string),
+                    (d, e) => {
+                        if (d is MessageDialogBaseControl obj)
+                        {
+                            if (obj.title.Content != e.NewValue)
+                            {
+                                obj.title.Content = e.NewValue;
+                            }
+                        }
+                    }));
 
         public string Message
         {
@@ -32,7 +42,17 @@ namespace CustomControlLibrary.MessageDialog
                 nameof(Message),
                 typeof(string),
                 typeof(MessageDialogBaseControl),
-                new PropertyMetadata(default(string)));
+                new PropertyMetadata(
+                    default(string),
+                    (d, e) => {
+                        if (d is MessageDialogBaseControl obj)
+                        {
+                            if (obj.message.Content != e.NewValue)
+                            {
+                                obj.message.Content = e.NewValue;
+                            }
+                        }
+                    }));
 
         public string LeftButtonText
         {
@@ -45,7 +65,17 @@ namespace CustomControlLibrary.MessageDialog
                 nameof(LeftButtonText),
                 typeof(string),
                 typeof(MessageDialogBaseControl),
-                new PropertyMetadata(default(string)));
+                new PropertyMetadata(
+                    default(string),
+                    (d, e) => {
+                        if (d is MessageDialogBaseControl obj)
+                        {
+                            if (obj.leftButton.Content != e.NewValue)
+                            {
+                                obj.leftButton.Content = e.NewValue;
+                            }
+                        }
+                    }));
 
         public string RightButtonText
         {
@@ -58,7 +88,17 @@ namespace CustomControlLibrary.MessageDialog
                 nameof(RightButtonText),
                 typeof(string),
                 typeof(MessageDialogBaseControl),
-                new PropertyMetadata(default(string)));
+                new PropertyMetadata(
+                    default(string),
+                    (d, e) => {
+                        if (d is MessageDialogBaseControl obj)
+                        {
+                            if (obj.rightButton.Content != e.NewValue)
+                            {
+                                obj.rightButton.Content = e.NewValue;
+                            }
+                        }
+                    }));
 
         public MessageDialogBaseControl()
         {

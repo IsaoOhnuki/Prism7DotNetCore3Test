@@ -6,5 +6,5 @@
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <bc:LabelBaseControl x:Name="content" Content="{Binding Content}"/>
+    <bc:LabelBaseControl x:Name="dialogTitleText"/>
 </UserControl>

@@ -9,18 +9,28 @@ namespace CustomControlLibrary.CustomBaseControl
     /// </summary>
     public partial class DialogButtonBaseControl : UserControl
     {
-        public new string Content
+        public new object Content
         {
-            get => (string)GetValue(ContentProperty);
+            get => GetValue(ContentProperty);
             set => SetValue(ContentProperty, value);
         }
 
         public static readonly new DependencyProperty ContentProperty =
             DependencyProperty.Register(
                 nameof(Content),
-                typeof(string),
+                typeof(object),
                 typeof(DialogButtonBaseControl),
-                new PropertyMetadata(default(string)));
+                new PropertyMetadata(
+                    default(object),
+                    (d, e) => {
+                        if (d is DialogButtonBaseControl obj)
+                        {
+                            if (obj.label.Content != e.NewValue)
+                            {
+                                obj.label.Content = e.NewValue;
+                            }
+                        }
+                    }));
 
         public ICommand Command
         {
@@ -33,7 +43,17 @@ namespace CustomControlLibrary.CustomBaseControl
                 nameof(Command),
                 typeof(ICommand),
                 typeof(DialogButtonBaseControl),
-                new PropertyMetadata(default(ICommand)));
+                new PropertyMetadata(
+                    default(ICommand),
+                    (d, e) => {
+                        if (d is DialogButtonBaseControl obj)
+                        {
+                            if (obj.dialogButton.Command != (ICommand)e.NewValue)
+                            {
+                                obj.dialogButton.Command = (ICommand)e.NewValue;
+                            }
+                        }
+                    }));
 
         public object CommandParameter
         {
@@ -46,7 +66,17 @@ namespace CustomControlLibrary.CustomBaseControl
                 nameof(CommandParameter),
                 typeof(object),
                 typeof(DialogButtonBaseControl),
-                new PropertyMetadata(default(object)));
+                new PropertyMetadata(
+                    default(object),
+                    (d, e) => {
+                        if (d is DialogButtonBaseControl obj)
+                        {
+                            if (obj.dialogButton.CommandParameter != e.NewValue)
+                            {
+                                obj.dialogButton.CommandParameter = e.NewValue;
+                            }
+                        }
+                    }));
 
         public DialogButtonBaseControl()
         {

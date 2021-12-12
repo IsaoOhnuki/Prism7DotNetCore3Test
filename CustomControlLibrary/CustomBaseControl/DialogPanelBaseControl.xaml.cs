@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 namespace CustomControlLibrary.CustomBaseControl
 {
     /// <summary>
-    /// DialogPanelBase.xaml の相互作用ロジック
+    /// DialogPanelBaseControl.xaml の相互作用ロジック
     /// </summary>
     public partial class DialogPanelBaseControl : UserControl
     {
@@ -29,9 +29,19 @@ namespace CustomControlLibrary.CustomBaseControl
                 nameof(Background),
                 typeof(Brush),
                 typeof(DialogPanelBaseControl),
-                new PropertyMetadata(Brushes.White));
+                new PropertyMetadata(
+                    Brushes.White,
+                    (d, e) => {
+                        if (d is DialogPanelBaseControl obj)
+                        {
+                            if (obj.dialogPanel.Background != (Brush)e.NewValue)
+                            {
+                                obj.dialogPanel.Background = (Brush)e.NewValue;
+                            }
+                        }
+                    }));
 
-        public DialogPanelBaseControl()
+public DialogPanelBaseControl()
         {
             InitializeComponent();
         }

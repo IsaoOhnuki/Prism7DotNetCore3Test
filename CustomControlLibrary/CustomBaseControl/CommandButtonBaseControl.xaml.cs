@@ -20,7 +20,17 @@ namespace CustomControlLibrary.CustomBaseControl
                 nameof(Content),
                 typeof(object),
                 typeof(CommandButtonBaseControl),
-                new PropertyMetadata(default(object)));
+                new PropertyMetadata(
+                    default(object),
+                    (d, e) => {
+                        if (d is CommandButtonBaseControl obj)
+                        {
+                            if (obj.commandButtonLabel.Content != e.NewValue)
+                            {
+                                obj.commandButtonLabel.Content = e.NewValue;
+                            }
+                        }
+                    }));
 
         public ICommand Command
         {
@@ -33,7 +43,17 @@ namespace CustomControlLibrary.CustomBaseControl
                 nameof(Command),
                 typeof(ICommand),
                 typeof(CommandButtonBaseControl),
-                new PropertyMetadata(default(ICommand)));
+                new PropertyMetadata(
+                    default(ICommand),
+                    (d, e) => {
+                        if (d is CommandButtonBaseControl obj)
+                        {
+                            if (obj.commandButton.Command != (ICommand)e.NewValue)
+                            {
+                                obj.commandButton.Command = (ICommand)e.NewValue;
+                            }
+                        }
+                    }));
 
         public object CommandParameter
         {
@@ -46,7 +66,17 @@ namespace CustomControlLibrary.CustomBaseControl
                 nameof(CommandParameter),
                 typeof(object),
                 typeof(CommandButtonBaseControl),
-                new PropertyMetadata(default(object)));
+                new PropertyMetadata(
+                    default(object),
+                    (d, e) => {
+                        if (d is CommandButtonBaseControl obj)
+                        {
+                            if (obj.commandButton.CommandParameter != e.NewValue)
+                            {
+                                obj.commandButton.CommandParameter = e.NewValue;
+                            }
+                        }
+                    }));
 
         public CommandButtonBaseControl()
         {

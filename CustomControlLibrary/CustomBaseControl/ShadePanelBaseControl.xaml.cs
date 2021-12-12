@@ -20,7 +20,17 @@ namespace CustomControlLibrary.CustomBaseControl
                 nameof(Background),
                 typeof(Brush),
                 typeof(ShadePanelBaseControl),
-                new PropertyMetadata(new SolidColorBrush(Color.FromArgb(0x7f, 0, 0, 0))));
+                new PropertyMetadata(
+                    new SolidColorBrush(Color.FromArgb(0x7f, 0, 0, 0)),
+                    (d, e) => {
+                        if (d is ShadePanelBaseControl obj)
+                        {
+                            if (obj.shadePanel.Background != (Brush)e.NewValue)
+                            {
+                                obj.shadePanel.Background = (Brush)e.NewValue;
+                            }
+                        }
+                    }));
 
         public ShadePanelBaseControl()
         {

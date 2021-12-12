@@ -6,7 +6,8 @@
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <bc:DialogPanelBaseControl>
-        <bc:DialogTitleTextBaseControl/>
-    </bc:DialogPanelBaseControl>
+    <Grid>
+        <bc:DialogPanelBaseControl x:Name="dialogTitlePanel"/>
+        <bc:DialogTitleTextBaseControl x:Name="dialogTitlePanelLabel"/>
+    </Grid>
 </UserControl>

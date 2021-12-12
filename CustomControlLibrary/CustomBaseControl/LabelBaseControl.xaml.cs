@@ -19,7 +19,17 @@ namespace CustomControlLibrary.CustomBaseControl
                 nameof(Content),
                 typeof(object),
                 typeof(LabelBaseControl),
-                new PropertyMetadata(default(object)));
+                new PropertyMetadata(
+                    default(object),
+                    (d, e) => {
+                        if (d is LabelBaseControl obj)
+                        {
+                            if (obj.label.Content != e.NewValue)
+                            {
+                                obj.label.Content = e.NewValue;
+                            }
+                        }
+                    }));
 
         public LabelBaseControl()
         {
