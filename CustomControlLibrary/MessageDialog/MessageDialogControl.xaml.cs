@@ -1,26 +1,9 @@
-﻿using System;
-using System.Globalization;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 
 namespace CustomControlLibrary.MessageDialog
 {
-    public class WidthAndHeightToRectConverter : IMultiValueConverter
-    {
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
-        {
-            double width = (double)values[0];
-            double height = (double)values[1];
-            return new Rect(0, 0, width, height);
-        }
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return null;
-        }
-    }
-
     /// <summary>
     /// MessageDialogControl.xaml の相互作用ロジック
     /// </summary>
@@ -39,7 +22,8 @@ namespace CustomControlLibrary.MessageDialog
                 typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(string),
-                    (d, e) => {
+                    (d, e) =>
+                    {
                         if (d is MessageDialogControl obj)
                         {
                             if (obj.title.Content != e.NewValue)
@@ -62,7 +46,8 @@ namespace CustomControlLibrary.MessageDialog
                 typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(string),
-                    (d, e) => {
+                    (d, e) =>
+                    {
                         if (d is MessageDialogControl obj)
                         {
                             if (obj.message.Text != (string)e.NewValue)
@@ -85,7 +70,8 @@ namespace CustomControlLibrary.MessageDialog
                 typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(string),
-                    (d, e) => {
+                    (d, e) =>
+                    {
                         if (d is MessageDialogControl obj)
                         {
                             if (obj.leftButton.Content != e.NewValue)
@@ -108,7 +94,8 @@ namespace CustomControlLibrary.MessageDialog
                 typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(string),
-                    (d, e) => {
+                    (d, e) =>
+                    {
                         if (d is MessageDialogControl obj)
                         {
                             if (obj.rightButton.Content != e.NewValue)
@@ -131,7 +118,8 @@ namespace CustomControlLibrary.MessageDialog
                 typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(ICommand),
-                    (d, e) => {
+                    (d, e) =>
+                    {
                         if (d is MessageDialogControl obj)
                         {
                             if (obj.leftButton.Command != (ICommand)e.NewValue)
@@ -154,7 +142,8 @@ namespace CustomControlLibrary.MessageDialog
                 typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(string),
-                    (d, e) => {
+                    (d, e) =>
+                    {
                         if (d is MessageDialogControl obj)
                         {
                             if (obj.rightButton.Command != (ICommand)e.NewValue)

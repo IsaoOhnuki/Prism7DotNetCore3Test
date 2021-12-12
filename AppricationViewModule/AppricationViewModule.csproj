@@ -10,7 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CustomControlLibrary\CustomControlLibrary.csproj" />
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
-    <ProjectReference Include="..\MvvmLibrary\MvvmLibrary.csproj" />
+    <ProjectReference Include="..\MvvmLibrary\MvvmUtilityLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
