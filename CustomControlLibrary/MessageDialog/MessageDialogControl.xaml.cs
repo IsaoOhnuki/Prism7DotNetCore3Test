@@ -9,7 +9,7 @@ namespace CustomControlLibrary.MessageDialog
     /// </summary>
     public partial class MessageDialogControl : UserControl
     {
-        public string Title
+        public object Title
         {
             get => (string)GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);
@@ -18,17 +18,17 @@ namespace CustomControlLibrary.MessageDialog
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register(
                 nameof(Title),
-                typeof(string),
+                typeof(object),
                 typeof(MessageDialogControl),
                 new PropertyMetadata(
-                    default(string),
+                    default,
                     (d, e) =>
                     {
                         if (d is MessageDialogControl obj)
                         {
-                            if (obj.title.Content != e.NewValue)
+                            if (obj.titleControl.Content != e.NewValue)
                             {
-                                obj.title.Content = e.NewValue;
+                                obj.titleControl.Content = e.NewValue;
                             }
                         }
                     }));
@@ -50,9 +50,9 @@ namespace CustomControlLibrary.MessageDialog
                     {
                         if (d is MessageDialogControl obj)
                         {
-                            if (obj.message.Text != (string)e.NewValue)
+                            if (obj.messageControl.Text != (string)e.NewValue)
                             {
-                                obj.message.Text = (string)e.NewValue;
+                                obj.messageControl.Text = (string)e.NewValue;
                             }
                         }
                     }));
@@ -66,17 +66,17 @@ namespace CustomControlLibrary.MessageDialog
         public static readonly DependencyProperty LeftButtonTextProperty =
             DependencyProperty.Register(
                 nameof(LeftButtonText),
-                typeof(string),
+                typeof(object),
                 typeof(MessageDialogControl),
                 new PropertyMetadata(
-                    default(string),
+                    default,
                     (d, e) =>
                     {
                         if (d is MessageDialogControl obj)
                         {
-                            if (obj.leftButton.Content != e.NewValue)
+                            if (obj.leftButtonControl.Content != e.NewValue)
                             {
-                                obj.leftButton.Content = e.NewValue;
+                                obj.leftButtonControl.Content = e.NewValue;
                             }
                         }
                     }));
@@ -90,17 +90,17 @@ namespace CustomControlLibrary.MessageDialog
         public static readonly DependencyProperty RightButtonTextProperty =
             DependencyProperty.Register(
                 nameof(RightButtonText),
-                typeof(string),
+                typeof(object),
                 typeof(MessageDialogControl),
                 new PropertyMetadata(
-                    default(string),
+                    default,
                     (d, e) =>
                     {
                         if (d is MessageDialogControl obj)
                         {
-                            if (obj.rightButton.Content != e.NewValue)
+                            if (obj.rightButtonControl.Content != e.NewValue)
                             {
-                                obj.rightButton.Content = e.NewValue;
+                                obj.rightButtonControl.Content = e.NewValue;
                             }
                         }
                     }));
@@ -122,9 +122,9 @@ namespace CustomControlLibrary.MessageDialog
                     {
                         if (d is MessageDialogControl obj)
                         {
-                            if (obj.leftButton.Command != (ICommand)e.NewValue)
+                            if (obj.leftButtonControl.Command != (ICommand)e.NewValue)
                             {
-                                obj.leftButton.Command = (ICommand)e.NewValue;
+                                obj.leftButtonControl.Command = (ICommand)e.NewValue;
                             }
                         }
                     }));
@@ -141,14 +141,14 @@ namespace CustomControlLibrary.MessageDialog
                 typeof(ICommand),
                 typeof(MessageDialogControl),
                 new PropertyMetadata(
-                    default(string),
+                    default(ICommand),
                     (d, e) =>
                     {
                         if (d is MessageDialogControl obj)
                         {
-                            if (obj.rightButton.Command != (ICommand)e.NewValue)
+                            if (obj.rightButtonControl.Command != (ICommand)e.NewValue)
                             {
-                                obj.rightButton.Command = (ICommand)e.NewValue;
+                                obj.rightButtonControl.Command = (ICommand)e.NewValue;
                             }
                         }
                     }));

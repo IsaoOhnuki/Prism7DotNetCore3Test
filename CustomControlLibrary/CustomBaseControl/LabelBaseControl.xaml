@@ -38,10 +38,10 @@
             <Label x:Name="label" Grid.Row="1" Grid.Column="1"
                    Style="{StaticResource BaseFontSetting}"
                    Content="LabelBaseControl"/>
-            <Image x:Name="topImage" Grid.Row="0" Grid.Column="1"/>
-            <Image x:Name="leftImage" Grid.Row="1" Grid.Column="0"/>
-            <Image x:Name="rightImage" Grid.Row="1" Grid.Column="2"/>
-            <Image x:Name="bottomImage" Grid.Row="2" Grid.Column="1" Source="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
+            <Image x:Name="topImageControl" Grid.Row="0" Grid.Column="1"/>
+            <Image x:Name="leftImageControl" Grid.Row="1" Grid.Column="0"/>
+            <Image x:Name="rightImageControl" Grid.Row="1" Grid.Column="2"/>
+            <Image x:Name="bottomImageControl" Grid.Row="2" Grid.Column="1" Source="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
         </Grid>
     </Grid>
 </UserControl>

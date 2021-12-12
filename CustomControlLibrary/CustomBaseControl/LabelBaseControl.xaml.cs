@@ -50,9 +50,9 @@ namespace CustomControlLibrary.CustomBaseControl
                     {
                         if (d is LabelBaseControl obj)
                         {
-                            if (obj.topImage.Source != (ImageSource)e.NewValue)
+                            if (obj.topImageControl.Source != (ImageSource)e.NewValue)
                             {
-                                obj.topImage.Source = (ImageSource)e.NewValue;
+                                obj.topImageControl.Source = (ImageSource)e.NewValue;
                             }
                         }
                     }));
@@ -74,9 +74,9 @@ namespace CustomControlLibrary.CustomBaseControl
                     {
                         if (d is LabelBaseControl obj)
                         {
-                            if (obj.bottomImage.Source != (ImageSource)e.NewValue)
+                            if (obj.bottomImageControl.Source != (ImageSource)e.NewValue)
                             {
-                                obj.bottomImage.Source = (ImageSource)e.NewValue;
+                                obj.bottomImageControl.Source = (ImageSource)e.NewValue;
                             }
                         }
                     }));
@@ -98,9 +98,9 @@ namespace CustomControlLibrary.CustomBaseControl
                     {
                         if (d is LabelBaseControl obj)
                         {
-                            if (obj.leftImage.Source != (ImageSource)e.NewValue)
+                            if (obj.leftImageControl.Source != (ImageSource)e.NewValue)
                             {
-                                obj.leftImage.Source = (ImageSource)e.NewValue;
+                                obj.leftImageControl.Source = (ImageSource)e.NewValue;
                             }
                         }
                     }));
@@ -122,9 +122,9 @@ namespace CustomControlLibrary.CustomBaseControl
                     {
                         if (d is LabelBaseControl obj)
                         {
-                            if (obj.rightImage.Source != (ImageSource)e.NewValue)
+                            if (obj.rightImageControl.Source != (ImageSource)e.NewValue)
                             {
-                                obj.rightImage.Source = (ImageSource)e.NewValue;
+                                obj.rightImageControl.Source = (ImageSource)e.NewValue;
                             }
                         }
                     }));

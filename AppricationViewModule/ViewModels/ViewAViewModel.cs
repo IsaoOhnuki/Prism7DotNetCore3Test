@@ -33,7 +33,7 @@ namespace AppricationViewModule.ViewModels
 
         void TransitionBack()
         {
-            DoTransitionPage(GetViewName(), ViewConst.ViewA);
+            DoTransitionPage(GetViewName(), ViewConst.TopPage);
         }
 
         public override void InisiarizeView(NavigationParameters navigationParameters)

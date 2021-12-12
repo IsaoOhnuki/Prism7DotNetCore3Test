@@ -5,6 +5,7 @@
     <sys:Double x:Key="BT_Width">120</sys:Double>
     <SolidColorBrush x:Key="DialogPanelBrush" Color="WhiteSmoke"/>
     <SolidColorBrush x:Key="DialogTitlePanelBrush" Color="LimeGreen"/>
+    <SolidColorBrush x:Key="ShadeBrush" Color="#7f000000"/>
 
     <!-- FontSetting -->
     <sys:Double x:Key="BaseFontSize">20</sys:Double>
