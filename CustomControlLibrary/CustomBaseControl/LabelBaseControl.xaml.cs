@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace CustomControlLibrary.CustomBaseControl
 {
@@ -27,6 +28,98 @@ namespace CustomControlLibrary.CustomBaseControl
                             if (obj.label.Content != e.NewValue)
                             {
                                 obj.label.Content = e.NewValue;
+                            }
+                        }
+                    }));
+
+        public ImageSource TopImage
+        {
+            get => (ImageSource)GetValue(TopImageProperty);
+            set => SetValue(TopImageProperty, value);
+        }
+
+        public static readonly DependencyProperty TopImageProperty =
+            DependencyProperty.Register(
+                nameof(TopImage),
+                typeof(ImageSource),
+                typeof(LabelBaseControl),
+                new PropertyMetadata(
+                    default(object),
+                    (d, e) => {
+                        if (d is LabelBaseControl obj)
+                        {
+                            if (obj.topImage.Source != (ImageSource)e.NewValue)
+                            {
+                                obj.topImage.Source = (ImageSource)e.NewValue;
+                            }
+                        }
+                    }));
+
+        public ImageSource BottomImage
+        {
+            get => (ImageSource)GetValue(BottomImageProperty);
+            set => SetValue(BottomImageProperty, value);
+        }
+
+        public static readonly DependencyProperty BottomImageProperty =
+            DependencyProperty.Register(
+                nameof(BottomImage),
+                typeof(ImageSource),
+                typeof(LabelBaseControl),
+                new PropertyMetadata(
+                    default(object),
+                    (d, e) => {
+                        if (d is LabelBaseControl obj)
+                        {
+                            if (obj.bottomImage.Source != (ImageSource)e.NewValue)
+                            {
+                                obj.bottomImage.Source = (ImageSource)e.NewValue;
+                            }
+                        }
+                    }));
+
+        public ImageSource LeftImage
+        {
+            get => (ImageSource)GetValue(LeftImageProperty);
+            set => SetValue(LeftImageProperty, value);
+        }
+
+        public static readonly DependencyProperty LeftImageProperty =
+            DependencyProperty.Register(
+                nameof(LeftImage),
+                typeof(ImageSource),
+                typeof(LabelBaseControl),
+                new PropertyMetadata(
+                    default(object),
+                    (d, e) => {
+                        if (d is LabelBaseControl obj)
+                        {
+                            if (obj.leftImage.Source != (ImageSource)e.NewValue)
+                            {
+                                obj.leftImage.Source = (ImageSource)e.NewValue;
+                            }
+                        }
+                    }));
+
+        public ImageSource RightImage
+        {
+            get => (ImageSource)GetValue(RightImageProperty);
+            set => SetValue(RightImageProperty, value);
+        }
+
+        public static readonly DependencyProperty RightImageProperty =
+            DependencyProperty.Register(
+                nameof(RightImage),
+                typeof(ImageSource),
+                typeof(LabelBaseControl),
+                new PropertyMetadata(
+                    default(object),
+                    (d, e) => {
+                        if (d is LabelBaseControl obj)
+                        {
+                            if (obj.rightImage.Source != (ImageSource)e.NewValue)
+                            {
+                                obj.rightImage.Source = (ImageSource)e.NewValue;
                             }
                         }
                     }));

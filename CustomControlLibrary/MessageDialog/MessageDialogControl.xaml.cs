@@ -5,9 +5,9 @@ using System.Windows.Input;
 namespace CustomControlLibrary.MessageDialog
 {
     /// <summary>
-    /// MessageDialogBaseControl.xaml の相互作用ロジック
+    /// MessageDialogControl.xaml の相互作用ロジック
     /// </summary>
-    public partial class MessageDialogBaseControl : UserControl
+    public partial class MessageDialogControl : UserControl
     {
         public string Title
         {
@@ -19,11 +19,11 @@ namespace CustomControlLibrary.MessageDialog
             DependencyProperty.Register(
                 nameof(Title),
                 typeof(string),
-                typeof(MessageDialogBaseControl),
+                typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(string),
                     (d, e) => {
-                        if (d is MessageDialogBaseControl obj)
+                        if (d is MessageDialogControl obj)
                         {
                             if (obj.title.Content != e.NewValue)
                             {
@@ -42,11 +42,11 @@ namespace CustomControlLibrary.MessageDialog
             DependencyProperty.Register(
                 nameof(Message),
                 typeof(string),
-                typeof(MessageDialogBaseControl),
+                typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(string),
                     (d, e) => {
-                        if (d is MessageDialogBaseControl obj)
+                        if (d is MessageDialogControl obj)
                         {
                             if (obj.message.Content != e.NewValue)
                             {
@@ -65,11 +65,11 @@ namespace CustomControlLibrary.MessageDialog
             DependencyProperty.Register(
                 nameof(LeftButtonText),
                 typeof(string),
-                typeof(MessageDialogBaseControl),
+                typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(string),
                     (d, e) => {
-                        if (d is MessageDialogBaseControl obj)
+                        if (d is MessageDialogControl obj)
                         {
                             if (obj.leftButton.Content != e.NewValue)
                             {
@@ -88,11 +88,11 @@ namespace CustomControlLibrary.MessageDialog
             DependencyProperty.Register(
                 nameof(RightButtonText),
                 typeof(string),
-                typeof(MessageDialogBaseControl),
+                typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(string),
                     (d, e) => {
-                        if (d is MessageDialogBaseControl obj)
+                        if (d is MessageDialogControl obj)
                         {
                             if (obj.rightButton.Content != e.NewValue)
                             {
@@ -111,11 +111,11 @@ namespace CustomControlLibrary.MessageDialog
             DependencyProperty.Register(
                 nameof(LeftButtonCommand),
                 typeof(ICommand),
-                typeof(MessageDialogBaseControl),
+                typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(ICommand),
                     (d, e) => {
-                        if (d is MessageDialogBaseControl obj)
+                        if (d is MessageDialogControl obj)
                         {
                             if (obj.leftButton.Command != (ICommand)e.NewValue)
                             {
@@ -134,11 +134,11 @@ namespace CustomControlLibrary.MessageDialog
             DependencyProperty.Register(
                 nameof(RightButtonCommand),
                 typeof(ICommand),
-                typeof(MessageDialogBaseControl),
+                typeof(MessageDialogControl),
                 new PropertyMetadata(
                     default(string),
                     (d, e) => {
-                        if (d is MessageDialogBaseControl obj)
+                        if (d is MessageDialogControl obj)
                         {
                             if (obj.rightButton.Command != (ICommand)e.NewValue)
                             {
@@ -147,7 +147,7 @@ namespace CustomControlLibrary.MessageDialog
                         }
                     }));
 
-        public MessageDialogBaseControl()
+        public MessageDialogControl()
         {
             InitializeComponent();
         }
