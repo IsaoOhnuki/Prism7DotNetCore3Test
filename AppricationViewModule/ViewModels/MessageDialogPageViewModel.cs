@@ -1,6 +1,9 @@
 ﻿using ModelLibrary.Service;
+using MvvmLibrary;
 using MvvmLibrary.Mvvm;
+using Prism.Commands;
 using Prism.Regions;
+using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
 {
@@ -34,13 +37,33 @@ namespace AppricationViewModule.ViewModels
             set => SetProperty(ref _rightButtonText, value);
         }
 
+        public ICommand BackCommand { get; }
+
+
+        public ICommand GoCommand { get; }
+        
         public MessageDialogPageViewModel(ILogService logService, IRegionManager regionManager)
             : base(logService, regionManager)
         {
-            LeftButtonText = "GO";
-            RightButtonText = "BACK";
+            GoCommand = new DelegateCommand(TransitionGo);
+            BackCommand = new DelegateCommand(TransitionBack);
+
+            LeftButtonText = "BACK";
+            RightButtonText = "GO";
             Message = "Message";
             Title = "Title";
+        }
+
+        void TransitionGo()
+        {
+            NavigationParameters navigationParam = GetPageTransitionParameters();
+            PageTransition(ViewConst.ContentRegion, ViewConst.ViewA, navigationParam);
+        }
+
+        void TransitionBack()
+        {
+            NavigationParameters navigationParam = GetPageTransitionParameters();
+            PageTransition(ViewConst.ContentRegion, PreviousView, navigationParam);
         }
     }
 }

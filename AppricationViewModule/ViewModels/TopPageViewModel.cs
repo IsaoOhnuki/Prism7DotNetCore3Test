@@ -36,7 +36,8 @@ namespace AppricationViewModule.ViewModels
 
         protected void DoAccept()
         {
-            RegionManager.RequestNavigate(ViewConst.ContentRegion, ViewConst.MessageDialogPage);
+            NavigationParameters navigationParam = GetPageTransitionParameters();
+            PageTransition(ViewConst.ContentRegion, ViewConst.MessageDialogPage, navigationParam);
         }
 
         protected bool IsCanAccept()

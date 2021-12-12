@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:cbc="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary">
+    <Style TargetType="cbc:CommandButtonBaseControl" x:Key="{ComponentResourceKey ResourceId=CommandButtonBaseControlStyle}">
+        <Setter Property="Background" Value="Brown"/>
+    </Style>
+</ResourceDictionary>

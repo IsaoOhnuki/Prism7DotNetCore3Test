@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace CustomControlLibrary.MessageDialog
 {
@@ -96,6 +97,52 @@ namespace CustomControlLibrary.MessageDialog
                             if (obj.rightButton.Content != e.NewValue)
                             {
                                 obj.rightButton.Content = e.NewValue;
+                            }
+                        }
+                    }));
+
+        public ICommand LeftButtonCommand
+        {
+            get => (ICommand)GetValue(LeftButtonCommandProperty);
+            set => SetValue(LeftButtonCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty LeftButtonCommandProperty =
+            DependencyProperty.Register(
+                nameof(LeftButtonCommand),
+                typeof(ICommand),
+                typeof(MessageDialogBaseControl),
+                new PropertyMetadata(
+                    default(ICommand),
+                    (d, e) => {
+                        if (d is MessageDialogBaseControl obj)
+                        {
+                            if (obj.leftButton.Command != (ICommand)e.NewValue)
+                            {
+                                obj.leftButton.Command = (ICommand)e.NewValue;
+                            }
+                        }
+                    }));
+
+        public ICommand RightButtonCommand
+        {
+            get => (ICommand)GetValue(RightButtonCommandProperty);
+            set => SetValue(RightButtonCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty RightButtonCommandProperty =
+            DependencyProperty.Register(
+                nameof(RightButtonCommand),
+                typeof(ICommand),
+                typeof(MessageDialogBaseControl),
+                new PropertyMetadata(
+                    default(string),
+                    (d, e) => {
+                        if (d is MessageDialogBaseControl obj)
+                        {
+                            if (obj.rightButton.Command != (ICommand)e.NewValue)
+                            {
+                                obj.rightButton.Command = (ICommand)e.NewValue;
                             }
                         }
                     }));

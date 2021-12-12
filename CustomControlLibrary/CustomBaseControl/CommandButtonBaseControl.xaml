@@ -6,7 +6,7 @@
              xmlns:cb="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="250">
-    <Button x:Name="commandButton">
+    <Button x:Name="commandButton" Background="Transparent">
         <cb:LabelBaseControl x:Name="commandButtonLabel"/>
     </Button>
 </UserControl>

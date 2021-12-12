@@ -19,7 +19,7 @@
         <bc:DialogPanelBaseControl x:Name="panel" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"/>
         <dtp:DialogTitlePanelBaseControl x:Name="title" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
         <bc:MessageTextBaseControl x:Name="message" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,20,20,20"/>
-        <bc:DialogButtonBaseControl x:Name="rightButton" Grid.Row="2" Grid.Column="0"/>
-        <bc:DialogButtonBaseControl x:Name="leftButton" Grid.Row="2" Grid.Column="1"/>
+        <bc:DialogButtonBaseControl x:Name="leftButton" Grid.Row="2" Grid.Column="0"/>
+        <bc:DialogButtonBaseControl x:Name="rightButton" Grid.Row="2" Grid.Column="1"/>
     </Grid>
 </UserControl>
