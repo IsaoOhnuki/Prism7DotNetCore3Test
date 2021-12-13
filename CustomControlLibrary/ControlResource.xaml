@@ -6,26 +6,46 @@
     <SolidColorBrush x:Key="DialogPanelBrush" Color="WhiteSmoke"/>
     <SolidColorBrush x:Key="DialogTitlePanelBrush" Color="LimeGreen"/>
     <SolidColorBrush x:Key="ShadeBrush" Color="#7f000000"/>
+    <SolidColorBrush x:Key="ButtonColor" Color="CornflowerBlue"/>
+    <SolidColorBrush x:Key="ButtonBorderColor" Color="DarkBlue"/>
+    <Thickness x:Key="ButtonBorderThickness" Left="1" Top="1" Right="1" Bottom="1"/>
 
     <!-- FontSetting -->
     <sys:Double x:Key="BaseFontSize">20</sys:Double>
+    <sys:Double x:Key="TitleFontSize">30</sys:Double>
     <FontFamily x:Key="BaseFontFamily">./#Meiryo UI</FontFamily>
-    <SolidColorBrush x:Key="BaseFontColor" Color="Black"/>
+    <SolidColorBrush x:Key="BaseFontColor" Color="Coral"/>
 
-    <Style x:Key="BaseFontSetting" TargetType="Control">
-        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
-        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
-        <Setter Property="Foreground" Value="{StaticResource BaseFontColor}"/>
-    </Style>
-
+    <!-- TextBlock FontSetting -->
     <Style x:Key="TextBlockFontSetting" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
         <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
         <Setter Property="Foreground" Value="{StaticResource BaseFontColor}"/>
     </Style>
 
+    <!-- Control FontSetting -->
+    <Style x:Key="BaseFontSetting" TargetType="Control">
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
+        <Setter Property="Foreground" Value="{StaticResource BaseFontColor}"/>
+    </Style>
+
+    <!-- Title FontSetting -->
+    <Style x:Key="TitleLabelFontSetting" TargetType="Control" BasedOn="{StaticResource BaseFontSetting}">
+        <Setter Property="FontSize" Value="{StaticResource TitleFontSize}"/>
+        <Setter Property="Foreground" Value="{StaticResource DialogPanelBrush}"/>
+    </Style>
+
+    <Style x:Key="CommandButtonSetting" TargetType="Button" BasedOn="{StaticResource BaseFontSetting}">
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonColor}"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBorderColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource DialogPanelBrush}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource ButtonBorderThickness}"/>
+    </Style>
+
     <!-- DialogSetting -->
-    <Style x:Key="DialogTitleTextFontSetting" BasedOn="{StaticResource BaseFontSetting}" TargetType="Control">
+    <Style x:Key="DialogTitleTextFontSetting" TargetType="Control" BasedOn="{StaticResource BaseFontSetting}">
+        <Setter Property="FontSize" Value="{StaticResource TitleFontSize}"/>
         <Setter Property="Foreground" Value="{StaticResource DialogPanelBrush}"/>
     </Style>
 </ResourceDictionary>

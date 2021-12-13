@@ -4,9 +4,9 @@ using System.Windows.Controls;
 namespace CustomControlLibrary.CustomBaseControl
 {
     /// <summary>
-    /// DialogTitleTextBaseControl.xaml の相互作用ロジック
+    /// TitleLabelBaseControl.xaml の相互作用ロジック
     /// </summary>
-    public partial class DialogTitleTextBaseControl : UserControl
+    public partial class TitleLabelBaseControl : UserControl
     {
         public new object Content
         {
@@ -18,12 +18,12 @@ namespace CustomControlLibrary.CustomBaseControl
             DependencyProperty.Register(
                 nameof(Content),
                 typeof(object),
-                typeof(DialogTitleTextBaseControl),
+                typeof(TitleLabelBaseControl),
                 new PropertyMetadata(
                     default,
                     (d, e) =>
                     {
-                        if (d is DialogTitleTextBaseControl obj)
+                        if (d is TitleLabelBaseControl obj)
                         {
                             if (obj.dialogTitleText.Content != e.NewValue)
                             {
@@ -32,7 +32,7 @@ namespace CustomControlLibrary.CustomBaseControl
                         }
                     }));
 
-        public DialogTitleTextBaseControl()
+        public TitleLabelBaseControl()
         {
             InitializeComponent();
         }

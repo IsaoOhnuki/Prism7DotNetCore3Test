@@ -6,7 +6,14 @@
              xmlns:cb="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="250">
-    <Button x:Name="commandButton" Background="Transparent">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Button x:Name="commandButton" Style="{StaticResource CommandButtonSetting}">
         <cb:LabelBaseControl x:Name="commandButtonLabel"/>
     </Button>
 </UserControl>

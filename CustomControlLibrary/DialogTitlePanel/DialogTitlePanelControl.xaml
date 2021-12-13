@@ -15,6 +15,6 @@
     </UserControl.Resources>
     <Grid>
         <bc:DialogPanelBaseControl x:Name="dialogTitlePanel" Background="{StaticResource DialogTitlePanelBrush}"/>
-        <bc:DialogTitleTextBaseControl x:Name="dialogTitlePanelLabel"/>
+        <bc:TitleLabelBaseControl x:Name="dialogTitlePanelLabel"/>
     </Grid>
 </UserControl>
