@@ -8,22 +8,25 @@
              xmlns:dtp="clr-namespace:CustomControlLibrary.DialogTitlePanel"
              mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="300">
     <UserControl.Resources>
-        <mu:WidthAndHeightToRectConverter x:Key="WidthAndHeightToRectConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Border CornerRadius="30,30,30,30">
+        <Border.Resources>
+            <mu:WidthAndHeightToRectConverter x:Key="WidthAndHeightToRectConverter"/>
+        </Border.Resources>
         <Border.Clip>
-            <RectangleGeometry
-            RadiusX="{Binding CornerRadius.TopLeft, RelativeSource={RelativeSource AncestorType={x:Type Border}}}"
-            RadiusY="{Binding RadiusX, RelativeSource={RelativeSource Self}}">
+            <RectangleGeometry RadiusX="{Binding CornerRadius.TopLeft, RelativeSource={RelativeSource AncestorType={x:Type Border}}}"
+                               RadiusY="{Binding RadiusX, RelativeSource={RelativeSource Self}}">
                 <RectangleGeometry.Rect>
-                    <MultiBinding
-                    Converter="{StaticResource WidthAndHeightToRectConverter}">
-                        <Binding
-                        Path="ActualWidth"
-                        RelativeSource="{RelativeSource AncestorType={x:Type Border}}"/>
-                        <Binding
-                        Path="ActualHeight"
-                        RelativeSource="{RelativeSource AncestorType={x:Type Border}}"/>
+                    <MultiBinding Converter="{StaticResource WidthAndHeightToRectConverter}">
+                        <Binding Path="ActualWidth"
+                                 RelativeSource="{RelativeSource AncestorType={x:Type Border}}"/>
+                        <Binding Path="ActualHeight"
+                                 RelativeSource="{RelativeSource AncestorType={x:Type Border}}"/>
                     </MultiBinding>
                 </RectangleGeometry.Rect>
             </RectangleGeometry>
@@ -41,8 +44,10 @@
             <bc:DialogPanelBaseControl x:Name="panel" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"/>
             <dtp:DialogTitlePanelControl x:Name="titleControl" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
             <bc:MessageTextBaseControl x:Name="messageControl" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,20,20,20"/>
-            <bc:DialogButtonBaseControl x:Name="leftButtonControl" Grid.Row="2" Grid.Column="0"/>
-            <bc:DialogButtonBaseControl x:Name="rightButtonControl" Grid.Row="2" Grid.Column="1"/>
+            <bc:DialogButtonBaseControl x:Name="leftButtonControl" Grid.Row="2" Grid.Column="0"
+                                        Background="{StaticResource CancelButtonColor}"/>
+            <bc:DialogButtonBaseControl x:Name="rightButtonControl" Grid.Row="2" Grid.Column="1"
+                                        Background="{StaticResource OkButtonColor}"/>
         </Grid>
     </Border>
 </UserControl>

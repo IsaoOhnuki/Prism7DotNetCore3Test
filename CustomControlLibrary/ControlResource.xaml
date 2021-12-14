@@ -8,6 +8,8 @@
     <SolidColorBrush x:Key="ShadeBrush" Color="#7f000000"/>
     <SolidColorBrush x:Key="ButtonColor" Color="CornflowerBlue"/>
     <SolidColorBrush x:Key="ButtonBorderColor" Color="DarkBlue"/>
+    <SolidColorBrush x:Key="OkButtonColor" Color="LightGreen"/>
+    <SolidColorBrush x:Key="CancelButtonColor" Color="LightSteelBlue"/>
     <Thickness x:Key="ButtonBorderThickness" Left="1" Top="1" Right="1" Bottom="1"/>
 
     <!-- FontSetting -->

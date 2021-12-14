@@ -6,7 +6,9 @@
              xmlns:cb="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="250">
-    <Button x:Name="dialogButton" BorderBrush="{x:Null}" BorderThickness="0,0,0,0">
+    <Button x:Name="dialogButton"
+            BorderThickness="0,0,0,0"
+            Background="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Background}">
         <cb:LabelBaseControl x:Name="label"/>
     </Button>
 </UserControl>
