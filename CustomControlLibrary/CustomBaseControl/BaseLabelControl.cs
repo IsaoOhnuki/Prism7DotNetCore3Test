@@ -34,6 +34,19 @@ namespace CustomControlLibrary.CustomBaseControl
     /// </summary>
     public class BaseLabelControl : Control
     {
+        public string Text
+        {
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
+        }
+
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register(
+                nameof(Text),
+                typeof(string),
+                typeof(BaseLabelControl),
+                new FrameworkPropertyMetadata(default));
+
         static BaseLabelControl()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(BaseLabelControl), new FrameworkPropertyMetadata(typeof(BaseLabelControl)));

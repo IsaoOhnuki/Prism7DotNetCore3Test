@@ -14,7 +14,8 @@
                            FontSize="{TemplateBinding FontSize}"
                            FontWeight="{TemplateBinding FontWeight}"
                            FontStretch="{TemplateBinding FontStretch}"
-                           FontStyle="{TemplateBinding FontStyle}">
+                           FontStyle="{TemplateBinding FontStyle}"
+                           Content="{TemplateBinding Text}">
                     </Label>
                 </ControlTemplate>
             </Setter.Value>
@@ -34,7 +35,8 @@
                                    FontSize="{TemplateBinding FontSize}"
                                    FontWeight="{TemplateBinding FontWeight}"
                                    FontStretch="{TemplateBinding FontStretch}"
-                                   FontStyle="{TemplateBinding FontStyle}">
+                                   FontStyle="{TemplateBinding FontStyle}"
+                                   Text="{TemplateBinding Text}">
                         </TextBlock>
                     </Border>
                 </ControlTemplate>
@@ -54,7 +56,8 @@
                              FontSize="{TemplateBinding FontSize}"
                              FontWeight="{TemplateBinding FontWeight}"
                              FontStretch="{TemplateBinding FontStretch}"
-                             FontStyle="{TemplateBinding FontStyle}">
+                             FontStyle="{TemplateBinding FontStyle}"
+                             Text="{TemplateBinding Text}">
                     </TextBox>
                 </ControlTemplate>
             </Setter.Value>
@@ -74,8 +77,11 @@
                             FontWeight="{TemplateBinding FontWeight}"
                             FontStretch="{TemplateBinding FontStretch}"
                             FontStyle="{TemplateBinding FontStyle}"
+                            Content="{TemplateBinding Text}"
                             Command="{TemplateBinding Command}"
-                            CommandParameter="{TemplateBinding CommandParameter}">
+                            CommandParameter="{TemplateBinding CommandParameter}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
                     </Button>
                 </ControlTemplate>
             </Setter.Value>

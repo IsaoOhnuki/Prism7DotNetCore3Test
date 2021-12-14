@@ -35,6 +35,45 @@ namespace CustomControlLibrary.CustomBaseControl
     /// </summary>
     public class BaseButtonControl : Control
     {
+        public new HorizontalAlignment HorizontalAlignment
+        {
+            get => (HorizontalAlignment)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
+        }
+
+        public static new readonly DependencyProperty HorizontalAlignmentProperty =
+            DependencyProperty.Register(
+                nameof(HorizontalAlignment),
+                typeof(HorizontalAlignment),
+                typeof(BaseButtonControl),
+                new FrameworkPropertyMetadata(default));
+
+        public new VerticalAlignment VerticalAlignment
+        {
+            get => (VerticalAlignment)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
+        }
+
+        public static new readonly DependencyProperty VerticalAlignmentProperty =
+            DependencyProperty.Register(
+                nameof(VerticalAlignment),
+                typeof(VerticalAlignment),
+                typeof(BaseButtonControl),
+                new FrameworkPropertyMetadata(default));
+
+        public string Text
+        {
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
+        }
+
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register(
+                nameof(Text),
+                typeof(string),
+                typeof(BaseButtonControl),
+                new FrameworkPropertyMetadata(default));
+
         public ICommand Command
         {
             get => (ICommand)GetValue(CommandProperty);

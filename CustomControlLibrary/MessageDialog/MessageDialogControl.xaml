@@ -44,10 +44,12 @@
             <bc:DialogPanelBaseControl x:Name="panel" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"/>
             <dtp:DialogTitlePanelControl x:Name="titleControl" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
             <bc:MessageTextBaseControl x:Name="messageControl" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,20,20,20"/>
-            <bc:DialogButtonBaseControl x:Name="leftButtonControl" Grid.Row="2" Grid.Column="0"
-                                        Background="{StaticResource CancelButtonColor}"/>
-            <bc:DialogButtonBaseControl x:Name="rightButtonControl" Grid.Row="2" Grid.Column="1"
-                                        Background="{StaticResource OkButtonColor}"/>
+            <bc:BaseButtonControl x:Name="leftButtonControl" Grid.Row="2" Grid.Column="0"
+                                  Background="{StaticResource CancelButtonColor}"
+                                  Text="0123"
+                                  HorizontalAlignment="Right"/>
+            <bc:BaseButtonControl x:Name="rightButtonControl" Grid.Row="2" Grid.Column="1"
+                                  Background="{StaticResource OkButtonColor}"/>
         </Grid>
     </Border>
 </UserControl>

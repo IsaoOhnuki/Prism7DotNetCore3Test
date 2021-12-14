@@ -13,10 +13,6 @@
         <cb:ShadePanelBaseControl/>
         <md:MessageDialogControl Width="500" Height="300"
                                      Title="{Binding Title}"
-                                     Message="{Binding Message}"
-                                     LeftButtonText="{Binding LeftButtonText}"
-                                     LeftButtonCommand="{Binding BackCommand}"
-                                     RightButtonText="{Binding RightButtonText}"
-                                     RightButtonCommand="{Binding GoCommand}"/>
+                                     Message="{Binding Message}"/>
     </Grid>
 </UserControl>
