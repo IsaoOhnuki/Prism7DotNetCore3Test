@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
 {
-    public class ViewAViewModel : CommonViewModel
+    public class ViewAViewModel : ViewModelBase
     {
         private string _message;
         public string Message

@@ -32,7 +32,7 @@ namespace CustomControlLibrary.CustomBaseControl
     ///     <MyNamespace:CustomControl2/>
     ///
     /// </summary>
-    public class BaseLabelControl : Control
+    public class BaseLabelControl : BaseCustomControl
     {
         public string Text
         {
@@ -45,7 +45,20 @@ namespace CustomControlLibrary.CustomBaseControl
                 nameof(Text),
                 typeof(string),
                 typeof(BaseLabelControl),
-                new FrameworkPropertyMetadata(default));
+                new FrameworkPropertyMetadata(defaultValue: "BaseLabelControl"));
+
+        public Thickness TextMargin
+        {
+            get => (Thickness)GetValue(TextMarginProperty);
+            set => SetValue(TextMarginProperty, value);
+        }
+
+        public static readonly DependencyProperty TextMarginProperty =
+            DependencyProperty.Register(
+                nameof(TextMargin),
+                typeof(Thickness),
+                typeof(BaseLabelControl),
+                new FrameworkPropertyMetadata(default(Thickness)));
 
         static BaseLabelControl()
         {

@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
 {
-    public class TopPageViewModel : CommonViewModel
+    public class TopPageViewModel : ViewModelBase
     {
         private string _text;
         public string Text

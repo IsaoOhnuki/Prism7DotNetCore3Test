@@ -20,18 +20,7 @@ namespace CustomControlLibrary.MessageDialog
                 nameof(Title),
                 typeof(object),
                 typeof(MessageDialogControl),
-                new PropertyMetadata(
-                    default,
-                    (d, e) =>
-                    {
-                        if (d is MessageDialogControl obj)
-                        {
-                            if (obj.titleControl.Content != e.NewValue)
-                            {
-                                obj.titleControl.Content = e.NewValue;
-                            }
-                        }
-                    }));
+                new PropertyMetadata(default));
 
         public string Message
         {
@@ -44,114 +33,59 @@ namespace CustomControlLibrary.MessageDialog
                 nameof(Message),
                 typeof(string),
                 typeof(MessageDialogControl),
-                new PropertyMetadata(
-                    default(string),
-                    (d, e) =>
-                    {
-                        if (d is MessageDialogControl obj)
-                        {
-                            if (obj.messageControl.Text != (string)e.NewValue)
-                            {
-                                obj.messageControl.Text = (string)e.NewValue;
-                            }
-                        }
-                    }));
+                new PropertyMetadata(default(string)));
 
-        //public string LeftButtonText
-        //{
-        //    get => (string)GetValue(LeftButtonTextProperty);
-        //    set => SetValue(LeftButtonTextProperty, value);
-        //}
+        public string LeftButtonText
+        {
+            get => (string)GetValue(LeftButtonTextProperty);
+            set => SetValue(LeftButtonTextProperty, value);
+        }
 
-        //public static readonly DependencyProperty LeftButtonTextProperty =
-        //    DependencyProperty.Register(
-        //        nameof(LeftButtonText),
-        //        typeof(object),
-        //        typeof(MessageDialogControl),
-        //        new PropertyMetadata(
-        //            default,
-        //            (d, e) =>
-        //            {
-        //                if (d is MessageDialogControl obj)
-        //                {
-        //                    if (obj.leftButtonControl.Content != e.NewValue)
-        //                    {
-        //                        obj.leftButtonControl.Content = e.NewValue;
-        //                    }
-        //                }
-        //            }));
+        public static readonly DependencyProperty LeftButtonTextProperty =
+            DependencyProperty.Register(
+                nameof(LeftButtonText),
+                typeof(object),
+                typeof(MessageDialogControl),
+                new PropertyMetadata(default));
 
-        //public string RightButtonText
-        //{
-        //    get => (string)GetValue(RightButtonTextProperty);
-        //    set => SetValue(RightButtonTextProperty, value);
-        //}
+        public string RightButtonText
+        {
+            get => (string)GetValue(RightButtonTextProperty);
+            set => SetValue(RightButtonTextProperty, value);
+        }
 
-        //public static readonly DependencyProperty RightButtonTextProperty =
-        //    DependencyProperty.Register(
-        //        nameof(RightButtonText),
-        //        typeof(object),
-        //        typeof(MessageDialogControl),
-        //        new PropertyMetadata(
-        //            default,
-        //            (d, e) =>
-        //            {
-        //                if (d is MessageDialogControl obj)
-        //                {
-        //                    if (obj.rightButtonControl.Content != e.NewValue)
-        //                    {
-        //                        obj.rightButtonControl.Content = e.NewValue;
-        //                    }
-        //                }
-        //            }));
+        public static readonly DependencyProperty RightButtonTextProperty =
+            DependencyProperty.Register(
+                nameof(RightButtonText),
+                typeof(object),
+                typeof(MessageDialogControl),
+                new PropertyMetadata(default));
 
-        //public ICommand LeftButtonCommand
-        //{
-        //    get => (ICommand)GetValue(LeftButtonCommandProperty);
-        //    set => SetValue(LeftButtonCommandProperty, value);
-        //}
+        public ICommand LeftButtonCommand
+        {
+            get => (ICommand)GetValue(LeftButtonCommandProperty);
+            set => SetValue(LeftButtonCommandProperty, value);
+        }
 
-        //public static readonly DependencyProperty LeftButtonCommandProperty =
-        //    DependencyProperty.Register(
-        //        nameof(LeftButtonCommand),
-        //        typeof(ICommand),
-        //        typeof(MessageDialogControl),
-        //        new PropertyMetadata(
-        //            default(ICommand),
-        //            (d, e) =>
-        //            {
-        //                if (d is MessageDialogControl obj)
-        //                {
-        //                    if (obj.leftButtonControl.Command != (ICommand)e.NewValue)
-        //                    {
-        //                        obj.leftButtonControl.Command = (ICommand)e.NewValue;
-        //                    }
-        //                }
-        //            }));
+        public static readonly DependencyProperty LeftButtonCommandProperty =
+            DependencyProperty.Register(
+                nameof(LeftButtonCommand),
+                typeof(ICommand),
+                typeof(MessageDialogControl),
+                new PropertyMetadata(default(ICommand)));
 
-        //public ICommand RightButtonCommand
-        //{
-        //    get => (ICommand)GetValue(RightButtonCommandProperty);
-        //    set => SetValue(RightButtonCommandProperty, value);
-        //}
+        public ICommand RightButtonCommand
+        {
+            get => (ICommand)GetValue(RightButtonCommandProperty);
+            set => SetValue(RightButtonCommandProperty, value);
+        }
 
-        //public static readonly DependencyProperty RightButtonCommandProperty =
-        //    DependencyProperty.Register(
-        //        nameof(RightButtonCommand),
-        //        typeof(ICommand),
-        //        typeof(MessageDialogControl),
-        //        new PropertyMetadata(
-        //            default(ICommand),
-        //            (d, e) =>
-        //            {
-        //                if (d is MessageDialogControl obj)
-        //                {
-        //                    if (obj.rightButtonControl.Command != (ICommand)e.NewValue)
-        //                    {
-        //                        obj.rightButtonControl.Command = (ICommand)e.NewValue;
-        //                    }
-        //                }
-        //            }));
+        public static readonly DependencyProperty RightButtonCommandProperty =
+            DependencyProperty.Register(
+                nameof(RightButtonCommand),
+                typeof(ICommand),
+                typeof(MessageDialogControl),
+                new PropertyMetadata(default(ICommand)));
 
         public MessageDialogControl()
         {

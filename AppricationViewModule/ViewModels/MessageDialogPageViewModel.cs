@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
 {
-    public class MessageDialogPageViewModel : CommonViewModel
+    public class MessageDialogPageViewModel : ViewModelBase
     {
         private string _title;
         public string Title
@@ -50,8 +50,8 @@ namespace AppricationViewModule.ViewModels
 
             LeftButtonText = "BACK";
             RightButtonText = "GO";
-            Message = "Message";
-            Title = "Title";
+            Message = "Message\n0123456789";
+            Title = "?";
         }
 
         void TransitionGo()

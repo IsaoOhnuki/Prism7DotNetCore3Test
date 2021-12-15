@@ -17,11 +17,11 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <bc:LabelBaseControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                             Content="{Binding Message}"/>
-        <bc:CommandButtonBaseControl Grid.Row="1" Grid.Column="1"
-                                     Margin="10,10,10,10"
-                                     Content="{Binding AcceptText}"
-                                     Command="{Binding BackCommand}"/>
+        <bc:BaseLabelControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                             Text="{Binding Message}"/>
+        <bc:BaseButtonControl Grid.Row="1" Grid.Column="1"
+                              Margin="10,10,10,10"
+                              Content="{Binding AcceptText}"
+                              Command="{Binding BackCommand}"/>
     </Grid>
 </UserControl>

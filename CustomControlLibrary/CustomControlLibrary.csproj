@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CustomBaseControl\CommandButtonBaseControl.xaml.cs" />
     <Compile Remove="CustomBaseControl\CustomControl1.cs" />
+    <Compile Remove="CustomBaseControl\DialogButtonBaseControl.xaml.cs" />
+    <Compile Remove="CustomBaseControl\DialogPanelBaseControl.xaml.cs" />
+    <Compile Remove="CustomBaseControl\LabelBaseControl.xaml.cs" />
+    <Compile Remove="CustomBaseControl\MessageTextBaseControl.xaml.cs" />
+    <Compile Remove="CustomBaseControl\TitleLabelBaseControl.xaml.cs" />
+    <Compile Remove="Button\DialogTitlePanelControl.xaml.cs" />
     <Compile Remove="MainWindowViewModel.cs" />
   </ItemGroup>
 
@@ -15,6 +22,16 @@
     <None Remove="CustomBaseControl\DefaultShaderEffectGraphTexture.png" />
     <None Remove="CustomBaseControl\dsdnormalize.bmp" />
     <None Remove="CustomBaseControl\SD2008base.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="CustomBaseControl\CommandButtonBaseControl.xaml" />
+    <Page Remove="CustomBaseControl\DialogButtonBaseControl.xaml" />
+    <Page Remove="CustomBaseControl\DialogPanelBaseControl.xaml" />
+    <Page Remove="CustomBaseControl\LabelBaseControl.xaml" />
+    <Page Remove="CustomBaseControl\MessageTextBaseControl.xaml" />
+    <Page Remove="CustomBaseControl\TitleLabelBaseControl.xaml" />
+    <Page Remove="Button\DialogTitlePanelControl.xaml" />
   </ItemGroup>
 
   <ItemGroup>

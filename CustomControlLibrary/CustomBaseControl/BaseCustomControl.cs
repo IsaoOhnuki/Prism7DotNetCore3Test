@@ -39,14 +39,14 @@ namespace CustomControlLibrary.CustomBaseControl
     /// 手順 2)
     /// コントロールを XAML ファイルで使用します。
     ///
-    ///     <MyNamespace:CustomControl1/>
+    ///     <MyNamespace:BaseCustomControl/>
     ///
     /// </summary>
-    public class CustomControl1 : Control
+    public class BaseCustomControl : Control
     {
-        static CustomControl1()
+        static BaseCustomControl()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomControl1), new FrameworkPropertyMetadata(typeof(CustomControl1)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(BaseCustomControl), new FrameworkPropertyMetadata(typeof(BaseCustomControl)));
         }
     }
 }

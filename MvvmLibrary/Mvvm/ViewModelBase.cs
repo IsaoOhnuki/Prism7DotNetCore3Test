@@ -1,12 +1,12 @@
 ﻿using ModelLibrary.Service;
-using Prism.Mvvm;
+using MvvmUtilityLibrary.Mvvm;
 using Prism.Navigation;
 using Prism.Regions;
 using System;
 
 namespace MvvmLibrary.Mvvm
 {
-    public abstract class CommonViewModel : BindableBase, INavigationAware, IConfirmNavigationRequest, IDestructible
+    public abstract class ViewModelBase : ModelBase, INavigationAware, IConfirmNavigationRequest, IDestructible
     {
         protected ILogService LogService { get; private set; }
 
@@ -16,7 +16,7 @@ namespace MvvmLibrary.Mvvm
 
         public string TransitionView { get; set; }
 
-        public CommonViewModel(ILogService logService, IRegionManager regionManager)
+        public ViewModelBase(ILogService logService, IRegionManager regionManager)
         {
             LogService = logService;
             RegionManager = regionManager;

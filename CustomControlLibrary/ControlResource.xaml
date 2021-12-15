@@ -3,6 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <sys:Double x:Key="BT_Width">120</sys:Double>
+    <Thickness x:Key="MessageDialogCornerRadius" Left="20" Top="20" Right="20" Bottom="20"/>
     <SolidColorBrush x:Key="DialogPanelBrush" Color="WhiteSmoke"/>
     <SolidColorBrush x:Key="DialogTitlePanelBrush" Color="LimeGreen"/>
     <SolidColorBrush x:Key="ShadeBrush" Color="#7f000000"/>

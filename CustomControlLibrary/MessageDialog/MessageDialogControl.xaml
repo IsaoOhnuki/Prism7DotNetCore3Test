@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mu="clr-namespace:MvvmUtilityLibrary.Converter;assembly=MvvmUtilityLibrary"
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
-             xmlns:dtp="clr-namespace:CustomControlLibrary.DialogTitlePanel"
              mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="300">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -14,42 +13,79 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Border CornerRadius="30,30,30,30">
-        <Border.Resources>
-            <mu:WidthAndHeightToRectConverter x:Key="WidthAndHeightToRectConverter"/>
-        </Border.Resources>
-        <Border.Clip>
-            <RectangleGeometry RadiusX="{Binding CornerRadius.TopLeft, RelativeSource={RelativeSource AncestorType={x:Type Border}}}"
-                               RadiusY="{Binding RadiusX, RelativeSource={RelativeSource Self}}">
-                <RectangleGeometry.Rect>
-                    <MultiBinding Converter="{StaticResource WidthAndHeightToRectConverter}">
-                        <Binding Path="ActualWidth"
-                                 RelativeSource="{RelativeSource AncestorType={x:Type Border}}"/>
-                        <Binding Path="ActualHeight"
-                                 RelativeSource="{RelativeSource AncestorType={x:Type Border}}"/>
-                    </MultiBinding>
-                </RectangleGeometry.Rect>
-            </RectangleGeometry>
-        </Border.Clip>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80*"/>
-                <RowDefinition Height="160*"/>
-                <RowDefinition Height="80*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <bc:DialogPanelBaseControl x:Name="panel" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <dtp:DialogTitlePanelControl x:Name="titleControl" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <bc:MessageTextBaseControl x:Name="messageControl" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,20,20,20"/>
-            <bc:BaseButtonControl x:Name="leftButtonControl" Grid.Row="2" Grid.Column="0"
-                                  Background="{StaticResource CancelButtonColor}"
-                                  Text="0123"
-                                  HorizontalAlignment="Right"/>
-            <bc:BaseButtonControl x:Name="rightButtonControl" Grid.Row="2" Grid.Column="1"
-                                  Background="{StaticResource OkButtonColor}"/>
-        </Grid>
-    </Border>
+    <Grid>
+        <Border CornerRadius="20,20,20,20"
+                Background="{StaticResource DialogPanelBrush}">
+            <Border.Resources>
+                <mu:WidthAndHeightToRectConverter x:Key="WidthAndHeightToRectConverter"/>
+            </Border.Resources>
+            <Border.Clip>
+                <RectangleGeometry RadiusX="{Binding CornerRadius.TopLeft, RelativeSource={RelativeSource AncestorType={x:Type Border}}}"
+                                   RadiusY="{Binding RadiusX, RelativeSource={RelativeSource Self}}">
+                    <RectangleGeometry.Rect>
+                        <MultiBinding Converter="{StaticResource WidthAndHeightToRectConverter}">
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource AncestorType={x:Type Border}}"/>
+                            <Binding Path="ActualHeight"
+                                     RelativeSource="{RelativeSource AncestorType={x:Type Border}}"/>
+                        </MultiBinding>
+                    </RectangleGeometry.Rect>
+                </RectangleGeometry>
+            </Border.Clip>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="160*"/>
+                    <RowDefinition Height="80*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <bc:BaseImageLabelControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                          Background="{StaticResource DialogTitlePanelBrush}"
+                                          BorderThickness="0,0,0,0.5"
+                                          BorderBrush="DarkGray"
+                                          Foreground="{StaticResource DialogPanelBrush}"
+                                          HorizontalAlignment="Stretch"
+                                          HorizontalContentAlignment="Center"
+                                          VerticalAlignment="Stretch"
+                                          VerticalContentAlignment="Center"
+                                          FontSize="{StaticResource TitleFontSize}"
+                                          Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                <bc:BaseTextBlockControl x:Name="messageControl" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                         Margin="20,20,20,20"
+                                         FontSize="{StaticResource BaseFontSize}"
+                                         HorizontalAlignment="Stretch"
+                                         HorizontalContentAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Text="{Binding Message, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                <bc:BaseButtonControl x:Name="leftButtonControl" Grid.Row="2" Grid.Column="0"
+                                      Background="{StaticResource DialogPanelBrush}"
+                                      BorderThickness="0,0.5,0.3,0"
+                                      BorderBrush="DarkGray"
+                                      HorizontalContentAlignment="Center"
+                                      FontSize="{StaticResource BaseFontSize}"
+                                      Command="{Binding LeftButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                    <bc:BaseButtonControl.Content>
+                        <bc:BaseImageLabelControl Text="{Binding LeftButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageAlignment="Top"
+                                                  ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
+                    </bc:BaseButtonControl.Content>
+                </bc:BaseButtonControl>
+                <bc:BaseButtonControl x:Name="rightButtonControl" Grid.Row="2" Grid.Column="1"
+                                      Background="{StaticResource DialogPanelBrush}"
+                                      BorderThickness="0.3,0.5,0,0"
+                                      BorderBrush="DarkGray"
+                                      FontSize="{StaticResource BaseFontSize}"
+                                      Command="{Binding RightButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                    <bc:BaseButtonControl.Content>
+                        <bc:BaseImageLabelControl Text="{Binding RightButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageAlignment="Top"
+                                                  ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
+                    </bc:BaseButtonControl.Content>
+                </bc:BaseButtonControl>
+            </Grid>
+        </Border>
+    </Grid>
 </UserControl>

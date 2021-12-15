@@ -33,46 +33,20 @@ namespace CustomControlLibrary.CustomBaseControl
     ///     <MyNamespace:BaseButtonControl/>
     ///
     /// </summary>
-    public class BaseButtonControl : Control
+    public class BaseButtonControl : BaseCustomControl
     {
-        public new HorizontalAlignment HorizontalAlignment
+        public object Content
         {
-            get => (HorizontalAlignment)GetValue(TextProperty);
-            set => SetValue(TextProperty, value);
+            get => GetValue(ContentProperty);
+            set => SetValue(ContentProperty, value);
         }
 
-        public static new readonly DependencyProperty HorizontalAlignmentProperty =
+        public static readonly DependencyProperty ContentProperty =
             DependencyProperty.Register(
-                nameof(HorizontalAlignment),
-                typeof(HorizontalAlignment),
+                nameof(Content),
+                typeof(object),
                 typeof(BaseButtonControl),
-                new FrameworkPropertyMetadata(default));
-
-        public new VerticalAlignment VerticalAlignment
-        {
-            get => (VerticalAlignment)GetValue(TextProperty);
-            set => SetValue(TextProperty, value);
-        }
-
-        public static new readonly DependencyProperty VerticalAlignmentProperty =
-            DependencyProperty.Register(
-                nameof(VerticalAlignment),
-                typeof(VerticalAlignment),
-                typeof(BaseButtonControl),
-                new FrameworkPropertyMetadata(default));
-
-        public string Text
-        {
-            get => (string)GetValue(TextProperty);
-            set => SetValue(TextProperty, value);
-        }
-
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register(
-                nameof(Text),
-                typeof(string),
-                typeof(BaseButtonControl),
-                new FrameworkPropertyMetadata(default));
+                new FrameworkPropertyMetadata(defaultValue: "BaseButtonControl"));
 
         public ICommand Command
         {
@@ -103,6 +77,8 @@ namespace CustomControlLibrary.CustomBaseControl
         static BaseButtonControl()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(BaseButtonControl), new FrameworkPropertyMetadata(typeof(BaseButtonControl)));
+            HorizontalContentAlignmentProperty.OverrideMetadata(typeof(BaseButtonControl), new FrameworkPropertyMetadata(HorizontalAlignment.Center));
+            VerticalContentAlignmentProperty.OverrideMetadata(typeof(BaseButtonControl), new FrameworkPropertyMetadata(VerticalAlignment.Center));
         }
     }
 }
