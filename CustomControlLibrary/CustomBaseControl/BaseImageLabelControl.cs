@@ -121,13 +121,13 @@ namespace CustomControlLibrary.CustomBaseControl
             set => SetValue(ImageAlignmentProperty, value);
         }
 
-        internal static readonly DependencyProperty ImageAlignmentProperty =
+        public static readonly DependencyProperty ImageAlignmentProperty =
             DependencyProperty.Register(
                 nameof(ImageAlignment),
                 typeof(CrossAlignment),
                 typeof(BaseImageLabelControl),
                 new FrameworkPropertyMetadata(
-                    defaultValue: CrossAlignment.Left,
+                    default(CrossAlignment),
                     (d, e) =>
                     {
                         if (d is BaseImageLabelControl ctrl)
@@ -188,13 +188,13 @@ namespace CustomControlLibrary.CustomBaseControl
             set => SetValue(HorizontalContentAlignmentProperty, value);
         }
 
-        internal static new readonly DependencyProperty HorizontalContentAlignmentProperty =
+        public static new readonly DependencyProperty HorizontalContentAlignmentProperty =
             DependencyProperty.Register(
                 nameof(HorizontalContentAlignment),
                 typeof(HorizontalAlignment),
                 typeof(BaseImageLabelControl),
                 new FrameworkPropertyMetadata(
-                    defaultValue: HorizontalAlignment.Center,
+                    default(HorizontalAlignment),
                     (d, e) =>
                     {
                         if (d is BaseImageLabelControl ctrl)
@@ -252,13 +252,13 @@ namespace CustomControlLibrary.CustomBaseControl
             set => SetValue(VerticalContentAlignmentProperty, value);
         }
 
-        internal static new readonly DependencyProperty VerticalContentAlignmentProperty =
+        public static new readonly DependencyProperty VerticalContentAlignmentProperty =
             DependencyProperty.Register(
                 nameof(VerticalContentAlignment),
                 typeof(VerticalAlignment),
                 typeof(BaseImageLabelControl),
                 new FrameworkPropertyMetadata(
-                    defaultValue: VerticalAlignment.Center,
+                    default(VerticalAlignment),
                     (d, e) =>
                     {
                         if (d is BaseImageLabelControl ctrl)
