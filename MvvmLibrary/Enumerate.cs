@@ -27,4 +27,18 @@
         Bottom,
         BottomRight,
     }
+
+    public enum MessageDialogStyle
+    {
+        ErrorMessage,
+        WarningMessage,
+        InformationMessage,
+        ConfirmMessage,
+    }
+
+    public enum ContentRegionType
+    {
+        MainContent,
+        OverwrapContent,
+    }
 }

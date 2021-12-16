@@ -24,5 +24,6 @@
                            Margin="10,10,10,10"
                            Text="{Binding AcceptText}"
                            Command="{Binding BackCommand}"/>
+        <CheckBox Content="CheckBox" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

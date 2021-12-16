@@ -13,27 +13,30 @@
     <SolidColorBrush x:Key="CancelButtonColor" Color="LightSteelBlue"/>
     <Thickness x:Key="ButtonBorderThickness" Left="1" Top="1" Right="1" Bottom="1"/>
 
-    <!-- FontSetting -->
+    <!--#region FontSetting -->
     <sys:Double x:Key="BaseFontSize">20</sys:Double>
     <sys:Double x:Key="TitleFontSize">30</sys:Double>
     <FontFamily x:Key="BaseFontFamily">./#Meiryo UI</FontFamily>
     <SolidColorBrush x:Key="BaseFontColor" Color="Coral"/>
+    <!--#endregion-->
 
-    <!-- TextBlock FontSetting -->
+    <!--#region TextBlock FontSetting -->
     <Style x:Key="TextBlockFontSetting" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
         <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
         <Setter Property="Foreground" Value="{StaticResource BaseFontColor}"/>
     </Style>
+    <!--#endregion-->
 
-    <!-- Control FontSetting -->
+    <!--#region Control FontSetting -->
     <Style x:Key="BaseFontSetting" TargetType="Control">
         <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
         <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
         <Setter Property="Foreground" Value="{StaticResource BaseFontColor}"/>
     </Style>
+    <!--#endregion-->
 
-    <!-- Title FontSetting -->
+    <!--#region Title FontSetting -->
     <Style x:Key="TitleLabelFontSetting" TargetType="Control" BasedOn="{StaticResource BaseFontSetting}">
         <Setter Property="FontSize" Value="{StaticResource TitleFontSize}"/>
         <Setter Property="Foreground" Value="{StaticResource DialogPanelBrush}"/>
@@ -45,10 +48,12 @@
         <Setter Property="Foreground" Value="{StaticResource DialogPanelBrush}"/>
         <Setter Property="BorderThickness" Value="{StaticResource ButtonBorderThickness}"/>
     </Style>
+    <!--#endregion-->
 
-    <!-- DialogSetting -->
+    <!--#region DialogSetting -->
     <Style x:Key="DialogTitleTextFontSetting" TargetType="Control" BasedOn="{StaticResource BaseFontSetting}">
         <Setter Property="FontSize" Value="{StaticResource TitleFontSize}"/>
         <Setter Property="Foreground" Value="{StaticResource DialogPanelBrush}"/>
     </Style>
+    <!--#endregion-->
 </ResourceDictionary>

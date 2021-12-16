@@ -1,6 +1,7 @@
 ﻿using ModelLibrary.Service;
 using MvvmLibrary;
 using MvvmLibrary.Mvvm;
+using MvvmUtilityLibrary.Mvvm;
 using Prism.Commands;
 using Prism.Regions;
 using System.Windows.Input;
@@ -56,11 +57,14 @@ namespace AppricationViewModule.ViewModels
 
         void TransitionGo()
         {
+            //IRegion contentRegion = RegionManager.Regions[ViewConst.MainViewRegion_OverwrapContent];
+            //contentRegion.Content = null;
             DoTransitionPage(GetViewName(), ViewConst.ViewA);
         }
 
         void TransitionBack()
         {
+            //ContentRegionMediator.ContentRegion.Content = null;
             DoTransitionPage(GetViewName(), PreviousView);
         }
 

@@ -6,6 +6,7 @@
         public const string NavigationParameterKey_TransitionView = "TransitionView";
 
         public const string MainViewRegion_Content = "MainViewContentRegion";
+        public const string MainViewRegion_OverwrapContent = "MainViewOverwrapContentRegion";
         public const string TopPage = "TopPage";
         public const string ViewA = "ViewA";
         public const string MessageDialogPage = "MessageDialogPage";

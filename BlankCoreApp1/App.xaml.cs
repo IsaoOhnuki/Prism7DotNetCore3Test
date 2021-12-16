@@ -1,5 +1,6 @@
 ﻿using BlankCoreApp1.Views;
-using LogServiceModule;
+using MvvmUtilityLibrary.ContentRegionMediator;
+using MvvmUtilityLibrary.Interface;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
@@ -18,6 +19,7 @@ namespace BlankCoreApp1
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterSingleton<IContentRegionMediator, ContentRegionMediator>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

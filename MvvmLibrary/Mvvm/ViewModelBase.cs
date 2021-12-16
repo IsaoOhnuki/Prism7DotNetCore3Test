@@ -38,6 +38,16 @@ namespace MvvmLibrary.Mvvm
             RegionManager.RequestNavigate(ViewConst.MainViewRegion_Content, toPage, navigationParam);
         }
 
+        public void ShowOverwrapPage(string fromPage, string toPage)
+        {
+            NavigationParameters navigationParam = new NavigationParameters
+            {
+                { ViewConst.NavigationParameterKey_PreviousView, fromPage },
+                { ViewConst.NavigationParameterKey_TransitionView, toPage },
+            };
+            RegionManager.RequestNavigate(ViewConst.MainViewRegion_OverwrapContent, toPage, navigationParam);
+        }
+
         public abstract void InisiarizeView(NavigationParameters navigationParameters);
 
 

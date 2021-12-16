@@ -15,7 +15,8 @@ namespace MvvmUtilityLibrary.Converter
         }
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            return null;
+            Rect rect = (Rect)value;
+            return new object[] { rect.Width, rect.Height };
         }
     }
 }

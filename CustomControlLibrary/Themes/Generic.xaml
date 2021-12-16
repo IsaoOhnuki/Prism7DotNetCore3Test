@@ -7,6 +7,7 @@
 
     <Style TargetType="{x:Type local:BaseCustomControl}"/>
 
+    <!--#region BaseLabelControl -->
     <Style TargetType="{x:Type local:BaseLabelControl}">
         <Setter Property="Template">
             <Setter.Value>
@@ -27,15 +28,16 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
 
+    <!--#region BaseTextBlockControl -->
     <Style TargetType="{x:Type local:BaseTextBlockControl}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:BaseTextBlockControl}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            >
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <TextBlock Background="{TemplateBinding Background}"
                                    Foreground="{TemplateBinding Foreground}"
                                    FontFamily="{TemplateBinding FontFamily}"
@@ -55,7 +57,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
 
+    <!--#region BaseTextBoxControl -->
     <Style TargetType="{x:Type local:BaseTextBoxControl}">
         <Setter Property="Template">
             <Setter.Value>
@@ -76,7 +80,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
 
+    <!--#region BaseButtonControl -->
     <Style TargetType="{x:Type local:BaseButtonControl}">
         <Setter Property="Template">
             <Setter.Value>
@@ -102,7 +108,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
 
+    <!--#region BaseImageLabelControl -->
     <Style TargetType="{x:Type local:BaseImageLabelControl}">
         <Setter Property="Template">
             <Setter.Value>
@@ -154,4 +162,70 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
+
+    <!--#region BaseCheckBoxControl -->
+    <Style TargetType="{x:Type local:BaseCheckBoxControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:BaseCheckBoxControl}">
+                    <CheckBox Background="{TemplateBinding Background}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              BorderThickness="{TemplateBinding BorderThickness}"
+                              Foreground="{TemplateBinding Foreground}"
+                              FontFamily="{TemplateBinding FontFamily}"
+                              FontSize="{TemplateBinding FontSize}"
+                              FontWeight="{TemplateBinding FontWeight}"
+                              FontStretch="{TemplateBinding FontStretch}"
+                              FontStyle="{TemplateBinding FontStyle}"
+                              Content="{TemplateBinding Content}">
+                    </CheckBox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region BaseComboBoxControl -->
+    <Style TargetType="{x:Type local:BaseComboBoxControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:BaseComboBoxControl}">
+                    <ComboBox Background="{TemplateBinding Background}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              BorderThickness="{TemplateBinding BorderThickness}"
+                              Foreground="{TemplateBinding Foreground}"
+                              FontFamily="{TemplateBinding FontFamily}"
+                              FontSize="{TemplateBinding FontSize}"
+                              FontWeight="{TemplateBinding FontWeight}"
+                              FontStretch="{TemplateBinding FontStretch}"
+                              FontStyle="{TemplateBinding FontStyle}">
+                    </ComboBox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region BaseListBoxControl -->
+    <Style TargetType="{x:Type local:BaseListBoxControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:BaseListBoxControl}">
+                    <ListBox Background="{TemplateBinding Background}"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}"
+                             Foreground="{TemplateBinding Foreground}"
+                             FontFamily="{TemplateBinding FontFamily}"
+                             FontSize="{TemplateBinding FontSize}"
+                             FontWeight="{TemplateBinding FontWeight}"
+                             FontStretch="{TemplateBinding FontStretch}"
+                             FontStyle="{TemplateBinding FontStyle}">
+                    </ListBox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
 </ResourceDictionary>

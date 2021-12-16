@@ -36,7 +36,7 @@ namespace AppricationViewModule.ViewModels
 
         protected void DoAccept()
         {
-            DoTransitionPage(GetViewName(), ViewConst.MessageDialogPage);
+            ShowOverwrapPage(GetViewName(), ViewConst.MessageDialogPage);
         }
 
         protected bool IsCanAccept()
