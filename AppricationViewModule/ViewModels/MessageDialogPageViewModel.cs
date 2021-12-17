@@ -57,14 +57,13 @@ namespace AppricationViewModule.ViewModels
 
         void TransitionGo()
         {
-            //IRegion contentRegion = RegionManager.Regions[ViewConst.MainViewRegion_OverwrapContent];
-            //contentRegion.Content = null;
+            HideOverwrapPage();
             DoTransitionPage(GetViewName(), ViewConst.ViewA);
         }
 
         void TransitionBack()
         {
-            //ContentRegionMediator.ContentRegion.Content = null;
+            HideOverwrapPage();
             DoTransitionPage(GetViewName(), PreviousView);
         }
 

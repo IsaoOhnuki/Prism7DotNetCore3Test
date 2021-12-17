@@ -48,6 +48,11 @@ namespace MvvmLibrary.Mvvm
             RegionManager.RequestNavigate(ViewConst.MainViewRegion_OverwrapContent, toPage, navigationParam);
         }
 
+        public void HideOverwrapPage()
+        {
+            RegionManager.Regions[ViewConst.MainViewRegion_OverwrapContent].RemoveAll();
+        }
+
         public abstract void InisiarizeView(NavigationParameters navigationParameters);
 
 

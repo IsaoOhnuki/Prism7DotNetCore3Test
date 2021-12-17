@@ -4,16 +4,13 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:crm="clr-namespace:MvvmUtilityLibrary.ContentRegionMediator;assembly=MvvmUtilityLibrary"
         mc:Ignorable="av"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}"
         av:DesignWidth="500"
         av:DesignHeight="300">
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="{Binding ContentRegionName}"
-                        crm:ContentRegionMediator.MainContentRegion="True"/>
-        <ContentControl prism:RegionManager.RegionName="{Binding OverwrapRegionName}"
-                        crm:ContentRegionMediator.OverwrapContentRegion="True"/>
+        <ContentControl prism:RegionManager.RegionName="{Binding ContentRegionName}"/>
+        <ContentControl prism:RegionManager.RegionName="{Binding OverwrapRegionName}"/>
     </Grid>
 </Window>

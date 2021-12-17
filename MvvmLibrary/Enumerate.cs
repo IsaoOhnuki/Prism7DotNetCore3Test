@@ -36,6 +36,12 @@
         ConfirmMessage,
     }
 
+    public enum MessageDialogResult
+    {
+        Ok,
+        Cancel,
+    }
+
     public enum ContentRegionType
     {
         MainContent,

@@ -1,13 +1,10 @@
 ﻿using MvvmLibrary;
-using MvvmUtilityLibrary.Interface;
 using Prism.Mvvm;
 
 namespace BlankCoreApp1.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        protected IContentRegionMediator ContentRegionMediator { get; private set; }
-
         private string _title = "Prism Application";
         public string Title
         {
@@ -19,9 +16,8 @@ namespace BlankCoreApp1.ViewModels
 
         public string OverwrapRegionName { get; }
 
-        public MainWindowViewModel(IContentRegionMediator contentRegionMediator)
+        public MainWindowViewModel()
         {
-            ContentRegionMediator = contentRegionMediator;
             ContentRegionName = ViewConst.MainViewRegion_Content;
             OverwrapRegionName = ViewConst.MainViewRegion_OverwrapContent;
         }

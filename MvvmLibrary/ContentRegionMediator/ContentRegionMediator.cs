@@ -1,11 +1,10 @@
-﻿using MvvmUtilityLibrary.Interface;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace MvvmUtilityLibrary.ContentRegionMediator
 {
-    public class ContentRegionMediator : IContentRegionMediator
+    public class ContentRegionMediator
     {
         public static Dictionary<ContentRegionType, ContentControl> ContentControls { get; } = new Dictionary<ContentRegionType, ContentControl>();
 
