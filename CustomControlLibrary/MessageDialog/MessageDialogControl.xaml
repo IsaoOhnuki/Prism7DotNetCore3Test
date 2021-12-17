@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:mu="clr-namespace:MvvmUtilityLibrary.Converter;assembly=MvvmUtilityLibrary"
+             xmlns:cnv="clr-namespace:MvvmServiceLibrary.Converter;assembly=MvvmServiceLibrary"
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="300">
     <UserControl.Resources>
@@ -17,13 +17,13 @@
         <Border CornerRadius="20,20,20,20"
                 Background="{StaticResource DialogPanelBrush}">
             <Border.Resources>
-                <mu:WidthAndHeightToRectConverter x:Key="WidthAndHeightToRectConverter"/>
+                <cnv:WidthAndHeightToRectConverter x:Key="ConvWidthAndHeightToRect"/>
             </Border.Resources>
             <Border.Clip>
                 <RectangleGeometry RadiusX="{Binding CornerRadius.TopLeft, RelativeSource={RelativeSource AncestorType={x:Type Border}}}"
                                    RadiusY="{Binding RadiusX, RelativeSource={RelativeSource Self}}">
                     <RectangleGeometry.Rect>
-                        <MultiBinding Converter="{StaticResource WidthAndHeightToRectConverter}">
+                        <MultiBinding Converter="{StaticResource ConvWidthAndHeightToRect}">
                             <Binding Path="ActualWidth"
                                      RelativeSource="{RelativeSource AncestorType={x:Type Border}}"/>
                             <Binding Path="ActualHeight"

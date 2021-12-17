@@ -1,7 +1,8 @@
 ﻿using ModelLibrary.Service;
 using MvvmLibrary;
 using MvvmLibrary.Mvvm;
-using MvvmUtilityLibrary.Mvvm;
+using MvvmServiceLibrary;
+using MvvmServiceLibrary.Mvvm;
 using Prism.Commands;
 using Prism.Regions;
 using System.Windows.Input;

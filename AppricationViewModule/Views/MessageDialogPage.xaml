@@ -9,8 +9,10 @@
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
              av:DesignWidth="1000" av:DesignHeight="700">
-    <Grid>
-        <cb:ShadePanelBaseControl/>
+    <UserControl.Resources>
+        <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
+    </UserControl.Resources>
+    <Grid Background="{StaticResource ShadeBrush}">
         <md:MessageDialogControl Width="500" Height="300"
                                  Title="{Binding Title}"
                                  Message="{Binding Message}"

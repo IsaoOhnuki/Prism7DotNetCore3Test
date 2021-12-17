@@ -1,4 +1,4 @@
-﻿using MvvmLibrary;
+﻿using MvvmServiceLibrary;
 using Prism.Mvvm;
 
 namespace BlankCoreApp1.ViewModels

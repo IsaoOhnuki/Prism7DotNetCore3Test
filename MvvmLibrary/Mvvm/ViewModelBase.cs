@@ -1,5 +1,6 @@
 ﻿using ModelLibrary.Service;
-using MvvmUtilityLibrary.Mvvm;
+using MvvmServiceLibrary;
+using MvvmServiceLibrary.Mvvm;
 using Prism.Navigation;
 using Prism.Regions;
 using System;

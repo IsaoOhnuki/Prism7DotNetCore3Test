@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelLibrary", "ModelLibrar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppricationViewModule", "AppricationViewModule\AppricationViewModule.csproj", "{82A8C02B-928F-451F-BAE2-9927D429FBCF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmUtilityLibrary", "MvvmLibrary\MvvmUtilityLibrary.csproj", "{87E2AF92-EDF3-4D7D-AA12-876C9EFF75C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmServiceLibrary", "MvvmLibrary\MvvmServiceLibrary.csproj", "{87E2AF92-EDF3-4D7D-AA12-876C9EFF75C9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationLogicServiceModule", "ApplicationLogicServiceLibrary\ApplicationLogicServiceModule.csproj", "{055522DC-B32E-4675-B94C-726AA0D0FB9D}"
 EndProject

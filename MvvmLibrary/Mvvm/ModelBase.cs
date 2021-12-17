@@ -1,6 +1,6 @@
 ﻿using Prism.Mvvm;
 
-namespace MvvmUtilityLibrary.Mvvm
+namespace MvvmServiceLibrary.Mvvm
 {
     public class ModelBase : BindableBase
     {

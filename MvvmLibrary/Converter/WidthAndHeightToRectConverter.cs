@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace MvvmUtilityLibrary.Converter
+namespace MvvmServiceLibrary.Converter
 {
     public class WidthAndHeightToRectConverter : IMultiValueConverter
     {

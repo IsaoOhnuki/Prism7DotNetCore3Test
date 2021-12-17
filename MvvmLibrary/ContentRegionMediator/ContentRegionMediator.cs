@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MvvmUtilityLibrary.ContentRegionMediator
+namespace MvvmServiceLibrary.ContentRegionMediator
 {
     public class ContentRegionMediator
     {

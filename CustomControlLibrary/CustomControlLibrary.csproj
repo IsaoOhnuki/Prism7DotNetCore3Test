@@ -13,6 +13,7 @@
     <Compile Remove="CustomBaseControl\DialogPanelBaseControl.xaml.cs" />
     <Compile Remove="CustomBaseControl\LabelBaseControl.xaml.cs" />
     <Compile Remove="CustomBaseControl\MessageTextBaseControl.xaml.cs" />
+    <Compile Remove="CustomBaseControl\ShadePanelBaseControl.xaml.cs" />
     <Compile Remove="CustomBaseControl\TitleLabelBaseControl.xaml.cs" />
     <Compile Remove="Button\DialogTitlePanelControl.xaml.cs" />
     <Compile Remove="MainWindowViewModel.cs" />
@@ -30,12 +31,13 @@
     <Page Remove="CustomBaseControl\DialogPanelBaseControl.xaml" />
     <Page Remove="CustomBaseControl\LabelBaseControl.xaml" />
     <Page Remove="CustomBaseControl\MessageTextBaseControl.xaml" />
+    <Page Remove="CustomBaseControl\ShadePanelBaseControl.xaml" />
     <Page Remove="CustomBaseControl\TitleLabelBaseControl.xaml" />
     <Page Remove="Button\DialogTitlePanelControl.xaml" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MvvmLibrary\MvvmUtilityLibrary.csproj" />
+    <ProjectReference Include="..\MvvmLibrary\MvvmServiceLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>

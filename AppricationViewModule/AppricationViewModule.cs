@@ -1,5 +1,5 @@
 ﻿using AppricationViewModule.Views;
-using MvvmLibrary;
+using MvvmServiceLibrary;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;

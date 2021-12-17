@@ -1,4 +1,4 @@
-﻿namespace MvvmLibrary
+﻿namespace MvvmServiceLibrary
 {
     public static class ViewConst
     {

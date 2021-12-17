@@ -1,4 +1,4 @@
-﻿namespace MvvmUtilityLibrary
+﻿namespace MvvmServiceLibrary
 {
     public enum CrossAlignment
     {

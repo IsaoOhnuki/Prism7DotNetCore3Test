@@ -19,6 +19,6 @@
     <ProjectReference Include="..\LogServiceLibrary\LogServiceLibrary.csproj" />
     <ProjectReference Include="..\MessageServiceLibrary\MessageServiceLibrary.csproj" />
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
-    <ProjectReference Include="..\MvvmLibrary\MvvmUtilityLibrary.csproj" />
+    <ProjectReference Include="..\MvvmLibrary\MvvmServiceLibrary.csproj" />
   </ItemGroup>
 </Project>
