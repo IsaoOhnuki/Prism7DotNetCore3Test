@@ -3,6 +3,7 @@ using MvvmLibrary.Mvvm;
 using MvvmServiceLibrary;
 using Prism.Commands;
 using Prism.Regions;
+using System;
 using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
@@ -36,7 +37,7 @@ namespace AppricationViewModule.ViewModels
 
         protected void DoAccept()
         {
-            ShowOverwrapPage(GetViewName(), ViewConst.MessageDialogPage);
+            ShowMessageDialog(GetViewName(), null);
         }
 
         protected bool IsCanAccept()
@@ -46,6 +47,24 @@ namespace AppricationViewModule.ViewModels
 
         public override void InisiarizeView(NavigationParameters navigationParameters)
         {
+        }
+
+        public override void PreviousInisiarizeView(NavigationParameters navigationParameters)
+        {
+        }
+
+        public override void ReturnMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
+        {
+            switch (messageDialogResult)
+            {
+                case MessageDialogResult.Ok:
+                    DoTransitionPage(GetViewName(), ViewConst.ViewPage_TopPage);
+                    break;
+                case MessageDialogResult.Cancel:
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }

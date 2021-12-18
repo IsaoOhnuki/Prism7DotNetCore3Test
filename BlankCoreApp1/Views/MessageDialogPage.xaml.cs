@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace AppricationViewModule.Views
+namespace BlankCoreApp1.Views
 {
     /// <summary>
     /// Interaction logic for MessageDialogPage

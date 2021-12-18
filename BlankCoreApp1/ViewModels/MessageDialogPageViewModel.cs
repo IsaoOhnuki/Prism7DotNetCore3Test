@@ -1,13 +1,11 @@
 ﻿using ModelLibrary.Service;
-using MvvmLibrary;
 using MvvmLibrary.Mvvm;
 using MvvmServiceLibrary;
-using MvvmServiceLibrary.Mvvm;
 using Prism.Commands;
 using Prism.Regions;
 using System.Windows.Input;
 
-namespace AppricationViewModule.ViewModels
+namespace BlankCoreApp1.ViewModels
 {
     public class MessageDialogPageViewModel : ViewModelBase
     {
@@ -58,18 +56,28 @@ namespace AppricationViewModule.ViewModels
 
         void TransitionGo()
         {
-            HideOverwrapPage();
-            DoTransitionPage(GetViewName(), ViewConst.ViewA);
+            HideMessageDialog(MessageDialogResult.Ok, _navigationParameters);
         }
 
         void TransitionBack()
         {
-            HideOverwrapPage();
-            DoTransitionPage(GetViewName(), PreviousView);
+            HideMessageDialog(MessageDialogResult.Cancel, _navigationParameters);
         }
+
+        NavigationParameters _navigationParameters;
 
         public override void InisiarizeView(NavigationParameters navigationParameters)
         {
+            _navigationParameters = navigationParameters;
         }
+
+        public override void PreviousInisiarizeView(NavigationParameters navigationParameters)
+        {
+        }
+
+        public override void ReturnMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
+        {
+        }
+
     }
 }

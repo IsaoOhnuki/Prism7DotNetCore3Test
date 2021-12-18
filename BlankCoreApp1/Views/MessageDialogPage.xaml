@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="AppricationViewModule.Views.MessageDialogPage"
+﻿<UserControl x:Class="BlankCoreApp1.Views.MessageDialogPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
