@@ -3,8 +3,6 @@
                     xmlns:local="clr-namespace:CustomControlLibrary.CustomBaseControl"
                     xmlns:cnv="clr-namespace:MvvmServiceLibrary.Converter;assembly=MvvmServiceLibrary">
 
-    <cnv:HorizontalToTextAlignmentConverter x:Key="ConvHorizontalToTextAlignment"/>
-
     <Style TargetType="{x:Type local:BaseTextBlockControl}">
         <Setter Property="Template">
             <Setter.Value>
@@ -21,7 +19,7 @@
                                    FontStyle="{TemplateBinding FontStyle}"
                                    Margin="{TemplateBinding TextMargin}"
                                    TextAlignment="{TemplateBinding HorizontalContentAlignment,
-                                                                   Converter={StaticResource ConvHorizontalToTextAlignment}}"
+                                                 Converter={cnv:HorizontalToTextAlignmentConverter}}"
                                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                    Text="{TemplateBinding Text}">

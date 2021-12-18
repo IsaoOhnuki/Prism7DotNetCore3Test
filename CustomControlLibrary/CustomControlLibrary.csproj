@@ -20,12 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="CustomBaseControl\DefaultShaderEffectGraphTexture.png" />
-    <None Remove="CustomBaseControl\dsdnormalize.bmp" />
-    <None Remove="CustomBaseControl\SD2008base.bmp" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Remove="CustomBaseControl\CommandButtonBaseControl.xaml" />
     <Page Remove="CustomBaseControl\DialogButtonBaseControl.xaml" />
     <Page Remove="CustomBaseControl\DialogPanelBaseControl.xaml" />

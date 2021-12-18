@@ -2,11 +2,19 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace MvvmServiceLibrary.Converter
 {
-    public class HorizontalToTextAlignmentConverter : IValueConverter
+    public class HorizontalToTextAlignmentConverter : MarkupExtension, IValueConverter
     {
+        private static HorizontalToTextAlignmentConverter _converter;
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return _converter ??= new HorizontalToTextAlignmentConverter();
+        }
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             switch ((HorizontalAlignment)value)

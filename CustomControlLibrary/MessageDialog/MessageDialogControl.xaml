@@ -16,14 +16,11 @@
     <Grid>
         <Border CornerRadius="20,20,20,20"
                 Background="{StaticResource DialogPanelBrush}">
-            <Border.Resources>
-                <cnv:WidthAndHeightToRectConverter x:Key="ConvWidthAndHeightToRect"/>
-            </Border.Resources>
             <Border.Clip>
                 <RectangleGeometry RadiusX="{Binding CornerRadius.TopLeft, RelativeSource={RelativeSource AncestorType={x:Type Border}}}"
                                    RadiusY="{Binding RadiusX, RelativeSource={RelativeSource Self}}">
                     <RectangleGeometry.Rect>
-                        <MultiBinding Converter="{StaticResource ConvWidthAndHeightToRect}">
+                        <MultiBinding Converter="{cnv:WidthAndHeightToRectConverter}">
                             <Binding Path="ActualWidth"
                                      RelativeSource="{RelativeSource AncestorType={x:Type Border}}"/>
                             <Binding Path="ActualHeight"
