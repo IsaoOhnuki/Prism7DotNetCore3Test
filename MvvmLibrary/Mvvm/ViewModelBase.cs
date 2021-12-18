@@ -1,4 +1,5 @@
-﻿using ModelLibrary.Service;
+﻿using ModelLibrary;
+using ModelLibrary.Service;
 using MvvmServiceLibrary;
 using MvvmServiceLibrary.Mvvm;
 using Prism.Navigation;
@@ -53,8 +54,14 @@ namespace MvvmLibrary.Mvvm
             continuationCallback(true);
         }
 
+        /// <summary>
+        /// ナビゲーション可能かどうかを返却する
+        /// </summary>
+        /// <param name="navigationContext"></param>
+        /// <returns></returns>
         public virtual bool IsNavigationTarget(NavigationContext navigationContext)
         {
+            // ナビゲーション可能
             return true;
         }
 
@@ -69,67 +76,11 @@ namespace MvvmLibrary.Mvvm
             TransitionView = navigationContext.Parameters[ViewConst.NavigationParameterKey_TransitionView] as string;
             PreviousView = navigationContext.Parameters[ViewConst.NavigationParameterKey_PreviousView] as string;
 
-            // メッセージダイアログ遷移かを判定する
-            string navigationType = navigationContext.Parameters[ViewConst.NavigationParameterKey_NavigationType] as string;
-            if (navigationType == ViewConst.NavigationTypeKey_MessageDialogNavigation)
-            {
-                // メッセージダイアログ遷移パラメータ取得
-                NavigationParameters navigationParameters =
-                    navigationContext.Parameters[ViewConst.NavigationParameterKey_MessageDialogParameter] as NavigationParameters;
-                InisiarizeView(navigationParameters);
-            }
-            else if(navigationType == ViewConst.NavigationTypeKey_MessageDialogResultNavigation)
-            {
-                // メッセージダイアログ遷移パラメータ取得
-                NavigationParameters navigationParameters =
-                    navigationContext.Parameters[ViewConst.NavigationParameterKey_MessageDialogParameter] as NavigationParameters;
-                MessageDialogResult messageDialogResult =
-                    (MessageDialogResult)navigationContext.Parameters[ViewConst.NavigationParameterKey_MessageDialogResult];
-                ReturnMessageDialog(messageDialogResult, navigationParameters);
-            }
-            else
-            {
-                InisiarizeView(navigationContext.Parameters);
-            }
-        }
-
-        public void ShowMessageDialog(string fromPage, NavigationParameters navigationParameters)
-        {
-            // メッセージダイアログに遷移する。
-            NavigationParameters naviParam = new NavigationParameters()
-            {
-                // 遷移パラメータ設定
-                { ViewConst.NavigationParameterKey_PreviousView, fromPage },
-                { ViewConst.NavigationParameterKey_TransitionView, null },
-                // メッセージダイアログ遷移パラメータ設定
-                { ViewConst.NavigationParameterKey_NavigationType, ViewConst.NavigationTypeKey_MessageDialogNavigation},
-                { ViewConst.NavigationParameterKey_MessageDialogParameter , navigationParameters },
-            };
-            // メッセージダイアログ表示。
-            RegionManager.RequestNavigate(ViewConst.MainViewRegion_OverwrapContent, ViewConst.ViewPage_MessageDialogPage, naviParam);
-        }
-
-        public void HideMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
-        {
-            // メッセージダイアログ非表示。
-            RegionManager.Regions[ViewConst.MainViewRegion_OverwrapContent].RemoveAll();
-            // メッセージダイアログ呼び出し元に遷移する。
-            NavigationParameters naviParam = new NavigationParameters()
-            {
-                // 遷移パラメータ設定
-                { ViewConst.NavigationParameterKey_NavigationType, ViewConst.NavigationTypeKey_MessageDialogResultNavigation},
-                { ViewConst.NavigationParameterKey_TransitionView, PreviousView　},
-                // メッセージダイアログ戻り値パラメータ設定
-                { ViewConst.NavigationParameterKey_NavigationType, ViewConst.NavigationTypeKey_MessageDialogResultNavigation },
-                { ViewConst.NavigationParameterKey_MessageDialogParameter , navigationParameters },
-                { ViewConst.NavigationParameterKey_MessageDialogResult , messageDialogResult },
-            };
-            // メッセージダイアログ呼び出し元表示。
-            RegionManager.RequestNavigate(ViewConst.MainViewRegion_OverwrapContent, PreviousView, naviParam);
+            InisiarizeView(navigationContext.Parameters);
         }
 
         public virtual void Destroy()
         {
-       }
+        }
     }
 }

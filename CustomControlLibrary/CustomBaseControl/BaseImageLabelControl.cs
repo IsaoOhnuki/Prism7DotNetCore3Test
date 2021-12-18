@@ -1,4 +1,4 @@
-﻿using MvvmServiceLibrary;
+﻿using ModelLibrary;
 using System.Windows;
 using System.Windows.Media;
 

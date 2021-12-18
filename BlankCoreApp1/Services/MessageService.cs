@@ -4,7 +4,7 @@ using ModelLibrary.inputModel;
 using ModelLibrary.Service;
 using Prism.Services.Dialogs;
 
-namespace MessageServiceModule
+namespace BlankCoreApp1.Services
 {
     public class MessageService : IMessageService
     {

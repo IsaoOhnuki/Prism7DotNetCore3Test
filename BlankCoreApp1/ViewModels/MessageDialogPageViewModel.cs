@@ -1,13 +1,15 @@
-﻿using ModelLibrary.Service;
+﻿using ModelLibrary;
+using ModelLibrary.Service;
 using MvvmLibrary.Mvvm;
-using MvvmServiceLibrary;
 using Prism.Commands;
 using Prism.Regions;
+using Prism.Services.Dialogs;
+using System;
 using System.Windows.Input;
 
 namespace BlankCoreApp1.ViewModels
 {
-    public class MessageDialogPageViewModel : ViewModelBase
+    public class MessageDialogPageViewModel : ViewModelBase, IDialogAware
     {
         private string _title;
         public string Title
@@ -56,15 +58,15 @@ namespace BlankCoreApp1.ViewModels
 
         void TransitionGo()
         {
-            HideMessageDialog(MessageDialogResult.Ok, _navigationParameters);
         }
 
         void TransitionBack()
         {
-            HideMessageDialog(MessageDialogResult.Cancel, _navigationParameters);
         }
 
         NavigationParameters _navigationParameters;
+
+        public event Action<IDialogResult> RequestClose;
 
         public override void InisiarizeView(NavigationParameters navigationParameters)
         {
@@ -79,5 +81,19 @@ namespace BlankCoreApp1.ViewModels
         {
         }
 
+        public bool CanCloseDialog()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDialogClosed()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDialogOpened(IDialogParameters parameters)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

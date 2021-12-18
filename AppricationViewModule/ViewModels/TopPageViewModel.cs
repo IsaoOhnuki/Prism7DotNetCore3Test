@@ -1,4 +1,5 @@
-﻿using ModelLibrary.Service;
+﻿using ModelLibrary;
+using ModelLibrary.Service;
 using MvvmLibrary.Mvvm;
 using MvvmServiceLibrary;
 using Prism.Commands;
@@ -37,7 +38,6 @@ namespace AppricationViewModule.ViewModels
 
         protected void DoAccept()
         {
-            ShowMessageDialog(GetViewName(), null);
         }
 
         protected bool IsCanAccept()
@@ -61,6 +61,7 @@ namespace AppricationViewModule.ViewModels
                     DoTransitionPage(GetViewName(), ViewConst.ViewPage_TopPage);
                     break;
                 case MessageDialogResult.Cancel:
+                    DoTransitionPage(GetViewName(), ViewConst.ViewPage_ViewA);
                     break;
                 default:
                     throw new NotImplementedException();
