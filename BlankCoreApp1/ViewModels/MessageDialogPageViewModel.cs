@@ -77,9 +77,9 @@ namespace BlankCoreApp1.ViewModels
         {
         }
 
-        public override void ReturnMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
-        {
-        }
+        //public override void ReturnMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
+        //{
+        //}
 
         public bool CanCloseDialog()
         {

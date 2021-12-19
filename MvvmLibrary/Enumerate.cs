@@ -28,20 +28,6 @@
         BottomRight,
     }
 
-    public enum MessageDialogStyle
-    {
-        ErrorMessage,
-        WarningMessage,
-        InformationMessage,
-        ConfirmMessage,
-    }
-
-    public enum MessageDialogResult
-    {
-        Ok,
-        Cancel,
-    }
-
     public enum ContentRegionType
     {
         MainContent,

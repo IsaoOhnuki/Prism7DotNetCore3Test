@@ -1,6 +1,4 @@
 ﻿using BlankCoreApp1.Views;
-using MessageServiceModule;
-using ModelLibrary.Service;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
@@ -20,7 +18,7 @@ namespace BlankCoreApp1
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<MessageDialogPage>();
-            containerRegistry.RegisterSingleton<IMessageService, MessageService>();
+            containerRegistry.RegisterDialog<MessageDialog>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

@@ -1,7 +1,8 @@
-using ModelLibrary;
+using MessageServiceLibrary.Models;
 using ModelLibrary.Constant;
-using ModelLibrary.inputModel;
+using ModelLibrary.Enumerate;
 using ModelLibrary.Service;
+using ModelLibrary.Services;
 using Prism.Services.Dialogs;
 
 namespace MessageServiceModule

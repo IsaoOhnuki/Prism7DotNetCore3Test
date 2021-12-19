@@ -5,9 +5,23 @@
     <AssemblyName>MessageServiceLibrary</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="TemplateSelectors\**" />
+    <Compile Remove="ViewModels\**" />
+    <Compile Remove="Views\**" />
+    <EmbeddedResource Remove="TemplateSelectors\**" />
+    <EmbeddedResource Remove="ViewModels\**" />
+    <EmbeddedResource Remove="Views\**" />
+    <None Remove="TemplateSelectors\**" />
+    <None Remove="ViewModels\**" />
+    <None Remove="Views\**" />
+    <Page Remove="TemplateSelectors\**" />
+    <Page Remove="ViewModels\**" />
+    <Page Remove="Views\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvvmLibrary\MvvmServiceLibrary.csproj" />
+    <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
   </ItemGroup>
 </Project>

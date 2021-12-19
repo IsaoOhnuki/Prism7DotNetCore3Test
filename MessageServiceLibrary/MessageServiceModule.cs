@@ -1,4 +1,4 @@
-﻿using MessageServiceLibrary.Views;
+﻿using ModelLibrary.Services;
 using Prism.Ioc;
 using Prism.Modularity;
 
@@ -13,7 +13,7 @@ namespace MessageServiceModule
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterDialog<MessageDialog>();
+            containerRegistry.RegisterSingleton<IMessageService, MessageService>();
         }
     }
 }

@@ -6,7 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Mvvm\IMessageService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
   </ItemGroup>
   
 </Project>

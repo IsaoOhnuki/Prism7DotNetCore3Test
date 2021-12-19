@@ -1,5 +1,4 @@
-﻿using ModelLibrary;
-using ModelLibrary.Service;
+﻿using ModelLibrary.Service;
 using MvvmLibrary.Mvvm;
 using MvvmServiceLibrary;
 using Prism.Commands;
@@ -53,19 +52,19 @@ namespace AppricationViewModule.ViewModels
         {
         }
 
-        public override void ReturnMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
-        {
-            switch (messageDialogResult)
-            {
-                case MessageDialogResult.Ok:
-                    DoTransitionPage(GetViewName(), ViewConst.ViewPage_TopPage);
-                    break;
-                case MessageDialogResult.Cancel:
-                    DoTransitionPage(GetViewName(), ViewConst.ViewPage_ViewA);
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-        }
+        //public override void ReturnMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
+        //{
+        //    switch (messageDialogResult)
+        //    {
+        //        case MessageDialogResult.Ok:
+        //            DoTransitionPage(GetViewName(), ViewConst.ViewPage_TopPage);
+        //            break;
+        //        case MessageDialogResult.Cancel:
+        //            DoTransitionPage(GetViewName(), ViewConst.ViewPage_ViewA);
+        //            break;
+        //        default:
+        //            throw new NotImplementedException();
+        //    }
+        //}
     }
 }

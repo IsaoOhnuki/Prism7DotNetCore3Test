@@ -1,9 +1,11 @@
 ﻿using ModelLibrary.Constant;
+using ModelLibrary.Enumerate;
+using ModelLibrary.Service;
 using Prism.Services.Dialogs;
 
-namespace MvvmServiceLibrary.Mvvm
+namespace ModelLibrary.Services
 {
-    public interface IMessageService
+    public interface IMessageService : IService
     {
         string GetMessage(MessageConst.MessageId messageId);
 

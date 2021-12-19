@@ -1,5 +1,4 @@
-﻿using ModelLibrary;
-using ModelLibrary.Service;
+﻿using ModelLibrary.Service;
 using MvvmServiceLibrary;
 using MvvmServiceLibrary.Mvvm;
 using Prism.Navigation;
@@ -44,9 +43,9 @@ namespace MvvmLibrary.Mvvm
 
         public abstract void PreviousInisiarizeView(NavigationParameters navigationParameters);
 
-        public virtual void ReturnMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
-        {
-        }
+        //public virtual void ReturnMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
+        //{
+        //}
 
 
         public virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)

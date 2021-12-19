@@ -8,6 +8,12 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Services\**" />
+    <Page Remove="Services\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Prism.Unity" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿using MvvmServiceLibrary;
+﻿using ModelLibrary.Enumerate;
 
 namespace MessageServiceLibrary.Models
 {
