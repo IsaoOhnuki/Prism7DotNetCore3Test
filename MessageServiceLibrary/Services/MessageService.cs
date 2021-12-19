@@ -1,4 +1,3 @@
-using MessageServiceLibrary.Models;
 using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
@@ -33,26 +32,6 @@ namespace MessageServiceModule.Services
                     { nameof(MessageInputModel), messageInputModel },
                 },
                 x => dialogResult = x);
-
-            return dialogResult;
-        }
-
-        public IDialogResult ShowMessage(string message, string title, MessageDialogStyle messageDialogType)
-        {
-            MessageContent messageContent = new MessageContent()
-            {
-                Message = message,
-                Title = title,
-                MessageDialogValue = messageDialogType
-            };
-
-            IDialogResult dialogResult = null;
-            DialogService.ShowDialog("MessageDialog",
-                new DialogParameters
-                {
-                    { "MessageContent", messageContent }
-                },
-                result => dialogResult = result);
 
             return dialogResult;
         }

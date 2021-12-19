@@ -9,6 +9,15 @@
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
              av:DesignWidth="1000" av:DesignHeight="700">
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
+            <Setter Property="ResizeMode" Value="NoResize"/>
+            <Setter Property="ShowInTaskbar" Value="False"/>
+            <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+            <Setter Property="WindowStyle" Value="None"/>
+        </Style>
+    </prism:Dialog.WindowStyle>
     <UserControl.Resources>
         <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
     </UserControl.Resources>

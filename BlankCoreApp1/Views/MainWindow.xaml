@@ -11,6 +11,5 @@
         av:DesignHeight="300">
     <Grid>
         <ContentControl prism:RegionManager.RegionName="{Binding ContentRegionName}"/>
-        <ContentControl prism:RegionManager.RegionName="{Binding OverwrapRegionName}"/>
     </Grid>
 </Window>

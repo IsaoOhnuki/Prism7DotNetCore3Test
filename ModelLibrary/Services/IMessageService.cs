@@ -8,8 +8,6 @@ namespace ModelLibrary.Services
     {
         string GetMessage(MessageId messageId);
 
-        IDialogResult ShowMessage(string message, string title, MessageDialogStyle messageDialogType);
-
         IDialogResult ShowMessage(MessageInputModel messageInputModel);
     }
 }

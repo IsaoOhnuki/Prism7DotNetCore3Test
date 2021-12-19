@@ -18,7 +18,6 @@ namespace BlankCoreApp1
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialog<MessageDialogPage>();
-            containerRegistry.RegisterDialog<MessageDialog>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

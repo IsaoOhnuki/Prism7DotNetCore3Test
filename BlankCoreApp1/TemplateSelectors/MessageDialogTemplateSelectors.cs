@@ -16,19 +16,19 @@ namespace BlankCoreApp1.TemplateSelectors
             if (item == null)
                 return null;
 
-            MessageDialogStyle messageDialogType = ((MessageDialogViewModel)item).MessageDialogValue;
+            //MessageDialogStyle messageDialogType = ((MessageDialogViewModel)item).MessageDialogValue;
 
-            switch (messageDialogType)
-            {
-                case MessageDialogStyle.InformationMessage:
-                    return OkOnlyTemplate;
-                case MessageDialogStyle.WarningMessage:
-                    return OkCancelTemplate;
-                case MessageDialogStyle.ErrorMessage:
-                    return YesNoTemplate;
-                case MessageDialogStyle.ConfirmMessage:
-                    return YesNoTemplate;
-            }
+            //switch (messageDialogType)
+            //{
+            //    case MessageDialogStyle.InformationMessage:
+            //        return OkOnlyTemplate;
+            //    case MessageDialogStyle.WarningMessage:
+            //        return OkCancelTemplate;
+            //    case MessageDialogStyle.ErrorMessage:
+            //        return YesNoTemplate;
+            //    case MessageDialogStyle.ConfirmMessage:
+            //        return YesNoTemplate;
+            //}
 
             return base.SelectTemplate(item, container);
         }
