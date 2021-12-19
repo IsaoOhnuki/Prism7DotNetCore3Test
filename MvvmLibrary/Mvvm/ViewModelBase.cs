@@ -49,18 +49,28 @@ namespace MvvmLibrary.Mvvm
 
         public abstract void PreviousInisiarizeView(NavigationParameters navigationParameters);
 
-        public virtual IDialogResult ShowMessage(string message)
+        public virtual IDialogResult ShowMessage(string message, string title = "")
         {
             MessageInputModel messageInput = new MessageInputModel
             {
-                Title = "",
+                Title = title,
                 Message = message,
                 MessageDialogName = ViewConst.ViewPage_MessageDialogPage,
                 MessageDialogStyle = MessageDialogStyle.ConfirmMessage,
             };
-            return MessageService.ShowMessage(messageInput);
+            MessageShowing = true;
+            IDialogResult result = MessageService.ShowMessage(messageInput);
+            MessageShowing = false;
+            return result;
         }
 
+        private bool _messageShowing;
+
+        public bool MessageShowing
+        {
+            get => _messageShowing;
+            private set => SetProperty(ref _messageShowing, value);
+        }
 
         public virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
         {
