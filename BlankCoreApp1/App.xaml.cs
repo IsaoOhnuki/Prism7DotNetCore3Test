@@ -21,7 +21,6 @@ namespace BlankCoreApp1
         {
             containerRegistry.RegisterDialog<MessageDialogPage>();
             containerRegistry.RegisterForNavigation<ShadeScreen>();
-            containerRegistry.RegisterSingleton<IWindowScreenHandler, WindowScreenHandler>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
