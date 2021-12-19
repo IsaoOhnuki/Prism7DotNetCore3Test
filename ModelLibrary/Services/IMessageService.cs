@@ -1,13 +1,15 @@
-﻿using ModelLibrary.Constant;
-using ModelLibrary.Enumerate;
+﻿using ModelLibrary.Enumerate;
+using ModelLibrary.InputModels;
 using Prism.Services.Dialogs;
 
 namespace ModelLibrary.Services
 {
     public interface IMessageService : IService
     {
-        string GetMessage(MessageConst.MessageId messageId);
+        string GetMessage(MessageId messageId);
 
-        ButtonResult ShowMessage(string message, string title, MessageDialogStyle messageDialogType);
+        IDialogResult ShowMessage(string message, string title, MessageDialogStyle messageDialogType);
+
+        IDialogResult ShowMessage(MessageInputModel messageInputModel);
     }
 }

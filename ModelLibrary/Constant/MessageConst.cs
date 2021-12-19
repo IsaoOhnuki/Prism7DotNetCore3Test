@@ -6,9 +6,5 @@ namespace ModelLibrary.Constant
 {
     public static class MessageConst
     {
-        public enum MessageId
-        {
-            Message,
-        }
     }
 }

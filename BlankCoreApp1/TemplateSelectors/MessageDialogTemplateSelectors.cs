@@ -13,6 +13,9 @@ namespace BlankCoreApp1.TemplateSelectors
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
+            if (item == null)
+                return null;
+
             MessageDialogStyle messageDialogType = ((MessageDialogViewModel)item).MessageDialogValue;
 
             switch (messageDialogType)
@@ -22,6 +25,8 @@ namespace BlankCoreApp1.TemplateSelectors
                 case MessageDialogStyle.WarningMessage:
                     return OkCancelTemplate;
                 case MessageDialogStyle.ErrorMessage:
+                    return YesNoTemplate;
+                case MessageDialogStyle.ConfirmMessage:
                     return YesNoTemplate;
             }
 

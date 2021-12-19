@@ -1,8 +1,11 @@
-﻿using ModelLibrary.Services;
+﻿using ModelLibrary.Enumerate;
+using ModelLibrary.InputModels;
+using ModelLibrary.Services;
 using MvvmServiceLibrary;
 using MvvmServiceLibrary.Mvvm;
 using Prism.Navigation;
 using Prism.Regions;
+using Prism.Services.Dialogs;
 using System;
 
 namespace MvvmLibrary.Mvvm
@@ -46,9 +49,17 @@ namespace MvvmLibrary.Mvvm
 
         public abstract void PreviousInisiarizeView(NavigationParameters navigationParameters);
 
-        //public virtual void ReturnMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
-        //{
-        //}
+        public virtual IDialogResult ShowMessage(string message)
+        {
+            MessageInputModel messageInput = new MessageInputModel
+            {
+                Title = "",
+                Message = message,
+                MessageDialogName = ViewConst.ViewPage_MessageDialogPage,
+                MessageDialogStyle = MessageDialogStyle.ConfirmMessage,
+            };
+            return MessageService.ShowMessage(messageInput);
+        }
 
 
         public virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)

@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace BlankCoreApp1.ViewModels
 {
-    public class MessageDialogViewModel : BindableBase
+    public class MessageDialogViewModel : BindableBase, IDialogAware
     {
         private MessageContent messageContent;
 

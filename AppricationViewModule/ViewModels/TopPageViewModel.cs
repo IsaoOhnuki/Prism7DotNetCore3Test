@@ -35,6 +35,7 @@ namespace AppricationViewModule.ViewModels
 
         protected void DoAccept()
         {
+            ShowMessage("0123456789");
         }
 
         protected bool IsCanAccept()

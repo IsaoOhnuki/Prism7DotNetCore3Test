@@ -1,10 +1,10 @@
 using MessageServiceLibrary.Models;
-using ModelLibrary.Constant;
 using ModelLibrary.Enumerate;
+using ModelLibrary.InputModels;
 using ModelLibrary.Services;
 using Prism.Services.Dialogs;
 
-namespace MessageServiceModule
+namespace MessageServiceModule.Services
 {
     public class MessageService : IMessageService
     {
@@ -18,12 +18,26 @@ namespace MessageServiceModule
             DialogService = dialogService;
         }
 
-        public string GetMessage(MessageConst.MessageId messageId)
+        public string GetMessage(MessageId messageId)
         {
             return "Message";
         }
 
-        public ButtonResult ShowMessage(string message, string title, MessageDialogStyle messageDialogType)
+        IDialogResult IMessageService.ShowMessage(MessageInputModel messageInputModel)
+        {
+            IDialogResult dialogResult = null;
+            DialogService.ShowDialog(
+                messageInputModel.MessageDialogName,
+                new DialogParameters
+                {
+                    { nameof(MessageInputModel), messageInputModel },
+                },
+                x => dialogResult = x);
+
+            return dialogResult;
+        }
+
+        public IDialogResult ShowMessage(string message, string title, MessageDialogStyle messageDialogType)
         {
             MessageContent messageContent = new MessageContent()
             {
@@ -40,7 +54,7 @@ namespace MessageServiceModule
                 },
                 result => dialogResult = result);
 
-            return dialogResult.Result;
+            return dialogResult;
         }
     }
 }

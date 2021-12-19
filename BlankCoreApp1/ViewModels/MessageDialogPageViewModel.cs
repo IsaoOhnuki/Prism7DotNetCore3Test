@@ -1,14 +1,14 @@
-﻿using ModelLibrary.Services;
-using MvvmLibrary.Mvvm;
+﻿using ModelLibrary.Enumerate;
+using ModelLibrary.InputModels;
 using Prism.Commands;
-using Prism.Regions;
+using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
 using System.Windows.Input;
 
 namespace BlankCoreApp1.ViewModels
 {
-    public class MessageDialogPageViewModel : ViewModelBase, IDialogAware
+    public class MessageDialogPageViewModel : BindableBase, IDialogAware
     {
         private string _title;
         public string Title
@@ -43,56 +43,66 @@ namespace BlankCoreApp1.ViewModels
 
         public ICommand GoCommand { get; }
         
-        public MessageDialogPageViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService)
-            : base(logService, regionManager, messageService)
+        public MessageDialogPageViewModel()
         {
             GoCommand = new DelegateCommand(TransitionGo);
             BackCommand = new DelegateCommand(TransitionBack);
-
-            LeftButtonText = "BACK";
-            RightButtonText = "GO";
-            Message = "Message\n0123456789";
-            Title = "?";
         }
 
         void TransitionGo()
         {
+            RequestClose(new DialogResult(ButtonResult.OK));
         }
 
         void TransitionBack()
         {
+            RequestClose(new DialogResult(ButtonResult.Cancel));
         }
-
-        NavigationParameters _navigationParameters;
 
         public event Action<IDialogResult> RequestClose;
 
-        public override void InisiarizeView(NavigationParameters navigationParameters)
-        {
-            _navigationParameters = navigationParameters;
-        }
-
-        public override void PreviousInisiarizeView(NavigationParameters navigationParameters)
-        {
-        }
-
-        //public override void ReturnMessageDialog(MessageDialogResult messageDialogResult, NavigationParameters navigationParameters)
-        //{
-        //}
-
         public bool CanCloseDialog()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void OnDialogClosed()
         {
-            throw new NotImplementedException();
         }
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            throw new NotImplementedException();
+            MessageInputModel messageInputModel = parameters.GetValue<MessageInputModel>(nameof(MessageInputModel));
+
+            switch (messageInputModel.MessageDialogStyle)
+            {
+                case MessageDialogStyle.ConfirmMessage:
+                    LeftButtonText = "BACK";
+                    RightButtonText = "GO";
+                    Message = messageInputModel.Message;
+                    Title = "?";
+                    break;
+                case MessageDialogStyle.ErrorMessage:
+                    LeftButtonText = "BACK";
+                    RightButtonText = "GO";
+                    Message = messageInputModel.Message;
+                    Title = "?";
+                    break;
+                case MessageDialogStyle.WarningMessage:
+                    LeftButtonText = "BACK";
+                    RightButtonText = "GO";
+                    Message = messageInputModel.Message;
+                    Title = "?";
+                    break;
+                case MessageDialogStyle.InformationMessage:
+                    LeftButtonText = "BACK";
+                    RightButtonText = "GO";
+                    Message = messageInputModel.Message;
+                    Title = "?";
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }

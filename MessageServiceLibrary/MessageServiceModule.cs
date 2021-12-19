@@ -1,4 +1,5 @@
-﻿using ModelLibrary.Services;
+﻿using MessageServiceModule.Services;
+using ModelLibrary.Services;
 using Prism.Ioc;
 using Prism.Modularity;
 
