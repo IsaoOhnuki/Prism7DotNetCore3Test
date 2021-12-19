@@ -2,9 +2,9 @@
 {
     public enum MessageDialogStyle
     {
-        ErrorMessage,
-        WarningMessage,
-        InformationMessage,
-        ConfirmMessage,
+        ErrorMessage, // with ceter button only.
+        WarningMessage, // with ceter button only.
+        InformationMessage, // with ceter button only.
+        ConfirmMessage, // with left and right button.
     }
 }

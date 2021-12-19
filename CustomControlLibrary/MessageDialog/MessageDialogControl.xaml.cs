@@ -61,6 +61,19 @@ namespace CustomControlLibrary.MessageDialog
                 typeof(MessageDialogControl),
                 new PropertyMetadata(default));
 
+        public string CenterButtonText
+        {
+            get => (string)GetValue(CenterButtonTextProperty);
+            set => SetValue(CenterButtonTextProperty, value);
+        }
+
+        public static readonly DependencyProperty CenterButtonTextProperty =
+            DependencyProperty.Register(
+                nameof(CenterButtonText),
+                typeof(object),
+                typeof(MessageDialogControl),
+                new PropertyMetadata(default));
+
         public ICommand LeftButtonCommand
         {
             get => (ICommand)GetValue(LeftButtonCommandProperty);
@@ -86,6 +99,32 @@ namespace CustomControlLibrary.MessageDialog
                 typeof(ICommand),
                 typeof(MessageDialogControl),
                 new PropertyMetadata(default(ICommand)));
+
+        public ICommand CenterButtonCommand
+        {
+            get => (ICommand)GetValue(CenterButtonCommandProperty);
+            set => SetValue(CenterButtonCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty CenterButtonCommandProperty =
+            DependencyProperty.Register(
+                nameof(CenterButtonCommand),
+                typeof(ICommand),
+                typeof(MessageDialogControl),
+                new PropertyMetadata(default(ICommand)));
+
+        public bool ConfirmStyleButton
+        {
+            get => (bool)GetValue(ConfirmStyleButtonProperty);
+            set => SetValue(ConfirmStyleButtonProperty, value);
+        }
+
+        public static readonly DependencyProperty ConfirmStyleButtonProperty =
+            DependencyProperty.Register(
+                nameof(ConfirmStyleButton),
+                typeof(bool),
+                typeof(MessageDialogControl),
+                new PropertyMetadata(false));
 
         public MessageDialogControl()
         {

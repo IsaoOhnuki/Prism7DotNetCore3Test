@@ -18,6 +18,7 @@
         public const string ViewPage_MessageDialog = "MessageDialog";
         public const string ViewPage_TopPage = "TopPage";
         public const string ViewPage_ViewA = "ViewA";
+        public const string ViewPage_ShadeScreen = "ShadeScreen";
 
         public const string MainViewRegion_Content = "MainViewContentRegion";
         public const string MainViewRegion_OverwrapContent = "MainViewOverwrapContentRegion";

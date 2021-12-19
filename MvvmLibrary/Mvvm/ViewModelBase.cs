@@ -58,9 +58,11 @@ namespace MvvmLibrary.Mvvm
                 MessageDialogName = ViewConst.ViewPage_MessageDialogPage,
                 MessageDialogStyle = MessageDialogStyle.ConfirmMessage,
             };
+            RegionManager.RequestNavigate(ViewConst.MainViewRegion_OverwrapContent, ViewConst.ViewPage_ShadeScreen, new NavigationParameters());
             MessageShowing = true;
             IDialogResult result = MessageService.ShowMessage(messageInput);
             MessageShowing = false;
+            RegionManager.Regions[ViewConst.MainViewRegion_OverwrapContent].RemoveAll();
             return result;
         }
 

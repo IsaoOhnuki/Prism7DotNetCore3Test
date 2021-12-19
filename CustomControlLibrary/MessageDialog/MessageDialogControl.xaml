@@ -5,11 +5,64 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:cnv="clr-namespace:MvvmServiceLibrary.Converter;assembly=MvvmServiceLibrary"
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
+             xmlns:templateSelector="clr-namespace:CustomControlLibrary.TemplateSelectors"
              mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="300">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
+                <ResourceDictionary>
+                    <DataTemplate x:Key="approvalStyle">
+                        <bc:BaseButtonControl Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                                              Background="{StaticResource DialogPanelBrush}"
+                                              BorderThickness="0,0.5,0,0"
+                                              BorderBrush="DarkGray"
+                                              FontSize="{StaticResource BaseFontSize}"
+                                              Command="{Binding CenterButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                            <bc:BaseButtonControl.Content>
+                                <bc:BaseImageLabelControl Text="{Binding CenterButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                          ImageAlignment="Left"
+                                                          ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
+                            </bc:BaseButtonControl.Content>
+                        </bc:BaseButtonControl>
+                    </DataTemplate>
+                    <DataTemplate x:Key="confirmStyle">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <bc:BaseButtonControl Grid.Column="0"
+                                                  Background="{StaticResource DialogPanelBrush}"
+                                                  BorderThickness="0,0.5,0.3,0"
+                                                  BorderBrush="DarkGray"
+                                                  HorizontalContentAlignment="Center"
+                                                  FontSize="{StaticResource BaseFontSize}"
+                                                  Command="{Binding LeftButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                                <bc:BaseButtonControl.Content>
+                                    <bc:BaseImageLabelControl Text="{Binding LeftButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                              ImageAlignment="Top"
+                                                              ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
+                                </bc:BaseButtonControl.Content>
+                            </bc:BaseButtonControl>
+                            <bc:BaseButtonControl Grid.Column="1"
+                                                  Background="{StaticResource DialogPanelBrush}"
+                                                  BorderThickness="0.3,0.5,0,0"
+                                                  BorderBrush="DarkGray"
+                                                  FontSize="{StaticResource BaseFontSize}"
+                                                  Command="{Binding RightButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                                <bc:BaseButtonControl.Content>
+                                    <bc:BaseImageLabelControl Text="{Binding RightButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                              ImageAlignment="Bottom"
+                                                              ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
+                                </bc:BaseButtonControl.Content>
+                            </bc:BaseButtonControl>
+                        </Grid>
+                    </DataTemplate>
+                    <templateSelector:ConfirmStyleButtonDataTemplateSelector x:Key="ConfirmStyleButtonDataTemplateSelector"
+                                                                             ApprovalStyleTemplate="{StaticResource approvalStyle}"
+                                                                             ConfirmStyleTemplate="{StaticResource confirmStyle}"/>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -50,7 +103,7 @@
                                           VerticalContentAlignment="Center"
                                           FontSize="{StaticResource TitleFontSize}"
                                           Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
-                <bc:BaseTextBlockControl x:Name="messageControl" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                <bc:BaseTextBlockControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="20,20,20,20"
                                          FontSize="{StaticResource BaseFontSize}"
                                          HorizontalAlignment="Stretch"
@@ -58,31 +111,10 @@
                                          VerticalAlignment="Stretch"
                                          VerticalContentAlignment="Center"
                                          Text="{Binding Message, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
-                <bc:BaseButtonControl x:Name="leftButtonControl" Grid.Row="2" Grid.Column="0"
-                                      Background="{StaticResource DialogPanelBrush}"
-                                      BorderThickness="0,0.5,0.3,0"
-                                      BorderBrush="DarkGray"
-                                      HorizontalContentAlignment="Center"
-                                      FontSize="{StaticResource BaseFontSize}"
-                                      Command="{Binding LeftButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
-                    <bc:BaseButtonControl.Content>
-                        <bc:BaseImageLabelControl Text="{Binding LeftButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                                  ImageAlignment="Top"
-                                                  ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
-                    </bc:BaseButtonControl.Content>
-                </bc:BaseButtonControl>
-                <bc:BaseButtonControl x:Name="rightButtonControl" Grid.Row="2" Grid.Column="1"
-                                      Background="{StaticResource DialogPanelBrush}"
-                                      BorderThickness="0.3,0.5,0,0"
-                                      BorderBrush="DarkGray"
-                                      FontSize="{StaticResource BaseFontSize}"
-                                      Command="{Binding RightButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
-                    <bc:BaseButtonControl.Content>
-                        <bc:BaseImageLabelControl Text="{Binding RightButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                                  ImageAlignment="Bottom"
-                                                  ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
-                    </bc:BaseButtonControl.Content>
-                </bc:BaseButtonControl>
+                <ContentControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                d:ContentTemplate="{StaticResource approvalStyle}"
+                                Content="{Binding ConfirmStyleButton, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                ContentTemplateSelector="{StaticResource ConfirmStyleButtonDataTemplateSelector}"/>
             </Grid>
         </Border>
     </Grid>

@@ -16,5 +16,13 @@ namespace ModelLibrary.InputModels
         public string Message { get; set; }
 
         public List<string> MessageParameter { get; set; }
+
+        public string LeftButtonCaption { get; set; }
+
+        public string RightButtonCaption { get; set; }
+
+        public string CenterButtonText { get; set; }
+
+        public Exception Exception { get; set; }
     }
 }

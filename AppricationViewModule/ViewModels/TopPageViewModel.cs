@@ -1,4 +1,5 @@
-﻿using ModelLibrary.Services;
+﻿using ModelLibrary.Enumerate;
+using ModelLibrary.Services;
 using MvvmLibrary.Mvvm;
 using Prism.Commands;
 using Prism.Regions;
@@ -35,7 +36,8 @@ namespace AppricationViewModule.ViewModels
 
         protected void DoAccept()
         {
-            ShowMessage("0123456789");
+            ShowMessage(MessageService.GetMessage(MessageId.SuccessMessage),
+                MessageService.GetMessage(MessageId.InformationMessageTitle));
         }
 
         protected bool IsCanAccept()

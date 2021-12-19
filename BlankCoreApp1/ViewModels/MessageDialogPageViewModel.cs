@@ -39,19 +39,36 @@ namespace BlankCoreApp1.ViewModels
             set => SetProperty(ref _rightButtonText, value);
         }
 
+        private string _centerButtonText;
+        public string CenterButtonText
+        {
+            get => _centerButtonText;
+            set => SetProperty(ref _centerButtonText, value);
+        }
+
         public ICommand BackCommand { get; }
 
 
         public ICommand GoCommand { get; }
 
-        IWindowScreenHandler WindowScreenHandler { get; }
+        public ICommand StopCommand { get; }
 
-        public MessageDialogPageViewModel(IWindowScreenHandler windowScreenHandler)
+        private bool _confirmStyleButton;
+        public bool ConfirmStyleButton
         {
-            WindowScreenHandler = windowScreenHandler;
+            get => _confirmStyleButton;
+            set => SetProperty(ref _confirmStyleButton, value);
+        }
+
+        public IMessageService MessageService { get; }
+
+        public MessageDialogPageViewModel(IMessageService messageService)
+        {
+            MessageService = messageService;
 
             GoCommand = new DelegateCommand(TransitionGo);
             BackCommand = new DelegateCommand(TransitionBack);
+            StopCommand = new DelegateCommand(TransitionBack);
         }
 
         void TransitionGo()
@@ -79,34 +96,21 @@ namespace BlankCoreApp1.ViewModels
         {
             MessageInputModel messageInputModel = parameters.GetValue<MessageInputModel>(nameof(MessageInputModel));
 
-            switch (messageInputModel.MessageDialogStyle)
+            if (messageInputModel.Exception == null)
             {
-                case MessageDialogStyle.ConfirmMessage:
-                    LeftButtonText = "BACK";
-                    RightButtonText = "GO";
-                    Message = messageInputModel.Message;
-                    Title = "?";
-                    break;
-                case MessageDialogStyle.ErrorMessage:
-                    LeftButtonText = "BACK";
-                    RightButtonText = "GO";
-                    Message = messageInputModel.Message;
-                    Title = "?";
-                    break;
-                case MessageDialogStyle.WarningMessage:
-                    LeftButtonText = "BACK";
-                    RightButtonText = "GO";
-                    Message = messageInputModel.Message;
-                    Title = "?";
-                    break;
-                case MessageDialogStyle.InformationMessage:
-                    LeftButtonText = "BACK";
-                    RightButtonText = "GO";
-                    Message = messageInputModel.Message;
-                    Title = "?";
-                    break;
-                default:
-                    throw new NotImplementedException();
+                ConfirmStyleButton = messageInputModel.MessageDialogStyle == MessageDialogStyle.ConfirmMessage;
+                LeftButtonText = messageInputModel.LeftButtonCaption;
+                RightButtonText = messageInputModel.RightButtonCaption;
+                CenterButtonText = messageInputModel.CenterButtonText;
+                Message = messageInputModel.Message;
+                Title = messageInputModel.Title;
+            }
+            else
+            {
+                ConfirmStyleButton = false;
+                Title = nameof(messageInputModel.Exception);
+                Message = messageInputModel.Exception.Message;
+                CenterButtonText = MessageService.GetMessage(MessageId.CloseButtonCaption);
             }
         }
     }

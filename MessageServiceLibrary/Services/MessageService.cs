@@ -2,6 +2,7 @@ using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
 using Prism.Services.Dialogs;
+using System.Windows;
 
 namespace MessageServiceModule.Services
 {
@@ -19,10 +20,10 @@ namespace MessageServiceModule.Services
 
         public string GetMessage(MessageId messageId)
         {
-            return "Message";
+            return System.Configuration.ConfigurationManager.AppSettings[messageId.ToString()];
         }
 
-        IDialogResult IMessageService.ShowMessage(MessageInputModel messageInputModel)
+        public IDialogResult ShowMessage(MessageInputModel messageInputModel)
         {
             IDialogResult dialogResult = null;
             DialogService.ShowDialog(
