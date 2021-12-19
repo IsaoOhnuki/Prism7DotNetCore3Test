@@ -1,5 +1,6 @@
 ﻿using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
+using ModelLibrary.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -42,9 +43,13 @@ namespace BlankCoreApp1.ViewModels
 
 
         public ICommand GoCommand { get; }
-        
-        public MessageDialogPageViewModel()
+
+        IWindowScreenHandler WindowScreenHandler { get; }
+
+        public MessageDialogPageViewModel(IWindowScreenHandler windowScreenHandler)
         {
+            WindowScreenHandler = windowScreenHandler;
+
             GoCommand = new DelegateCommand(TransitionGo);
             BackCommand = new DelegateCommand(TransitionBack);
         }

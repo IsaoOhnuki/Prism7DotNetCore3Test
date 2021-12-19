@@ -1,4 +1,6 @@
 ﻿using BlankCoreApp1.Views;
+using ModelLibrary.Services;
+using MvvmServiceLibrary.WindowScreenHandler;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
@@ -18,6 +20,7 @@ namespace BlankCoreApp1
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialog<MessageDialogPage>();
+            containerRegistry.RegisterSingleton<IWindowScreenHandler, WindowScreenHandler>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
