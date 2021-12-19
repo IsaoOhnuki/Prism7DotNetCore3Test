@@ -1,9 +1,7 @@
-﻿using ModelLibrary.Service;
+﻿using ModelLibrary.Services;
 using MvvmLibrary.Mvvm;
-using MvvmServiceLibrary;
 using Prism.Commands;
 using Prism.Regions;
-using System;
 using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
@@ -26,8 +24,8 @@ namespace AppricationViewModule.ViewModels
 
         public ICommand AcceptCommand { get; }
 
-        public TopPageViewModel(ILogService logService, IRegionManager regionManager)
-            : base(logService, regionManager)
+        public TopPageViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService)
+            : base(logService, regionManager, messageService)
         {
             AcceptCommand = new DelegateCommand(DoAccept, IsCanAccept);
 

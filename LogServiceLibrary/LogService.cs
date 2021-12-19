@@ -1,4 +1,4 @@
-using ModelLibrary.Service;
+using ModelLibrary.Services;
 using System;
 
 namespace LogServiceModule

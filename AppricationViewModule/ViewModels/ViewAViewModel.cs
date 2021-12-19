@@ -1,5 +1,4 @@
 ﻿using ModelLibrary.Constant;
-using ModelLibrary.Service;
 using ModelLibrary.Services;
 using MvvmLibrary.Mvvm;
 using MvvmServiceLibrary;
@@ -11,25 +10,15 @@ namespace AppricationViewModule.ViewModels
 {
     public class ViewAViewModel : ViewModelBase
     {
-        private string _message;
-        public string Message
-        {
-            get => _message;
-            set => SetProperty(ref _message, value);
-        }
 
         public ICommand BackCommand { get; }
 
         protected IMessageService MessageService { get; private set; }
 
         public ViewAViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService)
-            : base(logService, regionManager)
+            : base(logService, regionManager, messageService)
         {
-            MessageService = messageService;
-
             BackCommand = new DelegateCommand(TransitionBack);
-
-            Message = MessageService.GetMessage(MessageConst.MessageId.Message);
         }
 
         void TransitionBack()

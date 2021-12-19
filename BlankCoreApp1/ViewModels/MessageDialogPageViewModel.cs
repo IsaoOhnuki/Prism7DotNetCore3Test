@@ -1,5 +1,4 @@
-﻿using ModelLibrary;
-using ModelLibrary.Service;
+﻿using ModelLibrary.Services;
 using MvvmLibrary.Mvvm;
 using Prism.Commands;
 using Prism.Regions;
@@ -44,8 +43,8 @@ namespace BlankCoreApp1.ViewModels
 
         public ICommand GoCommand { get; }
         
-        public MessageDialogPageViewModel(ILogService logService, IRegionManager regionManager)
-            : base(logService, regionManager)
+        public MessageDialogPageViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService)
+            : base(logService, regionManager, messageService)
         {
             GoCommand = new DelegateCommand(TransitionGo);
             BackCommand = new DelegateCommand(TransitionBack);

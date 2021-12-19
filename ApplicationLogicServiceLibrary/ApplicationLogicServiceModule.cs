@@ -1,4 +1,4 @@
-﻿using ModelLibrary.Service;
+﻿using ModelLibrary.Services;
 using Prism.Ioc;
 using Prism.Modularity;
 

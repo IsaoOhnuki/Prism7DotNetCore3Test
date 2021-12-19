@@ -1,4 +1,4 @@
-﻿using ModelLibrary.Service;
+﻿using ModelLibrary.Services;
 using MvvmServiceLibrary;
 using MvvmServiceLibrary.Mvvm;
 using Prism.Navigation;
@@ -13,14 +13,17 @@ namespace MvvmLibrary.Mvvm
 
         protected IRegionManager RegionManager { get; private set; }
 
+        protected IMessageService MessageService;
+
         public string PreviousView { get; set; }
 
         public string TransitionView { get; set; }
 
-        public ViewModelBase(ILogService logService, IRegionManager regionManager)
+        public ViewModelBase(ILogService logService, IRegionManager regionManager, IMessageService messageService)
         {
             LogService = logService;
             RegionManager = regionManager;
+            MessageService = messageService;
         }
 
         public string GetViewName()

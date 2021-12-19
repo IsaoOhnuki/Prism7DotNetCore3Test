@@ -1,7 +1,6 @@
 using MessageServiceLibrary.Models;
 using ModelLibrary.Constant;
 using ModelLibrary.Enumerate;
-using ModelLibrary.Service;
 using ModelLibrary.Services;
 using Prism.Services.Dialogs;
 

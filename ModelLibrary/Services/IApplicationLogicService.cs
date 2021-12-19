@@ -1,4 +1,4 @@
-﻿namespace ModelLibrary.Service
+﻿namespace ModelLibrary.Services
 {
     public interface IApplicationLogicService : IService
     {
