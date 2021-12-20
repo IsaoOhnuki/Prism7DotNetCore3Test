@@ -32,7 +32,7 @@
     </UserControl.Resources>
     <prism:Dialog.WindowStyle>
         <Style TargetType="Window">
-            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen"/>
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterOwner"/>
             <Setter Property="ResizeMode" Value="NoResize"/>
             <Setter Property="ShowInTaskbar" Value="False"/>
             <Setter Property="SizeToContent" Value="WidthAndHeight"/>
@@ -41,7 +41,7 @@
             <Setter Property="Clip" Value="{StaticResource regionClip}"/>
         </Style>
     </prism:Dialog.WindowStyle>
-    <Grid Background="{StaticResource ShadeBrush}">
+    <Grid>
         <md:MessageDialogControl Width="500" Height="300"
                                  ConfirmStyleButton="{Binding ConfirmStyleButton}"
                                  Title="{Binding Title}"
