@@ -33,4 +33,12 @@
         MainContent,
         OverwrapContent,
     }
+
+    public enum DialogNotifyStyle
+    {
+        Information,
+        Warning,
+        Error,
+        Confirm,
+    }
 }

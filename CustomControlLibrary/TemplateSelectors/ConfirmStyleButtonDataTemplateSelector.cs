@@ -1,5 +1,4 @@
-﻿using CustomControlLibrary.MessageDialog;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace CustomControlLibrary.TemplateSelectors
@@ -24,8 +23,6 @@ namespace CustomControlLibrary.TemplateSelectors
             {
                 return ApprovalStyleTemplate;
             }
-
-            return base.SelectTemplate(item, container);
         }
     }
 }

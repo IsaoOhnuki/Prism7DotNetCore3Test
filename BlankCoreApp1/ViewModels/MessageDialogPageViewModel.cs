@@ -1,6 +1,7 @@
 ﻿using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
+using MvvmServiceLibrary;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -53,6 +54,13 @@ namespace BlankCoreApp1.ViewModels
 
         public ICommand StopCommand { get; }
 
+        private DialogNotifyStyle _dialogNotifyStyle;
+        public DialogNotifyStyle DialogNotifyStyle
+        {
+            get => _dialogNotifyStyle;
+            set => SetProperty(ref _dialogNotifyStyle, value);
+        }
+
         private bool _confirmStyleButton;
         public bool ConfirmStyleButton
         {
@@ -100,6 +108,11 @@ namespace BlankCoreApp1.ViewModels
             if (messageInputModel.Exception == null)
             {
                 ConfirmStyleButton = messageInputModel.MessageDialogStyle == MessageDialogStyle.ConfirmMessage;
+                DialogNotifyStyle =
+                    messageInputModel.MessageDialogStyle == MessageDialogStyle.ErrorMessage ? DialogNotifyStyle.Error :
+                    messageInputModel.MessageDialogStyle == MessageDialogStyle.WarningMessage ? DialogNotifyStyle.Warning :
+                    messageInputModel.MessageDialogStyle == MessageDialogStyle.InformationMessage ? DialogNotifyStyle.Information :
+                    messageInputModel.MessageDialogStyle == MessageDialogStyle.ConfirmMessage ? DialogNotifyStyle.Confirm : DialogNotifyStyle.Information;
                 LeftButtonText = messageInputModel.LeftButtonCaption;
                 RightButtonText = messageInputModel.RightButtonCaption;
                 CenterButtonText = messageInputModel.CenterButtonText;
@@ -109,6 +122,7 @@ namespace BlankCoreApp1.ViewModels
             else
             {
                 ConfirmStyleButton = false;
+                DialogNotifyStyle = DialogNotifyStyle.Error;
                 Title = messageInputModel.Exception.GetType().Name;
                 Message = messageInputModel.Exception.Message;
 

@@ -12,7 +12,51 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
                 <ResourceDictionary>
-                    <DataTemplate x:Key="approvalStyle">
+                    <DataTemplate x:Key="informationStyleTitle">
+                        <bc:BaseImageLabelControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                                  Background="{StaticResource DialogInformationTitleBrush}"
+                                                  BorderThickness="0,0,0,0.5"
+                                                  BorderBrush="DarkGray"
+                                                  Foreground="{StaticResource DialogPanelBrush}"
+                                                  HorizontalAlignment="Stretch"
+                                                  HorizontalContentAlignment="Center"
+                                                  VerticalAlignment="Stretch"
+                                                  VerticalContentAlignment="Center"
+                                                  FontSize="{StaticResource TitleFontSize}"
+                                                  Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="warningStyleTitle">
+                        <bc:BaseImageLabelControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                                  Background="{StaticResource DialogWarningTitleBrush}"
+                                                  BorderThickness="0,0,0,0.5"
+                                                  BorderBrush="DarkGray"
+                                                  Foreground="{StaticResource DialogPanelBrush}"
+                                                  HorizontalAlignment="Stretch"
+                                                  HorizontalContentAlignment="Center"
+                                                  VerticalAlignment="Stretch"
+                                                  VerticalContentAlignment="Center"
+                                                  FontSize="{StaticResource TitleFontSize}"
+                                                  Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="errorStyleTitle">
+                        <bc:BaseImageLabelControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                                  Background="{StaticResource DialogErrorTitleBrush}"
+                                                  BorderThickness="0,0,0,0.5"
+                                                  BorderBrush="DarkGray"
+                                                  Foreground="{StaticResource DialogPanelBrush}"
+                                                  HorizontalAlignment="Stretch"
+                                                  HorizontalContentAlignment="Center"
+                                                  VerticalAlignment="Stretch"
+                                                  VerticalContentAlignment="Center"
+                                                  FontSize="{StaticResource TitleFontSize}"
+                                                  Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                    </DataTemplate>
+                    <templateSelector:DialogNotifyStyleDataTemplateSelector x:Key="DialogNotifyStyleDataTemplateSelector"
+                                                                            ConfirmStyleTemplate="{StaticResource informationStyleTitle}"
+                                                                            InformationStyleTemplate="{StaticResource informationStyleTitle}"
+                                                                            WarningStyleTemplate="{StaticResource warningStyleTitle}"
+                                                                            ErrorStyleTemplate="{StaticResource errorStyleTitle}"/>
+                    <DataTemplate x:Key="approvalStyleButton">
                         <bc:BaseButtonControl Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                                               Background="{StaticResource DialogPanelBrush}"
                                               BorderThickness="0,0.5,0,0"
@@ -26,7 +70,7 @@
                             </bc:BaseButtonControl.Content>
                         </bc:BaseButtonControl>
                     </DataTemplate>
-                    <DataTemplate x:Key="confirmStyle">
+                    <DataTemplate x:Key="confirmStyleButton">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -60,8 +104,8 @@
                         </Grid>
                     </DataTemplate>
                     <templateSelector:ConfirmStyleButtonDataTemplateSelector x:Key="ConfirmStyleButtonDataTemplateSelector"
-                                                                             ApprovalStyleTemplate="{StaticResource approvalStyle}"
-                                                                             ConfirmStyleTemplate="{StaticResource confirmStyle}"/>
+                                                                             ApprovalStyleTemplate="{StaticResource approvalStyleButton}"
+                                                                             ConfirmStyleTemplate="{StaticResource confirmStyleButton}"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -92,7 +136,11 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <bc:BaseImageLabelControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                <ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                d:ContentTemplate="{StaticResource errorStyleTitle}"
+                                Content="{Binding DialogNotifyStyle, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                ContentTemplateSelector="{StaticResource DialogNotifyStyleDataTemplateSelector}"/>
+                <!--<bc:BaseImageLabelControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                                           Background="{StaticResource DialogTitlePanelBrush}"
                                           BorderThickness="0,0,0,0.5"
                                           BorderBrush="DarkGray"
@@ -102,7 +150,7 @@
                                           VerticalAlignment="Stretch"
                                           VerticalContentAlignment="Center"
                                           FontSize="{StaticResource TitleFontSize}"
-                                          Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                          Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>-->
                 <bc:BaseTextBlockControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="20,20,20,20"
                                          FontSize="{StaticResource BaseFontSize}"
@@ -112,7 +160,7 @@
                                          VerticalContentAlignment="Center"
                                          Text="{Binding Message, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
                 <ContentControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                                d:ContentTemplate="{StaticResource approvalStyle}"
+                                d:ContentTemplate="{StaticResource approvalStyleButton}"
                                 Content="{Binding ConfirmStyleButton, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                 ContentTemplateSelector="{StaticResource ConfirmStyleButtonDataTemplateSelector}"/>
             </Grid>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using MvvmServiceLibrary;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -9,6 +10,19 @@ namespace CustomControlLibrary.MessageDialog
     /// </summary>
     public partial class MessageDialogControl : UserControl
     {
+        public DialogNotifyStyle DialogNotifyStyle
+        {
+            get => (DialogNotifyStyle)GetValue(DialogNotifyStyleProperty);
+            set => SetValue(DialogNotifyStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty DialogNotifyStyleProperty =
+            DependencyProperty.Register(
+                nameof(DialogNotifyStyle),
+                typeof(DialogNotifyStyle),
+                typeof(MessageDialogControl),
+                new PropertyMetadata(default(DialogNotifyStyle)));
+
         public object Title
         {
             get => (string)GetValue(TitleProperty);

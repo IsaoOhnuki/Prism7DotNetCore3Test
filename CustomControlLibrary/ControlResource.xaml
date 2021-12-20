@@ -6,6 +6,9 @@
     <Thickness x:Key="MessageDialogCornerRadius" Left="20" Top="20" Right="20" Bottom="20"/>
     <SolidColorBrush x:Key="DialogPanelBrush" Color="WhiteSmoke"/>
     <SolidColorBrush x:Key="DialogTitlePanelBrush" Color="LimeGreen"/>
+    <SolidColorBrush x:Key="DialogErrorTitleBrush" Color="Red"/>
+    <SolidColorBrush x:Key="DialogWarningTitleBrush" Color="LemonChiffon"/>
+    <SolidColorBrush x:Key="DialogInformationTitleBrush" Color="LimeGreen"/>
     <SolidColorBrush x:Key="ShadeBrush" Color="#7f000000"/>
     <SolidColorBrush x:Key="ButtonColor" Color="CornflowerBlue"/>
     <SolidColorBrush x:Key="ButtonBorderColor" Color="DarkBlue"/>

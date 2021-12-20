@@ -44,6 +44,7 @@
     <Grid>
         <md:MessageDialogControl Width="500" Height="300"
                                  ConfirmStyleButton="{Binding ConfirmStyleButton}"
+                                 DialogNotifyStyle="{Binding DialogNotifyStyle}"
                                  Title="{Binding Title}"
                                  Message="{Binding Message}"
                                  LeftButtonText="{Binding LeftButtonText}"
