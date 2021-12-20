@@ -1,6 +1,6 @@
-﻿using BlankCoreApp1.Views;
+﻿using BlankCoreApp1.Services;
+using BlankCoreApp1.Views;
 using ModelLibrary.Services;
-using MvvmServiceLibrary.WindowScreenHandler;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
@@ -21,12 +21,12 @@ namespace BlankCoreApp1
         {
             containerRegistry.RegisterDialog<MessageDialogPage>();
             containerRegistry.RegisterForNavigation<ShadeScreen>();
+            containerRegistry.RegisterSingleton<IMessageService, MessageService>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule<LogServiceModule.LogServiceModule>();
-            moduleCatalog.AddModule<MessageServiceModule.MessageServiceModule>();
             moduleCatalog.AddModule<ApplicationLogicServiceModule.ApplicationLogicServiceModule>();
             moduleCatalog.AddModule<AppricationViewModule.AppricationViewModule>();
         }

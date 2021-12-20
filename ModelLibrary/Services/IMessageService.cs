@@ -4,7 +4,7 @@ using Prism.Services.Dialogs;
 
 namespace ModelLibrary.Services
 {
-    public interface IMessageService : IService
+    public interface IMessageService
     {
         string GetMessage(MessageId messageId);
 

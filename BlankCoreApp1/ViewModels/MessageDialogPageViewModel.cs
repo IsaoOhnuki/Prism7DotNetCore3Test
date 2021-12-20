@@ -73,7 +73,8 @@ namespace BlankCoreApp1.ViewModels
 
         void TransitionGo()
         {
-            RequestClose(new DialogResult(ButtonResult.OK));
+            //RequestClose(new DialogResult(ButtonResult.OK));
+            throw new NotImplementedException();
         }
 
         void TransitionBack()
@@ -108,8 +109,19 @@ namespace BlankCoreApp1.ViewModels
             else
             {
                 ConfirmStyleButton = false;
-                Title = nameof(messageInputModel.Exception);
+                Title = messageInputModel.Exception.GetType().Name;
                 Message = messageInputModel.Exception.Message;
+
+                Exception innerException = messageInputModel.Exception.InnerException;
+                while (innerException != null)
+                {
+                    Message += "\rInnerException";
+                    Message += innerException.GetType().Name;
+                    Message += innerException.Message;
+
+                    innerException = innerException.InnerException;
+                }
+
                 CenterButtonText = MessageService.GetMessage(MessageId.CloseButtonCaption);
             }
         }

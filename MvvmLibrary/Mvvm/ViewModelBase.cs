@@ -49,7 +49,7 @@ namespace MvvmLibrary.Mvvm
 
         public abstract void PreviousInisiarizeView(NavigationParameters navigationParameters);
 
-        public virtual IDialogResult ShowMessage(string message, string title = null)
+        public virtual IDialogResult ShowMessage(string message, string title = null) 
         {
             MessageInputModel messageInput = new MessageInputModel
             {
