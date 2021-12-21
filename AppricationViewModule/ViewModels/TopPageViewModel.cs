@@ -1,8 +1,11 @@
 ﻿using ModelLibrary.Enumerate;
 using ModelLibrary.Services;
 using MvvmLibrary.Mvvm;
+using MvvmServiceLibrary;
 using Prism.Commands;
 using Prism.Regions;
+using Prism.Services.Dialogs;
+using System;
 using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
@@ -25,10 +28,13 @@ namespace AppricationViewModule.ViewModels
 
         public ICommand AcceptCommand { get; }
 
+        public ICommand ErrorCommand { get; }
+
         public TopPageViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService)
             : base(logService, regionManager, messageService)
         {
             AcceptCommand = new DelegateCommand(DoAccept, IsCanAccept);
+            ErrorCommand = new DelegateCommand(() => throw new Exception("Error", new Exception("Error", new Exception())), () => true);
 
             Text = nameof(TopPageViewModel);
             AcceptText = "GO";
@@ -36,8 +42,20 @@ namespace AppricationViewModule.ViewModels
 
         protected void DoAccept()
         {
-            ShowMessage(MessageService.GetMessage(MessageId.SuccessMessage),
+            IDialogResult result = ShowMessage(MessageService.GetMessage(MessageId.ConfirmMessageTitle),
                 MessageService.GetMessage(MessageId.InformationMessageTitle));
+            if (result.Result == ButtonResult.OK)
+            {
+                DoTransitionPage(GetViewName(), ViewConst.ViewPage_ViewA);
+            }
+            else if (result.Result == ButtonResult.Cancel)
+            {
+
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         protected bool IsCanAccept()

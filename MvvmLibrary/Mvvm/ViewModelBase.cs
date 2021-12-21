@@ -16,7 +16,7 @@ namespace MvvmLibrary.Mvvm
 
         protected IRegionManager RegionManager { get; private set; }
 
-        protected IMessageService MessageService;
+        protected IMessageService MessageService { get; set; }
 
         public string PreviousView { get; set; }
 
@@ -61,20 +61,8 @@ namespace MvvmLibrary.Mvvm
                 RightButtonCaption = MessageService.GetMessage(MessageId.OkButtonCaption),
                 CenterButtonText = MessageService.GetMessage(MessageId.CloseButtonCaption),
             };
-            RegionManager.RequestNavigate(ViewConst.MainViewRegion_OverwrapContent, ViewConst.ViewPage_ShadeScreen, new NavigationParameters());
-            MessageShowing = true;
             IDialogResult result = MessageService.ShowMessage(messageInput);
-            MessageShowing = false;
-            RegionManager.Regions[ViewConst.MainViewRegion_OverwrapContent].RemoveAll();
             return result;
-        }
-
-        private bool _messageShowing;
-
-        public bool MessageShowing
-        {
-            get => _messageShowing;
-            private set => SetProperty(ref _messageShowing, value);
         }
 
         public virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)

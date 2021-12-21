@@ -5,7 +5,7 @@
              xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:md="clr-namespace:CustomControlLibrary.MessageDialog;assembly=CustomControlLibrary"
-             xmlns:cnv="clr-namespace:MvvmServiceLibrary.Converter;assembly=MvvmServiceLibrary"
+             xmlns:cnv="clr-namespace:CustomControlLibrary.Converter;assembly=CustomControlLibrary"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
              av:DesignWidth="782.957" av:DesignHeight="537.577">
@@ -43,15 +43,14 @@
     </prism:Dialog.WindowStyle>
     <Grid>
         <md:MessageDialogControl Width="500" Height="300"
-                                 ConfirmStyleButton="{Binding ConfirmStyleButton}"
                                  DialogNotifyStyle="{Binding DialogNotifyStyle}"
                                  Title="{Binding Title}"
                                  Message="{Binding Message}"
                                  LeftButtonText="{Binding LeftButtonText}"
                                  RightButtonText="{Binding RightButtonText}"
                                  CenterButtonText="{Binding CenterButtonText}"
-                                 LeftButtonCommand="{Binding BackCommand}"
-                                 RightButtonCommand="{Binding GoCommand}"
-                                 CenterButtonCommand="{Binding StopCommand}"/>
+                                 LeftButtonCommand="{Binding CancelCommand}"
+                                 RightButtonCommand="{Binding OkCommand}"
+                                 CenterButtonCommand="{Binding CloseCommand}"/>
     </Grid>
 </UserControl>

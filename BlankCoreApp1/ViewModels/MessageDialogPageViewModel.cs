@@ -5,56 +5,16 @@ using ModelLibrary.Services;
 using MvvmServiceLibrary;
 using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
+using System.Globalization;
 using System.Windows.Input;
 
 namespace BlankCoreApp1.ViewModels
 {
     public class MessageDialogPageViewModel : BindableBase, IDialogAware
     {
-        private string _title;
-        public string Title
-        {
-            get => _title;
-            set => SetProperty(ref _title, value);
-        }
-
-        private string _message;
-        public string Message
-        {
-            get => _message;
-            set => SetProperty(ref _message, value);
-        }
-
-        private string _leftButtonText;
-        public string LeftButtonText
-        {
-            get => _leftButtonText;
-            set => SetProperty(ref _leftButtonText, value);
-        }
-
-        private string _rightButtonText;
-        public string RightButtonText
-        {
-            get => _rightButtonText;
-            set => SetProperty(ref _rightButtonText, value);
-        }
-
-        private string _centerButtonText;
-        public string CenterButtonText
-        {
-            get => _centerButtonText;
-            set => SetProperty(ref _centerButtonText, value);
-        }
-
-        public ICommand BackCommand { get; }
-
-
-        public ICommand GoCommand { get; }
-
-        public ICommand StopCommand { get; }
-
         private DialogNotifyStyle _dialogNotifyStyle;
         public DialogNotifyStyle DialogNotifyStyle
         {
@@ -62,33 +22,59 @@ namespace BlankCoreApp1.ViewModels
             set => SetProperty(ref _dialogNotifyStyle, value);
         }
 
-        private bool _confirmStyleButton;
-        public bool ConfirmStyleButton
+        private string _title = "MessageDialogPage";
+        public string Title
         {
-            get => _confirmStyleButton;
-            set => SetProperty(ref _confirmStyleButton, value);
+            get => _title;
+            set => SetProperty(ref _title, value);
         }
+
+        private string _message = "Message";
+        public string Message
+        {
+            get => _message;
+            set => SetProperty(ref _message, value);
+        }
+
+        private string _leftButtonText = "LeftButtonText";
+        public string LeftButtonText
+        {
+            get => _leftButtonText;
+            set => SetProperty(ref _leftButtonText, value);
+        }
+
+        private string _rightButtonText = "RightButtonText";
+        public string RightButtonText
+        {
+            get => _rightButtonText;
+            set => SetProperty(ref _rightButtonText, value);
+        }
+
+        private string _centerButtonText = "CenterButtonText";
+        public string CenterButtonText
+        {
+            get => _centerButtonText;
+            set => SetProperty(ref _centerButtonText, value);
+        }
+
+        public ICommand CancelCommand { get; }
+
+        public ICommand OkCommand { get; }
+
+        public ICommand CloseCommand { get; }
 
         public IMessageService MessageService { get; }
 
-        public MessageDialogPageViewModel(IMessageService messageService)
+        public IRegionManager RegionManager { get; }
+
+        public MessageDialogPageViewModel(IMessageService messageService, IRegionManager regionManager)
         {
             MessageService = messageService;
+            RegionManager = regionManager;
 
-            GoCommand = new DelegateCommand(TransitionGo);
-            BackCommand = new DelegateCommand(TransitionBack);
-            StopCommand = new DelegateCommand(TransitionBack);
-        }
-
-        void TransitionGo()
-        {
-            //RequestClose(new DialogResult(ButtonResult.OK));
-            throw new NotImplementedException();
-        }
-
-        void TransitionBack()
-        {
-            RequestClose(new DialogResult(ButtonResult.Cancel));
+            OkCommand = new DelegateCommand(() => RequestClose(new DialogResult(ButtonResult.OK)));
+            CancelCommand = new DelegateCommand(() => RequestClose(new DialogResult(ButtonResult.Cancel)));
+            CloseCommand = new DelegateCommand(() => RequestClose(new DialogResult(ButtonResult.None)));
         }
 
         public event Action<IDialogResult> RequestClose;
@@ -100,29 +86,40 @@ namespace BlankCoreApp1.ViewModels
 
         public void OnDialogClosed()
         {
+            RegionManager.Regions[ViewConst.MainViewRegion_OverwrapContent].RemoveAll();
         }
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            RegionManager.RequestNavigate(ViewConst.MainViewRegion_OverwrapContent, ViewConst.ViewPage_ShadeScreen, new NavigationParameters());
+
             MessageInputModel messageInputModel = parameters.GetValue<MessageInputModel>(nameof(MessageInputModel));
 
             if (messageInputModel.Exception == null)
             {
-                ConfirmStyleButton = messageInputModel.MessageDialogStyle == MessageDialogStyle.ConfirmMessage;
-                DialogNotifyStyle =
-                    messageInputModel.MessageDialogStyle == MessageDialogStyle.ErrorMessage ? DialogNotifyStyle.Error :
-                    messageInputModel.MessageDialogStyle == MessageDialogStyle.WarningMessage ? DialogNotifyStyle.Warning :
-                    messageInputModel.MessageDialogStyle == MessageDialogStyle.InformationMessage ? DialogNotifyStyle.Information :
-                    messageInputModel.MessageDialogStyle == MessageDialogStyle.ConfirmMessage ? DialogNotifyStyle.Confirm : DialogNotifyStyle.Information;
+                DialogNotifyStyle = messageInputModel.MessageDialogStyle switch
+                {
+                    MessageDialogStyle.ErrorMessage => DialogNotifyStyle.Error,
+                    MessageDialogStyle.WarningMessage => DialogNotifyStyle.Warning,
+                    MessageDialogStyle.InformationMessage => DialogNotifyStyle.Information,
+                    MessageDialogStyle.ConfirmMessage => DialogNotifyStyle.Confirm,
+                    _ => throw new NotImplementedException(),
+                };
                 LeftButtonText = messageInputModel.LeftButtonCaption;
                 RightButtonText = messageInputModel.RightButtonCaption;
                 CenterButtonText = messageInputModel.CenterButtonText;
-                Message = messageInputModel.Message;
+                if (messageInputModel.MessageParameter != null)
+                {
+                    Message = string.Format(CultureInfo.CurrentCulture, messageInputModel.Message, messageInputModel.MessageParameter.ToArray());
+                }
+                else
+                {
+                    Message = messageInputModel.Message;
+                }
                 Title = messageInputModel.Title;
             }
             else
             {
-                ConfirmStyleButton = false;
                 DialogNotifyStyle = DialogNotifyStyle.Error;
                 Title = messageInputModel.Exception.GetType().Name;
                 Message = messageInputModel.Exception.Message;
@@ -130,9 +127,10 @@ namespace BlankCoreApp1.ViewModels
                 Exception innerException = messageInputModel.Exception.InnerException;
                 while (innerException != null)
                 {
-                    Message += "\rInnerException";
-                    Message += innerException.GetType().Name;
-                    Message += innerException.Message;
+                    Message += "\r\n";
+                    Message += "InnerException\r\n";
+                    Message += innerException.GetType().Name + "\r\n";
+                    Message += innerException.Message + "\r\n";
 
                     innerException = innerException.InnerException;
                 }

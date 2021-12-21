@@ -21,9 +21,14 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <bc:BaseLabelControl Grid.Row="0" Grid.Column="1" Text="{Binding Text}"/>
+        <btn:CommandButton Grid.Row="1" Grid.Column="0"
+                           Margin="10,10,10,10"
+                           Text="Error"
+                           Command="{Binding ErrorCommand}"/>
         <btn:CommandButton Grid.Row="1" Grid.Column="2"
-                          Margin="10,10,10,10"
-                          Text="{Binding AcceptText}"
-                          Command="{Binding AcceptCommand}"/>
+                           Margin="10,10,10,10"
+                           Text="{Binding AcceptText}"
+                           Command="{Binding AcceptCommand}"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="124,61,0,0" Grid.Row="1" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

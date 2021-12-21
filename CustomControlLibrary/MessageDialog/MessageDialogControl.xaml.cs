@@ -20,7 +20,16 @@ namespace CustomControlLibrary.MessageDialog
                 nameof(DialogNotifyStyle),
                 typeof(DialogNotifyStyle),
                 typeof(MessageDialogControl),
-                new PropertyMetadata(default(DialogNotifyStyle)));
+                new PropertyMetadata(
+                    default(DialogNotifyStyle),
+                    (d, e) =>
+                    {
+                        if (d is MessageDialogControl control)
+                        {
+                            DialogNotifyStyle dialogNotifyStyle = (DialogNotifyStyle)e.NewValue;
+                            control.ConfirmStyleButton = dialogNotifyStyle == DialogNotifyStyle.Confirm;
+                        }
+                    }));
 
         public object Title
         {
@@ -126,13 +135,13 @@ namespace CustomControlLibrary.MessageDialog
                 typeof(MessageDialogControl),
                 new PropertyMetadata(default(ICommand)));
 
-        public bool ConfirmStyleButton
+        internal bool ConfirmStyleButton
         {
             get => (bool)GetValue(ConfirmStyleButtonProperty);
             set => SetValue(ConfirmStyleButtonProperty, value);
         }
 
-        public static readonly DependencyProperty ConfirmStyleButtonProperty =
+        internal static readonly DependencyProperty ConfirmStyleButtonProperty =
             DependencyProperty.Register(
                 nameof(ConfirmStyleButton),
                 typeof(bool),
