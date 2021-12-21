@@ -49,14 +49,14 @@ namespace MvvmLibrary.Mvvm
 
         public abstract void PreviousInisiarizeView(NavigationParameters navigationParameters);
 
-        public virtual IDialogResult ShowMessage(string message, string title = null) 
+        public virtual IDialogResult ShowMessage(MessageDialogStyle messageDialogStyle, string message, string title = null)
         {
             MessageInputModel messageInput = new MessageInputModel
             {
                 Title = title ?? MessageService.GetMessage(MessageId.ConfirmMessageTitle),
                 Message = message,
                 MessageDialogName = ViewConst.ViewPage_MessageDialogPage,
-                MessageDialogStyle = MessageDialogStyle.ConfirmMessage,
+                MessageDialogStyle = messageDialogStyle,
                 LeftButtonCaption = MessageService.GetMessage(MessageId.CancelButtonCaption),
                 RightButtonCaption = MessageService.GetMessage(MessageId.OkButtonCaption),
                 CenterButtonText = MessageService.GetMessage(MessageId.CloseButtonCaption),

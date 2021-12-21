@@ -42,7 +42,8 @@ namespace AppricationViewModule.ViewModels
 
         protected void DoAccept()
         {
-            IDialogResult result = ShowMessage(MessageService.GetMessage(MessageId.ConfirmMessageTitle),
+            IDialogResult result = ShowMessage(MessageDialogStyle.ConfirmMessage,
+                MessageService.GetMessage(MessageId.ConfirmMessageTitle),
                 MessageService.GetMessage(MessageId.InformationMessageTitle));
             if (result.Result == ButtonResult.OK)
             {

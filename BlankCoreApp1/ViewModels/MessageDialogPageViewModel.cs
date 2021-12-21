@@ -122,7 +122,7 @@ namespace BlankCoreApp1.ViewModels
             {
                 DialogNotifyStyle = DialogNotifyStyle.Error;
                 Title = messageInputModel.Exception.GetType().Name;
-                Message = messageInputModel.Exception.Message;
+                Message = messageInputModel.Exception.Message + "\r\n";
 
                 Exception innerException = messageInputModel.Exception.InnerException;
                 while (innerException != null)

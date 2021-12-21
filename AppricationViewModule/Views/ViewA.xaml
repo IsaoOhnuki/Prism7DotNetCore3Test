@@ -13,17 +13,28 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <bc:BaseLabelControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                             Text="{Binding Message}"/>
+        <btn:CommandButton Grid.Row="1" Grid.Column="0"
+                           Margin="10,10,10,10"
+                           Text="Error"
+                           Command="{Binding ErrorCommand}"/>
         <btn:CommandButton Grid.Row="1" Grid.Column="1"
                            Margin="10,10,10,10"
-                           Text="{Binding AcceptText}"
+                           Text="Warning"
+                           Command="{Binding WarningCommand}"/>
+        <btn:CommandButton Grid.Row="1" Grid.Column="2"
+                           Margin="10,10,10,10"
+                           Text="Information"
+                           Command="{Binding InformationCommand}"/>
+        <btn:CommandButton Grid.Row="2" Grid.Column="2"
+                           Margin="10,10,10,10"
+                           Text="戻る"
                            Command="{Binding BackCommand}"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>
