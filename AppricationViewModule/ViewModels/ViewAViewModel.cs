@@ -13,8 +13,6 @@ namespace AppricationViewModule.ViewModels
 
         public ICommand BackCommand { get; }
 
-        protected IMessageService MessageService { get; private set; }
-
         public ViewAViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService)
             : base(logService, regionManager, messageService)
         {

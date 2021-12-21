@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ApplicationLogicServiceLibrary\ApplicationLogicServiceModule.csproj" />
     <ProjectReference Include="..\AppricationViewModule\AppricationViewModule.csproj" />
+    <ProjectReference Include="..\CustomControlLibrary\CustomControlLibrary.csproj" />
     <ProjectReference Include="..\LogServiceLibrary\LogServiceLibrary.csproj" />
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
     <ProjectReference Include="..\MvvmLibrary\MvvmServiceLibrary.csproj" />

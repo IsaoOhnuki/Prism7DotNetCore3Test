@@ -1,5 +1,4 @@
-﻿using MvvmServiceLibrary;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace CustomControlLibrary.TemplateSelectors

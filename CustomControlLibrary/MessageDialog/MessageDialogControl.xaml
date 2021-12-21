@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:cnv="clr-namespace:MvvmServiceLibrary.Converter;assembly=MvvmServiceLibrary"
+             xmlns:cnv="clr-namespace:CustomControlLibrary.Converter"
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
              xmlns:templateSelector="clr-namespace:CustomControlLibrary.TemplateSelectors"
              mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="300">

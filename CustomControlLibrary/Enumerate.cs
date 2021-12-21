@@ -1,4 +1,4 @@
-﻿namespace MvvmServiceLibrary
+﻿namespace CustomControlLibrary
 {
     public enum CrossAlignment
     {
