@@ -1,3 +1,4 @@
+using AppricationViewModule;
 using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
@@ -23,7 +24,7 @@ namespace BlankCoreApp1.Services
         {
             IDialogResult dialogResult = null;
             DialogService.ShowDialog(
-                messageInputModel.MessageDialogName,
+                ViewConst.ViewPage_MessageDialogPage,
                 new DialogParameters
                 {
                     { nameof(MessageInputModel), messageInputModel },

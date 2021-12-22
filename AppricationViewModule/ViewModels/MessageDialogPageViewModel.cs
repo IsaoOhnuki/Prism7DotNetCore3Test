@@ -11,7 +11,7 @@ using System;
 using System.Globalization;
 using System.Windows.Input;
 
-namespace BlankCoreApp1.ViewModels
+namespace AppricationViewModule.ViewModels
 {
     public class MessageDialogPageViewModel : BindableBase, IDialogAware
     {

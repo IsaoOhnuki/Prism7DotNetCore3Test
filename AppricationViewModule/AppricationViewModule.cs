@@ -22,6 +22,8 @@ namespace AppricationViewModule
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterDialog<MessageDialogPage>();
+            containerRegistry.RegisterForNavigation<ShadeScreen>();
             containerRegistry.RegisterForNavigation<TopPage>();
             containerRegistry.RegisterForNavigation<ViewA>();
         }

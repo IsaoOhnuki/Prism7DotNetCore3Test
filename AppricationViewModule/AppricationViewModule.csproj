@@ -9,7 +9,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomControlLibrary\CustomControlLibrary.csproj" />
-    <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
     <ProjectReference Include="..\MvvmLibrary\MvvmServiceLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>

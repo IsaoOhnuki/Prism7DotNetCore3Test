@@ -5,14 +5,14 @@
     <sys:Double x:Key="BT_Width">120</sys:Double>
     <Thickness x:Key="MessageDialogCornerRadius" Left="20" Top="20" Right="20" Bottom="20"/>
     <SolidColorBrush x:Key="DialogPanelBrush" Color="WhiteSmoke"/>
-    <SolidColorBrush x:Key="DialogTitlePanelBrush" Color="#FF00E600"/>
-    <SolidColorBrush x:Key="DialogErrorTitleBrush" Color="#FFE60000"/>
-    <SolidColorBrush x:Key="DialogWarningTitleBrush" Color="#FFE6E600"/>
-    <SolidColorBrush x:Key="DialogInformationTitleBrush" Color="#FF00E600"/>
+    <SolidColorBrush x:Key="DialogTitlePanelBrush" Color="#FF4CBD56"/>
+    <SolidColorBrush x:Key="DialogErrorTitleBrush" Color="#FFD0707C"/>
+    <SolidColorBrush x:Key="DialogWarningTitleBrush" Color="#FFF3D041"/>
+    <SolidColorBrush x:Key="DialogInformationTitleBrush" Color="#FF4CBD56"/>
     <SolidColorBrush x:Key="ShadeBrush" Color="#CC000000"/>
     <SolidColorBrush x:Key="ButtonColor" Color="CornflowerBlue"/>
     <SolidColorBrush x:Key="ButtonBorderColor" Color="DarkBlue"/>
-    <SolidColorBrush x:Key="OkButtonColor" Color="#FF00E600"/>
+    <SolidColorBrush x:Key="OkButtonColor" Color="#FF4CBD56"/>
     <SolidColorBrush x:Key="CancelButtonColor" Color="LightSteelBlue"/>
     <Thickness x:Key="ButtonBorderThickness" Left="1" Top="1" Right="1" Bottom="1"/>
 

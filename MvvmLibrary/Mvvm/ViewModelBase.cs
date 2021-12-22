@@ -35,14 +35,14 @@ namespace MvvmLibrary.Mvvm
             return vmName.Substring(0, vmName.IndexOf("ViewModel"));
         }
 
-        public void DoTransitionPage(string fromPage, string toPage)
+        public void DoTransitionPage(string contentRegion, string fromPage, string toPage)
         {
             NavigationParameters navigationParam = new NavigationParameters
             {
-                { ViewConst.NavigationParameterKey_PreviousView, fromPage },
-                { ViewConst.NavigationParameterKey_TransitionView, toPage },
+                { MvvmConst.NavigationParameterKey_PreviousView, fromPage },
+                { MvvmConst.NavigationParameterKey_TransitionView, toPage },
             };
-            RegionManager.RequestNavigate(ViewConst.MainViewRegion_Content, toPage, navigationParam);
+            RegionManager.RequestNavigate(contentRegion, toPage, navigationParam);
         }
 
         public abstract void InisiarizeView(NavigationParameters navigationParameters);
@@ -55,7 +55,6 @@ namespace MvvmLibrary.Mvvm
             {
                 Title = title ?? MessageService.GetMessage(MessageId.ConfirmMessageTitle),
                 Message = message,
-                MessageDialogName = ViewConst.ViewPage_MessageDialogPage,
                 MessageDialogStyle = messageDialogStyle,
                 LeftButtonCaption = MessageService.GetMessage(MessageId.CancelButtonCaption),
                 RightButtonCaption = MessageService.GetMessage(MessageId.OkButtonCaption),
@@ -89,8 +88,8 @@ namespace MvvmLibrary.Mvvm
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             // 遷移パラメータを取得する
-            TransitionView = navigationContext.Parameters[ViewConst.NavigationParameterKey_TransitionView] as string;
-            PreviousView = navigationContext.Parameters[ViewConst.NavigationParameterKey_PreviousView] as string;
+            TransitionView = navigationContext.Parameters[MvvmConst.NavigationParameterKey_TransitionView] as string;
+            PreviousView = navigationContext.Parameters[MvvmConst.NavigationParameterKey_PreviousView] as string;
 
             InisiarizeView(navigationContext.Parameters);
         }

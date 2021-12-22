@@ -19,8 +19,6 @@ namespace BlankCoreApp1
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterDialog<MessageDialogPage>();
-            containerRegistry.RegisterForNavigation<ShadeScreen>();
             containerRegistry.RegisterSingleton<IMessageService, MessageService>();
         }
 

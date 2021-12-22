@@ -13,21 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ApplicationLogicServiceLibrary\ApplicationLogicServiceModule.csproj" />
     <ProjectReference Include="..\AppricationViewModule\AppricationViewModule.csproj" />
-    <ProjectReference Include="..\CustomControlLibrary\CustomControlLibrary.csproj" />
-    <ProjectReference Include="..\LogServiceLibrary\LogServiceLibrary.csproj" />
+    <ProjectReference Include="..\LogServiceLibrary\LogServiceModule.csproj" />
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
-    <ProjectReference Include="..\MvvmLibrary\MvvmServiceLibrary.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Views\MessageDialogPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Views\MessageDialogPage.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

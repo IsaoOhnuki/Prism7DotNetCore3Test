@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace BlankCoreApp1.Views
+namespace AppricationViewModule.Views
 {
     /// <summary>
     /// Interaction logic for ShadeScreen

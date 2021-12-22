@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BlankCoreApp1.ViewModels
+namespace AppricationViewModule.ViewModels
 {
     public class ShadeScreenViewModel : ViewModelBase
     {

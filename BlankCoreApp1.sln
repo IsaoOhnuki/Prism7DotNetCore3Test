@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmServiceLibrary", "MvvmL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationLogicServiceModule", "ApplicationLogicServiceLibrary\ApplicationLogicServiceModule.csproj", "{055522DC-B32E-4675-B94C-726AA0D0FB9D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogServiceLibrary", "LogServiceLibrary\LogServiceLibrary.csproj", "{EAB86152-77DC-4AF7-AB0A-AD8CDA08BA83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogServiceModule", "LogServiceLibrary\LogServiceModule.csproj", "{EAB86152-77DC-4AF7-AB0A-AD8CDA08BA83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -47,7 +47,7 @@ namespace AppricationViewModule.ViewModels
                 MessageService.GetMessage(MessageId.InformationMessageTitle));
             if (result.Result == ButtonResult.OK)
             {
-                DoTransitionPage(GetViewName(), ViewConst.ViewPage_ViewA);
+                DoTransitionPage(ViewConst.MainViewRegion_Content, GetViewName(), ViewConst.ViewPage_ViewA);
             }
             else if (result.Result == ButtonResult.Cancel)
             {

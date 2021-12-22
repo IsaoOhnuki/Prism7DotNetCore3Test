@@ -1,6 +1,6 @@
-﻿using ModelLibrary.InputModels;
+﻿using AppricationViewModule;
+using ModelLibrary.InputModels;
 using ModelLibrary.Services;
-using MvvmServiceLibrary;
 using Prism.Mvvm;
 using System.Windows;
 
@@ -35,7 +35,6 @@ namespace BlankCoreApp1.ViewModels
         {
             MessageInputModel messageInputModel = new MessageInputModel()
             {
-                MessageDialogName = ViewConst.ViewPage_MessageDialogPage,
                 Exception = e.Exception,
             };
             MessageService.ShowMessage(messageInputModel);

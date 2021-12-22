@@ -7,8 +7,6 @@ namespace ModelLibrary.InputModels
 {
     public class MessageInputModel
     {
-        public string MessageDialogName { get; set; }
-
         public MessageDialogStyle MessageDialogStyle { get; set; }
 
         public string Title { get; set; }
