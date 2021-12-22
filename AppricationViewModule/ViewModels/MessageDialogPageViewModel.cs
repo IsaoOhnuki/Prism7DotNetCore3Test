@@ -1,8 +1,8 @@
-﻿using CustomControlLibrary;
+﻿using AppricationViewModule.Views;
+using CustomControlLibrary;
 using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
-using MvvmServiceLibrary;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -91,7 +91,7 @@ namespace AppricationViewModule.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            RegionManager.RequestNavigate(ContentViewType.MainWindowOverwrapContent.ToString(), ViewConst.ViewPage_ShadeScreen, new NavigationParameters());
+            RegionManager.RequestNavigate(ContentViewType.MainWindowOverwrapContent.ToString(), nameof(ShadeScreen), new NavigationParameters());
 
             MessageInputModel messageInputModel = parameters.GetValue<MessageInputModel>(nameof(MessageInputModel));
 

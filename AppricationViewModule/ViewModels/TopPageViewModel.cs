@@ -1,4 +1,5 @@
-﻿using ModelLibrary.Enumerate;
+﻿using AppricationViewModule.Views;
+using ModelLibrary.Enumerate;
 using ModelLibrary.Services;
 using MvvmLibrary.Mvvm;
 using Prism.Commands;
@@ -46,7 +47,7 @@ namespace AppricationViewModule.ViewModels
                 MessageService.GetMessage(MessageId.InformationMessageTitle));
             if (result.Result == ButtonResult.OK)
             {
-                DoTransitionPage(ContentViewType.MainWindowContent.ToString(), GetViewName(), ViewConst.ViewPage_ViewA);
+                DoTransitionPage(ContentViewType.MainWindowContent.ToString(), GetViewName(), nameof(ViewA));
             }
             else if (result.Result == ButtonResult.Cancel)
             {

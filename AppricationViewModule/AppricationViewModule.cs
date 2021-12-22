@@ -25,7 +25,7 @@ namespace AppricationViewModule
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            RegionManager.RequestNavigate(ContentViewType.MainWindowContent.ToString(), ViewConst.ViewPage_TopPage);
+            RegionManager.RequestNavigate(ContentViewType.MainWindowContent.ToString(), nameof(TopPage));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
