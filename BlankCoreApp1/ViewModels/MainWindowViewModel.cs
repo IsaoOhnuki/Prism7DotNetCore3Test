@@ -36,7 +36,7 @@ namespace BlankCoreApp1.ViewModels
             Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
         }
 
-        private void ViewElementRegister_OnRegistElement(FrameworkElement element)
+        private void ViewElementRegister_OnRegistElement(string elementName, FrameworkElement element)
         {
             if (element is IAddChild parent)
             {

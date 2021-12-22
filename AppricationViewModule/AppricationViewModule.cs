@@ -4,6 +4,7 @@ using ModelLibrary.Services;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using System.Windows.Controls;
 
 namespace AppricationViewModule
 {
@@ -20,12 +21,16 @@ namespace AppricationViewModule
             RegionManager = regionManager;
             ContentViewService = contentViewService;
             MessageService = messageService;
-            messageService.SetMessageDialog(nameof(MessageDialogPage));
+
+            ContentControl mainContent = new ContentControl();
+            ContentViewService.GetWindowContent(ContentViewType.MainWindowContent).Content = mainContent;
+            mainContent.SetValue(Prism.Regions.RegionManager.RegionNameProperty, AppViewConst.ContentRegion_AppViewMainContent);
+            MessageService.SetMessageDialog(nameof(MessageDialogPage));
         }
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            RegionManager.RequestNavigate(ContentViewType.MainWindowContent.ToString(), nameof(TopPage));
+            RegionManager.RequestNavigate(AppViewConst.ContentRegion_AppViewMainContent, nameof(TopPage));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

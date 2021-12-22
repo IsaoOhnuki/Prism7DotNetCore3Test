@@ -6,7 +6,7 @@ namespace BlankCoreApp1.Behavior
 {
     public static class ViewElementRegister
     {
-        public static event Action<FrameworkElement> OnRegistElement;
+        public static event Action<string, FrameworkElement> OnRegistElement;
 
         public static Dictionary<string, FrameworkElement> ContentElements { get; } = new Dictionary<string, FrameworkElement>();
 
@@ -21,8 +21,9 @@ namespace BlankCoreApp1.Behavior
                     {
                         if (d is FrameworkElement element)
                         {
-                            ContentElements.Add(e.NewValue.ToString(), element);
-                            OnRegistElement?.Invoke(element);
+                            string elementName = e.NewValue.ToString();
+                            ContentElements.Add(elementName, element);
+                            OnRegistElement?.Invoke(elementName, element);
                         }
                     }));
 

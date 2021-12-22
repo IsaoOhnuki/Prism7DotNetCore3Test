@@ -40,7 +40,7 @@ namespace AppricationViewModule.ViewModels
                     MessageService.GetMessage(MessageId.SuccessMessage),
                     MessageService.GetMessage(MessageId.InformationMessageTitle));
             });
-            BackCommand = new DelegateCommand(() => DoTransitionPage(ContentViewType.MainWindowContent.ToString(), GetViewName(), nameof(TopPage)));
+            BackCommand = new DelegateCommand(() => DoTransitionPage(AppViewConst.ContentRegion_AppViewMainContent, GetViewName(), nameof(TopPage)));
         }
 
         public override void InisiarizeView(NavigationParameters navigationParameters)
