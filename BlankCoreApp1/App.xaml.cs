@@ -20,6 +20,7 @@ namespace BlankCoreApp1
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IMessageService, MessageService>();
+            containerRegistry.RegisterSingleton<IContentViewService, ContentViewService>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

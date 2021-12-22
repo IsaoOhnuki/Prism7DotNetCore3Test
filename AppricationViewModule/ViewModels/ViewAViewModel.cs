@@ -1,8 +1,6 @@
-﻿using ModelLibrary.Constant;
-using ModelLibrary.Enumerate;
+﻿using ModelLibrary.Enumerate;
 using ModelLibrary.Services;
 using MvvmLibrary.Mvvm;
-using MvvmServiceLibrary;
 using Prism.Commands;
 using Prism.Regions;
 using System.Windows.Input;
@@ -41,7 +39,7 @@ namespace AppricationViewModule.ViewModels
                     MessageService.GetMessage(MessageId.SuccessMessage),
                     MessageService.GetMessage(MessageId.InformationMessageTitle));
             });
-            BackCommand = new DelegateCommand(() => DoTransitionPage(ViewConst.MainViewRegion_Content, GetViewName(), ViewConst.ViewPage_TopPage));
+            BackCommand = new DelegateCommand(() => DoTransitionPage(ContentViewType.MainWindowContent.ToString(), GetViewName(), ViewConst.ViewPage_TopPage));
         }
 
         public override void InisiarizeView(NavigationParameters navigationParameters)

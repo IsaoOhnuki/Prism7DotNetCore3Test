@@ -4,13 +4,12 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:behavior="clr-namespace:BlankCoreApp1.Behavior"
         mc:Ignorable="av"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}"
         av:DesignWidth="500"
         av:DesignHeight="300">
-    <Grid>
-        <ContentControl prism:RegionManager.RegionName="{Binding ContentRegionName}"/>
-        <ContentControl prism:RegionManager.RegionName="{Binding OverwrapRegionName}"/>
+    <Grid behavior:ViewElementRegister.Element="MainWindowContent">
     </Grid>
 </Window>

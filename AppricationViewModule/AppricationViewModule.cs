@@ -1,5 +1,6 @@
 ﻿using AppricationViewModule.Views;
-using MvvmServiceLibrary;
+using ModelLibrary.Enumerate;
+using ModelLibrary.Services;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -10,14 +11,14 @@ namespace AppricationViewModule
     {
         public IRegionManager RegionManager { get; }
 
-        public AppricationViewModule(IRegionManager regionManager)
+        public AppricationViewModule(IRegionManager regionManager, IContentViewService contentViewService)
         {
             RegionManager = regionManager;
         }
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            RegionManager.RequestNavigate(ViewConst.MainViewRegion_Content, ViewConst.ViewPage_TopPage);
+            RegionManager.RequestNavigate(ContentViewType.MainWindowContent.ToString(), ViewConst.ViewPage_TopPage);
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

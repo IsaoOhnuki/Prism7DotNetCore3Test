@@ -86,12 +86,12 @@ namespace AppricationViewModule.ViewModels
 
         public void OnDialogClosed()
         {
-            RegionManager.Regions[ViewConst.MainViewRegion_OverwrapContent].RemoveAll();
+            RegionManager.Regions[ContentViewType.MainWindowOverwrapContent.ToString()].RemoveAll();
         }
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            RegionManager.RequestNavigate(ViewConst.MainViewRegion_OverwrapContent, ViewConst.ViewPage_ShadeScreen, new NavigationParameters());
+            RegionManager.RequestNavigate(ContentViewType.MainWindowOverwrapContent.ToString(), ViewConst.ViewPage_ShadeScreen, new NavigationParameters());
 
             MessageInputModel messageInputModel = parameters.GetValue<MessageInputModel>(nameof(MessageInputModel));
 
