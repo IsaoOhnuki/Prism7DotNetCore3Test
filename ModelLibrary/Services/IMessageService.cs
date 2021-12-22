@@ -6,6 +6,8 @@ namespace ModelLibrary.Services
 {
     public interface IMessageService
     {
+        void SetMessageDialog(string dialog);
+
         string GetMessage(MessageId messageId);
 
         IDialogResult ShowMessage(MessageInputModel messageInputModel);

@@ -11,9 +11,16 @@ namespace AppricationViewModule
     {
         public IRegionManager RegionManager { get; }
 
-        public AppricationViewModule(IRegionManager regionManager, IContentViewService contentViewService)
+        public IContentViewService ContentViewService { get; }
+
+        public IMessageService MessageService { get; }
+
+        public AppricationViewModule(IRegionManager regionManager, IContentViewService contentViewService, IMessageService messageService)
         {
             RegionManager = regionManager;
+            ContentViewService = contentViewService;
+            MessageService = messageService;
+            messageService.SetMessageDialog(nameof(MessageDialogPage));
         }
 
         public void OnInitialized(IContainerProvider containerProvider)

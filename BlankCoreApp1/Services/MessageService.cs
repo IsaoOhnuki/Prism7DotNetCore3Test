@@ -3,6 +3,7 @@ using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
 using Prism.Services.Dialogs;
+using System;
 
 namespace BlankCoreApp1.Services
 {
@@ -10,9 +11,16 @@ namespace BlankCoreApp1.Services
     {
         public IDialogService DialogService { get; private set; }
 
+        public string DialogName { get; private set; }
+
         public MessageService(IDialogService dialogService)
         {
             DialogService = dialogService;
+        }
+
+        public void SetMessageDialog(string dialogName)
+        {
+            DialogName = dialogName;
         }
 
         public string GetMessage(MessageId messageId)
@@ -22,9 +30,14 @@ namespace BlankCoreApp1.Services
 
         public IDialogResult ShowMessage(MessageInputModel messageInputModel)
         {
+            if (string.IsNullOrEmpty(DialogName))
+            {
+                throw new ArgumentException("メッセージダイアログが指定されていません。");
+            }
+
             IDialogResult dialogResult = null;
             DialogService.ShowDialog(
-                ViewConst.ViewPage_MessageDialogPage,
+                DialogName,
                 new DialogParameters
                 {
                     { nameof(MessageInputModel), messageInputModel },
