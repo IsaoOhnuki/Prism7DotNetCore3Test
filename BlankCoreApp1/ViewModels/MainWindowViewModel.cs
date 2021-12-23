@@ -16,6 +16,8 @@ namespace BlankCoreApp1.ViewModels
     {
         public IMessageService MessageService { get; private set; }
 
+        public ILogService LogService { get; private set; }
+
         public IContentViewService ContentViewService { get; private set; }
 
         private string _title = "Prism Application";
@@ -37,6 +39,8 @@ namespace BlankCoreApp1.ViewModels
                 // なので自前でロードしてResolveする。
                 moduleManager.LoadModule(nameof(MessageServiceModule.MessageServiceModule));
                 MessageService = container.Resolve<IMessageService>();
+                moduleManager.LoadModule(nameof(LogServiceModule.LogServiceModule));
+                LogService = container.Resolve<ILogService>();
             }
 
             ViewElementRegister.OnRegistElement += ViewElementRegister_OnRegistElement;
