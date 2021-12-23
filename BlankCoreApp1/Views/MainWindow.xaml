@@ -10,6 +10,6 @@
         Title="{Binding Title}"
         av:DesignWidth="500"
         av:DesignHeight="300">
-    <Grid behavior:ViewElementRegister.Element="MainWindowContent">
+    <Grid behavior:ViewElementRegister.Element="{Binding MainContentName}">
     </Grid>
 </Window>

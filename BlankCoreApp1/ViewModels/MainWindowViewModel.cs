@@ -23,8 +23,15 @@ namespace BlankCoreApp1.ViewModels
         private string _title = "Prism Application";
         public string Title
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get => _title;
+            set => _ = SetProperty(ref _title, value);
+        }
+
+        private string _mainContentName = "MainWindowContent";
+        public string MainContentName
+        {
+            get => _mainContentName;
+            set => _ = SetProperty(ref _mainContentName, value);
         }
 
         public string ContentRegionName { get; }
@@ -68,7 +75,7 @@ namespace BlankCoreApp1.ViewModels
             {
                 Exception = e.Exception,
             };
-            MessageService.ShowMessage(messageInputModel);
+            _ = MessageService.ShowMessage(messageInputModel);
         }
     }
 }
