@@ -1,10 +1,10 @@
-﻿using ModelLibrary.Services;
+using ModelLibrary.Services;
 using Prism.Ioc;
 using Prism.Modularity;
 
-namespace ApplicationLogicServiceModule
+namespace ApplicationLogicModule
 {
-    public class ApplicationLogicServiceModule : IModule
+    public class ApplicationLogicModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
@@ -13,7 +13,7 @@ namespace ApplicationLogicServiceModule
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<IApplicationLogicService, ApplicationLogicService>();
+            _ = containerRegistry.RegisterSingleton<IApplicationLogic, ApplicationLogic>();
         }
     }
 }

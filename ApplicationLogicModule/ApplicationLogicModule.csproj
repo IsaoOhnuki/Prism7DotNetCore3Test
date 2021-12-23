@@ -2,10 +2,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyName>ApplicationLogicServiceLibrary</AssemblyName>
-    <PackageId>ApplicationLogicServiceModule</PackageId>
-    <Authors>ApplicationLogicServiceModule</Authors>
-    <Product>ApplicationLogicServiceModule</Product>
+    <AssemblyName>ApplicationLogicModule</AssemblyName>
+    <PackageId>ApplicationLogicModule</PackageId>
+    <Authors>ApplicationLogicModule</Authors>
+    <Product>ApplicationLogicModule</Product>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
