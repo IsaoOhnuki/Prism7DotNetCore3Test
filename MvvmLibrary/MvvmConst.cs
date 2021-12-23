@@ -1,4 +1,4 @@
-﻿namespace MvvmServiceLibrary
+﻿namespace MvvmCommonLibrary
 {
     public static class MvvmConst
     {

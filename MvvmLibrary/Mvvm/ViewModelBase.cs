@@ -1,8 +1,8 @@
 ﻿using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
-using MvvmServiceLibrary;
-using MvvmServiceLibrary.Mvvm;
+using MvvmCommonLibrary;
+using MvvmCommonLibrary.Mvvm;
 using Prism.Navigation;
 using Prism.Regions;
 using Prism.Services.Dialogs;
