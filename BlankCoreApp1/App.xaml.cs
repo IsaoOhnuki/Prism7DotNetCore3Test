@@ -19,15 +19,17 @@ namespace BlankCoreApp1
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<IMessageService, MessageService>();
-            containerRegistry.RegisterSingleton<IContentViewService, ContentViewService>();
+            _ = containerRegistry.RegisterSingleton<IContentViewService, ContentViewService>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<LogServiceModule.LogServiceModule>();
-            moduleCatalog.AddModule<ApplicationLogicServiceModule.ApplicationLogicServiceModule>();
-            moduleCatalog.AddModule<AppricationViewModule.AppricationViewModule>();
+            _ = moduleCatalog.AddModule<LogServiceModule.LogServiceModule>();
+            _ = moduleCatalog.AddModule<ApplicationLogicServiceModule.ApplicationLogicServiceModule>();
+            _ = moduleCatalog.AddModule<AppricationViewModule.AppricationViewModule>();
+
+            // MainWindowで使いたいがDLLロードが間に合わないためMainWindowViewModelでロードしてResolveする。
+            _ = moduleCatalog.AddModule<MessageServiceModule.MessageServiceModule>(InitializationMode.OnDemand);
         }
     }
 }

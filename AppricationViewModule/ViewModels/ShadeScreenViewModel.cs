@@ -1,11 +1,6 @@
 ﻿using ModelLibrary.Services;
 using MvvmLibrary.Mvvm;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace AppricationViewModule.ViewModels
 {

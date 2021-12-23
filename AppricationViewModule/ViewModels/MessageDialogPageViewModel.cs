@@ -1,5 +1,4 @@
-﻿using AppricationViewModule.Views;
-using CustomControlLibrary;
+﻿using CustomControlLibrary;
 using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
@@ -91,7 +90,7 @@ namespace AppricationViewModule.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            RegionManager.RequestNavigate(ContentViewType.MainWindowOverwrapContent.ToString(), nameof(ShadeScreen), new NavigationParameters());
+            RegionManager.RequestNavigate(ContentViewType.MainWindowOverwrapContent.ToString(), AppViewConst.View_ShadeScreen, new NavigationParameters());
 
             MessageInputModel messageInputModel = parameters.GetValue<MessageInputModel>(nameof(MessageInputModel));
 
@@ -108,14 +107,7 @@ namespace AppricationViewModule.ViewModels
                 LeftButtonText = messageInputModel.LeftButtonCaption;
                 RightButtonText = messageInputModel.RightButtonCaption;
                 CenterButtonText = messageInputModel.CenterButtonText;
-                if (messageInputModel.MessageParameter != null)
-                {
-                    Message = string.Format(CultureInfo.CurrentCulture, messageInputModel.Message, messageInputModel.MessageParameter.ToArray());
-                }
-                else
-                {
-                    Message = messageInputModel.Message;
-                }
+                Message = messageInputModel.Message.GetMessage();
                 Title = messageInputModel.Title;
             }
             else

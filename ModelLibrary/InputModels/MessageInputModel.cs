@@ -1,7 +1,7 @@
 ﻿using ModelLibrary.Enumerate;
+using ModelLibrary.ResultModels;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ModelLibrary.InputModels
 {
@@ -11,9 +11,7 @@ namespace ModelLibrary.InputModels
 
         public string Title { get; set; }
 
-        public string Message { get; set; }
-
-        public List<string> MessageParameter { get; set; }
+        public MessageModel Message { get; set; }
 
         public string LeftButtonCaption { get; set; }
 

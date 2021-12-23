@@ -2,6 +2,8 @@
 using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
+using Prism.Ioc;
+using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
 using System.Windows;
@@ -27,10 +29,15 @@ namespace BlankCoreApp1.ViewModels
 
         public string OverwrapRegionName { get; }
 
-        public MainWindowViewModel(IMessageService messageService, IContentViewService contentViewService)
+        public MainWindowViewModel(IContainerProvider container, IModuleManager moduleManager, IContentViewService contentViewService)
         {
-            MessageService = messageService;
             ContentViewService = contentViewService;
+
+            {   // DIでもらおうとするとDLLロード、Resolveが間に合わないので例外が発生する。
+                // なので自前でロードしてResolveする。
+                moduleManager.LoadModule(nameof(MessageServiceModule.MessageServiceModule));
+                MessageService = container.Resolve<IMessageService>();
+            }
 
             ViewElementRegister.OnRegistElement += ViewElementRegister_OnRegistElement;
             Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;

@@ -1,5 +1,6 @@
 ﻿using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
+using ModelLibrary.ResultModels;
 using ModelLibrary.Services;
 using MvvmCommonLibrary;
 using MvvmCommonLibrary.Mvvm;
@@ -49,18 +50,18 @@ namespace MvvmLibrary.Mvvm
 
         public abstract void PreviousInisiarizeView(NavigationParameters navigationParameters);
 
-        public virtual IDialogResult ShowMessage(MessageDialogStyle messageDialogStyle, string message, string title = null)
+        public virtual ButtonResult ShowMessage(MessageDialogStyle messageDialogStyle, string message, string title = null)
         {
             MessageInputModel messageInput = new MessageInputModel
             {
                 Title = title ?? MessageService.GetMessage(MessageId.ConfirmMessageTitle),
-                Message = message,
+                Message = new MessageModel(message),
                 MessageDialogStyle = messageDialogStyle,
                 LeftButtonCaption = MessageService.GetMessage(MessageId.CancelButtonCaption),
                 RightButtonCaption = MessageService.GetMessage(MessageId.OkButtonCaption),
                 CenterButtonText = MessageService.GetMessage(MessageId.CloseButtonCaption),
             };
-            IDialogResult result = MessageService.ShowMessage(messageInput);
+            ButtonResult result = MessageService.ShowMessage(messageInput);
             return result;
         }
 

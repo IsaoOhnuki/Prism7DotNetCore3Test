@@ -1,5 +1,4 @@
-﻿using AppricationViewModule.Views;
-using ModelLibrary.Enumerate;
+﻿using ModelLibrary.Enumerate;
 using ModelLibrary.Services;
 using MvvmLibrary.Mvvm;
 using Prism.Commands;
@@ -42,14 +41,14 @@ namespace AppricationViewModule.ViewModels
 
         protected void DoAccept()
         {
-            IDialogResult result = ShowMessage(MessageDialogStyle.ConfirmMessage,
+            ButtonResult result = ShowMessage(MessageDialogStyle.ConfirmMessage,
                 MessageService.GetMessage(MessageId.ConfirmMessageTitle),
                 MessageService.GetMessage(MessageId.InformationMessageTitle));
-            if (result.Result == ButtonResult.OK)
+            if (result == ButtonResult.OK)
             {
-                DoTransitionPage(AppViewConst.ContentRegion_AppViewMainContent, GetViewName(), nameof(ViewA));
+                DoTransitionPage(AppViewConst.ContentRegion_AppViewMainContent, GetViewName(), AppViewConst.View_ViewA);
             }
-            else if (result.Result == ButtonResult.Cancel)
+            else if (result == ButtonResult.Cancel)
             {
 
             }
