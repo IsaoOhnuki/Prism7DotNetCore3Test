@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows;
 
 namespace ModelLibrary.Services
 {
-    public interface IWindowScreenHandler
+    public interface ILogger
     {
-        static Window Window { get; }
+        void Write(string log);
     }
 }

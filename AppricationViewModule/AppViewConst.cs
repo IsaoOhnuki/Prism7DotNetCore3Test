@@ -2,7 +2,7 @@
 {
     public static class AppViewConst
     {
-        public const string ContentRegion_AppViewMainContent = "MainWindowContent";
+        public const string ContentRegion_AppViewMainContent = "AppViewMainContent";
 
         public const string View_ShadeScreen = "ShadeScreen";
         public const string View_TopPage = "TopPage";

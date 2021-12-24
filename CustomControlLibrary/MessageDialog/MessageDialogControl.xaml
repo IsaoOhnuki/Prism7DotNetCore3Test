@@ -58,7 +58,7 @@
                                                                             ErrorStyleTemplate="{StaticResource errorStyleTitle}"/>
                     <DataTemplate x:Key="approvalStyleButton">
                         <bc:BaseButtonControl Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                                              Background="{StaticResource DialogPanelBrush}"
+                                              Background="{StaticResource NormalButtonColor}"
                                               BorderThickness="0,0.5,0,0"
                                               BorderBrush="DarkGray"
                                               FontSize="{StaticResource BaseFontSize}"
@@ -77,7 +77,7 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <bc:BaseButtonControl Grid.Column="0"
-                                                  Background="{StaticResource DialogPanelBrush}"
+                                                  Background="{StaticResource CancelButtonColor}"
                                                   BorderThickness="0,0.5,0.3,0"
                                                   BorderBrush="DarkGray"
                                                   HorizontalContentAlignment="Center"
@@ -90,7 +90,7 @@
                                 </bc:BaseButtonControl.Content>
                             </bc:BaseButtonControl>
                             <bc:BaseButtonControl Grid.Column="1"
-                                                  Background="{StaticResource DialogPanelBrush}"
+                                                  Background="{StaticResource OkButtonColor}"
                                                   BorderThickness="0.3,0.5,0,0"
                                                   BorderBrush="DarkGray"
                                                   FontSize="{StaticResource BaseFontSize}"
