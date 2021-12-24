@@ -1,4 +1,5 @@
-﻿using BlankCoreApp1.Services;
+﻿using ApplicationLogicModule;
+using BlankCoreApp1.Services;
 using BlankCoreApp1.Views;
 using ModelLibrary.Services;
 using Prism.Ioc;
