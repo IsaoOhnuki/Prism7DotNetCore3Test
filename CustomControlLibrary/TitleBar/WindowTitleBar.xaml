@@ -3,9 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CustomControlLibrary.TitleBar"
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <bc:BaseWindowTitleControl/>
+             d:DesignHeight="130.288" d:DesignWidth="800">
+    <bc:BaseWindowTitleControl Button1Brush="AliceBlue"
+                               Button2Brush="Beige"
+                               Button3Brush="Bisque"
+                               Button1Command="{Binding IconCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                               Button2Command="{Binding MaxCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                               Button3Command="{Binding CloseCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+        <bc:BaseWindowTitleControl.Content>
+            <Label Content="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                   HorizontalAlignment="Left"
+                   VerticalContentAlignment="Center"/>
+        </bc:BaseWindowTitleControl.Content>
+    </bc:BaseWindowTitleControl>
 </UserControl>

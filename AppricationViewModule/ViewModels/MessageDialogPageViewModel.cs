@@ -2,8 +2,6 @@
 using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
-using MvvmCommonLibrary.Behavior;
-using MvvmCommonLibrary.Model;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -92,23 +90,17 @@ namespace AppricationViewModule.ViewModels
 
         public IRegionManager RegionManager { get; }
 
-        public MessageDialogPageViewModel(IMessageService messageService, IRegionManager regionManager)
+        public IContentViewService ContentViewService { get; }
+
+        public MessageDialogPageViewModel(IMessageService messageService, IRegionManager regionManager, IContentViewService contentViewService)
         {
             MessageService = messageService;
             RegionManager = regionManager;
+            ContentViewService = contentViewService;
 
             OkCommand = new DelegateCommand(() => RequestClose(new DialogResult(ButtonResult.OK)));
             CancelCommand = new DelegateCommand(() => RequestClose(new DialogResult(ButtonResult.Cancel)));
             CloseCommand = new DelegateCommand(() => RequestClose(new DialogResult(ButtonResult.None)));
-
-            ContentSizeRegister.OnSizeChanged += ContentSizeRegister_OnSizeChanged;
-            MainWindowSize = ContentSizeRegister.RegistElementSize["MainWindowContent"];
-        }
-
-        private void ContentSizeRegister_OnSizeChanged(string Key, Size element)
-        {
-            MainWindowWidth = element.Width;
-            MainWindowHeight = element.Height;
         }
 
         public event Action<IDialogResult> RequestClose;
@@ -124,6 +116,8 @@ namespace AppricationViewModule.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
+            MainWindowSize = ContentViewService.GetContentSize("MainWindowContent");
+
             MessageInputModel messageInputModel = parameters.GetValue<MessageInputModel>(nameof(MessageInputModel));
 
             if (messageInputModel.Exception == null)

@@ -4,13 +4,23 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:bc="clr-namespace:CustomControlLibrary.TitleBar;assembly=CustomControlLibrary"
         xmlns:behavior="clr-namespace:MvvmCommonLibrary.Behavior;assembly=MvvmCommonLibrary"
         mc:Ignorable="av"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
         av:DesignWidth="500"
-        av:DesignHeight="300" ResizeMode="NoResize" WindowStyle="None">
-    <Grid behavior:ViewElementRegister.Element="{Binding MainContentName}"
-          behavior:ContentSizeRegister.Element="{Binding MainContentName}">
+        av:DesignHeight="300">
+    <Grid behavior:ContentSizeRegister.Element="{Binding MainContentName}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <bc:WindowTitleBar Grid.Row="0"
+                           Title="{Binding Title}"
+                           Window="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+        <Grid Grid.Row="1"
+              behavior:ViewElementRegister.Element="{Binding MainContentName}"/>
     </Grid>
 </Window>

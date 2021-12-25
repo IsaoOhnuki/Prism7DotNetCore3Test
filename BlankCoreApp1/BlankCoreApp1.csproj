@@ -8,6 +8,12 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Behavior\**" />
+    <EmbeddedResource Remove="Behavior\**" />
+    <None Remove="Behavior\**" />
+    <Page Remove="Behavior\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Prism.Unity" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
@@ -16,9 +22,9 @@
     <ProjectReference Include="..\LogServiceLibrary\LogServiceModule.csproj" />
     <ProjectReference Include="..\MessageServiceModule\MessageServiceModule.csproj" />
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
+    <ProjectReference Include="..\MvvmLibrary\MvvmCommonLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Behavior\" />
     <Folder Include="Models\" />
     <Folder Include="Properties\" />
   </ItemGroup>

@@ -2,12 +2,14 @@
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
 using MvvmCommonLibrary.Behavior;
+using Prism.Commands;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Markup;
 
 namespace BlankCoreApp1.ViewModels
