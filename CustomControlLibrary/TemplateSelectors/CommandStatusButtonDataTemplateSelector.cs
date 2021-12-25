@@ -18,26 +18,21 @@ namespace CustomControlLibrary.TemplateSelectors
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            if (item == null)
-            {
-                return null;
-            }
-
-            CommandStatus style = (CommandStatus)item;
-
-            return style switch
-            {
-                CommandStatus.Execute => ExecuteStyleTemplate,
-                CommandStatus.Ok => OkStyleTemplate,
-                CommandStatus.Cancel => CancelStyleTemplate,
-                CommandStatus.Next => NextStyleTemplate,
-                CommandStatus.Previous => PreviousStyleTemplate,
-                CommandStatus.Aplly => ApllyStyleTemplate,
-                CommandStatus.Stop => StopStyleTemplate,
-                CommandStatus.Infomation => InfomationStyleTemplate,
-                CommandStatus.Help => HelpStyleTemplate,
-                _ => throw new NotImplementedException(),
-            };
+            return item is CommandStatus commandStatus
+                ? commandStatus switch
+                {
+                    CommandStatus.Execute => ExecuteStyleTemplate,
+                    CommandStatus.Ok => OkStyleTemplate,
+                    CommandStatus.Cancel => CancelStyleTemplate,
+                    CommandStatus.Next => NextStyleTemplate,
+                    CommandStatus.Previous => PreviousStyleTemplate,
+                    CommandStatus.Aplly => ApllyStyleTemplate,
+                    CommandStatus.Stop => StopStyleTemplate,
+                    CommandStatus.Infomation => InfomationStyleTemplate,
+                    CommandStatus.Help => HelpStyleTemplate,
+                    _ => throw new NotImplementedException(),
+                }
+                : null;
         }
     }
 }

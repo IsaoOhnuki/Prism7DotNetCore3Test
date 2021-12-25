@@ -23,18 +23,22 @@
         <btn:CommandButton Grid.Row="1" Grid.Column="0"
                            Margin="10,10,10,10"
                            Text="Error"
+                           CommandStatus="Stop"
                            Command="{Binding ErrorCommand}"/>
         <btn:CommandButton Grid.Row="1" Grid.Column="1"
                            Margin="10,10,10,10"
                            Text="Warning"
+                           CommandStatus="Cancel"
                            Command="{Binding WarningCommand}"/>
         <btn:CommandButton Grid.Row="1" Grid.Column="2"
                            Margin="10,10,10,10"
                            Text="Information"
+                           CommandStatus="Ok"
                            Command="{Binding InformationCommand}"/>
         <btn:CommandButton Grid.Row="2" Grid.Column="2"
                            Margin="10,10,10,10"
                            Text="戻る"
+                           CommandStatus="Previous"
                            Command="{Binding BackCommand}"/>
     </Grid>
 </UserControl>

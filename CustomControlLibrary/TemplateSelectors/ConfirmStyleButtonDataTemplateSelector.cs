@@ -10,19 +10,7 @@ namespace CustomControlLibrary.TemplateSelectors
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            if (item == null)
-                return null;
-
-            bool confirmStyleButton = (bool)item;
-
-            if (confirmStyleButton)
-            {
-                return ConfirmStyleTemplate;
-            }
-            else
-            {
-                return ApprovalStyleTemplate;
-            }
+            return item is bool confirmStyleButton ? confirmStyleButton ? ConfirmStyleTemplate : ApprovalStyleTemplate : null;
         }
     }
 }

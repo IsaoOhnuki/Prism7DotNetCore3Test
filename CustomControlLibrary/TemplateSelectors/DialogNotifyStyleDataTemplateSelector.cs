@@ -13,23 +13,16 @@ namespace CustomControlLibrary.TemplateSelectors
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            if (item == null)
-                return null;
-
-            DialogNotifyStyle dialogNotifyStyle = (DialogNotifyStyle)item;
-            switch (dialogNotifyStyle)
-            {
-                case DialogNotifyStyle.Confirm:
-                    return ConfirmStyleTemplate;
-                case DialogNotifyStyle.Error:
-                    return ErrorStyleTemplate;
-                case DialogNotifyStyle.Warning:
-                    return WarningStyleTemplate;
-                case DialogNotifyStyle.Information:
-                    return InformationStyleTemplate;
-                default:
-                    return base.SelectTemplate(item, container);
-            }
+            return item is DialogNotifyStyle dialogNotifyStyle
+                ? dialogNotifyStyle switch
+                {
+                    DialogNotifyStyle.Confirm => ConfirmStyleTemplate,
+                    DialogNotifyStyle.Error => ErrorStyleTemplate,
+                    DialogNotifyStyle.Warning => WarningStyleTemplate,
+                    DialogNotifyStyle.Information => InformationStyleTemplate,
+                    _ => base.SelectTemplate(item, container),
+                }
+                : null;
         }
     }
 }
