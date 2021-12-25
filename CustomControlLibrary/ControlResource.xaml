@@ -15,6 +15,7 @@
     <SolidColorBrush x:Key="OkButtonColor" Color="#FF4CBD56"/>
     <SolidColorBrush x:Key="CancelButtonColor" Color="LightSteelBlue"/>
     <SolidColorBrush x:Key="NormalButtonColor" Color="White"/>
+    <SolidColorBrush x:Key="StopButtonColor" Color="Yellow"/>
     <Thickness x:Key="ButtonBorderThickness" Left="1" Top="1" Right="1" Bottom="1"/>
 
     <!--#region FontSetting -->

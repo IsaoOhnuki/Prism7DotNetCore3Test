@@ -41,4 +41,17 @@
         Error,
         Confirm,
     }
+
+    public enum CommandStatus
+    {
+        Execute,
+        Ok,
+        Cancel,
+        Next,
+        Previous,
+        Aplly,
+        Stop,
+        Infomation,
+        Help,
+    }
 }

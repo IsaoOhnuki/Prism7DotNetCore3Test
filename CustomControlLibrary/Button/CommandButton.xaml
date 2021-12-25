@@ -1,31 +1,139 @@
-﻿<bc:BaseButtonControl x:Class="CustomControlLibrary.Button.CommandButton"
-                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-                      xmlns:local="clr-namespace:CustomControlLibrary.Button"
-                      xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
-                      mc:Ignorable="d"
-                      Background="DarkGray"
-                      HorizontalContentAlignment="Stretch"
-                      VerticalContentAlignment="Stretch"
-                      d:DesignWidth="500" d:DesignHeight="200">
-    <bc:BaseButtonControl.Resources>
+﻿<UserControl x:Class="CustomControlLibrary.Button.CommandButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomControlLibrary.Button"
+             xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
+             xmlns:templateSelector="clr-namespace:CustomControlLibrary.TemplateSelectors"
+             mc:Ignorable="d"
+             Background="DarkGray"
+             HorizontalContentAlignment="Stretch"
+             VerticalContentAlignment="Stretch"
+             d:DesignWidth="500" d:DesignHeight="200">
+    <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
+                <ResourceDictionary>
+                    <DataTemplate x:Key="executeStyleTemplate">
+                        <bc:BaseImageLabelControl Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageSource="{Binding ImageSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  Background="{StaticResource ButtonColor}"
+                                                  VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Center"
+                                                  BorderThickness="5,5,5,5"
+                                                  BorderBrush="DarkBlue"
+                                                  Foreground="{StaticResource DialogPanelBrush}"
+                                                  FontSize="{StaticResource TitleFontSize}"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="okStyleTemplate">
+                        <bc:BaseImageLabelControl Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageSource="{Binding ImageSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  Background="{StaticResource OkButtonColor}"
+                                                  VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Center"
+                                                  BorderThickness="5,5,5,5"
+                                                  BorderBrush="DarkBlue"
+                                                  Foreground="{StaticResource DialogPanelBrush}"
+                                                  FontSize="{StaticResource TitleFontSize}"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="cancelStyleTemplate">
+                        <bc:BaseImageLabelControl Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageSource="{Binding ImageSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  Background="{StaticResource CancelButtonColor}"
+                                                  VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Center"
+                                                  BorderThickness="5,5,5,5"
+                                                  BorderBrush="DarkBlue"
+                                                  Foreground="{StaticResource DialogPanelBrush}"
+                                                  FontSize="{StaticResource TitleFontSize}"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="nextStyleTemplate">
+                        <bc:BaseImageLabelControl Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageSource="{Binding ImageSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  Background="{StaticResource OkButtonColor}"
+                                                  VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Center"
+                                                  BorderThickness="5,5,5,5"
+                                                  BorderBrush="DarkBlue"
+                                                  Foreground="{StaticResource DialogPanelBrush}"
+                                                  FontSize="{StaticResource TitleFontSize}"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="previousStyleTemplate">
+                        <bc:BaseImageLabelControl Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageSource="{Binding ImageSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  Background="{StaticResource CancelButtonColor}"
+                                                  VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Center"
+                                                  BorderThickness="5,5,5,5"
+                                                  BorderBrush="DarkBlue"
+                                                  Foreground="{StaticResource DialogPanelBrush}"
+                                                  FontSize="{StaticResource TitleFontSize}"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="apllyStyleTemplate">
+                        <bc:BaseImageLabelControl Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageSource="{Binding ImageSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  Background="{StaticResource ButtonColor}"
+                                                  VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Center"
+                                                  BorderThickness="5,5,5,5"
+                                                  BorderBrush="DarkBlue"
+                                                  Foreground="{StaticResource DialogPanelBrush}"
+                                                  FontSize="{StaticResource TitleFontSize}"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="stopStyleTemplate">
+                        <bc:BaseImageLabelControl Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageSource="{Binding ImageSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  Background="{StaticResource StopButtonColor}"
+                                                  VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Center"
+                                                  BorderThickness="5,5,5,5"
+                                                  BorderBrush="DarkBlue"
+                                                  Foreground="Black"
+                                                  FontSize="{StaticResource TitleFontSize}"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="infomationStyleTemplate">
+                        <bc:BaseImageLabelControl Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageSource="{Binding ImageSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  Background="{StaticResource NormalButtonColor}"
+                                                  VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Center"
+                                                  BorderThickness="5,5,5,5"
+                                                  BorderBrush="DarkBlue"
+                                                  Foreground="Black"
+                                                  FontSize="{StaticResource TitleFontSize}"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="helpStyleTemplate">
+                        <bc:BaseImageLabelControl Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  ImageSource="{Binding ImageSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                  Background="{StaticResource NormalButtonColor}"
+                                                  VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Center"
+                                                  BorderThickness="5,5,5,5"
+                                                  BorderBrush="DarkBlue"
+                                                  Foreground="Black"
+                                                  FontSize="{StaticResource TitleFontSize}"/>
+                    </DataTemplate>
+                    <templateSelector:CommandStatusButtonDataTemplateSelector x:Key="commandStatusButtonDataTemplateSelector"
+                                                                              ExecuteStyleTemplate="{StaticResource executeStyleTemplate}"
+                                                                              OkStyleTemplate="{StaticResource okStyleTemplate}"
+                                                                              CancelStyleTemplate="{StaticResource cancelStyleTemplate}"
+                                                                              NextStyleTemplate="{StaticResource nextStyleTemplate}"
+                                                                              PreviousStyleTemplate="{StaticResource previousStyleTemplate}"
+                                                                              ApllyStyleTemplate="{StaticResource apllyStyleTemplate}"
+                                                                              InfomationStyleTemplate="{StaticResource infomationStyleTemplate}"
+                                                                              HelpStyleTemplate="{StaticResource helpStyleTemplate}">
+                    </templateSelector:CommandStatusButtonDataTemplateSelector>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </bc:BaseButtonControl.Resources>
-    <bc:BaseButtonControl.Content>
-        <bc:BaseImageLabelControl Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type bc:BaseButtonControl}}}"
-                                  ImageSource="{Binding ImageSource, RelativeSource={RelativeSource AncestorType={x:Type bc:BaseButtonControl}}}"
-                                  HorizontalContentAlignment="Center"
-                                  VerticalContentAlignment="Center"
-                                  Background="{StaticResource ButtonColor}"
-                                  BorderThickness="5,5,5,5"
-                                  BorderBrush="DarkBlue"
-                                  Foreground="{StaticResource DialogPanelBrush}"
-                                  FontSize="{StaticResource TitleFontSize}"/>
-    </bc:BaseButtonControl.Content>
-</bc:BaseButtonControl>
+    </UserControl.Resources>
+    <Button VerticalContentAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            Command="{Binding Command, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+            d:ContentTemplate="{StaticResource helpStyleTemplate}"
+            Content="{Binding CommandStatus, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+            ContentTemplateSelector="{StaticResource commandStatusButtonDataTemplateSelector}">
+    </Button>
+</UserControl>

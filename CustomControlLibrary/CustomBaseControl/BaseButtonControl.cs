@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CustomControlLibrary.CustomBaseControl
@@ -46,6 +47,18 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(object),
                 typeof(BaseButtonControl),
                 new FrameworkPropertyMetadata(defaultValue: "BaseButtonControl"));
+        public DataTemplateSelector ContentTemplateSelector
+        {
+            get => (DataTemplateSelector)GetValue(ContentTemplateSelectorProperty);
+            set => SetValue(ContentTemplateSelectorProperty, value);
+        }
+
+        public static readonly DependencyProperty ContentTemplateSelectorProperty =
+            DependencyProperty.Register(
+                nameof(ContentTemplateSelector),
+                typeof(DataTemplateSelector),
+                typeof(BaseButtonControl),
+                new FrameworkPropertyMetadata(default(DataTemplateSelector)));
 
         public ICommand Command
         {
