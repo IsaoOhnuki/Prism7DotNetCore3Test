@@ -1,5 +1,5 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
         <ResourceDictionary Source="/CustomControlLibrary;component/Themes/BaseButtonControl.xaml"/>
@@ -11,5 +11,7 @@
         <ResourceDictionary Source="/CustomControlLibrary;component/Themes/BaseListBoxControl.xaml"/>
         <ResourceDictionary Source="/CustomControlLibrary;component/Themes/BaseTextBlockControl.xaml"/>
         <ResourceDictionary Source="/CustomControlLibrary;component/Themes/BaseTextBoxControl.xaml"/>
+        <ResourceDictionary Source="/CustomControlLibrary;component/Themes/BaseWindowTitleControl.xaml"/>
     </ResourceDictionary.MergedDictionaries>
+
 </ResourceDictionary>

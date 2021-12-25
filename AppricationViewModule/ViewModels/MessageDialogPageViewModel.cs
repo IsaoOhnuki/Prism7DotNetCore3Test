@@ -2,12 +2,14 @@
 using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
+using MvvmCommonLibrary.Behavior;
+using MvvmCommonLibrary.Model;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
-using System.Globalization;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
@@ -56,6 +58,30 @@ namespace AppricationViewModule.ViewModels
             set => SetProperty(ref _centerButtonText, value);
         }
 
+        private double _mainWindowWidth;
+        public double MainWindowWidth
+        {
+            get => _mainWindowWidth;
+            set => SetProperty(ref _mainWindowWidth, value);
+        }
+
+        private double _mainWindowHeight;
+        public double MainWindowHeight
+        {
+            get => _mainWindowHeight;
+            set => SetProperty(ref _mainWindowHeight, value);
+        }
+
+        public Size MainWindowSize
+        {
+            get => new Size(MainWindowWidth, MainWindowHeight);
+            set
+            {
+                MainWindowWidth = value.Width;
+                MainWindowHeight = value.Height;
+            }
+        }
+
         public ICommand CancelCommand { get; }
 
         public ICommand OkCommand { get; }
@@ -74,6 +100,15 @@ namespace AppricationViewModule.ViewModels
             OkCommand = new DelegateCommand(() => RequestClose(new DialogResult(ButtonResult.OK)));
             CancelCommand = new DelegateCommand(() => RequestClose(new DialogResult(ButtonResult.Cancel)));
             CloseCommand = new DelegateCommand(() => RequestClose(new DialogResult(ButtonResult.None)));
+
+            ContentSizeRegister.OnSizeChanged += ContentSizeRegister_OnSizeChanged;
+            MainWindowSize = ContentSizeRegister.RegistElementSize["MainWindowContent"];
+        }
+
+        private void ContentSizeRegister_OnSizeChanged(string Key, Size element)
+        {
+            MainWindowWidth = element.Width;
+            MainWindowHeight = element.Height;
         }
 
         public event Action<IDialogResult> RequestClose;
@@ -85,13 +120,10 @@ namespace AppricationViewModule.ViewModels
 
         public void OnDialogClosed()
         {
-            RegionManager.Regions[ContentViewType.MainWindowOverwrapContent.ToString()].RemoveAll();
         }
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            RegionManager.RequestNavigate(ContentViewType.MainWindowOverwrapContent.ToString(), AppViewConst.View_ShadeScreen, new NavigationParameters());
-
             MessageInputModel messageInputModel = parameters.GetValue<MessageInputModel>(nameof(MessageInputModel));
 
             if (messageInputModel.Exception == null)

@@ -1,7 +1,7 @@
-﻿using BlankCoreApp1.Behavior;
-using ModelLibrary.Enumerate;
+﻿using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Services;
+using MvvmCommonLibrary.Behavior;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
@@ -32,6 +32,13 @@ namespace BlankCoreApp1.ViewModels
         {
             get => _mainContentName;
             set => _ = SetProperty(ref _mainContentName, value);
+        }
+
+        private string _mainWindowName = "MainWindow";
+        public string MainWindowName
+        {
+            get => _mainWindowName;
+            set => _ = SetProperty(ref _mainWindowName, value);
         }
 
         public string ContentRegionName { get; }

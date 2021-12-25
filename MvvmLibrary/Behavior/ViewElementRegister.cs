@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 
-namespace BlankCoreApp1.Behavior
+namespace MvvmCommonLibrary.Behavior
 {
     public static class ViewElementRegister
     {

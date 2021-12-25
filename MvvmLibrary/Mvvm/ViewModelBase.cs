@@ -2,14 +2,12 @@
 using ModelLibrary.InputModels;
 using ModelLibrary.ResultModels;
 using ModelLibrary.Services;
-using MvvmCommonLibrary;
-using MvvmCommonLibrary.Mvvm;
 using Prism.Navigation;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
 
-namespace MvvmLibrary.Mvvm
+namespace MvvmCommonLibrary.Mvvm
 {
     public abstract class ViewModelBase : ModelBase, INavigationAware, IConfirmNavigationRequest, IDestructible
     {

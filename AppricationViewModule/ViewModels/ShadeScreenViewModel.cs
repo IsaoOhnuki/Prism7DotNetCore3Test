@@ -1,5 +1,5 @@
 ﻿using ModelLibrary.Services;
-using MvvmLibrary.Mvvm;
+using MvvmCommonLibrary.Mvvm;
 using Prism.Regions;
 
 namespace AppricationViewModule.ViewModels

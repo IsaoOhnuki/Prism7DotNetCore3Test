@@ -18,6 +18,7 @@
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Behavior\" />
     <Folder Include="Models\" />
     <Folder Include="Properties\" />
   </ItemGroup>
