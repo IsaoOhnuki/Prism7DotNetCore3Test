@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace LogicCommonLibrary.DataAccess
 {
-    public abstract class ScalarDataAccess : DataAccessBase
+    public class ScalarDataAccess : DataAccessBase
     {
         public ScalarDataAccess(DatabaseConnection connection, string query, SqlParameter[] parameter = null)
             : base(connection, query, parameter)
@@ -21,7 +21,7 @@ namespace LogicCommonLibrary.DataAccess
         }
     }
 
-    public abstract class QueryDataAccess : DataAccessBase
+    public class QueryDataAccess : DataAccessBase
     {
         public QueryDataAccess(DatabaseConnection connection, string query, SqlParameter[] parameter = null)
             : base(connection, query, parameter)
@@ -34,7 +34,7 @@ namespace LogicCommonLibrary.DataAccess
         }
     }
 
-    public abstract class QueryDataAccess<T> : DataAccessBase
+    public class QueryDataAccess<T> : DataAccessBase
         where T : new()
     {
         public QueryDataAccess(DatabaseConnection connection, string query, SqlParameter[] parameter = null)
@@ -48,7 +48,7 @@ namespace LogicCommonLibrary.DataAccess
         }
     }
 
-    public abstract class NonQueryDataAccess : DataAccessBase
+    public class NonQueryDataAccess : DataAccessBase
     {
         public NonQueryDataAccess(DatabaseConnection connection, string query, SqlParameter[] parameter = null)
             : base(connection, query, parameter)
