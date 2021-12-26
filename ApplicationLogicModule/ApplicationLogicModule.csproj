@@ -8,17 +8,18 @@
     <Product>ApplicationLogicModule</Product>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApplicationLogics\" />
     <Folder Include="BusinessLogics\" />
-    <Folder Include="Models\" />
     <Folder Include="ApplicationLogics\" />
     <Folder Include="BusinessLogics\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LogicCommonLibrary\LogicCommonLibrary.csproj" />
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
   </ItemGroup>
 </Project>
