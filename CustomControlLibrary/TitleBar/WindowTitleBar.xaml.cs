@@ -96,5 +96,32 @@ namespace CustomControlLibrary.TitleBar
                 () => Window.WindowState = (Window.WindowState == WindowState.Normal) ? WindowState.Maximized : WindowState.Normal,
                 () => Window != null);
         }
+
+        private bool drag;
+        private Point point;
+
+        private void BaseWindowTitleControl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            _ = Mouse.Capture(this);
+            point = e.GetPosition(this);
+            drag = true;
+        }
+
+        private void BaseWindowTitleControl_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            drag = false;
+            _ = Mouse.Capture(null);
+        }
+
+        private void BaseWindowTitleControl_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Window != null && drag)
+            {
+                Point p = e.GetPosition(this);
+                Vector delt = p - point;
+                Window.Left += delt.X;
+                Window.Top += delt.Y;
+            }
+        }
     }
 }
