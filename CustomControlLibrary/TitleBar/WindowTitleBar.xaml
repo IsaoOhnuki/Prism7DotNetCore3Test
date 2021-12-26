@@ -5,7 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
-             d:DesignHeight="130.288" d:DesignWidth="800">
+             MouseDown="BaseWindowTitleControl_MouseDown"
+             MouseUp="BaseWindowTitleControl_MouseUp"
+             MouseMove="BaseWindowTitleControl_MouseMove"
+             d:DesignHeight="100" d:DesignWidth="800" Background="Red">
     <bc:BaseWindowTitleControl Button1Brush="AliceBlue"
                                Button2Brush="Beige"
                                Button3Brush="Bisque"
@@ -13,9 +16,9 @@
                                Button2Command="{Binding MaxCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                                Button3Command="{Binding CloseCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
         <bc:BaseWindowTitleControl.Content>
-            <Label Content="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                   HorizontalAlignment="Left"
-                   VerticalContentAlignment="Center"/>
+            <bc:BaseLabelControl Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"/>
         </bc:BaseWindowTitleControl.Content>
     </bc:BaseWindowTitleControl>
 </UserControl>

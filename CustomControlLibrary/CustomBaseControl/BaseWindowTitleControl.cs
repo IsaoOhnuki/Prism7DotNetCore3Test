@@ -48,6 +48,19 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(BaseWindowTitleControl),
                 new FrameworkPropertyMetadata(defaultValue: "BaseWindowTitleControl"));
 
+        public object ContentTemplate
+        {
+            get => GetValue(ContentTemplateProperty);
+            set => SetValue(ContentTemplateProperty, value);
+        }
+
+        public static readonly DependencyProperty ContentTemplateProperty =
+            DependencyProperty.Register(
+                nameof(ContentTemplate),
+                typeof(DataTemplate),
+                typeof(BaseWindowTitleControl),
+                new FrameworkPropertyMetadata(default(DataTemplate)));
+
         public object Button1Content
         {
             get => GetValue(Button1ContentProperty);

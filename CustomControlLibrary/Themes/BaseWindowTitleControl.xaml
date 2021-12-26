@@ -21,41 +21,42 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0"
-                                   HorizontalContentAlignment="Left"
-                                   VerticalContentAlignment="Center"
-                                   Content="{TemplateBinding Content}"/>
+                            <ContentControl Grid.Column="0"
+                                            HorizontalContentAlignment="Left"
+                                            VerticalContentAlignment="Center"
+                                            Content="{TemplateBinding Content}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}"/>
                             <bc:BaseButtonControl Grid.Column="1"
-                                    Background="{TemplateBinding Button1Brush}"
-                                    Command="{TemplateBinding Button1Command}">
+                                                  Background="{TemplateBinding Button1Brush}"
+                                                  Command="{TemplateBinding Button1Command}">
                                 <bc:BaseButtonControl.Content>
                                     <Label Content="{TemplateBinding Button1Content}"
-                                       VerticalContentAlignment="Center"
-                                       HorizontalContentAlignment="Center"
-                                       Width="{StaticResource IconTitleButtonWidth}"
-                                       Height="{StaticResource IconTitleButtonHeight}"/>
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center"
+                                           Width="{StaticResource IconTitleButtonWidth}"
+                                           Height="{StaticResource IconTitleButtonHeight}"/>
                                 </bc:BaseButtonControl.Content>
                             </bc:BaseButtonControl>
                             <bc:BaseButtonControl Grid.Column="2"
-                                    Background="{TemplateBinding Button2Brush}"
-                                    Command="{TemplateBinding Button2Command}">
+                                                  Background="{TemplateBinding Button2Brush}"
+                                                  Command="{TemplateBinding Button2Command}">
                                 <bc:BaseButtonControl.Content>
                                     <Label Content="{TemplateBinding Button2Content}"
-                                       VerticalContentAlignment="Center"
-                                       HorizontalContentAlignment="Center"
-                                       Width="{StaticResource IconTitleButtonWidth}"
-                                       Height="{StaticResource IconTitleButtonHeight}"/>
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center"
+                                           Width="{StaticResource IconTitleButtonWidth}"
+                                           Height="{StaticResource IconTitleButtonHeight}"/>
                                 </bc:BaseButtonControl.Content>
                             </bc:BaseButtonControl>
                             <bc:BaseButtonControl Grid.Column="3"
-                                    Background="{TemplateBinding Button3Brush}"
-                                    Command="{TemplateBinding Button3Command}">
+                                                  Background="{TemplateBinding Button3Brush}"
+                                                  Command="{TemplateBinding Button3Command}">
                                 <bc:BaseButtonControl.Content>
                                     <Label Content="{TemplateBinding Button3Content}"
-                                       VerticalContentAlignment="Center"
-                                       HorizontalContentAlignment="Center"
-                                       Width="{StaticResource IconTitleButtonWidth}"
-                                       Height="{StaticResource IconTitleButtonHeight}"/>
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center"
+                                           Width="{StaticResource IconTitleButtonWidth}"
+                                           Height="{StaticResource IconTitleButtonHeight}"/>
                                 </bc:BaseButtonControl.Content>
                             </bc:BaseButtonControl>
                         </Grid>
