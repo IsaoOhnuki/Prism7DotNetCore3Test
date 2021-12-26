@@ -9,7 +9,7 @@
     <SolidColorBrush x:Key="DialogErrorTitleBrush" Color="#FFD0707C"/>
     <SolidColorBrush x:Key="DialogWarningTitleBrush" Color="#FFF3D041"/>
     <SolidColorBrush x:Key="DialogInformationTitleBrush" Color="#FF4CBD56"/>
-    <SolidColorBrush x:Key="ShadeBrush" Color="#B2000000"/>
+    <SolidColorBrush x:Key="ShadeBrush" Color="#A5000000"/>
     <SolidColorBrush x:Key="ButtonColor" Color="CornflowerBlue"/>
     <SolidColorBrush x:Key="ButtonBorderColor" Color="DarkBlue"/>
     <SolidColorBrush x:Key="OkButtonColor" Color="#FF4CBD56"/>
