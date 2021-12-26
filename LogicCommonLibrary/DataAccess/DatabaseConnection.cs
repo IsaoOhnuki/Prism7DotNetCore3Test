@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace LogicCommonLibrary.DataAccess
 {
@@ -14,25 +11,42 @@ namespace LogicCommonLibrary.DataAccess
 
         public DatabaseConnection()
         {
-
         }
 
-        public void Open()
+        public void Open(bool transaction)
         {
             if (Connection == null)
             {
                 Connection = new SqlConnection();
             }
             Connection.Open();
+            if (transaction)
+            {
+                Transaction = Connection.BeginTransaction();
+            }
         }
 
-        public void Close()
+        public void Commit()
         {
             if (Transaction != null)
             {
                 Transaction.Commit();
                 Transaction = null;
             }
+        }
+
+        public void Rollback()
+        {
+            if (Transaction != null)
+            {
+                Transaction.Rollback();
+                Transaction = null;
+            }
+        }
+
+        public void Close()
+        {
+            Commit();
             if (Connection != null)
             {
                 Connection.Close();
