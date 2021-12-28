@@ -1,3 +1,4 @@
+using ApplicationLogicModule.ApplicationLogics;
 using ModelLibrary.Services;
 using Prism.Ioc;
 using Prism.Modularity;

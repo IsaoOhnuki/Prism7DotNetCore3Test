@@ -12,9 +12,7 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ApplicationLogics\" />
     <Folder Include="BusinessLogics\" />
-    <Folder Include="ApplicationLogics\" />
     <Folder Include="BusinessLogics\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,53 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Common;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
 namespace LogicCommonLibrary.DataAccess
 {
-    public class DbColumnInfo : DbColumn
-    {
-        public override object this[string property]
-        {
-            get => GetType().GetProperty(property).GetValue(this);
-        }
-
-        public void SetValue(string property, object value)
-        {
-            GetType().GetProperty(property).SetValue(this, value);
-        }
-    }
-
     public class DatabaseService
     {
-        public bool CreateTable<T>(string database_name, string schema_name, T table)
+        protected Dictionary<Type, string> TypeString { get; } =
+            new Dictionary<Type, string>
+            {
+                { typeof(int), "INT" },
+            };
+
+        public string CreateTableSql<T>(string databaseSchemaName, T table)
         {
             StringBuilder sql = new StringBuilder("CREATE TABLE");
-            sql.AppendLine(database_name + "." + schema_name + "." + nameof(table));
-
-            PropertyInfo[] props = table.GetType().GetProperties(BindingFlags.Public);
+            sql.AppendLine(databaseSchemaName + "." + nameof(table));
             sql.AppendLine("(");
-            string sepa = "";
-            foreach (PropertyInfo prop in props)
-            {
-                string columnType;
-                if (typeof(int) == prop.PropertyType)
-                {
-                    columnType = "int";
-                }
-                else
-                {
-                    throw new NotImplementedException();
-                }
-                sql.AppendLine(prop.Name + columnType + sepa);
-                sepa = ",";
-            }
 
-            sql.AppendLine(");");
+            List<string> keys = new List<string>();
+            PropertyInfo[] props = table.GetType().GetProperties(BindingFlags.Public);
+            sql.AppendLine(
+                string.Join(",\r\n",
+                    props.Where(x =>
+                        TypeString.ContainsKey(x.PropertyType) &&
+                            !(Attribute.GetCustomAttribute(x, typeof(NotMappedAttribute)) is NotMappedAttribute)).
+                        Select(x =>
+                        {
+                            if (Attribute.GetCustomAttribute(x, typeof(KeyAttribute)) is KeyAttribute)
+                            {
+                                keys.Add(x.Name);
+                            }
+                            string result = x.Name + " " + TypeString[x.PropertyType];
+                            if (x.PropertyType == typeof(string))
+                            {
+                                if (Attribute.GetCustomAttribute(x, typeof(StringLengthAttribute)) is StringLengthAttribute len)
+                                {
+                                    result += "(" + len.MaximumLength.ToString() + ") NULL";
+                                }
+                                else
+                                {
+                                    result += "(MAX) NULL";
+                                }
+                            }
+                            else
+                            {
+                                result += Nullable.GetUnderlyingType(x.PropertyType) != null ? " NULL" : " NOT NULL";
+                            }
+                            return result;
+                        })) +
+                            (keys.Count > 0 ? ",\r\n PRIMARY KEY(" + string.Join(",", keys) + ")" : "")
+                        );
 
-            return false;
+            sql.AppendLine("\r\n);");
+
+            return sql.ToString();
         }
     }
 }

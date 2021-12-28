@@ -1,6 +1,6 @@
 ﻿using ModelLibrary.Services;
 
-namespace ApplicationLogicModule
+namespace ApplicationLogicModule.ApplicationLogics
 {
     public class Table_1
     {
@@ -16,6 +16,11 @@ namespace ApplicationLogicModule
         public ApplicationLogic(ILogService logger)
         {
             Logger = logger;
+        }
+
+        public void CreateTable()
+        {
+
         }
     }
 }

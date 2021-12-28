@@ -6,5 +6,6 @@ namespace ApplicationLogicModule.Models
 {
     public class Product
     {
+        public string Key { get; set; }
     }
 }
