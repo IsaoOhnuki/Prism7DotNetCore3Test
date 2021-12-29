@@ -15,7 +15,7 @@ namespace LogicCommonLibrary.DataAccess
         {
         }
 
-        public object DoScalar()
+        public object GetScalar()
         {
             return ScalarCommand();
         }
@@ -82,7 +82,16 @@ namespace LogicCommonLibrary.DataAccess
             {
                 sqlCommand.Parameters.AddRange(_parameter);
             }
-            object result = sqlCommand.ExecuteScalar();
+            object result;
+            try
+            {
+                Connection.Connection.Open();
+                result = sqlCommand.ExecuteScalar();
+            }
+            finally
+            {
+                Connection.Connection.Close();
+            }
             return result;
         }
 
@@ -95,7 +104,15 @@ namespace LogicCommonLibrary.DataAccess
             }
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
+            try
+            {
+                sqlDataAdapter.Fill(dataTable);
+            }
+            catch (Exception e)
+            {
+                dataTable = new DataTable();
+                throw e;
+            }
             return dataTable;
         }
 
@@ -108,7 +125,16 @@ namespace LogicCommonLibrary.DataAccess
             {
                 sqlCommand.Parameters.AddRange(_parameter);
             }
-            int result = sqlCommand.ExecuteNonQuery();
+            int result;
+            try
+            {
+                Connection.Connection.Open();
+                result = sqlCommand.ExecuteNonQuery();
+            }
+            finally
+            {
+                Connection.Connection.Close();
+            }
             return result;
         }
 
@@ -121,31 +147,48 @@ namespace LogicCommonLibrary.DataAccess
                 sqlCommand.Parameters.AddRange(_parameter);
             }
 
+            // 変換するクラスのパブリックプロパティをすべて取得する
             List<Tuple<PropertyInfo, int>> types = GetPublicPropInfo<T>();
-            List<T> result = new List<T>();
 
-            using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+            // 返却リストを作成する
+            List<T> result = new List<T>();
+            try
             {
+                Connection.Connection.Open();
+
+                // クエリのスキーマを取得する
+                using SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                // プロパティとスキーマの定義を判定して一致するものを取得する
                 types = CheckSchema(sqlDataReader.GetColumnSchema(), types);
 
-                sqlDataReader.GetColumnSchema();
-                if (sqlDataReader.Read())
+                // クエリを実行して一行取り出す
+                while (sqlDataReader.Read())
                 {
+                    // 取り出した行をクラスに設定する
                     T t = new T();
                     foreach (Tuple<PropertyInfo, int> type in types)
                     {
                         type.Item1.SetValue(t, sqlDataReader[type.Item2]);
                     }
+                    // 返却リストに追加する
                     result.Add(t);
                 }
+            }
+            finally
+            {
+                Connection.Connection.Close();
             }
             return result;
         }
 
         protected List<Tuple<PropertyInfo, int>> GetPublicPropInfo<T>()
+            where T : new()
         {
-            var type = Type.GetType(nameof(T));
-            PropertyInfo[] props = type.GetProperties(BindingFlags.Public);
+            // 型を確定させてTypeを取得する
+            Type typeT = new T().GetType();
+            // すべてのパブリックプロパティを取得する。
+            PropertyInfo[] props = typeT.GetProperties();
+            // プロパティ型とカラムインデックスのリストを取得する。
             List<Tuple<PropertyInfo, int>> result = new List<Tuple<PropertyInfo, int>>();
             foreach (PropertyInfo prop in props)
             {
@@ -157,20 +200,24 @@ namespace LogicCommonLibrary.DataAccess
 
         protected List<Tuple<PropertyInfo, int>> CheckSchema(IEnumerable<DbColumn> schema, IEnumerable<Tuple<PropertyInfo, int>> types)
         {
+            // プロパティ名をもとにDBのカラム型とプロパティ型を判定する。
             List<Tuple<PropertyInfo, int>> result = new List<Tuple<PropertyInfo, int>>();
             foreach (Tuple<PropertyInfo, int> type in types)
             {
                 DbColumn col = schema.Where(x => x.ColumnName == type.Item1.Name).FirstOrDefault();
                 if (col == null)
                 {
+                    // 同じDBカラム名が無ければパスする。
                     continue;
                 }
                 if (col.DataType != type.Item1.PropertyType)
                 {
+                    // 同じDBカラム型で無ければパスする。
                     continue;
                 }
                 if (!col.ColumnOrdinal.HasValue)
                 {
+                    // 同じDBカラムインデックスが無ければパスする。
                     continue;
                 }
                 var r = new Tuple<PropertyInfo, int>(type.Item1, col.ColumnOrdinal.Value);

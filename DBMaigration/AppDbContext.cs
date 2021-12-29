@@ -61,7 +61,7 @@ namespace DBMaigration
 ・Update-Database AppDatabase2
 
 ⑦ DBServerをロールバックする
-・Update-Database AppDatabase2
+・Update-Database AppDatabase
 
 ⑧ マイグレーションを初期化するにはMigrationsフォルダとデータベースを削除して③から始める
 

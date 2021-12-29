@@ -5,20 +5,30 @@ namespace LogicCommonLibrary.DataAccess
 {
     public class DatabaseConnection : IDisposable
     {
+        private readonly string _connectionString;
+        private readonly SqlCredential _credential;
+
         public SqlConnection Connection { get; private set; }
+
+        public SqlCredential Credential { get; private set; }
 
         public SqlTransaction Transaction { get; private set; }
 
-        public DatabaseConnection()
+        public DatabaseConnection(string connectionString)
         {
+            _connectionString = connectionString;
+            Connection = new SqlConnection(_connectionString);
         }
 
-        public void Open(bool transaction)
+        public DatabaseConnection(string connectionString, SqlCredential credential)
         {
-            if (Connection == null)
-            {
-                Connection = new SqlConnection();
-            }
+            _connectionString = connectionString;
+            _credential = credential;
+            Connection = new SqlConnection(_connectionString, _credential);
+        }
+
+        public void Open(bool transaction = false)
+        {
             Connection.Open();
             if (transaction)
             {

@@ -18,6 +18,7 @@
     <ProjectReference Include="..\AppricationViewModule\AppricationViewModule.csproj" />
     <ProjectReference Include="..\BlankCoreApp1\BlankCoreApp1.csproj" />
     <ProjectReference Include="..\CustomControlLibrary\CustomControlLibrary.csproj" />
+    <ProjectReference Include="..\DBMaigration\DBMaigration.csproj" />
     <ProjectReference Include="..\LogicCommonLibrary\LogicCommonLibrary.csproj" />
     <ProjectReference Include="..\LogServiceLibrary\LogServiceModule.csproj" />
     <ProjectReference Include="..\MessageServiceModule\MessageServiceModule.csproj" />
