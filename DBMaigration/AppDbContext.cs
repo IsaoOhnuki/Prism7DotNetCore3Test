@@ -12,7 +12,7 @@ namespace DBMaigration
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            _ = optionsBuilder.UseSqlServer("Persist Security Info=False;User ID=sa;Password=Express;Initial Catalog=AppDb;Server=(localhost)\\SQLEXPRESS");
+            _ = optionsBuilder.UseSqlServer("Persist Security Info=False;User ID=sa;Password=Express;Initial Catalog=AppDb;Server=localhost\\SQLEXPRESS");
         }
     }
 }
