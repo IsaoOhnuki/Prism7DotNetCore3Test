@@ -13,4 +13,16 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationLogicModule\ApplicationLogicModule.csproj" />
+    <ProjectReference Include="..\AppricationViewModule\AppricationViewModule.csproj" />
+    <ProjectReference Include="..\BlankCoreApp1\BlankCoreApp1.csproj" />
+    <ProjectReference Include="..\CustomControlLibrary\CustomControlLibrary.csproj" />
+    <ProjectReference Include="..\LogicCommonLibrary\LogicCommonLibrary.csproj" />
+    <ProjectReference Include="..\LogServiceLibrary\LogServiceModule.csproj" />
+    <ProjectReference Include="..\MessageServiceModule\MessageServiceModule.csproj" />
+    <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj" />
+    <ProjectReference Include="..\MvvmLibrary\MvvmCommonLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
