@@ -122,6 +122,7 @@ namespace LogicCommonLibrary.DataAccess
             DataTable dataTable = new DataTable();
             try
             {
+                SetLastSql();
                 sqlDataAdapter.Fill(dataTable);
             }
             catch (Exception e)
