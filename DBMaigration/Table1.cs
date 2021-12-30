@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicCommonLibrary.DataAccess.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -20,5 +21,12 @@ namespace DBMaigration
         [Required]
         [StringLength(20)]
         public string Phone { get; set; }
+
+        [Required]
+        [UpdateQueryParameter("GetDate()")]
+        [InsertQueryParameter("GetDate()")]
+        [Optimist(false)]
+        [MaxLength(8)]
+        public byte[] Optimist { get; set; }
     }
 }

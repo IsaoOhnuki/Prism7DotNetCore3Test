@@ -5,11 +5,11 @@ namespace LogicCommonLibrary.DataAccess
 {
     public class QueryParameter
     {
-        private readonly SqlParameter _sqlParameter;
+        public SqlParameter SqlParameter { get; private set; }
 
         public QueryParameter(string paramName, SqlDbType dbType, object value)
         {
-            _sqlParameter = new SqlParameter(paramName, dbType)
+            SqlParameter = new SqlParameter(paramName, dbType)
             {
                 Value = value
             };
@@ -17,7 +17,7 @@ namespace LogicCommonLibrary.DataAccess
 
         public static implicit operator SqlParameter(QueryParameter obj)
         {
-            return obj._sqlParameter;
+            return obj.SqlParameter;
         }
     }
 }
