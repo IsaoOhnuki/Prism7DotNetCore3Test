@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -25,6 +27,15 @@ namespace LogicCommonLibrary.DataAccess
         {
             var propInfos = GetPublicPropInfo();
             return CheckSchema(dbSchema, propInfos);
+        }
+
+        public void CheckParamSchema(IEnumerable<DbColumn> dbSchema, IEnumerable<SqlParameter> sqlParameters)
+        {
+            foreach (SqlParameter param in sqlParameters)
+            {
+                var dbColumn = dbSchema.First(x => x.ColumnName == param.ParameterName[1..]);
+                param.SqlDbType = (SqlDbType)Enum.Parse(typeof(SqlDbType), dbColumn.DataTypeName);
+            }
         }
 
         public List<PropertyInfo> GetPublicPropInfo()

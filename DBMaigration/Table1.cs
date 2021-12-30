@@ -28,5 +28,14 @@ namespace DBMaigration
         [Optimist(false)]
         [MaxLength(8)]
         public DateTime Optimist { get; set; }
+
+        public decimal Decimal { get; set; }
+
+        public long Long { get; set; }
+
+        public byte Byte { get; set; }
+
+        [MaxLength(10)]
+        public byte[] ByteArray { get; set; }
     }
 }

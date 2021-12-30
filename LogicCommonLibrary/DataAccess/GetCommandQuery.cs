@@ -18,17 +18,6 @@ namespace LogicCommonLibrary.DataAccess
         {
         }
 
-        public static Dictionary<Type, SqlDbType> DbTypes { get; } = new Dictionary<Type, SqlDbType>()
-        {
-            { typeof(int), SqlDbType.Int },
-            { typeof(int?), SqlDbType.Int },
-            { typeof(string), SqlDbType.NChar },
-            { typeof(DateTime), SqlDbType.DateTime },
-            { typeof(DateTime?), SqlDbType.DateTime },
-            { typeof(decimal), SqlDbType.Decimal },
-            { typeof(decimal?), SqlDbType.Decimal },
-        };
-
         public static bool GetInsertQuery(out string query, out List<SqlParameter> sqlParameters)
         {
             query = "";
@@ -54,7 +43,7 @@ namespace LogicCommonLibrary.DataAccess
                 {
                     columns.Add(prop.Name);
                     string paramName = "@" + prop.Name;
-                    sqlParameters.Add(new SqlParameter(paramName, DbTypes[prop.PropertyType]));
+                    sqlParameters.Add(new SqlParameter(paramName, default));
                     parameters.Add(paramName);
                 }
             }
@@ -86,13 +75,13 @@ namespace LogicCommonLibrary.DataAccess
                 if (Attribute.GetCustomAttribute(prop, typeof(KeyAttribute)) is KeyAttribute keyAttribute)
                 {
                     wheres.Add(prop.Name + " = " + paramName);
-                    sqlParameters.Add(new SqlParameter(paramName, DbTypes[prop.PropertyType]));
+                    sqlParameters.Add(new SqlParameter(paramName, default));
                 }
                 else if (Attribute.GetCustomAttribute(prop, typeof(OptimistAttribute)) is OptimistAttribute optimistAttribute &&
                     optimistAttribute.DeleteWhere)
                 {
                     wheres.Add(prop.Name + " = " + paramName);
-                    sqlParameters.Add(new SqlParameter(paramName, DbTypes[prop.PropertyType]));
+                    sqlParameters.Add(new SqlParameter(paramName, default));
                 }
             }
 
@@ -124,7 +113,7 @@ namespace LogicCommonLibrary.DataAccess
                 if (Attribute.GetCustomAttribute(prop, typeof(KeyAttribute)) is KeyAttribute keyAttribute)
                 {
                     wheres.Add(prop.Name + " = " + paramName);
-                    sqlParameters.Add(new SqlParameter(paramName, DbTypes[prop.PropertyType]));
+                    sqlParameters.Add(new SqlParameter(paramName, default));
                 }
                 else if (Attribute.GetCustomAttribute(prop, typeof(UpdateQueryParameterAttribute)) is UpdateQueryParameterAttribute updateQueryParameterAttribute)
                 {
@@ -133,7 +122,7 @@ namespace LogicCommonLibrary.DataAccess
                 else
                 {
                     columns.Add(prop.Name + " = " + paramName);
-                    sqlParameters.Add(new SqlParameter(paramName, DbTypes[prop.PropertyType]));
+                    sqlParameters.Add(new SqlParameter(paramName, default));
                 }
                 if (Attribute.GetCustomAttribute(prop, typeof(OptimistAttribute)) is OptimistAttribute)
                 {
@@ -142,7 +131,7 @@ namespace LogicCommonLibrary.DataAccess
                     {
                         throw new DuplicateNameException();
                     }
-                    sqlParameters.Add(new SqlParameter(paramName, DbTypes[prop.PropertyType]));
+                    sqlParameters.Add(new SqlParameter(paramName, default));
                 }
             }
 
@@ -169,6 +158,11 @@ namespace LogicCommonLibrary.DataAccess
                 param.Value = model.GetType().GetProperty(param.ParameterName.Substring(1)).GetValue(model);
             }
             return sqlParameters.ToArray();
+        }
+
+        public static void CheckSqlParameter(DatabaseConnection connection, IEnumerable<SqlParameter> sqlParameters, TModel model)
+        {
+
         }
     }
 }

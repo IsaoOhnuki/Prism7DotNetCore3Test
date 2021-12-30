@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,8 @@ namespace LogicCommonLibrary.DataAccess
 {
     public class ScalarDataAccess : DataAccessBase
     {
-        public ScalarDataAccess(DatabaseConnection connection, string query, SqlParameter[] parameter = null)
+        public ScalarDataAccess(DatabaseConnection connection, string query,
+            SqlParameter[] parameter = null)
             : base(connection, query, parameter)
         {
         }
@@ -22,7 +24,8 @@ namespace LogicCommonLibrary.DataAccess
 
     public class QueryDataAccess : DataAccessBase
     {
-        public QueryDataAccess(DatabaseConnection connection, string query, SqlParameter[] parameter = null)
+        public QueryDataAccess(DatabaseConnection connection,
+            string query, SqlParameter[] parameter = null)
             : base(connection, query, parameter)
         {
         }
@@ -36,7 +39,8 @@ namespace LogicCommonLibrary.DataAccess
     public class QueryDataAccess<T> : DataAccessBase
         where T : new()
     {
-        public QueryDataAccess(DatabaseConnection connection, string query, SqlParameter[] parameter = null)
+        public QueryDataAccess(DatabaseConnection connection,
+            string query, SqlParameter[] parameter = null)
             : base(connection, query, parameter)
         {
         }
@@ -49,7 +53,8 @@ namespace LogicCommonLibrary.DataAccess
 
     public class NonQueryDataAccess : DataAccessBase
     {
-        public NonQueryDataAccess(DatabaseConnection connection, string query, SqlParameter[] parameter = null)
+        public NonQueryDataAccess(DatabaseConnection connection,
+            string query, SqlParameter[] parameter = null)
             : base(connection, query, parameter)
         {
         }
@@ -83,7 +88,8 @@ namespace LogicCommonLibrary.DataAccess
                             "[Value]='" + (x.Value == null ? null : x.Value.ToString()) + "'}"));
         }
 
-        protected DataAccessBase(DatabaseConnection connection, string query, SqlParameter[] parameter = null)
+        protected DataAccessBase(DatabaseConnection connection, string query,
+            SqlParameter[] parameter = null)
         {
             Connection = connection;
             _query = query;
@@ -98,15 +104,23 @@ namespace LogicCommonLibrary.DataAccess
                 sqlCommand.Parameters.AddRange(_parameter);
             }
             object result;
+            bool selfOpen = false;
             try
             {
-                Connection.Connection.Open();
+                if (Connection.Connection.State == ConnectionState.Closed)
+                {
+                    selfOpen = true;
+                    Connection.Connection.Open();
+                }
                 SetLastSql();
                 result = sqlCommand.ExecuteScalar();
             }
             finally
             {
-                Connection.Connection.Close();
+                if (selfOpen)
+                {
+                    Connection.Connection.Close();
+                }
             }
             return result;
         }
@@ -143,15 +157,23 @@ namespace LogicCommonLibrary.DataAccess
                 sqlCommand.Parameters.AddRange(_parameter);
             }
             int result;
+            bool selfOpen = false;
             try
             {
-                Connection.Connection.Open();
+                if (Connection.Connection.State == ConnectionState.Closed)
+                {
+                    selfOpen = true;
+                    Connection.Connection.Open();
+                }
                 SetLastSql();
                 result = sqlCommand.ExecuteNonQuery();
             }
             finally
             {
-                Connection.Connection.Close();
+                if (selfOpen)
+                {
+                    Connection.Connection.Close();
+                }
             }
             return result;
         }
@@ -167,9 +189,14 @@ namespace LogicCommonLibrary.DataAccess
 
             // 返却リストを作成する
             List<T> result = new List<T>();
+            bool selfOpen = false;
             try
             {
-                Connection.Connection.Open();
+                if (Connection.Connection.State == ConnectionState.Closed)
+                {
+                    selfOpen = true;
+                    Connection.Connection.Open();
+                }
                 SetLastSql();
 
                 // クエリのスキーマを取得する
@@ -200,7 +227,42 @@ namespace LogicCommonLibrary.DataAccess
             }
             finally
             {
-                Connection.Connection.Close();
+                if (selfOpen)
+                {
+                    Connection.Connection.Close();
+                }
+            }
+            return result;
+        }
+
+
+        protected DbColumn[] GetModelSchema<T>()
+            where T : new()
+        {
+            T model = new T();
+            string selectQuery = "SELECT * FROM " + model.GetType().Name + ";";
+            SqlCommand sqlCommand = new SqlCommand(selectQuery, Connection.Connection);
+
+            DbColumn[] result;
+            bool selfOpen = false;
+            try
+            {
+                if (Connection.Connection.State == ConnectionState.Closed)
+                {
+                    selfOpen = true;
+                    Connection.Connection.Open();
+                }
+
+                // クエリのスキーマを取得する
+                using SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                result = sqlDataReader.GetColumnSchema().ToArray();
+            }
+            finally
+            {
+                if (selfOpen)
+                {
+                    Connection.Connection.Close();
+                }
             }
             return result;
         }
