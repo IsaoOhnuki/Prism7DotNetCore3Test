@@ -27,6 +27,6 @@ namespace DBMaigration
         [InsertQueryParameter("GetDate()")]
         [Optimist(false)]
         [MaxLength(8)]
-        public byte[] Optimist { get; set; }
+        public DateTime Optimist { get; set; }
     }
 }

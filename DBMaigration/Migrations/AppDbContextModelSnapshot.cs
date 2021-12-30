@@ -32,9 +32,9 @@ namespace DBMaigration.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Optimist")
+                    b.Property<DateTime>("Optimist")
                         .HasMaxLength(8)
-                        .HasColumnType("varbinary(8)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Phone")
                         .IsRequired()
