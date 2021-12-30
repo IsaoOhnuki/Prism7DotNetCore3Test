@@ -164,7 +164,6 @@ namespace LogicCommonLibrary.DataAccess
 
         public static SqlParameter[] GetQueryParameter(IEnumerable<SqlParameter> sqlParameters, TModel model)
         {
-            List<PropertyInfo> propInfos = new CheckModelSchema<TModel>().GetPublicPropInfo();
             foreach (var param in sqlParameters)
             {
                 param.Value = model.GetType().GetProperty(param.ParameterName.Substring(1)).GetValue(model);

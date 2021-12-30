@@ -49,6 +49,20 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 QueryDataAccess<Table1> selectDataAccess = new QueryDataAccess<Table1>(connection, selectQuery, null);
                 List<Table1> rows = selectDataAccess.DoQuery();
                 Assert.IsTrue(rows[0].Name == "abc");
+
+                rows[0].Name = "def";
+                GetCommandQuery<Table1>.GetUpdateQuery(out updateQuery, out sqlParameters);
+                NonQueryDataAccess updateDataAccess =
+                    new NonQueryDataAccess(connection, updateQuery, GetCommandQuery<Table1>.GetQueryParameter(sqlParameters, rows[0]));
+                int successCount = updateDataAccess.DoNonQuery();
+                Assert.IsTrue(successCount == 1);
+                string lastQuery = DataAccessBase.LastQuery;
+                string lastQueryParam = DataAccessBase.LastQueryParam;
+
+                selectQuery = "SELECT * FROM Table1;";
+                selectDataAccess = new QueryDataAccess<Table1>(connection, selectQuery, null);
+                rows = selectDataAccess.DoQuery();
+                Assert.IsTrue(rows[0].Name == "def");
             }
             catch (Exception e)
             {
@@ -93,6 +107,19 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 QueryDataAccess<Table1> selectDataAccess = new QueryDataAccess<Table1>(connection, selectQuery, null);
                 List<Table1> rows = selectDataAccess.DoQuery();
                 Assert.IsTrue(rows[0].Name == "abc");
+
+                GetCommandQuery<Table1>.GetDeleteQuery(out deleteQuery, out sqlParameters);
+                deleteDataAccess =
+                    new NonQueryDataAccess(connection, deleteQuery, GetCommandQuery<Table1>.GetQueryParameter(sqlParameters, rows[0]));
+                int successCount = deleteDataAccess.DoNonQuery();
+                Assert.IsTrue(successCount == 1);
+                string lastQuery = DataAccessBase.LastQuery;
+                string lastQueryParam = DataAccessBase.LastQueryParam;
+
+                selectQuery = "SELECT * FROM Table1;";
+                selectDataAccess = new QueryDataAccess<Table1>(connection, selectQuery, null);
+                rows = selectDataAccess.DoQuery();
+                Assert.IsTrue(rows.Count == 0);
             }
             catch (Exception e)
             {

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
 
 namespace LogicCommonLibrary.DataAccess
 {
@@ -65,6 +67,22 @@ namespace LogicCommonLibrary.DataAccess
 
         public DatabaseConnection Connection { get; private set; }
 
+        public static string LastQuery { get; private set; }
+
+        public static string LastQueryParam { get; private set; }
+
+        private void SetLastSql()
+        {
+            LastQuery = _query;
+            LastQueryParam =
+                _parameter == null ? "{}" :
+                    string.Join(",",
+                        _parameter.Select(x =>
+                            "{[Name]='" + x.ParameterName + "';" +
+                            "[Type]='" + x.SqlDbType.ToString() + "';" +
+                            "[Value]='" + (x.Value == null ? null : x.Value.ToString()) + "'}"));
+        }
+
         protected DataAccessBase(DatabaseConnection connection, string query, SqlParameter[] parameter = null)
         {
             Connection = connection;
@@ -83,6 +101,7 @@ namespace LogicCommonLibrary.DataAccess
             try
             {
                 Connection.Connection.Open();
+                SetLastSql();
                 result = sqlCommand.ExecuteScalar();
             }
             finally
@@ -126,6 +145,7 @@ namespace LogicCommonLibrary.DataAccess
             try
             {
                 Connection.Connection.Open();
+                SetLastSql();
                 result = sqlCommand.ExecuteNonQuery();
             }
             finally
@@ -149,6 +169,7 @@ namespace LogicCommonLibrary.DataAccess
             try
             {
                 Connection.Connection.Open();
+                SetLastSql();
 
                 // クエリのスキーマを取得する
                 using SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
@@ -162,7 +183,15 @@ namespace LogicCommonLibrary.DataAccess
                     T t = new T();
                     foreach (ModelColumnSchema type in types)
                     {
-                        type.ColumnInfo.SetValue(t, sqlDataReader[type.ColumnIndex]);
+                        var colValue = sqlDataReader[type.ColumnIndex];
+                        if (colValue is DBNull)
+                        {
+                            type.ColumnInfo.SetValue(t, null);
+                        }
+                        else
+                        {
+                            type.ColumnInfo.SetValue(t, colValue);
+                        }
                     }
                     // 返却リストに追加する
                     result.Add(t);

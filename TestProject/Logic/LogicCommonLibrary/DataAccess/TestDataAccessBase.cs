@@ -27,7 +27,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
                 deleteDataAccess.DoNonQuery();
 
-                string insertQuery = "INSERT INTO Table1 (Name) VALUES('abc');";
+                string insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist) VALUES('abc','','',GetDate());";
                 NonQueryDataAccess insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
                 insertDataAccess.DoNonQuery();
 
@@ -41,7 +41,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 List<Table1> rows = selectDataAccess.DoQuery();
                 Assert.IsTrue(rows[0].Name == "abc");
 
-                insertQuery = "INSERT INTO Table1 (Name) VALUES('abc');";
+                insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist) VALUES('abc','','',GetDate());";
                 insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
                 insertDataAccess.DoNonQuery();
 
@@ -81,7 +81,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, parameter.ToArray());
                 deleteDataAccess.DoNonQuery();
 
-                string insertQuery = "INSERT INTO Table1 (Name) VALUES('abc');";
+                string insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist) VALUES('abc','','',GetDate());";
                 NonQueryDataAccess insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
                 insertDataAccess.DoNonQuery();
 
@@ -95,7 +95,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 DataTable rows = selectDataAccess.DoQuery();
                 Assert.IsTrue(rows.Rows[0]["Name"] as string == "abc");
 
-                insertQuery = "INSERT INTO Table1 (Name) VALUES('abc');";
+                insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist) VALUES('abc','','',GetDate());";
                 insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
                 insertDataAccess.DoNonQuery();
 

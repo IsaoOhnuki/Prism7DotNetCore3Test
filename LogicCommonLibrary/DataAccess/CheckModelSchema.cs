@@ -54,7 +54,17 @@ namespace LogicCommonLibrary.DataAccess
                     // 同じDBカラム名が無ければパスする。
                     continue;
                 }
-                if (col.DataType != type.PropertyType)
+                if (type.PropertyType.IsGenericType &&
+                    type.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) &&
+                    (col.DataType != Nullable.GetUnderlyingType(type.PropertyType) ||
+                    !col.AllowDBNull.HasValue ||
+                    !col.AllowDBNull.Value))
+                {
+                    // 同じDBカラム型で無ければパスする。
+                    continue;
+                }
+                if (!type.PropertyType.IsGenericType &&
+                    col.DataType != type.PropertyType)
                 {
                     // 同じDBカラム型で無ければパスする。
                     continue;
