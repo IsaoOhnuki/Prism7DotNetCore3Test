@@ -4,16 +4,14 @@ using DBMaigration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DBMaigration.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20211230084654_AppDatabase")]
-    partial class AppDatabase
+    [DbContext(typeof(TestDbContext))]
+    partial class TestDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,6 +28,19 @@ namespace DBMaigration.Migrations
 
                     b.Property<int?>("Age")
                         .HasColumnType("int");
+
+                    b.Property<byte>("Byte")
+                        .HasColumnType("tinyint");
+
+                    b.Property<byte[]>("ByteArray")
+                        .HasMaxLength(10)
+                        .HasColumnType("varbinary(10)");
+
+                    b.Property<decimal>("Decimal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<long>("Long")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

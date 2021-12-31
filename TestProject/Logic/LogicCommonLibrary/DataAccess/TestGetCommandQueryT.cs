@@ -16,7 +16,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
         public void GetInsertQuery01()
         {
             string server = "localhost\\SQLEXPRESS";
-            string database = "AppDb";
+            string database = "TestDb";
             string user = "sa";
             string pass = "Express";
             string conn = "Persist Security Info=False;User ID=" + user + ";Password=" + pass + ";Initial Catalog=" + database + ";Server=" + server;
@@ -79,7 +79,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
         public void GetInsertQuery02()
         {
             string server = "localhost\\SQLEXPRESS";
-            string database = "AppDb";
+            string database = "TestDb";
             string user = "sa";
             string pass = "Express";
             string conn = "Persist Security Info=False;User ID=" + user + ";Password=" + pass + ";Initial Catalog=" + database + ";Server=" + server;

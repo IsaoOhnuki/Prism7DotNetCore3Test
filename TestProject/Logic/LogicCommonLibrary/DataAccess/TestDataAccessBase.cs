@@ -15,7 +15,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
         public void QueryDataAccessT()
         {
             string server = "localhost\\SQLEXPRESS";
-            string database = "AppDb";
+            string database = "TestDb";
             string user = "sa";
             string pass = "Express";
             string conn = "Persist Security Info=False;User ID=" + user + ";Password=" + pass + ";Initial Catalog=" + database + ";Server=" + server;
@@ -28,7 +28,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
                 deleteDataAccess.DoNonQuery();
 
-                string insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist) VALUES('abc','','',GetDate());";
+                string insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist,Decimal,Long,Byte,ByteArray) VALUES('abc','','',GetDate(),0,0,0,0x00);";
                 NonQueryDataAccess insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
                 insertDataAccess.DoNonQuery();
 
@@ -42,7 +42,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 List<Table1> rows = selectDataAccess.DoQuery();
                 Assert.IsTrue(rows[0].Name == "abc");
 
-                insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist) VALUES('abc','','',GetDate());";
+                insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist,Decimal,Long,Byte,ByteArray) VALUES('abc','','',GetDate(),0,0,0,0x00);";
                 insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
                 insertDataAccess.DoNonQuery();
 
@@ -66,7 +66,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
         public void QueryDataAccess()
         {
             string server = "localhost\\SQLEXPRESS";
-            string database = "AppDb";
+            string database = "TestDb";
             string user = "sa";
             string pass = "Express";
             string conn = "Persist Security Info=False;User ID=" + user + ";Password=" + pass + ";Initial Catalog=" + database + ";Server=" + server;
@@ -79,7 +79,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
                 deleteDataAccess.DoNonQuery();
 
-                string insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist) VALUES('abc','','',GetDate());";
+                string insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist,Decimal,Long,Byte,ByteArray) VALUES('abc','','',GetDate(),0,0,0,0x00);";
                 NonQueryDataAccess insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
                 insertDataAccess.DoNonQuery();
 
@@ -93,7 +93,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 DataTable rows = selectDataAccess.DoQuery();
                 Assert.IsTrue(rows.Rows[0]["Name"] as string == "abc");
 
-                insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist) VALUES('abc','','',GetDate());";
+                insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist,Decimal,Long,Byte,ByteArray) VALUES('abc','','',GetDate(),0,0,0,0x00);";
                 insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
                 insertDataAccess.DoNonQuery();
 

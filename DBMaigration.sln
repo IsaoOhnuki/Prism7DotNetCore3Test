@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{2A624956
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{2182ADAC-D856-4E38-9883-4F21D3F4922D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBMaigration", "DBMaigration\DBMaigration.csproj", "{95615D88-2C24-44E5-A702-2855FDBA055F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBMaigration", "DBMaigration\DBMaigration.csproj", "{95615D88-2C24-44E5-A702-2855FDBA055F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelLibrary", "ModelLibrary\ModelLibrary.csproj", "{07DB14AB-905C-4FDE-8C90-6E625184CCC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,12 +27,17 @@ Global
 		{95615D88-2C24-44E5-A702-2855FDBA055F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95615D88-2C24-44E5-A702-2855FDBA055F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95615D88-2C24-44E5-A702-2855FDBA055F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07DB14AB-905C-4FDE-8C90-6E625184CCC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07DB14AB-905C-4FDE-8C90-6E625184CCC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07DB14AB-905C-4FDE-8C90-6E625184CCC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07DB14AB-905C-4FDE-8C90-6E625184CCC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{95615D88-2C24-44E5-A702-2855FDBA055F} = {2182ADAC-D856-4E38-9883-4F21D3F4922D}
+		{07DB14AB-905C-4FDE-8C90-6E625184CCC7} = {E5B6C4A8-4CED-42F2-85F4-82C2423B5BDA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5FA9ED04-964B-49B7-84FC-D049E9D55AD7}

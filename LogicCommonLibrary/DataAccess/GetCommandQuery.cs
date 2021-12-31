@@ -1,4 +1,4 @@
-﻿using LogicCommonLibrary.DataAccess.Attributes;
+﻿using ModelLibrary.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

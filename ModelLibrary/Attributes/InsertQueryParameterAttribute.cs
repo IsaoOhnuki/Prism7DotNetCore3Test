@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LogicCommonLibrary.DataAccess.Attributes
+namespace ModelLibrary.Attributes
 {
     public class InsertQueryParameterAttribute : Attribute
     {

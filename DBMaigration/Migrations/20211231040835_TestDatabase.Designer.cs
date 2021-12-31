@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DBMaigration.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20211230171742_AppDatabase2")]
-    partial class AppDatabase2
+    [DbContext(typeof(TestDbContext))]
+    [Migration("20211231040835_TestDatabase")]
+    partial class TestDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

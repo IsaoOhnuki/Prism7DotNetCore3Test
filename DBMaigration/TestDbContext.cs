@@ -1,14 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ModelLibrary.Models.Database;
 
 namespace DBMaigration
 {
-    public class AppDbContext : DbContext
+    public class TestDbContext : DbContext
     {
         /// <summary>
         /// マイグレーションするクラスをDbSetで定義する。
         /// </summary>
-        public DbSet<Product> Product { get; set; }
+        public DbSet<Table1> Table1 { get; set; }
 
         /// <summary>
         /// DbContext継承クラスを作りOnConfiguringをオーバーライドするとマイグレーションが機能する。
@@ -19,7 +18,7 @@ namespace DBMaigration
             base.OnConfiguring(optionsBuilder);
 
             string server = "localhost\\SQLEXPRESS";
-            string database = "AppDb";
+            string database = "TestDb";
             string user = "sa";
             string pass = "Express";
 
@@ -63,7 +62,7 @@ namespace DBMaigration
 
 ⑧ マイグレーションを初期化するにはMigrationsフォルダとデータベースを削除して③から始める
 
-⑨ Add-Migration -context AppDbContext AppDatabase　←　コンテキストクラスを指定する
-   Update-Database -context AppDbContext AppDatabase
+⑨ Add-Migration -context TestDbContext TestDatabase　←　コンテキストクラスを指定する
+   Update-Database -context TestDbContext TestDatabase
 
  */

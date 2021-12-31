@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DBMaigration.Migrations
 {
-    public partial class AppDatabase : Migration
+    public partial class TestDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,11 @@ namespace DBMaigration.Migrations
                     Age = table.Column<int>(type: "int", nullable: true),
                     Sex = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Optimist = table.Column<DateTime>(type: "datetime2", maxLength: 8, nullable: false)
+                    Optimist = table.Column<DateTime>(type: "datetime2", maxLength: 8, nullable: false),
+                    Decimal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Long = table.Column<long>(type: "bigint", nullable: false),
+                    Byte = table.Column<byte>(type: "tinyint", nullable: false),
+                    ByteArray = table.Column<byte[]>(type: "varbinary(10)", maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
