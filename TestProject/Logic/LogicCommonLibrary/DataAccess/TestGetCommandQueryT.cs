@@ -43,7 +43,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                             CheckModelSchema.GetModelSchema<Table1>(connection.Connection), table1));
                 insertDataAccess.DoNonQuery();
 
-                string countQuery = "SELECT COUNT(ID) FROM Table1;";
+                string countQuery = "SELECT COUNT(*) FROM Table1;";
                 ScalarDataAccess scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
                 int? count = scalardataAccess.GetScalar() as int?;
                 Assert.IsTrue(count.Value == 1);
@@ -106,7 +106,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                             CheckModelSchema.GetModelSchema<Table1>(connection.Connection), table1));
                 insertDataAccess.DoNonQuery();
 
-                string countQuery = "SELECT COUNT(ID) FROM Table1;";
+                string countQuery = "SELECT COUNT(*) FROM Table1;";
                 ScalarDataAccess scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
                 int? count = scalardataAccess.GetScalar() as int?;
                 Assert.IsTrue(count.Value == 1);
@@ -128,6 +128,125 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
                 selectQuery = "SELECT * FROM Table1;";
                 selectDataAccess = new QueryDataAccess<Table1>(connection, selectQuery, null);
+                rows = selectDataAccess.DoQuery();
+                Assert.IsTrue(rows.Count == 0);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        [TestMethod]
+        public void GetInsertQuery03()
+        {
+            string server = "localhost\\SQLEXPRESS";
+            string database = "TestDb";
+            string user = "sa";
+            string pass = "Express";
+            string conn = "Persist Security Info=False;User ID=" + user + ";Password=" + pass + ";Initial Catalog=" + database + ";Server=" + server;
+
+            try
+            {
+                using DatabaseConnection connection = new DatabaseConnection(conn);
+
+                string deleteQuery = "DELETE FROM Table2;";
+                NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
+                deleteDataAccess.DoNonQuery();
+
+                GetCommandQuery<Table2>.GetInsertQuery(out string updateQuery, out List<SqlParameter> sqlParameters);
+                Table2 table2 = new Table2
+                {
+                    Name = "abc",
+                };
+                NonQueryDataAccess insertDataAccess =
+                    new NonQueryDataAccess(connection, updateQuery,
+                        GetCommandQuery<Table2>.GetQueryParameter(sqlParameters,
+                            CheckModelSchema.GetModelSchema<Table2>(connection.Connection), table2));
+                insertDataAccess.DoNonQuery();
+
+                string countQuery = "SELECT COUNT(*) FROM Table2;";
+                ScalarDataAccess scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
+                int? count = scalardataAccess.GetScalar() as int?;
+                Assert.IsTrue(count.Value == 1);
+
+                string selectQuery = "SELECT * FROM Table2;";
+                QueryDataAccess<Table2> selectDataAccess = new QueryDataAccess<Table2>(connection, selectQuery, null);
+                List<Table2> rows = selectDataAccess.DoQuery();
+                Assert.IsTrue(rows[0].Name == "abc");
+
+                rows[0].Name = "def";
+                GetCommandQuery<Table2>.GetUpdateQuery(out updateQuery, out sqlParameters);
+                NonQueryDataAccess updateDataAccess =
+                    new NonQueryDataAccess(connection, updateQuery,
+                        GetCommandQuery<Table2>.GetQueryParameter(sqlParameters,
+                            CheckModelSchema.GetModelSchema<Table2>(connection.Connection), rows[0]));
+                int successCount = updateDataAccess.DoNonQuery();
+                Assert.IsTrue(successCount == 1);
+                string lastQuery = DataAccessBase.LastQuery;
+                string lastQueryParam = DataAccessBase.LastQueryParam;
+
+                selectQuery = "SELECT * FROM Table2;";
+                selectDataAccess = new QueryDataAccess<Table2>(connection, selectQuery, null);
+                rows = selectDataAccess.DoQuery();
+                Assert.IsTrue(rows[0].Name == "def");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        [TestMethod]
+        public void GetInsertQuery04()
+        {
+            string server = "localhost\\SQLEXPRESS";
+            string database = "TestDb";
+            string user = "sa";
+            string pass = "Express";
+            string conn = "Persist Security Info=False;User ID=" + user + ";Password=" + pass + ";Initial Catalog=" + database + ";Server=" + server;
+
+            try
+            {
+                using DatabaseConnection connection = new DatabaseConnection(conn);
+
+                string deleteQuery = "DELETE FROM Table2;";
+                NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
+                deleteDataAccess.DoNonQuery();
+
+                GetCommandQuery<Table2>.GetInsertQuery(out string updateQuery, out List<SqlParameter> sqlParameters);
+                Table2 table2 = new Table2
+                {
+                    Name = "abc",
+                };
+                NonQueryDataAccess insertDataAccess =
+                    new NonQueryDataAccess(connection, updateQuery,
+                        GetCommandQuery<Table2>.GetQueryParameter(sqlParameters,
+                            CheckModelSchema.GetModelSchema<Table2>(connection.Connection), table2));
+                insertDataAccess.DoNonQuery();
+
+                string countQuery = "SELECT COUNT(*) FROM Table2;";
+                ScalarDataAccess scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
+                int? count = scalardataAccess.GetScalar() as int?;
+                Assert.IsTrue(count.Value == 1);
+
+                string selectQuery = "SELECT * FROM Table2;";
+                QueryDataAccess<Table2> selectDataAccess = new QueryDataAccess<Table2>(connection, selectQuery, null);
+                List<Table2> rows = selectDataAccess.DoQuery();
+                Assert.IsTrue(rows[0].Name == "abc");
+
+                GetCommandQuery<Table2>.GetDeleteQuery(out deleteQuery, out sqlParameters);
+                deleteDataAccess =
+                    new NonQueryDataAccess(connection, deleteQuery,
+                        GetCommandQuery<Table2>.GetQueryParameter(sqlParameters,
+                            CheckModelSchema.GetModelSchema<Table2>(connection.Connection), rows[0]));
+                int successCount = deleteDataAccess.DoNonQuery();
+                Assert.IsTrue(successCount == 1);
+                string lastQuery = DataAccessBase.LastQuery;
+                string lastQueryParam = DataAccessBase.LastQueryParam;
+
+                selectQuery = "SELECT * FROM Table2;";
+                selectDataAccess = new QueryDataAccess<Table2>(connection, selectQuery, null);
                 rows = selectDataAccess.DoQuery();
                 Assert.IsTrue(rows.Count == 0);
             }

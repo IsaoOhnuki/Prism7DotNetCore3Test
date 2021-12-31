@@ -34,7 +34,8 @@ namespace LogicCommonLibrary.DataAccess
                     columns.Add(prop.Name);
                     parameters.Add(insertQueryParameter.Parameter);
                 }
-                else if ((Attribute.GetCustomAttribute(prop, typeof(DatabaseGeneratedAttribute)) is DatabaseGeneratedAttribute databaseGeneratedAttribute &&
+                else if (Attribute.GetCustomAttribute(prop, typeof(KeyAttribute)) is KeyAttribute ||
+                    (Attribute.GetCustomAttribute(prop, typeof(DatabaseGeneratedAttribute)) is DatabaseGeneratedAttribute databaseGeneratedAttribute &&
                     databaseGeneratedAttribute.DatabaseGeneratedOption != DatabaseGeneratedOption.None) ||
                     prop.Name.ToLower() == "id")
                 {
@@ -73,7 +74,7 @@ namespace LogicCommonLibrary.DataAccess
             foreach (var prop in propInfos)
             {
                 string paramName = "@" + prop.Name;
-                if (Attribute.GetCustomAttribute(prop, typeof(KeyAttribute)) is KeyAttribute keyAttribute)
+                if (Attribute.GetCustomAttribute(prop, typeof(KeyAttribute)) is KeyAttribute)
                 {
                     wheres.Add(prop.Name + " = " + paramName);
                     sqlParameters.Add(new SqlParameter(paramName, default));
@@ -111,7 +112,7 @@ namespace LogicCommonLibrary.DataAccess
             foreach (var prop in propInfos)
             {
                 string paramName = "@" + prop.Name;
-                if (Attribute.GetCustomAttribute(prop, typeof(KeyAttribute)) is KeyAttribute keyAttribute)
+                if (Attribute.GetCustomAttribute(prop, typeof(KeyAttribute)) is KeyAttribute)
                 {
                     wheres.Add(prop.Name + " = " + paramName);
                     sqlParameters.Add(new SqlParameter(paramName, default));

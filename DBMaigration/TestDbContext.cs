@@ -8,6 +8,7 @@ namespace DBMaigration
         /// マイグレーションするクラスをDbSetで定義する。
         /// </summary>
         public DbSet<Table1> Table1 { get; set; }
+        public DbSet<Table2> Table2 { get; set; }
 
         /// <summary>
         /// DbContext継承クラスを作りOnConfiguringをオーバーライドするとマイグレーションが機能する。
