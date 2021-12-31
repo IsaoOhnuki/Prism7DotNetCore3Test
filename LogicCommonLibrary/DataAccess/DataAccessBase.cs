@@ -227,36 +227,5 @@ namespace LogicCommonLibrary.DataAccess
             }
             return result;
         }
-
-        public static IEnumerable<DbColumn> GetModelSchema<T>(SqlConnection sqlConnection)
-            where T : new()
-        {
-            T model = new T();
-            string selectQuery = "SELECT * FROM " + model.GetType().Name + ";";
-            SqlCommand sqlCommand = new SqlCommand(selectQuery, sqlConnection);
-
-            IEnumerable<DbColumn> result;
-            bool selfOpen = false;
-            try
-            {
-                if (sqlConnection.State == ConnectionState.Closed)
-                {
-                    selfOpen = true;
-                    sqlConnection.Open();
-                }
-
-                // クエリのスキーマを取得する
-                using SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                result = sqlDataReader.GetColumnSchema();
-            }
-            finally
-            {
-                if (selfOpen)
-                {
-                    sqlConnection.Close();
-                }
-            }
-            return result;
-        }
     }
 }

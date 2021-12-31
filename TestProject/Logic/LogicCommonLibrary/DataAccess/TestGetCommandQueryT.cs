@@ -39,7 +39,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 NonQueryDataAccess insertDataAccess =
                     new NonQueryDataAccess(connection, updateQuery,
                         GetCommandQuery<Table1>.GetQueryParameter(sqlParameters,
-                            DataAccessBase.GetModelSchema<Table1>(connection.Connection), table1));
+                            CheckModelSchema.GetModelSchema<Table1>(connection.Connection), table1));
                 insertDataAccess.DoNonQuery();
 
                 string countQuery = "SELECT COUNT(ID) FROM Table1;";
@@ -57,7 +57,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 NonQueryDataAccess updateDataAccess =
                     new NonQueryDataAccess(connection, updateQuery,
                         GetCommandQuery<Table1>.GetQueryParameter(sqlParameters,
-                            DataAccessBase.GetModelSchema<Table1>(connection.Connection), rows[0]));
+                            CheckModelSchema.GetModelSchema<Table1>(connection.Connection), rows[0]));
                 int successCount = updateDataAccess.DoNonQuery();
                 Assert.IsTrue(successCount == 1);
                 string lastQuery = DataAccessBase.LastQuery;
@@ -101,7 +101,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 NonQueryDataAccess insertDataAccess =
                     new NonQueryDataAccess(connection, updateQuery,
                         GetCommandQuery<Table1>.GetQueryParameter(sqlParameters,
-                            DataAccessBase.GetModelSchema<Table1>(connection.Connection), table1));
+                            CheckModelSchema.GetModelSchema<Table1>(connection.Connection), table1));
                 insertDataAccess.DoNonQuery();
 
                 string countQuery = "SELECT COUNT(ID) FROM Table1;";
@@ -118,7 +118,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                 deleteDataAccess =
                     new NonQueryDataAccess(connection, deleteQuery,
                         GetCommandQuery<Table1>.GetQueryParameter(sqlParameters,
-                            DataAccessBase.GetModelSchema<Table1>(connection.Connection), rows[0]));
+                            CheckModelSchema.GetModelSchema<Table1>(connection.Connection), rows[0]));
                 int successCount = deleteDataAccess.DoNonQuery();
                 Assert.IsTrue(successCount == 1);
                 string lastQuery = DataAccessBase.LastQuery;
