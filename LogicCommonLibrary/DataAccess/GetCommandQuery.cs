@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -25,7 +26,7 @@ namespace LogicCommonLibrary.DataAccess
             List<string> columns = new List<string>();
             List<string> parameters = new List<string>();
 
-            List<PropertyInfo> propInfos = new CheckModelSchema<TModel>().GetPublicPropInfo();
+            List<PropertyInfo> propInfos = CheckModelSchema.GetPublicPropInfo<TModel>();
             foreach (var prop in propInfos)
             {
                 if (Attribute.GetCustomAttribute(prop, typeof(InsertQueryParameterAttribute)) is InsertQueryParameterAttribute insertQueryParameter)
@@ -68,7 +69,7 @@ namespace LogicCommonLibrary.DataAccess
             sqlParameters = new List<SqlParameter>();
             List<string> wheres = new List<string>();
 
-            List<PropertyInfo> propInfos = new CheckModelSchema<TModel>().GetPublicPropInfo();
+            List<PropertyInfo> propInfos = CheckModelSchema.GetPublicPropInfo<TModel>();
             foreach (var prop in propInfos)
             {
                 string paramName = "@" + prop.Name;
@@ -106,7 +107,7 @@ namespace LogicCommonLibrary.DataAccess
             List<string> columns = new List<string>();
             List<string> wheres = new List<string>();
 
-            List<PropertyInfo> propInfos = new CheckModelSchema<TModel>().GetPublicPropInfo();
+            List<PropertyInfo> propInfos = CheckModelSchema.GetPublicPropInfo<TModel>();
             foreach (var prop in propInfos)
             {
                 string paramName = "@" + prop.Name;
@@ -151,18 +152,26 @@ namespace LogicCommonLibrary.DataAccess
             return true;
         }
 
-        public static SqlParameter[] GetQueryParameter(IEnumerable<SqlParameter> sqlParameters, TModel model)
+        public static IEnumerable<SqlParameter> GetQueryParameter(IEnumerable<SqlParameter> sqlParameters,
+            IEnumerable<DbColumn> dbColumns, TModel model)
         {
+            List<SqlParameter> result = new List<SqlParameter>();
             foreach (var param in sqlParameters)
             {
-                param.Value = model.GetType().GetProperty(param.ParameterName.Substring(1)).GetValue(model);
+                string columnName = param.ParameterName[1..];
+                SqlDbType sqlDbType =
+                    (SqlDbType)Enum.Parse(
+                        typeof(SqlDbType),
+                            dbColumns.First(x => x.ColumnName == columnName).DataTypeName,
+                                true);
+
+                object value = model.GetType().GetProperty(columnName).GetValue(model);
+                result.Add(new SqlParameter(param.ParameterName, sqlDbType)
+                {
+                    Value = value ?? DBNull.Value,
+                });
             }
-            return sqlParameters.ToArray();
-        }
-
-        public static void CheckSqlParameter(DatabaseConnection connection, IEnumerable<SqlParameter> sqlParameters, TModel model)
-        {
-
+            return result;
         }
     }
 }

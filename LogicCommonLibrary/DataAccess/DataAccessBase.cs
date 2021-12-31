@@ -10,8 +10,8 @@ namespace LogicCommonLibrary.DataAccess
 {
     public class ScalarDataAccess : DataAccessBase
     {
-        public ScalarDataAccess(DatabaseConnection connection, string query,
-            SqlParameter[] parameter = null)
+        public ScalarDataAccess(DatabaseConnection connection,
+            string query, IEnumerable<SqlParameter> parameter = null)
             : base(connection, query, parameter)
         {
         }
@@ -25,7 +25,7 @@ namespace LogicCommonLibrary.DataAccess
     public class QueryDataAccess : DataAccessBase
     {
         public QueryDataAccess(DatabaseConnection connection,
-            string query, SqlParameter[] parameter = null)
+            string query, IEnumerable<SqlParameter> parameter = null)
             : base(connection, query, parameter)
         {
         }
@@ -40,7 +40,7 @@ namespace LogicCommonLibrary.DataAccess
         where T : new()
     {
         public QueryDataAccess(DatabaseConnection connection,
-            string query, SqlParameter[] parameter = null)
+            string query, IEnumerable<SqlParameter> parameter = null)
             : base(connection, query, parameter)
         {
         }
@@ -54,7 +54,7 @@ namespace LogicCommonLibrary.DataAccess
     public class NonQueryDataAccess : DataAccessBase
     {
         public NonQueryDataAccess(DatabaseConnection connection,
-            string query, SqlParameter[] parameter = null)
+            string query, IEnumerable<SqlParameter> parameter = null)
             : base(connection, query, parameter)
         {
         }
@@ -68,7 +68,7 @@ namespace LogicCommonLibrary.DataAccess
     public class DataAccessBase
     {
         private readonly string _query;
-        private readonly SqlParameter[] _parameter;
+        private readonly IEnumerable<SqlParameter> _parameter;
 
         public DatabaseConnection Connection { get; private set; }
 
@@ -85,11 +85,11 @@ namespace LogicCommonLibrary.DataAccess
                         _parameter.Select(x =>
                             "{[Name]='" + x.ParameterName + "';" +
                             "[Type]='" + x.SqlDbType.ToString() + "';" +
-                            "[Value]='" + (x.Value == null ? null : x.Value.ToString()) + "'}"));
+                            "[Value]='" + (x.Value == null ? "null" : x.Value.ToString()) + "'}"));
         }
 
-        protected DataAccessBase(DatabaseConnection connection, string query,
-            SqlParameter[] parameter = null)
+        protected DataAccessBase(DatabaseConnection connection,
+            string query, IEnumerable<SqlParameter> parameter = null)
         {
             Connection = connection;
             _query = query;
@@ -101,7 +101,7 @@ namespace LogicCommonLibrary.DataAccess
             SqlCommand sqlCommand = new SqlCommand(_query, Connection.Connection);
             if (_parameter != null)
             {
-                sqlCommand.Parameters.AddRange(_parameter);
+                sqlCommand.Parameters.AddRange(_parameter.ToArray());
             }
             object result;
             bool selfOpen = false;
@@ -130,7 +130,7 @@ namespace LogicCommonLibrary.DataAccess
             SqlCommand sqlCommand = new SqlCommand(_query, Connection.Connection);
             if (_parameter != null)
             {
-                sqlCommand.Parameters.AddRange(_parameter);
+                sqlCommand.Parameters.AddRange(_parameter.ToArray());
             }
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
@@ -154,7 +154,7 @@ namespace LogicCommonLibrary.DataAccess
                 new SqlCommand(_query, Connection.Connection);
             if (_parameter != null)
             {
-                sqlCommand.Parameters.AddRange(_parameter);
+                sqlCommand.Parameters.AddRange(_parameter.ToArray());
             }
             int result;
             bool selfOpen = false;
@@ -184,7 +184,7 @@ namespace LogicCommonLibrary.DataAccess
             SqlCommand sqlCommand = new SqlCommand(_query, Connection.Connection);
             if (_parameter != null)
             {
-                sqlCommand.Parameters.AddRange(_parameter);
+                sqlCommand.Parameters.AddRange(_parameter.ToArray());
             }
 
             // 返却リストを作成する
@@ -202,7 +202,7 @@ namespace LogicCommonLibrary.DataAccess
                 // クエリのスキーマを取得する
                 using SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                 // プロパティとスキーマの定義を判定して一致するものを取得する
-                List<ModelColumnSchema> types = new CheckModelSchema<T>().GetTrueSchema(sqlDataReader.GetColumnSchema());
+                List<ModelColumnSchema> types = CheckModelSchema.GetTrueSchema<T>(sqlDataReader.GetColumnSchema());
 
                 // クエリを実行して一行取り出す
                 while (sqlDataReader.Read())
@@ -212,14 +212,7 @@ namespace LogicCommonLibrary.DataAccess
                     foreach (ModelColumnSchema type in types)
                     {
                         var colValue = sqlDataReader[type.ColumnIndex];
-                        if (colValue is DBNull)
-                        {
-                            type.ColumnInfo.SetValue(t, null);
-                        }
-                        else
-                        {
-                            type.ColumnInfo.SetValue(t, colValue);
-                        }
+                        type.ColumnInfo.SetValue(t, colValue == DBNull.Value ? null : colValue);
                     }
                     // 返却リストに追加する
                     result.Add(t);
@@ -235,33 +228,32 @@ namespace LogicCommonLibrary.DataAccess
             return result;
         }
 
-
-        protected DbColumn[] GetModelSchema<T>()
+        public static IEnumerable<DbColumn> GetModelSchema<T>(SqlConnection sqlConnection)
             where T : new()
         {
             T model = new T();
             string selectQuery = "SELECT * FROM " + model.GetType().Name + ";";
-            SqlCommand sqlCommand = new SqlCommand(selectQuery, Connection.Connection);
+            SqlCommand sqlCommand = new SqlCommand(selectQuery, sqlConnection);
 
-            DbColumn[] result;
+            IEnumerable<DbColumn> result;
             bool selfOpen = false;
             try
             {
-                if (Connection.Connection.State == ConnectionState.Closed)
+                if (sqlConnection.State == ConnectionState.Closed)
                 {
                     selfOpen = true;
-                    Connection.Connection.Open();
+                    sqlConnection.Open();
                 }
 
                 // クエリのスキーマを取得する
                 using SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                result = sqlDataReader.GetColumnSchema().ToArray();
+                result = sqlDataReader.GetColumnSchema();
             }
             finally
             {
                 if (selfOpen)
                 {
-                    Connection.Connection.Close();
+                    sqlConnection.Close();
                 }
             }
             return result;

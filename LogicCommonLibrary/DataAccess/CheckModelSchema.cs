@@ -16,29 +16,57 @@ namespace LogicCommonLibrary.DataAccess
         public int ColumnIndex { get; set; }
     }
 
-    public class CheckModelSchema<TModel>
-        where TModel : new()
+    public static class CheckModelSchema
     {
-        public CheckModelSchema()
+        public static List<ModelColumnSchema> GetTrueSchema<TModel>(IEnumerable<DbColumn> dbSchema)
+            where TModel : new()
         {
-        }
-
-        public List<ModelColumnSchema> GetTrueSchema(IEnumerable<DbColumn> dbSchema)
-        {
-            var propInfos = GetPublicPropInfo();
+            var propInfos = GetPublicPropInfo<TModel>();
             return CheckSchema(dbSchema, propInfos);
         }
 
-        public void CheckParamSchema(IEnumerable<DbColumn> dbSchema, IEnumerable<SqlParameter> sqlParameters)
+        public static void CheckParamSchema(IEnumerable<DbColumn> dbSchema, IEnumerable<SqlParameter> sqlParameters)
         {
             foreach (SqlParameter param in sqlParameters)
             {
                 var dbColumn = dbSchema.First(x => x.ColumnName == param.ParameterName[1..]);
-                param.SqlDbType = (SqlDbType)Enum.Parse(typeof(SqlDbType), dbColumn.DataTypeName);
+                param.SqlDbType = (SqlDbType)Enum.Parse(typeof(SqlDbType), dbColumn.DataTypeName, true);
             }
         }
 
-        public List<PropertyInfo> GetPublicPropInfo()
+        public static IEnumerable<DbColumn> GetModelSchema<TModel>(SqlConnection sqlConnection)
+            where TModel : new()
+        {
+            TModel model = new TModel();
+            string selectQuery = "SELECT * FROM " + model.GetType().Name + ";";
+            SqlCommand sqlCommand = new SqlCommand(selectQuery, sqlConnection);
+
+            IEnumerable<DbColumn> result;
+            bool selfOpen = false;
+            try
+            {
+                if (sqlConnection.State == ConnectionState.Closed)
+                {
+                    selfOpen = true;
+                    sqlConnection.Open();
+                }
+
+                // クエリのスキーマを取得する
+                using SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                result = sqlDataReader.GetColumnSchema();
+            }
+            finally
+            {
+                if (selfOpen)
+                {
+                    sqlConnection.Close();
+                }
+            }
+            return result;
+        }
+
+        public static List<PropertyInfo> GetPublicPropInfo<TModel>()
+            where TModel : new()
         {
             // 型を確定させてTypeを取得する
             Type typeT = new TModel().GetType();
@@ -53,7 +81,7 @@ namespace LogicCommonLibrary.DataAccess
             return result;
         }
 
-        protected List<ModelColumnSchema> CheckSchema(IEnumerable<DbColumn> schema, IEnumerable<PropertyInfo> types)
+        public static List<ModelColumnSchema> CheckSchema(IEnumerable<DbColumn> schema, IEnumerable<PropertyInfo> types)
         {
             // プロパティ名をもとにDBのカラム型とプロパティ型を判定する。
             List<ModelColumnSchema> result = new List<ModelColumnSchema>();
