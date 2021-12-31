@@ -97,30 +97,19 @@ namespace CustomControlLibrary.TitleBar
                 () => Window != null);
         }
 
-        private bool drag;
-        private Point point;
-
         private void BaseWindowTitleControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            _ = Mouse.Capture(this);
-            point = e.GetPosition(this);
-            drag = true;
-        }
-
-        private void BaseWindowTitleControl_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            drag = false;
-            _ = Mouse.Capture(null);
-        }
-
-        private void BaseWindowTitleControl_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (Window != null && drag)
+            if (Window != null)
             {
-                Point p = e.GetPosition(this);
-                Vector delt = p - point;
-                Window.Left += delt.X;
-                Window.Top += delt.Y;
+                Window.DragMove();
+            }
+        }
+
+        private void dbl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (Window != null)
+            {
+                MaxCommand.Execute(null);
             }
         }
     }

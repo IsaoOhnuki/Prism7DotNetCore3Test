@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="CustomControlLibrary.TitleBar.WindowTitleBar"
+﻿<UserControl x:Name="dbl" x:Class="CustomControlLibrary.TitleBar.WindowTitleBar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,7 @@
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
              MouseDown="BaseWindowTitleControl_MouseDown"
-             MouseUp="BaseWindowTitleControl_MouseUp"
-             MouseMove="BaseWindowTitleControl_MouseMove"
-             d:DesignHeight="100" d:DesignWidth="800" Background="Red">
+             d:DesignHeight="100" d:DesignWidth="800" Background="Red" MouseDoubleClick="dbl_MouseDoubleClick">
     <bc:BaseWindowTitleControl Button1Brush="AliceBlue"
                                Button2Brush="Beige"
                                Button3Brush="Bisque"
