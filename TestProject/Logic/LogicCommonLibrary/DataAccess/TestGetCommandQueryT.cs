@@ -20,10 +20,11 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
             string user = "sa";
             string pass = "Express";
             string conn = "Persist Security Info=False;User ID=" + user + ";Password=" + pass + ";Initial Catalog=" + database + ";Server=" + server;
-            using DatabaseConnection connection = new DatabaseConnection(conn);
 
             try
             {
+                using DatabaseConnection connection = new DatabaseConnection(conn);
+
                 string deleteQuery = "DELETE FROM Table1;";
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
                 deleteDataAccess.DoNonQuery();
@@ -82,10 +83,11 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
             string user = "sa";
             string pass = "Express";
             string conn = "Persist Security Info=False;User ID=" + user + ";Password=" + pass + ";Initial Catalog=" + database + ";Server=" + server;
-            using DatabaseConnection connection = new DatabaseConnection(conn);
 
             try
             {
+                using DatabaseConnection connection = new DatabaseConnection(conn);
+
                 string deleteQuery = "DELETE FROM Table1;";
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
                 deleteDataAccess.DoNonQuery();
