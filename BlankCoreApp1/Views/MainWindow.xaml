@@ -8,11 +8,12 @@
         xmlns:behavior="clr-namespace:MvvmCommonLibrary.Behavior;assembly=MvvmCommonLibrary"
         mc:Ignorable="av"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        ResizeMode="NoResize"
+        ResizeMode="CanResize"
         WindowStyle="None"
+        behavior:ContentSizeRegister.Element="{Binding MainContentName}"
         av:DesignWidth="500"
         av:DesignHeight="300">
-    <Grid behavior:ContentSizeRegister.Element="{Binding MainContentName}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

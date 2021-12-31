@@ -33,17 +33,18 @@
     <prism:Dialog.WindowStyle>
         <Style TargetType="Window">
             <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterOwner"/>
+            <Setter Property="SizeToContent" Value="WidthAndHeight"/>
             <!--<Setter Property="ResizeMode" Value="NoResize"/>-->
             <Setter Property="ShowInTaskbar" Value="False"/>
             <Setter Property="WindowStyle" Value="None"/>
             <Setter Property="AllowsTransparency" Value="True"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Width" Value="{Binding MainWindowWidth, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
-            <Setter Property="Height" Value="{Binding MainWindowHeight, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
             <!--<Setter Property="Clip" Value="{StaticResource regionClip}"/>-->
         </Style>
     </prism:Dialog.WindowStyle>
-    <Border Padding="100,100,100,100" Background="{StaticResource ShadeBrush}">
+    <Border Background="{StaticResource ShadeBrush}"
+            Width="{Binding MainWindowWidth}"
+            Height="{Binding MainWindowHeight}">
         <md:MessageDialogControl Width="500" Height="300"
                                  DialogNotifyStyle="{Binding DialogNotifyStyle}"
                                  Title="{Binding Title}"
