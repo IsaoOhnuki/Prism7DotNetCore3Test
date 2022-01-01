@@ -27,7 +27,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
                 string deleteQuery = "DELETE FROM Table1;";
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
-                deleteDataAccess.DoNonQuery();
+                deleteDataAccess.DoNonQuery(false);
 
                 GetCommandQuery<Table1>.GetInsertQuery(out string updateQuery, out List<SqlParameter> sqlParameters);
                 Table1 table1 = new Table1
@@ -41,7 +41,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                     new NonQueryDataAccess(connection, updateQuery,
                         GetCommandQuery<Table1>.GetQueryParameter(sqlParameters,
                             CheckModelSchema.GetModelSchema<Table1>(connection.Connection), table1));
-                insertDataAccess.DoNonQuery();
+                insertDataAccess.DoNonQuery(false);
 
                 string countQuery = "SELECT COUNT(*) FROM Table1;";
                 ScalarDataAccess scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
@@ -59,10 +59,8 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                     new NonQueryDataAccess(connection, updateQuery,
                         GetCommandQuery<Table1>.GetQueryParameter(sqlParameters,
                             CheckModelSchema.GetModelSchema<Table1>(connection.Connection), rows[0]));
-                int successCount = updateDataAccess.DoNonQuery();
+                int successCount = updateDataAccess.DoNonQuery(false);
                 Assert.IsTrue(successCount == 1);
-                string lastQuery = DataAccessBase.LastQuery;
-                string lastQueryParam = DataAccessBase.LastQueryParam;
 
                 selectQuery = "SELECT * FROM Table1;";
                 selectDataAccess = new QueryDataAccess<Table1>(connection, selectQuery, null);
@@ -90,7 +88,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
                 string deleteQuery = "DELETE FROM Table1;";
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
-                deleteDataAccess.DoNonQuery();
+                deleteDataAccess.DoNonQuery(false);
 
                 GetCommandQuery<Table1>.GetInsertQuery(out string updateQuery, out List<SqlParameter> sqlParameters);
                 Table1 table1 = new Table1
@@ -104,7 +102,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                     new NonQueryDataAccess(connection, updateQuery,
                         GetCommandQuery<Table1>.GetQueryParameter(sqlParameters,
                             CheckModelSchema.GetModelSchema<Table1>(connection.Connection), table1));
-                insertDataAccess.DoNonQuery();
+                insertDataAccess.DoNonQuery(false);
 
                 string countQuery = "SELECT COUNT(*) FROM Table1;";
                 ScalarDataAccess scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
@@ -121,10 +119,8 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                     new NonQueryDataAccess(connection, deleteQuery,
                         GetCommandQuery<Table1>.GetQueryParameter(sqlParameters,
                             CheckModelSchema.GetModelSchema<Table1>(connection.Connection), rows[0]));
-                int successCount = deleteDataAccess.DoNonQuery();
+                int successCount = deleteDataAccess.DoNonQuery(false);
                 Assert.IsTrue(successCount == 1);
-                string lastQuery = DataAccessBase.LastQuery;
-                string lastQueryParam = DataAccessBase.LastQueryParam;
 
                 selectQuery = "SELECT * FROM Table1;";
                 selectDataAccess = new QueryDataAccess<Table1>(connection, selectQuery, null);
@@ -152,7 +148,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
                 string deleteQuery = "DELETE FROM Table2;";
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
-                deleteDataAccess.DoNonQuery();
+                deleteDataAccess.DoNonQuery(false);
 
                 GetCommandQuery<Table2>.GetInsertQuery(out string updateQuery, out List<SqlParameter> sqlParameters);
                 Table2 table2 = new Table2
@@ -163,7 +159,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                     new NonQueryDataAccess(connection, updateQuery,
                         GetCommandQuery<Table2>.GetQueryParameter(sqlParameters,
                             CheckModelSchema.GetModelSchema<Table2>(connection.Connection), table2));
-                insertDataAccess.DoNonQuery();
+                insertDataAccess.DoNonQuery(false);
 
                 string countQuery = "SELECT COUNT(*) FROM Table2;";
                 ScalarDataAccess scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
@@ -181,10 +177,8 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                     new NonQueryDataAccess(connection, updateQuery,
                         GetCommandQuery<Table2>.GetQueryParameter(sqlParameters,
                             CheckModelSchema.GetModelSchema<Table2>(connection.Connection), rows[0]));
-                int successCount = updateDataAccess.DoNonQuery();
+                int successCount = updateDataAccess.DoNonQuery(false);
                 Assert.IsTrue(successCount == 1);
-                string lastQuery = DataAccessBase.LastQuery;
-                string lastQueryParam = DataAccessBase.LastQueryParam;
 
                 selectQuery = "SELECT * FROM Table2;";
                 selectDataAccess = new QueryDataAccess<Table2>(connection, selectQuery, null);
@@ -212,7 +206,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
                 string deleteQuery = "DELETE FROM Table2;";
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
-                deleteDataAccess.DoNonQuery();
+                deleteDataAccess.DoNonQuery(false);
 
                 GetCommandQuery<Table2>.GetInsertQuery(out string updateQuery, out List<SqlParameter> sqlParameters);
                 Table2 table2 = new Table2
@@ -223,7 +217,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                     new NonQueryDataAccess(connection, updateQuery,
                         GetCommandQuery<Table2>.GetQueryParameter(sqlParameters,
                             CheckModelSchema.GetModelSchema<Table2>(connection.Connection), table2));
-                insertDataAccess.DoNonQuery();
+                insertDataAccess.DoNonQuery(false);
 
                 string countQuery = "SELECT COUNT(*) FROM Table2;";
                 ScalarDataAccess scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
@@ -240,10 +234,8 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
                     new NonQueryDataAccess(connection, deleteQuery,
                         GetCommandQuery<Table2>.GetQueryParameter(sqlParameters,
                             CheckModelSchema.GetModelSchema<Table2>(connection.Connection), rows[0]));
-                int successCount = deleteDataAccess.DoNonQuery();
+                int successCount = deleteDataAccess.DoNonQuery(false);
                 Assert.IsTrue(successCount == 1);
-                string lastQuery = DataAccessBase.LastQuery;
-                string lastQueryParam = DataAccessBase.LastQueryParam;
 
                 selectQuery = "SELECT * FROM Table2;";
                 selectDataAccess = new QueryDataAccess<Table2>(connection, selectQuery, null);

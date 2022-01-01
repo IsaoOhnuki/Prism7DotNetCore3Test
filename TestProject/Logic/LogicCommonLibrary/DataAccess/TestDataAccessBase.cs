@@ -26,11 +26,11 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
                 string deleteQuery = "DELETE FROM Table1;";
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
-                deleteDataAccess.DoNonQuery();
+                deleteDataAccess.DoNonQuery(false);
 
                 string insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist,Decimal,Long,Byte,ByteArray) VALUES('abc','','',GetDate(),0,0,0,0x00);";
                 NonQueryDataAccess insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
-                insertDataAccess.DoNonQuery();
+                insertDataAccess.DoNonQuery(false);
 
                 string countQuery = "SELECT COUNT(ID) FROM Table1;";
                 ScalarDataAccess scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
@@ -44,7 +44,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
                 insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist,Decimal,Long,Byte,ByteArray) VALUES('abc','','',GetDate(),0,0,0,0x00);";
                 insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
-                insertDataAccess.DoNonQuery();
+                insertDataAccess.DoNonQuery(false);
 
                 countQuery = "SELECT COUNT(ID) FROM Table1;";
                 scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
@@ -77,11 +77,11 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
                 string deleteQuery = "DELETE FROM Table1;";
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
-                deleteDataAccess.DoNonQuery();
+                deleteDataAccess.DoNonQuery(false);
 
                 string insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist,Decimal,Long,Byte,ByteArray) VALUES('abc','','',GetDate(),0,0,0,0x00);";
                 NonQueryDataAccess insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
-                insertDataAccess.DoNonQuery();
+                insertDataAccess.DoNonQuery(false);
 
                 string countQuery = "SELECT COUNT(ID) FROM Table1;";
                 ScalarDataAccess scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
@@ -95,7 +95,7 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
                 insertQuery = "INSERT INTO Table1 (Name,Sex,Phone,Optimist,Decimal,Long,Byte,ByteArray) VALUES('abc','','',GetDate(),0,0,0,0x00);";
                 insertDataAccess = new NonQueryDataAccess(connection, insertQuery, null);
-                insertDataAccess.DoNonQuery();
+                insertDataAccess.DoNonQuery(false);
 
                 countQuery = "SELECT COUNT(ID) FROM Table1;";
                 scalardataAccess = new ScalarDataAccess(connection, countQuery, null);
