@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ModelLibrary.Models.Database
 {
-    [Table("M_" + nameof(FilureReason))]
+    [Table(nameof(FilureReason))]
     public class FilureReason
     {
         [Key]
