@@ -1,16 +1,16 @@
-﻿using System;
+﻿using ModelLibrary.ModelBases;
+using ModelLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 
 namespace LogicCommonLibrary.DataAccess
 {
     public class ScalarDataAccess : DataAccessBase
     {
-        public ScalarDataAccess(DatabaseConnection connection,
+        public ScalarDataAccess(IDatabaseConnection connection,
             string query, IEnumerable<SqlParameter> parameter = null)
             : base(connection, query, parameter)
         {
@@ -24,7 +24,7 @@ namespace LogicCommonLibrary.DataAccess
 
     public class QueryDataAccess : DataAccessBase
     {
-        public QueryDataAccess(DatabaseConnection connection,
+        public QueryDataAccess(IDatabaseConnection connection,
             string query, IEnumerable<SqlParameter> parameter = null)
             : base(connection, query, parameter)
         {
@@ -39,7 +39,7 @@ namespace LogicCommonLibrary.DataAccess
     public class QueryDataAccess<T> : DataAccessBase
         where T : new()
     {
-        public QueryDataAccess(DatabaseConnection connection,
+        public QueryDataAccess(IDatabaseConnection connection,
             string query, IEnumerable<SqlParameter> parameter = null)
             : base(connection, query, parameter)
         {
@@ -53,42 +53,41 @@ namespace LogicCommonLibrary.DataAccess
 
     public class NonQueryDataAccess : DataAccessBase
     {
-        public NonQueryDataAccess(DatabaseConnection connection,
+        public NonQueryDataAccess(IDatabaseConnection connection,
             string query, IEnumerable<SqlParameter> parameter = null)
             : base(connection, query, parameter)
         {
         }
 
-        public int DoNonQuery()
+        public int DoNonQuery(bool transaction)
         {
-            return NonQueryCommand();
+            return NonQueryCommand(transaction);
         }
     }
 
-    public class DataAccessBase
+    public class DataAccessBase : IDataAccess
     {
         private readonly string _query;
         private readonly IEnumerable<SqlParameter> _parameter;
 
-        public DatabaseConnection Connection { get; private set; }
+        public IDatabaseConnection Connection { get; private set; }
 
-        public static string LastQuery { get; private set; }
-
-        public static string LastQueryParam { get; private set; }
-
-        private void SetLastSql()
+        public string GetLastQuery()
         {
-            LastQuery = _query;
-            LastQueryParam =
-                _parameter == null ? "{}" :
-                    string.Join(",",
-                        _parameter.Select(x =>
-                            "{[Name]='" + x.ParameterName + "';" +
-                            "[Type]='" + x.SqlDbType.ToString() + "';" +
-                            "[Value]='" + (x.Value == null ? "null" : x.Value.ToString()) + "'}"));
+            return "{[SQL]='" + _query + "'}";
         }
 
-        protected DataAccessBase(DatabaseConnection connection,
+        public string GetLastQueryParam()
+        {
+            return _parameter == null ? "{}" :
+                string.Join(",",
+                    _parameter.Select(x =>
+                        "{[Name]='" + x.ParameterName + "';" +
+                        "[Type]='" + x.SqlDbType.ToString() + "';" +
+                        "[Value]='" + (x.Value == null ? "null" : x.Value.ToString()) + "'}"));
+        }
+
+        protected DataAccessBase(IDatabaseConnection connection,
             string query, IEnumerable<SqlParameter> parameter = null)
         {
             Connection = connection;
@@ -107,19 +106,18 @@ namespace LogicCommonLibrary.DataAccess
             bool selfOpen = false;
             try
             {
-                if (Connection.Connection.State == ConnectionState.Closed)
+                if (Connection.State == ConnectionState.Closed)
                 {
                     selfOpen = true;
-                    Connection.Connection.Open();
+                    Connection.Open(false);
                 }
-                SetLastSql();
                 result = sqlCommand.ExecuteScalar();
             }
             finally
             {
                 if (selfOpen)
                 {
-                    Connection.Connection.Close();
+                    Connection.Close();
                 }
             }
             return result;
@@ -136,7 +134,6 @@ namespace LogicCommonLibrary.DataAccess
             DataTable dataTable = new DataTable();
             try
             {
-                SetLastSql();
                 sqlDataAdapter.Fill(dataTable);
             }
             catch (Exception e)
@@ -147,7 +144,7 @@ namespace LogicCommonLibrary.DataAccess
             return dataTable;
         }
 
-        protected int NonQueryCommand()
+        protected int NonQueryCommand(bool transaction)
         {
             SqlCommand sqlCommand = Connection.Transaction != null ?
                 new SqlCommand(_query, Connection.Connection, Connection.Transaction) :
@@ -160,19 +157,18 @@ namespace LogicCommonLibrary.DataAccess
             bool selfOpen = false;
             try
             {
-                if (Connection.Connection.State == ConnectionState.Closed)
+                if (Connection.State == ConnectionState.Closed)
                 {
                     selfOpen = true;
-                    Connection.Connection.Open();
+                    Connection.Open(transaction);
                 }
-                SetLastSql();
                 result = sqlCommand.ExecuteNonQuery();
             }
             finally
             {
                 if (selfOpen)
                 {
-                    Connection.Connection.Close();
+                    Connection.Close();
                 }
             }
             return result;
@@ -192,12 +188,11 @@ namespace LogicCommonLibrary.DataAccess
             bool selfOpen = false;
             try
             {
-                if (Connection.Connection.State == ConnectionState.Closed)
+                if (Connection.State == ConnectionState.Closed)
                 {
                     selfOpen = true;
-                    Connection.Connection.Open();
+                    Connection.Open(false);
                 }
-                SetLastSql();
 
                 // クエリのスキーマを取得する
                 using SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
@@ -222,7 +217,7 @@ namespace LogicCommonLibrary.DataAccess
             {
                 if (selfOpen)
                 {
-                    Connection.Connection.Close();
+                    Connection.Close();
                 }
             }
             return result;

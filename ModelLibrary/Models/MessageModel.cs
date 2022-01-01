@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 
-namespace ModelLibrary.ResultModels
+namespace ModelLibrary.Models
 {
     public class MessageModel
     {
         public string Message { get; set; }
 
         public List<string> MessageParameter { get; set; }
+
+        public Exception Exception { get; set; }
 
         public string GetMessage()
         {
@@ -21,16 +24,12 @@ namespace ModelLibrary.ResultModels
             }
         }
 
-        public MessageModel(string message)
-        {
-            Message = message;
-        }
-
-        public MessageModel(string message, string[] parameter)
+        public MessageModel(string message, string[] parameter = null, Exception exception = null)
         {
             Message = message;
             MessageParameter = new List<string>();
             MessageParameter.AddRange(parameter);
+            Exception = exception;
         }
     }
 }

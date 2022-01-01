@@ -1,7 +1,6 @@
 ﻿using ModelLibrary.Enumerate;
-using ModelLibrary.ResultModels;
+using ModelLibrary.Models;
 using System;
-using System.Collections.Generic;
 
 namespace ModelLibrary.InputModels
 {

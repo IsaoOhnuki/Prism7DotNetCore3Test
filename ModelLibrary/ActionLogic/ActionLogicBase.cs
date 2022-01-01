@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ModelLibrary.ActionLogic
+﻿namespace ModelLibrary.ActionLogic
 {
     public abstract class ActionLogicBase<TResultModel, TInputModel>
     {
         public TResultModel Execute(TInputModel inputModel)
         {
-            return OnExecute(inputModel);
+            TResultModel resultModel = OnExecute(inputModel);
+            return resultModel;
         }
 
         protected abstract TResultModel OnExecute(TInputModel inputModel);

@@ -1,29 +1,46 @@
 ﻿using LogicCommonLibrary.DataAccess;
 using ModelLibrary.ActionLogic;
 using ModelLibrary.InputModels;
+using ModelLibrary.Models;
 using ModelLibrary.Models.Database;
 using ModelLibrary.ResultModels;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace ApplicationLogicModule.DataAccessLogic
 {
-    public class GetPeriodReserveDataAccessLogic : DataAccessLogicBase<GetPeriodReserveResultModel, GetPeriodReserveInputModel>
+    public class GetPeriodReserveDataAccessLogic : DataAccessLogicBase<GetDataListResultModel<TReserve>, GetPeriodReserveInputModel>
     {
-        protected override GetPeriodReserveResultModel OnExecute(GetPeriodReserveInputModel inputModel)
+        protected override GetDataListResultModel<TReserve> OnExecute(GetPeriodReserveInputModel inputModel)
         {
-            string query = "SELECT * FROM TReserve TR WHERE TR.ReserveEnd >= @ReserveStart AND TR.ReserveStart <= @ReserveEnd;";
+            string query = "SELECT * FROM TReserve TR WHERE " +
+                           // 
+                           "TR.ReserveEnd >= @ReserveStart AND TR.ReserveStart <= @ReserveEnd;";
+
             List<SqlParameter> sqlParameters = new List<SqlParameter>()
             {
                 new QueryParameter("@ReserveStart ", SqlDbType.DateTime2, inputModel.ReserveStart),
                 new QueryParameter("@ReserveEnd", SqlDbType.DateTime2, inputModel.ReserveEnd),
             };
-            QueryDataAccess<TReserve> queryDataAccess = new QueryDataAccess<TReserve>(null, query, sqlParameters);
-            GetPeriodReserveResultModel resultModel = new GetPeriodReserveResultModel()
+
+            QueryDataAccess<TReserve> queryDataAccess = new QueryDataAccess<TReserve>(inputModel.DatabaseConnection, query, sqlParameters);
+            GetDataListResultModel<TReserve> resultModel = new GetDataListResultModel<TReserve>();
+
+            try
             {
-                DataList = queryDataAccess.DoQuery(),
-            };
+                resultModel.DataList = queryDataAccess.DoQuery();
+                resultModel.Result = true;
+            }
+            catch (Exception e)
+            {
+                resultModel.Messages = new List<MessageModel>()
+                {
+                    GetDataAccessExceptionMessage(queryDataAccess, e)
+                };
+            }
+
             return resultModel;
         }
     }

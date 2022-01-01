@@ -8,10 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ModelBases\" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
 </Project>

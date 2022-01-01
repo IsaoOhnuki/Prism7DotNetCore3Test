@@ -1,6 +1,6 @@
 using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
-using ModelLibrary.ResultModels;
+using ModelLibrary.Models;
 using ModelLibrary.Services;
 using Prism.Services.Dialogs;
 using System;

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using ModelLibrary.ModelBases;
+using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace LogicCommonLibrary.DataAccess
 {
-    public class DatabaseConnection : IDisposable
+    public class DatabaseConnection : IDatabaseConnection, IDisposable
     {
         private readonly string _connectionString;
         private readonly SqlCredential _credential;
@@ -13,6 +15,8 @@ namespace LogicCommonLibrary.DataAccess
         public SqlCredential Credential { get; private set; }
 
         public SqlTransaction Transaction { get; private set; }
+
+        public ConnectionState State => Connection != null ? Connection.State : ConnectionState.Broken;
 
         public DatabaseConnection(string connectionString)
         {

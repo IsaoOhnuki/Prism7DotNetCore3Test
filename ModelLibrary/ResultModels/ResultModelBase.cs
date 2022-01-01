@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ModelLibrary.Models;
+using System.Collections.Generic;
 
 namespace ModelLibrary.ResultModels
 {
