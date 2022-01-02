@@ -1,4 +1,7 @@
-﻿using ModelLibrary.Models.Database;
+﻿using AppricationViewModule.Models;
+using ModelLibrary.InputModels;
+using ModelLibrary.Models.Database;
+using ModelLibrary.ResultModels;
 using ModelLibrary.Services;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -12,6 +15,22 @@ namespace AppricationViewModule.ViewModels
     public class ReserveViewViewModel : BindableBase
     {
         public IApplicationLogic ApplicationLogic { get; private set; }
+
+        private DateTime _startDate;
+
+        public DateTime StartDate
+        {
+            get => _startDate;
+            set => SetProperty(ref _startDate, value);
+        }
+
+        private DateTime _endDate;
+
+        public DateTime EndDate
+        {
+            get => _endDate;
+            set => SetProperty(ref _endDate, value);
+        }
 
         private TReserve _currentReserve;
 
@@ -32,6 +51,18 @@ namespace AppricationViewModule.ViewModels
         public ReserveViewViewModel(IApplicationLogic applicationLogic)
         {
             ApplicationLogic = applicationLogic;
+        }
+
+        public void GetPeriodReserve(Period period)
+        {
+            GetPeriodReserveInputModel inputModel = new GetPeriodReserveInputModel
+            {
+                ReserveStart = period.Start,
+                ReserveEnd = period.End,
+            };
+            GetDataListResultModel<TReserve> resultModel = ApplicationLogic.GetPeriodReserve(inputModel);
+            Reserves = new ObservableCollection<TReserve>();
+            Reserves.AddRange(resultModel.DataList);
         }
     }
 }

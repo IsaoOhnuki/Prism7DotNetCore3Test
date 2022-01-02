@@ -6,6 +6,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             av:DesignWidth="224" av:DesignHeight="151">
-    <Grid/>
+             av:DesignWidth="453" av:DesignHeight="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DatePicker SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center"/>
+        <DatePicker SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="130,0,0,0" VerticalAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Margin="320,0,0,0" Text="TextBox" TextWrapping="NoWrap" VerticalAlignment="Center"/>
+    </Grid>
 </UserControl>
