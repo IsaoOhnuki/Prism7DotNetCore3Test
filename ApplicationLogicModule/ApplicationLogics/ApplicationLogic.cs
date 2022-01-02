@@ -1,14 +1,10 @@
-﻿using ModelLibrary.Services;
+﻿using ModelLibrary.InputModels;
+using ModelLibrary.ResultModels;
+using ModelLibrary.Models.Database;
+using ModelLibrary.Services;
 
 namespace ApplicationLogicModule.ApplicationLogics
 {
-    public class Table_1
-    {
-        public string col_1 { get; set; }
-        public int col_2 { get; set; }
-        public byte[] col_3 { get; set; }
-    }
-
     public class ApplicationLogic : IApplicationLogic
     {
         public ILogService Logger { get; set; }
@@ -18,9 +14,19 @@ namespace ApplicationLogicModule.ApplicationLogics
             Logger = logger;
         }
 
-        public void CreateTable()
+        public GetDataListResultModel<TReserve> GetPeriodReserve(GetPeriodReserveInputModel inputModel)
         {
+            Logger.StartMethod();
 
+            GetPeriodReserveApplicationLogic applicationLogic =
+                new GetPeriodReserveApplicationLogic()
+                {
+                    Logger = Logger,
+                };
+            GetDataListResultModel<TReserve> resultModel = applicationLogic.Execute(inputModel);
+
+            Logger.EndMethod();
+            return resultModel;
         }
     }
 }

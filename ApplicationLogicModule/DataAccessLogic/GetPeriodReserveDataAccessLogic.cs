@@ -1,4 +1,5 @@
-﻿using LogicCommonLibrary.DataAccess;
+﻿using ApplicationLogicModule.Properties;
+using LogicCommonLibrary.DataAccess;
 using ModelLibrary.ActionLogic;
 using ModelLibrary.InputModels;
 using ModelLibrary.Models;
@@ -15,9 +16,9 @@ namespace ApplicationLogicModule.DataAccessLogic
     {
         protected override GetDataListResultModel<TReserve> OnExecute(GetPeriodReserveInputModel inputModel)
         {
-            string query = "SELECT * FROM TReserve TR WHERE " +
-                           // 
-                           "TR.ReserveEnd >= @ReserveStart AND TR.ReserveStart <= @ReserveEnd;";
+            Logger.StartMethod();
+
+            string query = SqlResources.GetPeriodReserve;
 
             List<SqlParameter> sqlParameters = new List<SqlParameter>()
             {
@@ -41,6 +42,7 @@ namespace ApplicationLogicModule.DataAccessLogic
                 };
             }
 
+            Logger.EndMethod();
             return resultModel;
         }
     }

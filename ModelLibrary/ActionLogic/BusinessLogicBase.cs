@@ -2,19 +2,33 @@
 {
     public abstract class BusinessLogicBase<TResultModel, TInputModel> : ActionLogicBase<TResultModel, TInputModel>
     {
-        public static TLogicResultModel DoCommonLogic<TCommonLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
+        protected TLogicResultModel DoCommonLogic<TCommonLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
             where TCommonLogic : CommonLogicBase<TLogicResultModel, TLogicInputModel>, new()
         {
-            TCommonLogic logic = new TCommonLogic();
+            Logger.StartMethod();
+
+            TCommonLogic logic = new TCommonLogic()
+            {
+                Logger = Logger,
+            };
             TLogicResultModel resultModel = logic.Execute(inputModel);
+
+            Logger.EndMethod();
             return resultModel;
         }
 
-        public static TLogicResultModel DoDataAccessLogic<TDataAccessLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
+        protected TLogicResultModel DoDataAccessLogic<TDataAccessLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
             where TDataAccessLogic : DataAccessLogicBase<TLogicResultModel, TLogicInputModel>, new()
         {
-            TDataAccessLogic dataAccess = new TDataAccessLogic();
+            Logger.StartMethod();
+
+            TDataAccessLogic dataAccess = new TDataAccessLogic()
+            {
+                Logger = Logger,
+            };
             TLogicResultModel resultModel = dataAccess.Execute(inputModel);
+
+            Logger.EndMethod();
             return resultModel;
         }
     }

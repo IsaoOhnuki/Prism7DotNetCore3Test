@@ -28,7 +28,10 @@ namespace ModelLibrary.Models
         {
             Message = message;
             MessageParameter = new List<string>();
-            MessageParameter.AddRange(parameter);
+            if (parameter != null)
+            {
+                MessageParameter.AddRange(parameter);
+            }
             Exception = exception;
         }
     }

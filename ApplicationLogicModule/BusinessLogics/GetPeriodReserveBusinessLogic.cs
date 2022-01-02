@@ -10,8 +10,12 @@ namespace ApplicationLogicModule.BusinessLogics
     {
         protected override GetDataListResultModel<TReserve> OnExecute(GetPeriodReserveInputModel inputModel)
         {
+            Logger.StartMethod();
+
             GetDataListResultModel<TReserve> resultModel =
                 DoDataAccessLogic<GetPeriodReserveDataAccessLogic, GetDataListResultModel<TReserve>, GetPeriodReserveInputModel>(inputModel);
+
+            Logger.EndMethod();
             return resultModel;
         }
     }

@@ -15,12 +15,12 @@ namespace LogServiceModule
 
         public void StartMethod([CallerMemberName] string methodName = null)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void EndMethod([CallerMemberName] string methodName = null)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
