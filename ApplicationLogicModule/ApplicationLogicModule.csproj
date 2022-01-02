@@ -8,11 +8,14 @@
     <Product>ApplicationLogicModule</Product>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <Compile Remove="Models\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Models\**" />
+    <Page Remove="Models\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LogicCommonLibrary\LogicCommonLibrary.csproj" />
