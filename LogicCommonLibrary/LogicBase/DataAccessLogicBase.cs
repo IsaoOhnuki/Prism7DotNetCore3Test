@@ -1,7 +1,8 @@
-﻿using ModelLibrary.Models;
+﻿using LogicCommonLibrary.Models;
+using ModelLibrary.Models;
 using System;
 
-namespace ModelLibrary.ActionLogic
+namespace LogicCommonLibrary.LogicBase
 {
     public abstract class DataAccessLogicBase<TResultModel, TInputModel> : ActionLogicBase<TResultModel, TInputModel>
     {

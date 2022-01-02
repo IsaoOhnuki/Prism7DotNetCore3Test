@@ -1,6 +1,6 @@
 ﻿using ApplicationLogicModule.BusinessLogics;
-using ModelLibrary.ActionLogic;
-using ModelLibrary.InputModels;
+using LogicCommonLibrary.LogicBase;
+using LogicCommonLibrary.InputModels;
 using ModelLibrary.Models.Database;
 using ModelLibrary.ResultModels;
 

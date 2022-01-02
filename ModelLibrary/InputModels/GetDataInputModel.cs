@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ModelLibrary.InputModel;
 
 namespace ModelLibrary.InputModels
 {
-    public class GetDataInputModel<TTable> : DataAccessInputModel
+    public class GetDataInputModel<TTable> : InputModelBase
     {
         public TTable TableClass { get; set; }
     }

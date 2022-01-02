@@ -1,6 +1,6 @@
 ﻿using ModelLibrary.Services;
 
-namespace ModelLibrary.ActionLogic
+namespace LogicCommonLibrary.LogicBase
 {
     public abstract class ActionLogicBase<TResultModel, TInputModel>
     {

@@ -1,6 +1,6 @@
 ﻿using LogicCommonLibrary.DataAccess;
-using ModelLibrary.ActionLogic;
-using ModelLibrary.InputModels;
+using LogicCommonLibrary.LogicBase;
+using LogicCommonLibrary.InputModels;
 using ModelLibrary.Models;
 using ModelLibrary.Models.Database;
 using ModelLibrary.ResultModels;

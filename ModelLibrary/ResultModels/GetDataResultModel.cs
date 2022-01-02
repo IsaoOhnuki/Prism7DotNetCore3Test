@@ -1,6 +1,6 @@
 ﻿namespace ModelLibrary.ResultModels
 {
-    public class GetTableResultModel<TTableClass> : ResultModelBase
+    public class GetDataResultModel<TTableClass> : ResultModelBase
     {
         public TTableClass TableClass { get; set; }
     }

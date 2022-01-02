@@ -11,7 +11,5 @@ namespace ModelLibrary.Services
         public CountResultModel InsertReserve(SetTableInputModel<TReserve> inputModel);
 
         public CountResultModel SetReserve(SetTableInputModel<TReserve> inputModel);
-
-        public GetTableResultModel<TReserve> GetReserve(GetDataInputModel<TReserve> inputModel);
     }
 }

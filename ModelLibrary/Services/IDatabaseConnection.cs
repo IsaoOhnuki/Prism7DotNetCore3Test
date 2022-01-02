@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 
-namespace ModelLibrary.ModelBases
+namespace ModelLibrary.Services
 {
     public interface IDatabaseConnection
     {

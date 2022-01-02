@@ -7,8 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ActionLogic\**" />
+    <EmbeddedResource Remove="ActionLogic\**" />
+    <None Remove="ActionLogic\**" />
+    <Page Remove="ActionLogic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ModelBases\" />
   </ItemGroup>
 
 </Project>

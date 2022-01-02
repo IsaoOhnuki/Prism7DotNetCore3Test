@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ModelLibrary.InputModel;
+using System;
 
 namespace ModelLibrary.InputModels
 {
-    public class GetPeriodReserveInputModel : DataAccessInputModel
+    public class GetPeriodReserveInputModel : InputModelBase
     {
         public DateTime ReserveStart { get; set; }
 

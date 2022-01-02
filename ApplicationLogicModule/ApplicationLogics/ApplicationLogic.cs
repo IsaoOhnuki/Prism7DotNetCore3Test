@@ -9,9 +9,12 @@ namespace ApplicationLogicModule.ApplicationLogics
     {
         public ILogService Logger { get; set; }
 
-        public ApplicationLogic(ILogService logger)
+        public IDatabaseConnection DatabaseConnection { get; set; }
+
+        public ApplicationLogic(ILogService logger, IDatabaseConnection databaseConnection)
         {
             Logger = logger;
+            DatabaseConnection = databaseConnection;
         }
 
         public GetDataListResultModel<TReserve> GetPeriodReserve(GetPeriodReserveInputModel inputModel)
@@ -23,7 +26,15 @@ namespace ApplicationLogicModule.ApplicationLogics
                 {
                     Logger = Logger,
                 };
-            GetDataListResultModel<TReserve> resultModel = applicationLogic.Execute(inputModel);
+
+            LogicCommonLibrary.InputModels.GetPeriodReserveInputModel dbInputModel =
+                new LogicCommonLibrary.InputModels.GetPeriodReserveInputModel()
+                {
+                    DatabaseConnection = DatabaseConnection,
+                    ReserveStart = inputModel.ReserveStart,
+                    ReserveEnd = inputModel.ReserveEnd,
+                };
+            GetDataListResultModel<TReserve> resultModel = applicationLogic.Execute(dbInputModel);
 
             Logger.EndMethod();
             return resultModel;
@@ -38,7 +49,14 @@ namespace ApplicationLogicModule.ApplicationLogics
                 {
                     Logger = Logger,
                 };
-            CountResultModel resultModel = applicationLogic.Execute(inputModel);
+
+            LogicCommonLibrary.InputModels.SetTableInputModel<TReserve> dbInputModel =
+                new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>()
+                {
+                    DatabaseConnection = DatabaseConnection,
+                    TableClass = inputModel.TableClass,
+                };
+            CountResultModel resultModel = applicationLogic.Execute(dbInputModel);
 
             Logger.EndMethod();
             return resultModel;
@@ -53,22 +71,14 @@ namespace ApplicationLogicModule.ApplicationLogics
                 {
                     Logger = Logger,
                 };
-            CountResultModel resultModel = applicationLogic.Execute(inputModel);
 
-            Logger.EndMethod();
-            return resultModel;
-        }
-
-        public GetTableResultModel<TReserve> GetReserve(GetDataInputModel<TReserve> inputModel)
-        {
-            Logger.StartMethod();
-
-            GetReserveApplicationLogic applicationLogic =
-                new GetReserveApplicationLogic()
+            LogicCommonLibrary.InputModels.SetTableInputModel<TReserve> dbInputModel =
+                new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>()
                 {
-                    Logger = Logger,
+                    DatabaseConnection = DatabaseConnection,
+                    TableClass = inputModel.TableClass,
                 };
-            GetTableResultModel<TReserve> resultModel = applicationLogic.Execute(inputModel);
+            CountResultModel resultModel = applicationLogic.Execute(dbInputModel);
 
             Logger.EndMethod();
             return resultModel;

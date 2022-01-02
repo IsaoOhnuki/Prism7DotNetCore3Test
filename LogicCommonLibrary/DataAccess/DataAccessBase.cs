@@ -1,5 +1,5 @@
-﻿using ModelLibrary.ModelBases;
-using ModelLibrary.Models;
+﻿using LogicCommonLibrary.Models;
+using ModelLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;

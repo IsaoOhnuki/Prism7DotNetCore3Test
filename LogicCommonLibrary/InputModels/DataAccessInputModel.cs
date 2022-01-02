@@ -1,7 +1,7 @@
 ﻿using ModelLibrary.InputModel;
-using ModelLibrary.ModelBases;
+using ModelLibrary.Services;
 
-namespace ModelLibrary.InputModels
+namespace LogicCommonLibrary.InputModels
 {
     public class DataAccessInputModel : InputModelBase
     {
