@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <Compile Remove="DataAccess\Attributes\**" />
+    <EmbeddedResource Remove="DataAccess\Attributes\**" />
+    <None Remove="DataAccess\Attributes\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataAccess\Attributes\" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
   <ItemGroup>
