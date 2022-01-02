@@ -20,5 +20,7 @@ namespace ModelLibrary.Services
         public void Rollback();
 
         public void Close();
+
+        public void SetConnection(string connectionString, SqlCredential credential = null);
     }
 }

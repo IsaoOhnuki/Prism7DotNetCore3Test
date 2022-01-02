@@ -22,6 +22,8 @@ namespace BlankCoreApp1.ViewModels
 
         public IContentViewService ContentViewService { get; private set; }
 
+        public IDatabaseConnection DatabaseConnection { get; private set; }
+
         private string _title = "Prism Application";
         public string Title
         {
@@ -57,7 +59,16 @@ namespace BlankCoreApp1.ViewModels
                 MessageService = container.Resolve<IMessageService>();
                 moduleManager.LoadModule(nameof(LogServiceModule.LogServiceModule));
                 LogService = container.Resolve<ILogService>();
+                moduleManager.LoadModule(nameof(ApplicationLogicModule.ApplicationLogicModule));
+                DatabaseConnection = container.Resolve<IDatabaseConnection>();
             }
+
+            string server = "localhost\\SQLEXPRESS";
+            string database = "TestDb";
+            string user = "sa";
+            string pass = "Express";
+            string conn = "Persist Security Info=False;User ID=" + user + ";Password=" + pass + ";Initial Catalog=" + database + ";Server=" + server;
+            DatabaseConnection.SetConnection(conn);
 
             ViewElementRegister.OnRegistElement += ViewElementRegister_OnRegistElement;
             Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;

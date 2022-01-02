@@ -7,9 +7,6 @@ namespace LogicCommonLibrary.DataAccess
 {
     public class DatabaseConnection : IDatabaseConnection, IDisposable
     {
-        private readonly string _connectionString;
-        private readonly SqlCredential _credential;
-
         public SqlConnection Connection { get; private set; }
 
         public SqlCredential Credential { get; private set; }
@@ -18,22 +15,16 @@ namespace LogicCommonLibrary.DataAccess
 
         public ConnectionState State => Connection != null ? Connection.State : ConnectionState.Broken;
 
-        public DatabaseConnection(string connectionString)
+        public void SetConnection(string connectionString, SqlCredential credential = null)
         {
-            _connectionString = connectionString;
-            Connection = new SqlConnection(_connectionString);
-        }
-
-        public DatabaseConnection(string connectionString, SqlCredential credential)
-        {
-            _connectionString = connectionString;
-            _credential = credential;
-            Connection = new SqlConnection(_connectionString, _credential);
+            Connection = credential == null ?
+                new SqlConnection(connectionString) :
+                new SqlConnection(connectionString, credential);
         }
 
         public void Open(bool transaction = false)
         {
-            Connection.Open();
+            Connection?.Open();
             if (transaction)
             {
                 Transaction = Connection.BeginTransaction();
@@ -63,7 +54,7 @@ namespace LogicCommonLibrary.DataAccess
             Commit();
             if (Connection != null)
             {
-                Connection.Close();
+                Connection?.Close();
             }
         }
 

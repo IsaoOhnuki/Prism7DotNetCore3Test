@@ -22,7 +22,8 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
             try
             {
-                using DatabaseConnection connection = new DatabaseConnection(conn);
+                using DatabaseConnection connection = new DatabaseConnection();
+                connection.SetConnection(conn);
 
                 string deleteQuery = "DELETE FROM Table1;";
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
@@ -73,7 +74,8 @@ namespace TestProject.Logic.LogicCommonLibrary.DataAccess
 
             try
             {
-                DatabaseConnection connection = new DatabaseConnection(conn);
+                using DatabaseConnection connection = new DatabaseConnection();
+                connection.SetConnection(conn);
 
                 string deleteQuery = "DELETE FROM Table1;";
                 NonQueryDataAccess deleteDataAccess = new NonQueryDataAccess(connection, deleteQuery, null);
