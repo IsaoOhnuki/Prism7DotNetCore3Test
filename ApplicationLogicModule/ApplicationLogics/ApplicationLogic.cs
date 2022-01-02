@@ -28,5 +28,50 @@ namespace ApplicationLogicModule.ApplicationLogics
             Logger.EndMethod();
             return resultModel;
         }
+
+        public CountResultModel InsertReserve(SetTableInputModel<TReserve> inputModel)
+        {
+            Logger.StartMethod();
+
+            InsertReserveApplicationLogic applicationLogic =
+                new InsertReserveApplicationLogic()
+                {
+                    Logger = Logger,
+                };
+            CountResultModel resultModel = applicationLogic.Execute(inputModel);
+
+            Logger.EndMethod();
+            return resultModel;
+        }
+
+        public CountResultModel SetReserve(SetTableInputModel<TReserve> inputModel)
+        {
+            Logger.StartMethod();
+
+            SetReserveApplicationLogic applicationLogic =
+                new SetReserveApplicationLogic()
+                {
+                    Logger = Logger,
+                };
+            CountResultModel resultModel = applicationLogic.Execute(inputModel);
+
+            Logger.EndMethod();
+            return resultModel;
+        }
+
+        public GetTableResultModel<TReserve> GetReserve(GetDataInputModel<TReserve> inputModel)
+        {
+            Logger.StartMethod();
+
+            GetReserveApplicationLogic applicationLogic =
+                new GetReserveApplicationLogic()
+                {
+                    Logger = Logger,
+                };
+            GetTableResultModel<TReserve> resultModel = applicationLogic.Execute(inputModel);
+
+            Logger.EndMethod();
+            return resultModel;
+        }
     }
 }
