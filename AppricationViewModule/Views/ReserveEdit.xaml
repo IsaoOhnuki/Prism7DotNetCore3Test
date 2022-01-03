@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="AppricationViewModule.Views.ReserveEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:tp="clr-namespace:CustomControlLibrary.TimePicker;assembly=CustomControlLibrary"
+             xmlns:lc="clr-namespace:CustomControlLibrary.Label;assembly=CustomControlLibrary"
+             mc:Ignorable="av"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             av:DesignWidth="800" av:DesignHeight="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.FontSize>
+        20
+    </UserControl.FontSize>
+    <Grid Margin="50,20,50,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <lc:LabelingContainer LabelingPosition="Top"
+                                  Text="START">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding StartDate}"
+                                Margin="0,0,10,0"/>
+                    <tp:TimePicker SelectedTime="{Binding StartTime}"
+                                   Margin="0,0,10,0"
+                                   Width="100"/>
+                </StackPanel>
+            </lc:LabelingContainer>
+            <lc:LabelingContainer Text=" " LabelVisible="False">
+                <tp:TimePicker SelectedTime="{Binding StartBlockTime}"
+                               Width="100"/>
+            </lc:LabelingContainer>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal">
+            <lc:LabelingContainer LabelingPosition="Top"
+                                  Text="END">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding EndDate}"
+                                Margin="0,0,10,0"/>
+                    <tp:TimePicker SelectedTime="{Binding EndTime}"
+                                   Margin="0,0,10,0"
+                                   Width="100"/>
+                </StackPanel>
+            </lc:LabelingContainer>
+            <lc:LabelingContainer Text=" " LabelVisible="False">
+                <tp:TimePicker SelectedTime="{Binding EndBlockTime}"
+                               Width="100"/>
+            </lc:LabelingContainer>
+        </StackPanel>
+    </Grid>
+</UserControl>

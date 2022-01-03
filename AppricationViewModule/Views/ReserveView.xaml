@@ -5,6 +5,8 @@
              xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tp="clr-namespace:CustomControlLibrary.TimePicker;assembly=CustomControlLibrary"
+             xmlns:local="clr-namespace:AppricationViewModule.Views"
+             xmlns:CustomBaseControl="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
              av:DesignWidth="453" av:DesignHeight="300">
@@ -175,5 +177,7 @@
         <DatePicker SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="130,0,0,0" VerticalAlignment="Center"/>
         <tp:TimePicker SelectedTime="{Binding StartTime}" HorizontalAlignment="Left" Margin="240,0,0,0" VerticalAlignment="Center" Width="60"/>
         <tp:TimePicker SelectedTime="{Binding EndTime}" HorizontalAlignment="Left" Margin="320,0,0,0" VerticalAlignment="Center" Width="60"/>
+        <local:ReserveEdit HorizontalAlignment="Left" Margin="40,30,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <CustomBaseControl:BaseLabelControl Text="0123" HorizontalAlignment="Left" Margin="130,173,0,0" Grid.Row="1" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

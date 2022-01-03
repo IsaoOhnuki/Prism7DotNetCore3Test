@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="CustomControlLibrary.Label.LabelingContainer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomControlLibrary.Label"
+             xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="24" d:DesignWidth="100">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CustomControlLibrary;component/ControlResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <bc:BaseLabelControl Grid.Row="{Binding LabelRow, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                             Grid.Column="{Binding LabelColumn, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                             FontSize="{StaticResource LabelFontSize}"
+                             Visibility="{Binding LabelVisibility, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                             Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+        <ContentControl Grid.Row="1" Grid.Column="1"
+                        Content="{Binding Content, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+    </Grid>
+</UserControl>

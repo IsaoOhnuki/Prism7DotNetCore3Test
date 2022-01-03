@@ -21,6 +21,7 @@
     <!--#region FontSetting -->
     <sys:Double x:Key="BaseFontSize">20</sys:Double>
     <sys:Double x:Key="TitleFontSize">30</sys:Double>
+    <sys:Double x:Key="LabelFontSize">10</sys:Double>
     <FontFamily x:Key="BaseFontFamily">./#Meiryo UI</FontFamily>
     <SolidColorBrush x:Key="BaseFontColor" Color="Coral"/>
     <!--#endregion-->
