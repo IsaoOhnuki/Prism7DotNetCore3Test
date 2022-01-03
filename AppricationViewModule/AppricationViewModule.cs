@@ -30,13 +30,14 @@ namespace AppricationViewModule
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            RegionManager.RequestNavigate(AppViewConst.ContentRegion_AppViewMainContent, nameof(TopPage));
+            RegionManager.RequestNavigate(AppViewConst.ContentRegion_AppViewMainContent, nameof(ReserveView));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialog<MessageDialogPage>();
             containerRegistry.RegisterForNavigation<ShadeScreen>();
+            containerRegistry.RegisterForNavigation<ReserveView>();
             containerRegistry.RegisterForNavigation<TopPage>();
             containerRegistry.RegisterForNavigation<ViewA>();
         }

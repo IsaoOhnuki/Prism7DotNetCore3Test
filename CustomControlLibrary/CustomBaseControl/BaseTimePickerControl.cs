@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CustomControlLibrary.CustomBaseControl
 {
@@ -43,7 +36,7 @@ namespace CustomControlLibrary.CustomBaseControl
     ///     <MyNamespace:BaseTimePicker/>
     ///
     /// </summary>
-    public class BaseTimePickerControl : Control
+    public class BaseTimePickerControl : BaseCustomControl
     {
         internal string Hour
         {
@@ -62,17 +55,27 @@ namespace CustomControlLibrary.CustomBaseControl
                     {
                         if (d is BaseTimePickerControl control)
                         {
-                            int hour = int.Parse(e.NewValue as string);
-                            if (hour > 12)
+                            string hVal = e.NewValue as string;
+                            int hour = 0;
+                            if (!string.IsNullOrEmpty(hVal))
                             {
-                                hour = 12;
+                                hour = int.Parse(hVal, CultureInfo.CurrentCulture);
                             }
-                            int minute = int.Parse(control.Minute);
+                            if (hour > control.HourLimit)
+                            {
+                                hour = control.HourLimit;
+                            }
+                            string mVal = control.Minute;
+                            int minute = 0;
+                            if (!string.IsNullOrEmpty(mVal))
+                            {
+                                minute = int.Parse(mVal, CultureInfo.CurrentCulture);
+                            }
                             if (minute > 59)
                             {
                                 minute = 59;
                             }
-                            DateTime dt = new DateTime(1, 1, 1, hour, minute, 0);
+                            TimeSpan dt = new TimeSpan(hour, minute, 0);
                             control.Time = dt;
                         }
                     }));
@@ -94,33 +97,53 @@ namespace CustomControlLibrary.CustomBaseControl
                     {
                         if (d is BaseTimePickerControl control)
                         {
-                            int minute = int.Parse(e.NewValue as string);
+                            string mVal = e.NewValue as string;
+                            int minute = 0;
+                            if (!string.IsNullOrEmpty(mVal))
+                            {
+                                minute = int.Parse(mVal, CultureInfo.CurrentCulture);
+                            }
                             if (minute > 59)
                             {
                                 minute = 59;
                             }
-                            int hour = int.Parse(control.Minute);
-                            if (hour > 12)
+                            string hVal = control.Hour;
+                            int hour = 0;
+                            if (!string.IsNullOrEmpty(hVal))
                             {
-                                hour = 12;
+                                hour = int.Parse(hVal, CultureInfo.CurrentCulture);
                             }
-                            DateTime dt = new DateTime(1, 1, 1, hour, minute, 0);
+                            if (hour > control.HourLimit)
+                            {
+                                hour = control.HourLimit;
+                            }
+                            TimeSpan dt = new TimeSpan(hour, minute, 0);
                             control.Time = dt;
                         }
                     }));
 
-        public DateTime Time
+        public TimeSpan Time
         {
-            get => (DateTime)GetValue(TimeProperty);
+            get => (TimeSpan)GetValue(TimeProperty);
             set => SetValue(TimeProperty, value);
         }
 
         public static readonly DependencyProperty TimeProperty =
             DependencyProperty.Register(
                 nameof(Time),
-                typeof(DateTime),
+                typeof(TimeSpan),
                 typeof(BaseTimePickerControl),
-                new FrameworkPropertyMetadata(default));
+                new FrameworkPropertyMetadata(
+                    new TimeSpan(0, 0, 0),
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                    (d, e) =>
+                    {
+                        if (d is BaseTimePickerControl control)
+                        {
+                            control.Hour = ((TimeSpan)e.NewValue).Hours.ToString();
+                            control.Minute = ((TimeSpan)e.NewValue).Minutes.ToString();
+                        }
+                    }));
 
         static BaseTimePickerControl()
         {
@@ -137,16 +160,20 @@ namespace CustomControlLibrary.CustomBaseControl
             minuteTextBox.PreviewTextInput += MinuteTextBox_PreviewTextInput;
         }
 
+        private int HourLimit = 24;
+
         private void HourTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            BaseTimePickerControl control = sender as BaseTimePickerControl;
-            e.Handled = !new Regex("[0-9]").IsMatch(e.Text) || control.Hour.Length >= 2 || int.Parse(control.Hour + e.Text) > 12;
+            TextBox control = sender as TextBox;
+            string val = control.CaretIndex == 0 ? e.Text + control.Text : control.Text + e.Text;
+            e.Handled = !new Regex("[0-9]").IsMatch(e.Text) || int.Parse(val, CultureInfo.CurrentCulture) > HourLimit;
         }
 
         private void MinuteTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            BaseTimePickerControl control = sender as BaseTimePickerControl;
-            e.Handled = !new Regex("[0-9]").IsMatch(e.Text) || control.Hour.Length >= 2 || int.Parse(control.Minute + e.Text) > 59;
+            TextBox control = sender as TextBox;
+            string val = control.CaretIndex == 0 ? e.Text + control.Text : control.Text + e.Text;
+            e.Handled = !new Regex("[0-9]").IsMatch(e.Text) || int.Parse(val, CultureInfo.CurrentCulture) > 59;
         }
     }
 }

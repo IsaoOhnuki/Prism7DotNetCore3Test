@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
+             xmlns:tp="clr-namespace:CustomControlLibrary.TimePicker;assembly=CustomControlLibrary"
              xmlns:btn="clr-namespace:CustomControlLibrary.Button;assembly=CustomControlLibrary"
              xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -32,5 +33,9 @@
                            Text="{Binding AcceptText}"
                            Command="{Binding AcceptCommand}"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="124,61,0,0" Grid.Row="1" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <tp:TimePicker x:Name="TimePicker" SelectedTime="{Binding EditTime}" Grid.Column="1" Width="100" HorizontalAlignment="Center" Margin="0,205,0,0" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Margin="0,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32"
+                   Text="{Binding EditDateTime}"/>
+        <DatePicker SelectedDate="{Binding EditDate}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,136,0,0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

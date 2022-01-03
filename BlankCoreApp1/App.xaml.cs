@@ -25,10 +25,10 @@ namespace BlankCoreApp1
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            _ = moduleCatalog.AddModule<ApplicationLogicModule.ApplicationLogicModule>();
             _ = moduleCatalog.AddModule<AppricationViewModule.AppricationViewModule>();
 
             // MainWindowで使いたいがDLLロードが間に合わないためMainWindowViewModelでロードしてResolveする。
+            _ = moduleCatalog.AddModule<ApplicationLogicModule.ApplicationLogicModule>(InitializationMode.OnDemand);
             _ = moduleCatalog.AddModule<MessageServiceModule.MessageServiceModule>(InitializationMode.OnDemand);
             _ = moduleCatalog.AddModule<LogServiceModule.LogServiceModule>(InitializationMode.OnDemand);
         }

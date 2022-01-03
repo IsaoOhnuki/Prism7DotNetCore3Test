@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="CustomControlLibrary.TimePicker.TimePicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomControlLibrary.TimePicker"
+             xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
+             mc:Ignorable="d" 
+             BorderThickness="0.5"
+             BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
+             Height="24" Width="80">
+    <bc:BaseTimePickerControl Background="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                              BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                              BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                              Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                              FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                              FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                              FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                              FontStretch="{Binding FontStretch, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                              FontStyle="{Binding FontStyle, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                              Time="{Binding SelectedTime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+    </bc:BaseTimePickerControl>
+</UserControl>

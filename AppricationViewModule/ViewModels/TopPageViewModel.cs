@@ -5,6 +5,7 @@ using Prism.Commands;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
@@ -29,11 +30,47 @@ namespace AppricationViewModule.ViewModels
 
         public ICommand ErrorCommand { get; }
 
+        private DateTime _editDate;
+        public DateTime EditDate
+        {
+            get => _editDate;
+            set
+            {
+                SetProperty(ref _editDate, value);
+                RaisePropertyChanged(nameof(EditDateTime));
+            }
+        }
+
+        private TimeSpan _editTime;
+        public TimeSpan EditTime
+        {
+            get => _editTime;
+            set
+            {
+                SetProperty(ref _editTime, value);
+                RaisePropertyChanged(nameof(EditDateTime));
+            }
+        }
+
+        private DateTime _editDateTime;
+        public DateTime EditDateTime
+        {
+            get => EditDate + EditTime;
+            set
+            {
+                SetProperty(ref _editDateTime, value);
+                EditDate = value.Date;
+                EditTime = value.TimeOfDay;
+            }
+        }
+
         public TopPageViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService)
             : base(logService, regionManager, messageService)
         {
             AcceptCommand = new DelegateCommand(DoAccept, IsCanAccept);
             ErrorCommand = new DelegateCommand(() => throw new Exception("Error", new Exception("Error", new Exception())), () => true);
+
+            EditDateTime = DateTime.Now;
 
             Text = nameof(TopPageViewModel);
             AcceptText = "GO";

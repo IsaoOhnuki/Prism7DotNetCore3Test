@@ -22,6 +22,8 @@ namespace BlankCoreApp1.ViewModels
 
         public IContentViewService ContentViewService { get; private set; }
 
+        public IApplicationLogic ApplicationLogic { get; private set; }
+
         public IDatabaseConnection DatabaseConnection { get; private set; }
 
         private string _title = "Prism Application";
@@ -60,6 +62,7 @@ namespace BlankCoreApp1.ViewModels
                 moduleManager.LoadModule(nameof(LogServiceModule.LogServiceModule));
                 LogService = container.Resolve<ILogService>();
                 moduleManager.LoadModule(nameof(ApplicationLogicModule.ApplicationLogicModule));
+                ApplicationLogic = container.Resolve<IApplicationLogic>();
                 DatabaseConnection = container.Resolve<IDatabaseConnection>();
             }
 
