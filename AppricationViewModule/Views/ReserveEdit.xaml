@@ -37,7 +37,7 @@
                                    Width="100"/>
                 </StackPanel>
             </lc:LabelingContainer>
-            <lc:LabelingContainer Text=" " LabelVisible="False">
+            <lc:LabelingContainer Text="BLOCK">
                 <tp:TimePicker SelectedTime="{Binding StartBlockTime}"
                                Width="100"/>
             </lc:LabelingContainer>
@@ -54,7 +54,7 @@
                                    Width="100"/>
                 </StackPanel>
             </lc:LabelingContainer>
-            <lc:LabelingContainer Text=" " LabelVisible="False">
+            <lc:LabelingContainer Text="BLOCK">
                 <tp:TimePicker SelectedTime="{Binding EndBlockTime}"
                                Width="100"/>
             </lc:LabelingContainer>
