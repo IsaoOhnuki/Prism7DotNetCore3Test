@@ -13,8 +13,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <ContentControl Grid.Row="0"
-                                        Content="{TemplateBinding Content}"
-                                        ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                        Content="{TemplateBinding Content}"/>
                         <StackPanel Grid.Row="1"
                                     Orientation="Horizontal"
                                     Margin="10">
