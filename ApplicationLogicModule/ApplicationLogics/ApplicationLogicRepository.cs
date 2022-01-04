@@ -6,7 +6,7 @@ using LogicCommonLibrary.LogicBase;
 
 namespace ApplicationLogicModule.ApplicationLogics
 {
-    public class ApplicationLogicRepository : ApplicationLogicRepositoryBase, IApplicationLogic
+    public class ApplicationLogicRepository : LogicRepositoryBase, IApplicationLogic
     {
         public IDatabaseConnection DatabaseConnection { get; set; }
 
@@ -18,7 +18,7 @@ namespace ApplicationLogicModule.ApplicationLogics
 
         public GetDataListResultModel<TReserve> GetPeriodReserve(GetPeriodReserveInputModel inputModel)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             LogicCommonLibrary.InputModels.GetPeriodReserveInputModel dbInputModel =
                 new LogicCommonLibrary.InputModels.GetPeriodReserveInputModel()
@@ -31,13 +31,13 @@ namespace ApplicationLogicModule.ApplicationLogics
                 DoApplicationLogic<GetPeriodReserveApplicationLogic, GetDataListResultModel<TReserve>,
                     LogicCommonLibrary.InputModels.GetPeriodReserveInputModel>(dbInputModel);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
 
         public CountResultModel InsertReserve(SetTableInputModel<TReserve> inputModel)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             LogicCommonLibrary.InputModels.SetTableInputModel<TReserve> dbInputModel =
                 new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>()
@@ -49,13 +49,13 @@ namespace ApplicationLogicModule.ApplicationLogics
                 DoApplicationLogic<InsertReserveApplicationLogic, CountResultModel,
                     LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>>(dbInputModel);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
 
         public CountResultModel SetReserve(SetTableInputModel<TReserve> inputModel)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             LogicCommonLibrary.InputModels.SetTableInputModel<TReserve> dbInputModel =
                 new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>()
@@ -67,18 +67,18 @@ namespace ApplicationLogicModule.ApplicationLogics
                 DoApplicationLogic<SetReserveApplicationLogic, CountResultModel,
                     LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>>(dbInputModel);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
 
         public CreateReserveResultModel CreateReserve(CreateReserveInputModel inputModel)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             CreateReserveResultModel resultModel =
                 DoApplicationLogic<CreateReserveApplicationLogic, CreateReserveResultModel, CreateReserveInputModel>(inputModel);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
     }

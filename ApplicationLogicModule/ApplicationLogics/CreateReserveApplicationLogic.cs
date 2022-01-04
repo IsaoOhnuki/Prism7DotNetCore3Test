@@ -9,12 +9,12 @@ namespace ApplicationLogicModule.ApplicationLogics
     {
         protected override CreateReserveResultModel OnExecute(CreateReserveInputModel inputModel)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             CreateReserveResultModel resultModel =
                 DoBusinessLogic<CreateReserveBusunessLogic, CreateReserveResultModel, CreateReserveInputModel>(inputModel);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
     }

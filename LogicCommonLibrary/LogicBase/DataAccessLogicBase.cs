@@ -8,14 +8,14 @@ namespace LogicCommonLibrary.LogicBase
     {
         protected MessageModel GetDataAccessExceptionMessage(IDataAccess dataAccess, Exception exception)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             MessageModel result = new MessageModel(
                 message: "data access inner exception of '" + GetType().Name + "'\r\n{0}\r\n{1}",
                 parameter: new string[] { dataAccess.GetLastQuery(), dataAccess.GetLastQueryParam() },
                 exception: exception);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return result;
         }
     }

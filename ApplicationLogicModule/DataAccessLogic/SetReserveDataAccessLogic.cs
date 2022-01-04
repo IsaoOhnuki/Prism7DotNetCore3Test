@@ -14,7 +14,7 @@ namespace ApplicationLogicModule.DataAccessLogic
     {
         protected override CountResultModel OnExecute(SetTableInputModel<TReserve> inputModel)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             GetCommandQuery<TReserve>.GetInsertQuery(out string query, out List<SqlParameter> sqlParameters);
             NonQueryDataAccess nonQueryDataAccess = new NonQueryDataAccess(inputModel.DatabaseConnection,
@@ -37,7 +37,7 @@ namespace ApplicationLogicModule.DataAccessLogic
                 };
             }
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
     }

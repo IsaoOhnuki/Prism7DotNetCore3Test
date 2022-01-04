@@ -10,12 +10,12 @@ namespace ApplicationLogicModule.ApplicationLogics
     {
         protected override CountResultModel OnExecute(SetTableInputModel<TReserve> inputModel)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             CountResultModel resultModel =
                 DoBusinessLogic<SetReserveBusinessLogic, CountResultModel, SetTableInputModel<TReserve>>(inputModel);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
     }

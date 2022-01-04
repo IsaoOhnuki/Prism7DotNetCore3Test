@@ -1,18 +1,17 @@
 ﻿using ModelLibrary.Services;
+using System.Runtime.CompilerServices;
 
 namespace LogicCommonLibrary.LogicBase
 {
-    public abstract class ActionLogicBase<TResultModel, TInputModel>
+    public abstract class ActionLogicBase<TResultModel, TInputModel> : LogicBase
     {
-        public ILogService Logger { get; set; }
-
         public TResultModel Execute(TInputModel inputModel)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             TResultModel resultModel = OnExecute(inputModel);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
 

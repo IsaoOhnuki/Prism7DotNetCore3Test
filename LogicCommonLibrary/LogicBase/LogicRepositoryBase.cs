@@ -1,15 +1,10 @@
 ﻿using ModelLibrary.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LogicCommonLibrary.LogicBase
 {
-    public class ApplicationLogicRepositoryBase
+    public class LogicRepositoryBase : LogicBase
     {
-        public ILogService Logger { get; private set; }
-
-        public ApplicationLogicRepositoryBase(ILogService logger)
+        public LogicRepositoryBase(ILogService logger)
         {
             Logger = logger;
         }
@@ -17,7 +12,7 @@ namespace LogicCommonLibrary.LogicBase
         protected TLogicResultModel DoApplicationLogic<TApplicationLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
             where TApplicationLogic : ApplicationLogicBase<TLogicResultModel, TLogicInputModel>, new()
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             TApplicationLogic logic = new TApplicationLogic()
             {
@@ -25,7 +20,7 @@ namespace LogicCommonLibrary.LogicBase
             };
             TLogicResultModel resultModel = logic.Execute(inputModel);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
     }

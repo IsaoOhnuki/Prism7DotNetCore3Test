@@ -7,7 +7,7 @@ namespace LogicCommonLibrary.LogicBase
         protected TLogicResultModel DoBusinessLogic<TBusinessLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
             where TBusinessLogic : BusinessLogicBase<TLogicResultModel, TLogicInputModel>, new()
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             TBusinessLogic logic = new TBusinessLogic()
             {
@@ -15,19 +15,19 @@ namespace LogicCommonLibrary.LogicBase
             };
             TLogicResultModel resultModel = logic.Execute(inputModel);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
 
         protected bool IsBusinessLogic<TBusinessLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel, out TLogicResultModel resultModel)
             where TBusinessLogic : BusinessLogicBase<TLogicResultModel, TLogicInputModel>, new()
-            where TLogicResultModel : ResultModelBase, new()
+            where TLogicResultModel : ResultModelBase
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             resultModel = DoBusinessLogic<TBusinessLogic, TLogicResultModel, TLogicInputModel>(inputModel);
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel.Result;
         }
     }

@@ -16,7 +16,7 @@ namespace ApplicationLogicModule.DataAccessLogic
     {
         protected override GetDataListResultModel<TReserve> OnExecute(GetPeriodReserveInputModel inputModel)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             string query = SqlResources.GetPeriodReserve;
 
@@ -42,7 +42,7 @@ namespace ApplicationLogicModule.DataAccessLogic
                 };
             }
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
     }

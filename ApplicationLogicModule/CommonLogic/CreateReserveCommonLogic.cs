@@ -9,7 +9,7 @@ namespace ApplicationLogicModule.CommonLogic
     {
         protected override CreateReserveResultModel OnExecute(CreateReserveInputModel inputModel)
         {
-            Logger.StartMethod();
+            LogStartMethod();
 
             CreateReserveResultModel resultModel = new CreateReserveResultModel()
             {
@@ -22,7 +22,7 @@ namespace ApplicationLogicModule.CommonLogic
                 },
             };
 
-            Logger.EndMethod();
+            LogEndMethod();
             return resultModel;
         }
     }
