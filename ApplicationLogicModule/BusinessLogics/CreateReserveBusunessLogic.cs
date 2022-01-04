@@ -2,9 +2,6 @@
 using LogicCommonLibrary.LogicBase;
 using ModelLibrary.InputModels;
 using ModelLibrary.ResultModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ApplicationLogicModule.BusinessLogics
 {

@@ -4,15 +4,19 @@ using ModelLibrary.Models.Database;
 using ModelLibrary.ResultModels;
 using ModelLibrary.Services;
 using MvvmCommonLibrary.Mvvm;
+using Prism.Commands;
 using Prism.Regions;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
 {
     public class ReserveViewModel : ViewModelBase
     {
         public IApplicationLogic ApplicationLogic { get; private set; }
+
+        public ICommand CreateCommand { get; private set; }
 
         private DateTime _startDate;
 
@@ -130,6 +134,9 @@ namespace AppricationViewModule.ViewModels
 
             StartDateTime = DateTime.Now;
             EndDateTime = DateTime.Now;
+
+            CreateCommand = new DelegateCommand(
+                () => DoTransitionPage(AppViewConst.ContentRegion_AppViewMainContent, GetViewName(true), AppViewConst.View_ReserveEdit));
         }
 
         public void GetPeriodReserve(Period period)

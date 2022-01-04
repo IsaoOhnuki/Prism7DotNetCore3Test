@@ -13,6 +13,7 @@
         <ResourceDictionary Source="/CustomControlLibrary;component/Themes/BaseTextBoxControl.xaml"/>
         <ResourceDictionary Source="/CustomControlLibrary;component/Themes/BaseWindowTitleControl.xaml"/>
         <ResourceDictionary Source="/CustomControlLibrary;component/Themes/BaseTimePickerControl.xaml"/>
+        <ResourceDictionary Source="/CustomControlLibrary;component/Themes/BaseDialogPanelControl.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

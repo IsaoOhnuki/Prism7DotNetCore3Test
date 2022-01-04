@@ -28,10 +28,17 @@ namespace MvvmCommonLibrary.Mvvm
             MessageService = messageService;
         }
 
-        public string GetViewName()
+        public string GetViewName(bool viewNameView = false)
         {
             string vmName = GetType().Name;
-            return vmName.Substring(0, vmName.IndexOf("ViewModel"));
+            if (viewNameView)
+            {
+                return vmName.Substring(0, vmName.IndexOf("Model"));
+            }
+            else
+            {
+                return vmName.Substring(0, vmName.IndexOf("ViewModel"));
+            }
         }
 
         public void DoTransitionPage(string contentRegion, string fromPage, string toPage)

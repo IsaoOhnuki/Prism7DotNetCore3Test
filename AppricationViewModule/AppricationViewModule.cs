@@ -40,6 +40,8 @@ namespace AppricationViewModule
             containerRegistry.RegisterForNavigation<ReserveView>();
             containerRegistry.RegisterForNavigation<TopPage>();
             containerRegistry.RegisterForNavigation<ViewA>();
+            containerRegistry.RegisterForNavigation<ReserveView>();
+            containerRegistry.RegisterForNavigation<ReserveEdit>();
         }
     }
 }

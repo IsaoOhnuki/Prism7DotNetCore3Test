@@ -5,8 +5,9 @@
              xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tp="clr-namespace:CustomControlLibrary.TimePicker;assembly=CustomControlLibrary"
+             xmlns:cb="clr-namespace:CustomControlLibrary.Button;assembly=CustomControlLibrary"
+             xmlns:lc="clr-namespace:CustomControlLibrary.Label;assembly=CustomControlLibrary"
              xmlns:local="clr-namespace:AppricationViewModule.Views"
-             xmlns:CustomBaseControl="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
              av:DesignWidth="644.089" av:DesignHeight="316.832">
@@ -15,10 +16,22 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DatePicker SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center"/>
-        <DatePicker SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="130,0,0,0" VerticalAlignment="Center"/>
-        <tp:TimePicker SelectedTime="{Binding StartTime}" HorizontalAlignment="Left" Margin="240,0,0,0" VerticalAlignment="Center" Width="60"/>
-        <tp:TimePicker SelectedTime="{Binding EndTime}" HorizontalAlignment="Left" Margin="320,0,0,0" VerticalAlignment="Center" Width="60"/>
-        <local:ReserveEdit HorizontalAlignment="Left" Margin="40,30,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <lc:LabelingContainer Text="START" Margin="0,0,10,0">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding StartDate}" VerticalAlignment="Center"/>
+                    <tp:TimePicker SelectedTime="{Binding StartTime}" VerticalAlignment="Center" Width="60"/>
+                </StackPanel>
+            </lc:LabelingContainer>
+            <lc:LabelingContainer Text="END" Margin="0,0,10,0">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding EndDate}" VerticalAlignment="Center"/>
+                    <tp:TimePicker SelectedTime="{Binding EndTime}" VerticalAlignment="Center" Width="60"/>
+                </StackPanel>
+            </lc:LabelingContainer>
+            <lc:LabelingContainer Text="" Margin="0,0,10,0">
+                <cb:CommandButton Command="{Binding CreateCommand}" Text="CREATE" VerticalAlignment="Center" Height="24" Width="100"/>
+            </lc:LabelingContainer>
+        </StackPanel>
     </Grid>
 </UserControl>
