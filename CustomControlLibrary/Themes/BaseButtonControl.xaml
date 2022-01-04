@@ -16,6 +16,7 @@
                             FontStretch="{TemplateBinding FontStretch}"
                             FontStyle="{TemplateBinding FontStyle}"
                             Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
                             ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                             Command="{TemplateBinding Command}"
                             CommandParameter="{TemplateBinding CommandParameter}"

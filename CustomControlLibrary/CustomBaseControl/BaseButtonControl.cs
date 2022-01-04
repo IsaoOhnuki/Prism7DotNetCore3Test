@@ -47,6 +47,20 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(object),
                 typeof(BaseButtonControl),
                 new FrameworkPropertyMetadata(defaultValue: "BaseButtonControl"));
+
+        public DataTemplate ContentTemplate
+        {
+            get => (DataTemplate)GetValue(ContentTemplateProperty);
+            set => SetValue(ContentTemplateProperty, value);
+        }
+
+        public static readonly DependencyProperty ContentTemplateProperty =
+            DependencyProperty.Register(
+                nameof(ContentTemplate),
+                typeof(DataTemplate),
+                typeof(BaseButtonControl),
+                new FrameworkPropertyMetadata(default(DataTemplate)));
+
         public DataTemplateSelector ContentTemplateSelector
         {
             get => (DataTemplateSelector)GetValue(ContentTemplateSelectorProperty);

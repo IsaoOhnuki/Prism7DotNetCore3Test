@@ -99,7 +99,7 @@ namespace CustomControlLibrary.TitleBar
 
         private void BaseWindowTitleControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (Window != null)
+            if (Window != null && e.LeftButton == MouseButtonState.Pressed)
             {
                 Window.DragMove();
             }
