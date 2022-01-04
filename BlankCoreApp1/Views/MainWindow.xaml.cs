@@ -15,14 +15,14 @@ namespace BlankCoreApp1.Views
         {
             InitializeComponent();
 
-            // Window枠なしでリサイズ可能にした時にWindow上端に出る白バーを消す
-            WindowChrome.SetWindowChrome(this, new WindowChrome()
-            {
-                GlassFrameThickness = new Thickness(0),
-                CaptionHeight = 0,
-                ResizeBorderThickness = new Thickness(8),
-                CornerRadius = new CornerRadius(0)
-            });
+            //// Window枠なしでリサイズ可能にした時にWindow上端に出る白バーを消す
+            //WindowChrome.SetWindowChrome(this, new WindowChrome()
+            //{
+            //    GlassFrameThickness = new Thickness(0),
+            //    CaptionHeight = 0,
+            //    ResizeBorderThickness = new Thickness(8),
+            //    CornerRadius = new CornerRadius(0)
+            //});
         }
 
         // https://zenn.dev/karamem0/articles/2013_05_27_000000

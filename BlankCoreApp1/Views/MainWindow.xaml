@@ -13,6 +13,54 @@
         behavior:ContentSizeRegister.Element="{Binding MainContentName}"
         av:DesignWidth="500"
         av:DesignHeight="300">
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome CornerRadius="0"
+                                  GlassFrameThickness="0"
+                                  ResizeBorderThickness="8" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Window">
+                        <Border x:Name="border"
+                                Background="#ffffff"
+                                BorderBrush="#cccccc"
+                                BorderThickness="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                                    <TextBlock Text="{Binding ElementName=window, Path=Title}" />
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+                                        <Button Content="＿" Width="{x:Static SystemParameters.WindowCaptionButtonWidth}" Height="{x:Static SystemParameters.WindowCaptionButtonHeight}" />
+                                        <Button Content="□" Width="{x:Static SystemParameters.WindowCaptionButtonWidth}" Height="{x:Static SystemParameters.WindowCaptionButtonHeight}" />
+                                        <Button Content="×" Width="{x:Static SystemParameters.WindowCaptionButtonWidth}" Height="{x:Static SystemParameters.WindowCaptionButtonHeight}" />
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <ContentPresenter HorizontalAlignment="Stretch"
+                                                      VerticalAlignment="Stretch" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="WindowState" Value="Maximized">
+                                <Setter TargetName="border" Property="BorderThickness" Value="8" />
+                            </Trigger>
+                            <Trigger Property="WindowState" Value="Normal">
+                                <Setter TargetName="border" Property="BorderThickness" Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Style>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
