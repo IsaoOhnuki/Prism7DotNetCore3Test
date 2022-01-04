@@ -1,4 +1,6 @@
-﻿namespace LogicCommonLibrary.LogicBase
+﻿using ModelLibrary.ResultModels;
+
+namespace LogicCommonLibrary.LogicBase
 {
     public abstract class ApplicationLogicBase<TResultModel, TInputModel> : ActionLogicBase<TResultModel, TInputModel>
     {
@@ -15,6 +17,18 @@
 
             Logger.EndMethod();
             return resultModel;
+        }
+
+        protected bool IsBusinessLogic<TBusinessLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel, out TLogicResultModel resultModel)
+            where TBusinessLogic : BusinessLogicBase<TLogicResultModel, TLogicInputModel>, new()
+            where TLogicResultModel : ResultModelBase, new()
+        {
+            Logger.StartMethod();
+
+            resultModel = DoBusinessLogic<TBusinessLogic, TLogicResultModel, TLogicInputModel>(inputModel);
+
+            Logger.EndMethod();
+            return resultModel.Result;
         }
     }
 }

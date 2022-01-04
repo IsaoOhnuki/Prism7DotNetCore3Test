@@ -14,6 +14,7 @@
         av:DesignWidth="500"
         av:DesignHeight="300">
     <Window.Style>
+        <!--https://garafu.blogspot.com/2016/02/wpf-windowchrome-maximize-issue.html-->
         <Style TargetType="Window">
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
