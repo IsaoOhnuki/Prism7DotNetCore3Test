@@ -15,7 +15,7 @@ namespace ApplicationLogicModule
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            _ = containerRegistry.RegisterSingleton<IApplicationLogic, ApplicationLogic>();
+            _ = containerRegistry.RegisterSingleton<IApplicationLogic, ApplicationLogicRepository>();
             _ = containerRegistry.RegisterSingleton<IDatabaseConnection, DatabaseConnection>();
         }
     }

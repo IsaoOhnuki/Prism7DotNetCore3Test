@@ -58,6 +58,100 @@ namespace CustomControlLibrary.Label
                     }
                     ));
 
+        internal RowDefinition TopHeight
+        {
+            get => (RowDefinition)GetValue(TopHeightProperty);
+            set => SetValue(TopHeightProperty, value);
+        }
+
+        internal static readonly DependencyProperty TopHeightProperty =
+            DependencyProperty.Register(
+                nameof(TopHeight),
+                typeof(RowDefinition),
+                typeof(LabelingContainer),
+                new FrameworkPropertyMetadata(default));
+
+        internal RowDefinition BottomHeight
+        {
+            get => (RowDefinition)GetValue(BottomHeightProperty);
+            set => SetValue(BottomHeightProperty, value);
+        }
+
+        internal static readonly DependencyProperty BottomHeightProperty =
+            DependencyProperty.Register(
+                nameof(BottomHeight),
+                typeof(RowDefinition),
+                typeof(LabelingContainer),
+                new FrameworkPropertyMetadata(default));
+
+        internal ColumnDefinition LeftWidth
+        {
+            get => (ColumnDefinition)GetValue(LeftWidthProperty);
+            set => SetValue(LeftWidthProperty, value);
+        }
+
+        internal static readonly DependencyProperty LeftWidthProperty =
+            DependencyProperty.Register(
+                nameof(LeftWidth),
+                typeof(ColumnDefinition),
+                typeof(LabelingContainer),
+                new FrameworkPropertyMetadata(default));
+
+        internal ColumnDefinition RightWidth
+        {
+            get => (ColumnDefinition)GetValue(RightWidthProperty);
+            set => SetValue(RightWidthProperty, value);
+        }
+
+        internal static readonly DependencyProperty RightWidthProperty =
+            DependencyProperty.Register(
+                nameof(RightWidth),
+                typeof(ColumnDefinition),
+                typeof(LabelingContainer),
+                new FrameworkPropertyMetadata(default));
+
+        public RowDefinition LabelHeight
+        {
+            get => (RowDefinition)GetValue(LabelHeightProperty);
+            set => SetValue(LabelHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty LabelHeightProperty =
+            DependencyProperty.Register(
+                nameof(LabelHeight),
+                typeof(RowDefinition),
+                typeof(LabelingContainer),
+                new FrameworkPropertyMetadata(
+                    default,
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                    (d, e) =>
+                    {
+                        if (d is LabelingContainer control)
+                        {
+                            if (e.NewValue is string str)
+                            {
+
+                            }
+                            else if (e.NewValue is RowDefinition def)
+                            {
+
+                            }
+                        }
+                    }));
+
+        public ColumnDefinition LabelWidth
+        {
+            get => (ColumnDefinition)GetValue(LabelWidthProperty);
+            set => SetValue(LabelWidthProperty, value);
+        }
+
+        public static readonly DependencyProperty LabelWidthProperty =
+            DependencyProperty.Register(
+                nameof(LabelWidth),
+                typeof(ColumnDefinition),
+                typeof(LabelingContainer),
+                new FrameworkPropertyMetadata(default));
+
         public new object Content
         {
             get => GetValue(ContentProperty);
@@ -93,18 +187,34 @@ namespace CustomControlLibrary.Label
                                 case CrossAlignment.Left:
                                     control.LabelRow = 1;
                                     control.LabelColumn = 0;
+                                    control.TopHeight = new RowDefinition { Height = GridLength.Auto };
+                                    control.BottomHeight = new RowDefinition { Height = GridLength.Auto };
+                                    control.LeftWidth = new ColumnDefinition { Width = (GridLength)new GridLengthConverter().ConvertFrom(control.LabelWidth) };
+                                    control.RightWidth = new ColumnDefinition { Width = GridLength.Auto };
                                     break;
                                 case CrossAlignment.Top:
                                     control.LabelRow = 0;
                                     control.LabelColumn = 1;
+                                    control.TopHeight = new RowDefinition { Height = (GridLength)new GridLengthConverter().ConvertFrom(control.LabelHeight) };
+                                    control.BottomHeight = new RowDefinition { Height = GridLength.Auto };
+                                    control.LeftWidth = new ColumnDefinition { Width = GridLength.Auto };
+                                    control.RightWidth = new ColumnDefinition { Width = GridLength.Auto };
                                     break;
                                 case CrossAlignment.Right:
                                     control.LabelRow = 0;
                                     control.LabelColumn = 1;
+                                    control.TopHeight = new RowDefinition { Height = GridLength.Auto };
+                                    control.BottomHeight = new RowDefinition { Height = GridLength.Auto };
+                                    control.RightWidth = new ColumnDefinition { Width = (GridLength)new GridLengthConverter().ConvertFrom(control.LabelWidth) };
+                                    control.LeftWidth = new ColumnDefinition { Width = GridLength.Auto };
                                     break;
                                 case CrossAlignment.Bottom:
                                     control.LabelRow = 2;
                                     control.LabelColumn = 1;
+                                    control.TopHeight = new RowDefinition { Height = GridLength.Auto };
+                                    control.BottomHeight = new RowDefinition { Height = (GridLength)new GridLengthConverter().ConvertFrom(control.LabelHeight) };
+                                    control.LeftWidth = new ColumnDefinition { Width = GridLength.Auto };
+                                    control.RightWidth = new ColumnDefinition { Width = GridLength.Auto };
                                     break;
                                 default:
                                     throw new NotImplementedException();

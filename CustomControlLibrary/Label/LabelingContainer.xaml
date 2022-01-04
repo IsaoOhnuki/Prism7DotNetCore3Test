@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CustomControlLibrary.Label"
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
-             d:DesignHeight="24" d:DesignWidth="100">
+             d:DesignHeight="200" d:DesignWidth="500">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

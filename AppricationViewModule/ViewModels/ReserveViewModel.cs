@@ -4,13 +4,9 @@ using ModelLibrary.Models.Database;
 using ModelLibrary.ResultModels;
 using ModelLibrary.Services;
 using MvvmCommonLibrary.Mvvm;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Regions;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace AppricationViewModule.ViewModels
 {

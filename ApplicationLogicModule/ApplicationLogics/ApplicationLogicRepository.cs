@@ -2,30 +2,23 @@
 using ModelLibrary.ResultModels;
 using ModelLibrary.Models.Database;
 using ModelLibrary.Services;
+using LogicCommonLibrary.LogicBase;
 
 namespace ApplicationLogicModule.ApplicationLogics
 {
-    public class ApplicationLogic : IApplicationLogic
+    public class ApplicationLogicRepository : ApplicationLogicRepositoryBase, IApplicationLogic
     {
-        public ILogService Logger { get; set; }
-
         public IDatabaseConnection DatabaseConnection { get; set; }
 
-        public ApplicationLogic(ILogService logger, IDatabaseConnection databaseConnection)
+        public ApplicationLogicRepository(ILogService logger, IDatabaseConnection databaseConnection)
+            : base(logger)
         {
-            Logger = logger;
             DatabaseConnection = databaseConnection;
         }
 
         public GetDataListResultModel<TReserve> GetPeriodReserve(GetPeriodReserveInputModel inputModel)
         {
             Logger.StartMethod();
-
-            GetPeriodReserveApplicationLogic applicationLogic =
-                new GetPeriodReserveApplicationLogic()
-                {
-                    Logger = Logger,
-                };
 
             LogicCommonLibrary.InputModels.GetPeriodReserveInputModel dbInputModel =
                 new LogicCommonLibrary.InputModels.GetPeriodReserveInputModel()
@@ -34,7 +27,9 @@ namespace ApplicationLogicModule.ApplicationLogics
                     ReserveStart = inputModel.ReserveStart,
                     ReserveEnd = inputModel.ReserveEnd,
                 };
-            GetDataListResultModel<TReserve> resultModel = applicationLogic.Execute(dbInputModel);
+            GetDataListResultModel<TReserve> resultModel =
+                DoApplicationLogic<GetPeriodReserveApplicationLogic, GetDataListResultModel<TReserve>,
+                    LogicCommonLibrary.InputModels.GetPeriodReserveInputModel>(dbInputModel);
 
             Logger.EndMethod();
             return resultModel;
@@ -44,19 +39,15 @@ namespace ApplicationLogicModule.ApplicationLogics
         {
             Logger.StartMethod();
 
-            InsertReserveApplicationLogic applicationLogic =
-                new InsertReserveApplicationLogic()
-                {
-                    Logger = Logger,
-                };
-
             LogicCommonLibrary.InputModels.SetTableInputModel<TReserve> dbInputModel =
                 new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>()
                 {
                     DatabaseConnection = DatabaseConnection,
                     TableClass = inputModel.TableClass,
                 };
-            CountResultModel resultModel = applicationLogic.Execute(dbInputModel);
+            CountResultModel resultModel =
+                DoApplicationLogic<InsertReserveApplicationLogic, CountResultModel,
+                    LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>>(dbInputModel);
 
             Logger.EndMethod();
             return resultModel;
@@ -66,19 +57,26 @@ namespace ApplicationLogicModule.ApplicationLogics
         {
             Logger.StartMethod();
 
-            SetReserveApplicationLogic applicationLogic =
-                new SetReserveApplicationLogic()
-                {
-                    Logger = Logger,
-                };
-
             LogicCommonLibrary.InputModels.SetTableInputModel<TReserve> dbInputModel =
                 new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>()
                 {
                     DatabaseConnection = DatabaseConnection,
                     TableClass = inputModel.TableClass,
                 };
-            CountResultModel resultModel = applicationLogic.Execute(dbInputModel);
+            CountResultModel resultModel =
+                DoApplicationLogic<SetReserveApplicationLogic, CountResultModel,
+                    LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>>(dbInputModel);
+
+            Logger.EndMethod();
+            return resultModel;
+        }
+
+        public CreateReserveResultModel CreateReserve(CreateReserveInputModel inputModel)
+        {
+            Logger.StartMethod();
+
+            CreateReserveResultModel resultModel =
+                DoApplicationLogic<CreateReserveApplicationLogic, CreateReserveResultModel, CreateReserveInputModel>(inputModel);
 
             Logger.EndMethod();
             return resultModel;

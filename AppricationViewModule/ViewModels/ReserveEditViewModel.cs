@@ -1,11 +1,9 @@
-﻿using ModelLibrary.Services;
+﻿using ModelLibrary.InputModels;
+using ModelLibrary.Models.Database;
+using ModelLibrary.Services;
 using MvvmCommonLibrary.Mvvm;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Regions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace AppricationViewModule.ViewModels
 {
@@ -73,6 +71,34 @@ namespace AppricationViewModule.ViewModels
             }
         }
 
+        private TimeSpan _startBlockTime;
+
+        public TimeSpan StartBlockTime
+        {
+            get => _startBlockTime;
+            set
+            {
+                if (_startBlockTime != value)
+                {
+                    _ = SetProperty(ref _startBlockTime, value);
+                }
+            }
+        }
+
+        private TimeSpan _endBlockTime;
+
+        public TimeSpan EndBlockTime
+        {
+            get => _endBlockTime;
+            set
+            {
+                if (_endBlockTime != value)
+                {
+                    _ = SetProperty(ref _endBlockTime, value);
+                }
+            }
+        }
+
         private DateTime _startDateTime;
 
         public DateTime StartDateTime
@@ -105,14 +131,36 @@ namespace AppricationViewModule.ViewModels
             }
         }
 
+        public TReserve SelectedReserve
+        {
+            get => new TReserve()
+            {
+                ReserveStart = StartDateTime,
+                ReserveEnd = EndDateTime,
+                BlockStart = StartDate + StartBlockTime,
+                BlockEnd = EndDate + EndBlockTime,
+            };
+            set
+            {
+                StartDateTime = value.ReserveStart;
+                EndDateTime = value.ReserveEnd;
+                StartBlockTime = value.BlockStart - StartDate;
+                EndBlockTime = value.BlockEnd - EndDate;
+            }
+        }
+
         public ReserveEditViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService,
             IApplicationLogic applicationLogic)
             : base(logService, regionManager, messageService)
         {
             ApplicationLogic = applicationLogic;
 
-            StartDateTime = DateTime.Now;
-            EndDateTime = DateTime.Now;
+            CreateReserveInputModel inputModel = new CreateReserveInputModel()
+            {
+                StartDateTime = DateTime.Now,
+                EndDateTime = DateTime.Now,
+            };
+            SelectedReserve = ApplicationLogic.CreateReserve(inputModel).Reserve;
         }
 
         public override void InisiarizeView(NavigationParameters navigationParameters)

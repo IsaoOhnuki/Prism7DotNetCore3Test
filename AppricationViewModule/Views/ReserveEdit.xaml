@@ -8,7 +8,7 @@
              xmlns:lc="clr-namespace:CustomControlLibrary.Label;assembly=CustomControlLibrary"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             av:DesignWidth="800" av:DesignHeight="400">
+             av:DesignWidth="800" av:DesignHeight="400" Background="White">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -54,7 +54,7 @@
                                    Width="100"/>
                 </StackPanel>
             </lc:LabelingContainer>
-            <lc:LabelingContainer Text="BLOCK">
+            <lc:LabelingContainer Text="BLOCK" LabelVisible="True" LabelingPosition="Top">
                 <tp:TimePicker SelectedTime="{Binding EndBlockTime}"
                                Width="100"/>
             </lc:LabelingContainer>
