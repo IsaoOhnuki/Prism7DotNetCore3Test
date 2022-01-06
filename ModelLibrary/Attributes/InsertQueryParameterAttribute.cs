@@ -2,6 +2,7 @@
 
 namespace ModelLibrary.Attributes
 {
+    [AttributeUsage(AttributeTargets.Property)]
     public class InsertQueryParameterAttribute : Attribute
     {
         public string Parameter { get; set; }

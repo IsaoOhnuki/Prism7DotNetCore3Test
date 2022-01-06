@@ -2,6 +2,7 @@
 
 namespace ModelLibrary.Attributes
 {
+    [AttributeUsage(AttributeTargets.Property)]
     public class OptimistAttribute : Attribute
     {
         public bool DeleteWhere { get; set; }

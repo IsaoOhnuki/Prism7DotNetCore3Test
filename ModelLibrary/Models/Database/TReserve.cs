@@ -14,12 +14,16 @@ namespace ModelLibrary.Models.Database
 
         public ReserveState State { get; set; }
 
+        [LessThan(nameof(ReserveStart))]
         public DateTime BlockStart { get; set; }
 
+        [GreaterThan(nameof(ReserveEnd))]
         public DateTime BlockEnd { get; set; }
 
+        [LessThan(nameof(ReserveEnd))]
         public DateTime ReserveStart { get; set; }
 
+        [GreaterThan(nameof(ReserveStart))]
         public DateTime ReserveEnd { get; set; }
 
         //[StringLength(Max)]

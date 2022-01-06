@@ -25,7 +25,11 @@ namespace LogicCommonLibrary.LogicBase
         {
             LogStartMethod();
 
-            resultModel = DoCommonLogic<TCommonLogic, TLogicResultModel, TLogicInputModel>(inputModel);
+            TCommonLogic logic = new TCommonLogic()
+            {
+                Logger = Logger,
+            };
+            resultModel = logic.Execute(inputModel);
 
             LogEndMethod();
             return resultModel.Result;
@@ -52,7 +56,11 @@ namespace LogicCommonLibrary.LogicBase
         {
             LogStartMethod();
 
-            resultModel = DoDataAccessLogic<TDataAccessLogic, TLogicResultModel, TLogicInputModel>(inputModel);
+            TDataAccessLogic dataAccess = new TDataAccessLogic()
+            {
+                Logger = Logger,
+            };
+            resultModel = dataAccess.Execute(inputModel);
 
             LogEndMethod();
             return resultModel.Result;

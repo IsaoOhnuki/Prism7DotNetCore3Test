@@ -25,7 +25,11 @@ namespace LogicCommonLibrary.LogicBase
         {
             LogStartMethod();
 
-            resultModel = DoBusinessLogic<TBusinessLogic, TLogicResultModel, TLogicInputModel>(inputModel);
+            TBusinessLogic logic = new TBusinessLogic()
+            {
+                Logger = Logger,
+            };
+            resultModel = logic.Execute(inputModel);
 
             LogEndMethod();
             return resultModel.Result;

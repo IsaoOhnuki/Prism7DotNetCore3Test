@@ -11,8 +11,8 @@ namespace ApplicationLogicModule.ApplicationLogics
         public IDatabaseConnection DatabaseConnection { get; set; }
 
         public ApplicationLogicRepository(ILogService logger, IDatabaseConnection databaseConnection)
-            : base(logger)
         {
+            Logger = logger;
             DatabaseConnection = databaseConnection;
         }
 
@@ -21,9 +21,8 @@ namespace ApplicationLogicModule.ApplicationLogics
             LogStartMethod();
 
             LogicCommonLibrary.InputModels.GetPeriodReserveInputModel dbInputModel =
-                new LogicCommonLibrary.InputModels.GetPeriodReserveInputModel()
+                new LogicCommonLibrary.InputModels.GetPeriodReserveInputModel(DatabaseConnection)
                 {
-                    DatabaseConnection = DatabaseConnection,
                     ReserveStart = inputModel.ReserveStart,
                     ReserveEnd = inputModel.ReserveEnd,
                 };
@@ -40,9 +39,8 @@ namespace ApplicationLogicModule.ApplicationLogics
             LogStartMethod();
 
             LogicCommonLibrary.InputModels.SetTableInputModel<TReserve> dbInputModel =
-                new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>()
+                new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>(DatabaseConnection)
                 {
-                    DatabaseConnection = DatabaseConnection,
                     TableClass = inputModel.TableClass,
                 };
             CountResultModel resultModel =
@@ -58,9 +56,8 @@ namespace ApplicationLogicModule.ApplicationLogics
             LogStartMethod();
 
             LogicCommonLibrary.InputModels.SetTableInputModel<TReserve> dbInputModel =
-                new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>()
+                new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>(DatabaseConnection)
                 {
-                    DatabaseConnection = DatabaseConnection,
                     TableClass = inputModel.TableClass,
                 };
             CountResultModel resultModel =

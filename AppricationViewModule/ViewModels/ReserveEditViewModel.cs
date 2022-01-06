@@ -131,6 +131,34 @@ namespace AppricationViewModule.ViewModels
             }
         }
 
+        private string _reserveMemo;
+
+        public string ReserveMemo
+        {
+            get => _reserveMemo;
+            set
+            {
+                if (_reserveMemo != value)
+                {
+                    _ = SetProperty(ref _reserveMemo, value);
+                }
+            }
+        }
+
+        private string _reserveMemo1;
+
+        public string ReserveMemo1
+        {
+            get => _reserveMemo1;
+            set
+            {
+                if (_reserveMemo1 != value)
+                {
+                    _ = SetProperty(ref _reserveMemo1, value);
+                }
+            }
+        }
+
         public TReserve SelectedReserve
         {
             get => new TReserve()
@@ -139,13 +167,17 @@ namespace AppricationViewModule.ViewModels
                 ReserveEnd = EndDateTime,
                 BlockStart = StartDate + StartBlockTime,
                 BlockEnd = EndDate + EndBlockTime,
+                ReserveMemo = ReserveMemo,
+                ReserveMemo1 = ReserveMemo1,
             };
             set
             {
                 StartDateTime = value.ReserveStart;
                 EndDateTime = value.ReserveEnd;
-                StartBlockTime = value.BlockStart - StartDate;
-                EndBlockTime = value.BlockEnd - EndDate;
+                StartBlockTime = value.BlockStart.TimeOfDay;
+                EndBlockTime = value.BlockEnd.TimeOfDay;
+                ReserveMemo = value.ReserveMemo;
+                ReserveMemo1 = value.ReserveMemo1;
             }
         }
 

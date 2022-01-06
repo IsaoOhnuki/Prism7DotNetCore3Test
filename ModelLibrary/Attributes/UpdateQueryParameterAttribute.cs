@@ -2,6 +2,7 @@
 
 namespace ModelLibrary.Attributes
 {
+    [AttributeUsage(AttributeTargets.Property)]
     public class UpdateQueryParameterAttribute : Attribute
     {
         public string Parameter { get; set; }

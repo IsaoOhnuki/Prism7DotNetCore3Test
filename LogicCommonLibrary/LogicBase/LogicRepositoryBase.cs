@@ -1,14 +1,11 @@
-﻿using ModelLibrary.Services;
+﻿using ModelLibrary.ResultModels;
+using ModelLibrary.Services;
+using System;
 
 namespace LogicCommonLibrary.LogicBase
 {
     public class LogicRepositoryBase : LogicBase
     {
-        public LogicRepositoryBase(ILogService logger)
-        {
-            Logger = logger;
-        }
-
         protected TLogicResultModel DoApplicationLogic<TApplicationLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
             where TApplicationLogic : ApplicationLogicBase<TLogicResultModel, TLogicInputModel>, new()
         {

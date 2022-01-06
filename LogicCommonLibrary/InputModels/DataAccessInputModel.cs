@@ -5,6 +5,11 @@ namespace LogicCommonLibrary.InputModels
 {
     public class DataAccessInputModel : InputModelBase
     {
-        public IDatabaseConnection DatabaseConnection { get; set; }
+        public IDatabaseConnection DatabaseConnection { get; private set; }
+
+        public DataAccessInputModel(IDatabaseConnection databaseConnection)
+        {
+            DatabaseConnection = databaseConnection;
+        }
     }
 }
