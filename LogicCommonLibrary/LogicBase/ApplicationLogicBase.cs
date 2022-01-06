@@ -3,9 +3,11 @@
 namespace LogicCommonLibrary.LogicBase
 {
     public abstract class ApplicationLogicBase<TResultModel, TInputModel> : ActionLogicBase<TResultModel, TInputModel>
+        where TResultModel : ResultModelBase
     {
         protected TLogicResultModel DoBusinessLogic<TBusinessLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
             where TBusinessLogic : BusinessLogicBase<TLogicResultModel, TLogicInputModel>, new()
+            where TLogicResultModel : ResultModelBase
         {
             LogStartMethod();
 

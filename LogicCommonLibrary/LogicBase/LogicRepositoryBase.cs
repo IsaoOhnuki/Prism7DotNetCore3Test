@@ -1,6 +1,4 @@
 ﻿using ModelLibrary.ResultModels;
-using ModelLibrary.Services;
-using System;
 
 namespace LogicCommonLibrary.LogicBase
 {
@@ -8,6 +6,7 @@ namespace LogicCommonLibrary.LogicBase
     {
         protected TLogicResultModel DoApplicationLogic<TApplicationLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
             where TApplicationLogic : ApplicationLogicBase<TLogicResultModel, TLogicInputModel>, new()
+            where TLogicResultModel : ResultModelBase
         {
             LogStartMethod();
 
@@ -19,6 +18,22 @@ namespace LogicCommonLibrary.LogicBase
 
             LogEndMethod();
             return resultModel;
+        }
+
+        protected bool IsApplicationLogic<TApplicationLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel, out TLogicResultModel resultModel)
+            where TApplicationLogic : ApplicationLogicBase<TLogicResultModel, TLogicInputModel>, new()
+            where TLogicResultModel : ResultModelBase
+        {
+            LogStartMethod();
+
+            TApplicationLogic logic = new TApplicationLogic()
+            {
+                Logger = Logger,
+            };
+            bool result = logic.IsExecuteResult(inputModel, out resultModel);
+
+            LogEndMethod();
+            return result;
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using LogicCommonLibrary.Models;
 using ModelLibrary.Models;
+using ModelLibrary.ResultModels;
 using System;
 
 namespace LogicCommonLibrary.LogicBase
 {
     public abstract class DataAccessLogicBase<TResultModel, TInputModel> : ActionLogicBase<TResultModel, TInputModel>
+        where TResultModel : ResultModelBase
     {
         protected MessageModel GetDataAccessExceptionMessage(IDataAccess dataAccess, Exception exception)
         {

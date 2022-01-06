@@ -3,9 +3,11 @@
 namespace LogicCommonLibrary.LogicBase
 {
     public abstract class BusinessLogicBase<TResultModel, TInputModel> : ActionLogicBase<TResultModel, TInputModel>
+        where TResultModel : ResultModelBase
     {
         protected TLogicResultModel DoCommonLogic<TCommonLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
             where TCommonLogic : CommonLogicBase<TLogicResultModel, TLogicInputModel>, new()
+            where TLogicResultModel : ResultModelBase
         {
             LogStartMethod();
 
@@ -29,14 +31,15 @@ namespace LogicCommonLibrary.LogicBase
             {
                 Logger = Logger,
             };
-            resultModel = logic.Execute(inputModel);
+            bool result = logic.IsExecuteResult(inputModel, out resultModel);
 
             LogEndMethod();
-            return resultModel.Result;
+            return result;
         }
 
         protected TLogicResultModel DoDataAccessLogic<TDataAccessLogic, TLogicResultModel, TLogicInputModel>(TLogicInputModel inputModel)
             where TDataAccessLogic : DataAccessLogicBase<TLogicResultModel, TLogicInputModel>, new()
+            where TLogicResultModel : ResultModelBase
         {
             LogStartMethod();
 
@@ -60,10 +63,10 @@ namespace LogicCommonLibrary.LogicBase
             {
                 Logger = Logger,
             };
-            resultModel = dataAccess.Execute(inputModel);
+            bool result = dataAccess.IsExecuteResult(inputModel, out resultModel);
 
             LogEndMethod();
-            return resultModel.Result;
+            return result;
         }
     }
 }

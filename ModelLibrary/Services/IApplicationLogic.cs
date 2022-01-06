@@ -10,7 +10,7 @@ namespace ModelLibrary.Services
 
         public CountResultModel InsertReserve(SetTableInputModel<TReserve> inputModel);
 
-        public CountResultModel SetReserve(SetTableInputModel<TReserve> inputModel);
+        public CountResultModel UpdateReserve(SetTableInputModel<TReserve> inputModel);
 
         public CreateReserveResultModel CreateReserve(CreateReserveInputModel inputModel);
     }
