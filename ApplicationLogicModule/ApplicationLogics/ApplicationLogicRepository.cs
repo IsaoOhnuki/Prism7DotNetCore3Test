@@ -51,7 +51,7 @@ namespace ApplicationLogicModule.ApplicationLogics
             return resultModel;
         }
 
-        public CountResultModel SetReserve(SetTableInputModel<TReserve> inputModel)
+        public CountResultModel UpdateReserve(SetTableInputModel<TReserve> inputModel)
         {
             LogStartMethod();
 
@@ -61,7 +61,7 @@ namespace ApplicationLogicModule.ApplicationLogics
                     TableClass = inputModel.TableClass,
                 };
             CountResultModel resultModel =
-                DoApplicationLogic<SetReserveApplicationLogic, CountResultModel,
+                DoApplicationLogic<UpdateReserveApplicationLogic, CountResultModel,
                     LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>>(dbInputModel);
 
             LogEndMethod();

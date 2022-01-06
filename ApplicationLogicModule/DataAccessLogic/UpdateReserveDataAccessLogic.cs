@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace ApplicationLogicModule.DataAccessLogic
 {
-    public class SetReserveDataAccessLogic : DataAccessLogicBase<CountResultModel, SetTableInputModel<TReserve>>
+    public class UpdateReserveDataAccessLogic : DataAccessLogicBase<CountResultModel, SetTableInputModel<TReserve>>
     {
         protected override CountResultModel OnExecute(SetTableInputModel<TReserve> inputModel)
         {

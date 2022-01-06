@@ -6,14 +6,14 @@ using ModelLibrary.ResultModels;
 
 namespace ApplicationLogicModule.ApplicationLogics
 {
-    public class SetReserveApplicationLogic : ApplicationLogicBase<CountResultModel, SetTableInputModel<TReserve>>
+    public class UpdateReserveApplicationLogic : ApplicationLogicBase<CountResultModel, SetTableInputModel<TReserve>>
     {
         protected override CountResultModel OnExecute(SetTableInputModel<TReserve> inputModel)
         {
             LogStartMethod();
 
             CountResultModel resultModel =
-                DoBusinessLogic<SetReserveBusinessLogic, CountResultModel, SetTableInputModel<TReserve>>(inputModel);
+                DoBusinessLogic<UpdateReserveBusinessLogic, CountResultModel, SetTableInputModel<TReserve>>(inputModel);
 
             LogEndMethod();
             return resultModel;
