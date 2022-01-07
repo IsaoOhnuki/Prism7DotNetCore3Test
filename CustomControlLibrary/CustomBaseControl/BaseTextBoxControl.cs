@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace CustomControlLibrary.CustomBaseControl
 {
@@ -42,6 +43,32 @@ namespace CustomControlLibrary.CustomBaseControl
                 typeof(bool),
                 typeof(BaseTextBoxControl),
                 new FrameworkPropertyMetadata(default(bool)));
+
+        public ScrollBarVisibility HorizontalScrollBarVisibility
+        {
+            get => (ScrollBarVisibility)GetValue(HorizontalScrollBarVisibilityProperty);
+            set => SetValue(HorizontalScrollBarVisibilityProperty, value);
+        }
+
+        public static readonly DependencyProperty HorizontalScrollBarVisibilityProperty =
+            DependencyProperty.Register(
+                nameof(HorizontalScrollBarVisibility),
+                typeof(ScrollBarVisibility),
+                typeof(BaseTextBoxControl),
+                new FrameworkPropertyMetadata(default(ScrollBarVisibility)));
+
+        public ScrollBarVisibility VerticalScrollBarVisibility
+        {
+            get => (ScrollBarVisibility)GetValue(VerticalScrollBarVisibilityProperty);
+            set => SetValue(VerticalScrollBarVisibilityProperty, value);
+        }
+
+        public static readonly DependencyProperty VerticalScrollBarVisibilityProperty =
+            DependencyProperty.Register(
+                nameof(VerticalScrollBarVisibility),
+                typeof(ScrollBarVisibility),
+                typeof(BaseTextBoxControl),
+                new FrameworkPropertyMetadata(default(ScrollBarVisibility)));
 
         static BaseTextBoxControl()
         {

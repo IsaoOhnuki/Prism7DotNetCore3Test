@@ -67,9 +67,7 @@
                 <lc:SingleLineTextBox Text="{Binding ReserveMemo}"/>
             </lc:LabelingContainer>
             <lc:LabelingContainer Grid.Row="3" Text="Memo1">
-                <bc:BaseScrollViewerControl>
-                    <lc:MultiLineTextBox Text="{Binding ReserveMemo1}"/>
-                </bc:BaseScrollViewerControl>
+                <lc:MultiLineTextBox Text="{Binding ReserveMemo1}"/>
             </lc:LabelingContainer>
         </Grid>
     </dp:DialogPanel>

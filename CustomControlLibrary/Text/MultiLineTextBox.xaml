@@ -7,16 +7,7 @@
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
              mc:Ignorable="d" 
              d:DesignHeight="274.419" d:DesignWidth="610.465">
-    <ScrollViewer>
-        <bc:BaseTextBoxControl AcceptsReturn="True"
-                               Background="AliceBlue"
-                               Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
-        </bc:BaseTextBoxControl>
-    </ScrollViewer>
-    <!--<bc:BaseScrollViewerControl VerticalScrollBarVisibility="Auto"
-                                Background="Aquamarine"
-                                HorizontalContentAlignment="Stretch">
-        <bc:BaseTextBoxControl Text="56464"
-                               Background="Coral"/>
-    </bc:BaseScrollViewerControl>-->
+    <bc:BaseTextBoxControl AcceptsReturn="True"
+                           Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+    </bc:BaseTextBoxControl>
 </UserControl>

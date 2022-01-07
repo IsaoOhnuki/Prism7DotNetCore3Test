@@ -14,7 +14,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="#FFDA9FAA" ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -29,10 +29,10 @@
                              Grid.Column="{Binding LabelColumn, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                              FontSize="{StaticResource LabelFontSize}"
                              Visibility="{Binding LabelVisibility, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                             Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                             Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Background="#FFC076DC"/>
         <ContentControl Grid.Row="1" Grid.Column="1"
-                        HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch"
-                        Content="{Binding Content, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                        Content="{Binding Content, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        HorizontalContentAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        VerticalContentAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Background="#FF77DCAA"/>
     </Grid>
 </UserControl>
