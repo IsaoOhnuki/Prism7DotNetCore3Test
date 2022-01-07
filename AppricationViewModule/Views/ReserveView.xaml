@@ -6,7 +6,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tp="clr-namespace:CustomControlLibrary.TimePicker;assembly=CustomControlLibrary"
              xmlns:cb="clr-namespace:CustomControlLibrary.Button;assembly=CustomControlLibrary"
-             xmlns:lc="clr-namespace:CustomControlLibrary.Label;assembly=CustomControlLibrary"
+             xmlns:lc="clr-namespace:CustomControlLibrary.Text;assembly=CustomControlLibrary"
+             xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
              xmlns:local="clr-namespace:AppricationViewModule.Views"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
@@ -14,6 +15,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
@@ -33,5 +35,15 @@
                 <cb:CommandButton Command="{Binding CreateCommand}" Text="CREATE" VerticalAlignment="Center" Height="24" Width="100"/>
             </lc:LabelingContainer>
         </StackPanel>
+        <ContentControl Grid.Row="1">
+            <ScrollViewer Background="Beige" VerticalScrollBarVisibility="Auto">
+                <bc:BaseTextBoxControl />
+            </ScrollViewer>
+        </ContentControl>
+        <ContentControl Grid.Row="2">
+            <bc:BaseScrollViewerControl Background="GhostWhite" VerticalScrollBarVisibility="Auto">
+                <bc:BaseTextBoxControl/>
+            </bc:BaseScrollViewerControl>
+        </ContentControl>
     </Grid>
 </UserControl>

@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="CustomControlLibrary.Text.MultiLineTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomControlLibrary.Text"
+             xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="274.419" d:DesignWidth="610.465">
+    <ScrollViewer>
+        <bc:BaseTextBoxControl AcceptsReturn="True"
+                               Background="AliceBlue"
+                               Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+        </bc:BaseTextBoxControl>
+    </ScrollViewer>
+    <!--<bc:BaseScrollViewerControl VerticalScrollBarVisibility="Auto"
+                                Background="Aquamarine"
+                                HorizontalContentAlignment="Stretch">
+        <bc:BaseTextBoxControl Text="56464"
+                               Background="Coral"/>
+    </bc:BaseScrollViewerControl>-->
+</UserControl>

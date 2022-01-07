@@ -6,7 +6,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:BaseImageLabelControl}">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border x:Name="PART_ImageLabelBorder"
+                            Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
@@ -31,7 +32,8 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Row="1" Grid.Column="1"
+                                <Label x:Name="PART_ImageLabelLabel"
+                                       Grid.Row="1" Grid.Column="1"
                                        Foreground="{TemplateBinding Foreground}"
                                        FontFamily="{TemplateBinding FontFamily}"
                                        FontSize="{TemplateBinding FontSize}"
@@ -41,7 +43,8 @@
                                        Margin="{TemplateBinding TextMargin}"
                                        Content="{TemplateBinding Text}">
                                 </Label>
-                                <Image Grid.Row="{TemplateBinding ImageRow}"
+                                <Image x:Name="PART_ImageLabelImage"
+                                       Grid.Row="{TemplateBinding ImageRow}"
                                        Grid.Column="{TemplateBinding ImageColumn}"
                                        Margin="{TemplateBinding ImageMargin}"
                                        Source="{TemplateBinding ImageSource}">
