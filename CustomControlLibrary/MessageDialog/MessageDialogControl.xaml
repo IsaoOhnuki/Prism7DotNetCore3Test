@@ -63,11 +63,9 @@
                                               BorderBrush="DarkGray"
                                               FontSize="{StaticResource BaseFontSize}"
                                               Command="{Binding CenterButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
-                            <bc:BaseButtonControl.Content>
-                                <bc:BaseImageLabelControl Text="{Binding CenterButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                                          ImageAlignment="Left"
-                                                          ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
-                            </bc:BaseButtonControl.Content>
+                            <bc:BaseImageLabelControl Text="{Binding CenterButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                      ImageAlignment="Left"
+                                                      ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
                         </bc:BaseButtonControl>
                     </DataTemplate>
                     <DataTemplate x:Key="confirmStyleButton">
@@ -83,11 +81,9 @@
                                                   HorizontalContentAlignment="Center"
                                                   FontSize="{StaticResource BaseFontSize}"
                                                   Command="{Binding LeftButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
-                                <bc:BaseButtonControl.Content>
-                                    <bc:BaseImageLabelControl Text="{Binding LeftButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                                              ImageAlignment="Top"
-                                                              ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
-                                </bc:BaseButtonControl.Content>
+                                <bc:BaseImageLabelControl Text="{Binding LeftButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                          ImageAlignment="Top"
+                                                          ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
                             </bc:BaseButtonControl>
                             <bc:BaseButtonControl Grid.Column="1"
                                                   Background="{StaticResource OkButtonColor}"
@@ -95,11 +91,9 @@
                                                   BorderBrush="DarkGray"
                                                   FontSize="{StaticResource BaseFontSize}"
                                                   Command="{Binding RightButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
-                                <bc:BaseButtonControl.Content>
-                                    <bc:BaseImageLabelControl Text="{Binding RightButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                                              ImageAlignment="Bottom"
-                                                              ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
-                                </bc:BaseButtonControl.Content>
+                                <bc:BaseImageLabelControl Text="{Binding RightButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                          ImageAlignment="Bottom"
+                                                          ImageSource="/CustomControlLibrary;component/Images/dsdnormalize.bmp"/>
                             </bc:BaseButtonControl>
                         </Grid>
                     </DataTemplate>

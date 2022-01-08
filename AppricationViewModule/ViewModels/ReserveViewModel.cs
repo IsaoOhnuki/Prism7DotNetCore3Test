@@ -18,6 +18,8 @@ namespace AppricationViewModule.ViewModels
 
         public ICommand CreateCommand { get; private set; }
 
+        public ICommand SearchCommand { get; private set; }
+
         private DateTime _startDate;
 
         public DateTime StartDate
@@ -134,6 +136,9 @@ namespace AppricationViewModule.ViewModels
 
             StartDateTime = DateTime.Now;
             EndDateTime = DateTime.Now;
+
+            SearchCommand = new DelegateCommand(
+                () => GetPeriodReserve(new Period() { Start = StartDateTime, End = EndDateTime }));
 
             CreateCommand = new DelegateCommand(
                 () => DoTransitionPage(AppViewConst.ContentRegion_AppViewMainContent, GetViewName(true), AppViewConst.View_ReserveEdit));

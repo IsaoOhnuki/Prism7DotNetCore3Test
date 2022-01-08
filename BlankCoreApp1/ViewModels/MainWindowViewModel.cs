@@ -67,7 +67,7 @@ namespace BlankCoreApp1.ViewModels
             }
 
             string server = "localhost\\SQLEXPRESS";
-            string database = "TestDb";
+            string database = "AppDb";
             string user = "sa";
             string pass = "Express";
             string conn = "Persist Security Info=False;User ID=" + user + ";Password=" + pass + ";Initial Catalog=" + database + ";Server=" + server;
