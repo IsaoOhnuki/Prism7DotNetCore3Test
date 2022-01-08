@@ -1,15 +1,22 @@
 ﻿using ModelLibrary.InputModels;
 using ModelLibrary.Models.Database;
+using ModelLibrary.ResultModels;
 using ModelLibrary.Services;
 using MvvmCommonLibrary.Mvvm;
+using Prism.Commands;
 using Prism.Regions;
 using System;
+using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
 {
     public class ReserveEditViewModel : ViewModelBase
     {
         public IApplicationLogic ApplicationLogic { get; private set; }
+
+        public ICommand OkCommand { get; private set; }
+
+        public ICommand CancelCommand { get; private set; }
 
         private DateTime _startDate;
 
@@ -187,20 +194,32 @@ namespace AppricationViewModule.ViewModels
         {
             ApplicationLogic = applicationLogic;
 
-            CreateReserveInputModel inputModel = new CreateReserveInputModel()
-            {
-                StartDateTime = DateTime.Now,
-                EndDateTime = DateTime.Now,
-            };
-            SelectedReserve = ApplicationLogic.CreateReserve(inputModel).Reserve;
+            OkCommand = new DelegateCommand(() => Ok());
+            CancelCommand = new DelegateCommand(() => Cancel());
         }
 
-        public override void InisiarizeView(NavigationParameters navigationParameters)
+        public void Ok()
         {
-
+            CountResultModel resultModel =
+                ApplicationLogic.InsertReserve(new SetDataInputModel<TReserve>()
+                {
+                    TableClass = SelectedReserve,
+                });
+            DoBackTransition(AppViewConst.ContentRegion_AppViewMainContent,
+                resultModel.Count == 1);
         }
 
-        public override void PreviousInisiarizeView(NavigationParameters navigationParameters)
+        public void Cancel()
+        {
+            DoBackTransition(AppViewConst.ContentRegion_AppViewMainContent);
+        }
+
+        public override void InisiarizeView(object parameter)
+        {
+            SelectedReserve = parameter as TReserve;
+        }
+
+        public override void PreviousInisiarizeView(object parameter)
         {
 
         }

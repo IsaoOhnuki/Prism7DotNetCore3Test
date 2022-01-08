@@ -8,18 +8,19 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace ApplicationLogicModule.DataAccessLogic
+namespace LogicCommonLibrary.DataAccessLogic
 {
-    public class InsertReserveDataAccessLogic : DataAccessLogicBase<CountResultModel, SetTableInputModel<TReserve>>
+    public class InsertTableClassDataAccessLogic<TTableClass> : DataAccessLogicBase<CountResultModel, TableClassInputModel<TTableClass>>
+        where TTableClass : new()
     {
-        protected override CountResultModel OnExecute(SetTableInputModel<TReserve> inputModel)
+        protected override CountResultModel OnExecute(TableClassInputModel<TTableClass> inputModel)
         {
             LogStartMethod();
 
-            GetCommandQuery<TReserve>.GetInsertQuery(out string query, out List<SqlParameter> sqlParameters);
+            GetCommandQuery<TTableClass>.GetInsertQuery(out string query, out List<SqlParameter> sqlParameters);
             NonQueryDataAccess nonQueryDataAccess = new NonQueryDataAccess(inputModel.DatabaseConnection,
                 query,
-                GetCommandQuery<TReserve>.GetQueryParameter(sqlParameters, CheckModelSchema.GetModelSchema<TReserve>(inputModel.DatabaseConnection.Connection),
+                GetCommandQuery<TTableClass>.GetQueryParameter(sqlParameters, CheckModelSchema.GetModelSchema<TReserve>(inputModel.DatabaseConnection.Connection),
                 inputModel.TableClass));
             CountResultModel resultModel = new CountResultModel();
 

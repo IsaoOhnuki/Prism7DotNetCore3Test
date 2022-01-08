@@ -8,10 +8,10 @@ namespace ModelLibrary.Services
     {
         public GetDataListResultModel<TReserve> GetPeriodReserve(GetPeriodReserveInputModel inputModel);
 
-        public CountResultModel InsertReserve(SetTableInputModel<TReserve> inputModel);
+        public CountResultModel InsertReserve(SetDataInputModel<TReserve> inputModel);
 
-        public CountResultModel UpdateReserve(SetTableInputModel<TReserve> inputModel);
+        public CountResultModel UpdateReserve(SetDataInputModel<TReserve> inputModel);
 
-        public CreateReserveResultModel CreateReserve(CreateReserveInputModel inputModel);
+        public GetDataResultModel<TReserve> CreateReserve(CreateReserveInputModel inputModel);
     }
 }

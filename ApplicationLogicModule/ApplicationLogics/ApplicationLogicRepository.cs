@@ -1,8 +1,9 @@
-﻿using ModelLibrary.InputModels;
-using ModelLibrary.ResultModels;
-using ModelLibrary.Models.Database;
-using ModelLibrary.Services;
+﻿using LogicCommonLibrary.ApplicationLogics;
 using LogicCommonLibrary.LogicBase;
+using ModelLibrary.InputModels;
+using ModelLibrary.Models.Database;
+using ModelLibrary.ResultModels;
+using ModelLibrary.Services;
 
 namespace ApplicationLogicModule.ApplicationLogics
 {
@@ -34,46 +35,46 @@ namespace ApplicationLogicModule.ApplicationLogics
             return resultModel;
         }
 
-        public CountResultModel InsertReserve(SetTableInputModel<TReserve> inputModel)
+        public CountResultModel InsertReserve(SetDataInputModel<TReserve> inputModel)
         {
             LogStartMethod();
 
-            LogicCommonLibrary.InputModels.SetTableInputModel<TReserve> dbInputModel =
-                new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>(DatabaseConnection)
+            LogicCommonLibrary.InputModels.TableClassInputModel<TReserve> dbInputModel =
+                new LogicCommonLibrary.InputModels.TableClassInputModel<TReserve>(DatabaseConnection)
                 {
                     TableClass = inputModel.TableClass,
                 };
             CountResultModel resultModel =
-                DoApplicationLogic<InsertReserveApplicationLogic, CountResultModel,
-                    LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>>(dbInputModel);
+                DoApplicationLogic<InsertTableClassApplicationLogic<TReserve>, CountResultModel,
+                    LogicCommonLibrary.InputModels.TableClassInputModel<TReserve>>(dbInputModel);
 
             LogEndMethod();
             return resultModel;
         }
 
-        public CountResultModel UpdateReserve(SetTableInputModel<TReserve> inputModel)
+        public CountResultModel UpdateReserve(SetDataInputModel<TReserve> inputModel)
         {
             LogStartMethod();
 
-            LogicCommonLibrary.InputModels.SetTableInputModel<TReserve> dbInputModel =
-                new LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>(DatabaseConnection)
+            LogicCommonLibrary.InputModels.TableClassInputModel<TReserve> dbInputModel =
+                new LogicCommonLibrary.InputModels.TableClassInputModel<TReserve>(DatabaseConnection)
                 {
                     TableClass = inputModel.TableClass,
                 };
             CountResultModel resultModel =
-                DoApplicationLogic<UpdateReserveApplicationLogic, CountResultModel,
-                    LogicCommonLibrary.InputModels.SetTableInputModel<TReserve>>(dbInputModel);
+                DoApplicationLogic<UpdateTableClassApplicationLogic<TReserve>, CountResultModel,
+                    LogicCommonLibrary.InputModels.TableClassInputModel<TReserve>>(dbInputModel);
 
             LogEndMethod();
             return resultModel;
         }
 
-        public CreateReserveResultModel CreateReserve(CreateReserveInputModel inputModel)
+        public GetDataResultModel<TReserve> CreateReserve(CreateReserveInputModel inputModel)
         {
             LogStartMethod();
 
-            CreateReserveResultModel resultModel =
-                DoApplicationLogic<CreateReserveApplicationLogic, CreateReserveResultModel, CreateReserveInputModel>(inputModel);
+            GetDataResultModel<TReserve> resultModel =
+                DoApplicationLogic<CreateTableClassApplicationLogic<TReserve, CreateReserveInputModel>, GetDataResultModel<TReserve>, CreateReserveInputModel>(inputModel);
 
             LogEndMethod();
             return resultModel;

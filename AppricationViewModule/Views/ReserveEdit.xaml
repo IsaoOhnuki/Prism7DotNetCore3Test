@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tp="clr-namespace:CustomControlLibrary.TimePicker;assembly=CustomControlLibrary"
              xmlns:lc="clr-namespace:CustomControlLibrary.Text;assembly=CustomControlLibrary"
-             xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
+             xmlns:db="clr-namespace:CustomControlLibrary.Button;assembly=CustomControlLibrary"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
              av:DesignWidth="800" av:DesignHeight="434.884" Background="White">
@@ -20,12 +20,13 @@
     <UserControl.FontSize>
         20
     </UserControl.FontSize>
-    <Grid>
+    <Grid Margin="30,20,30,20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0"
                     Orientation="Horizontal">
@@ -67,5 +68,8 @@
         <lc:LabelingContainer Grid.Row="3" Text="Memo1" LabelingPosition="Top">
             <lc:MultiLineTextBox Text="{Binding ReserveMemo1}"/>
         </lc:LabelingContainer>
+        <db:DialogButtonBar Grid.Row="4"
+                            OkCommand="{Binding OkCommand}"
+                            CancelCommand="{Binding CancelCommand}"/>
     </Grid>
 </UserControl>

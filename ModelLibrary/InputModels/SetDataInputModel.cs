@@ -2,7 +2,7 @@
 
 namespace ModelLibrary.InputModels
 {
-    public class SetTableInputModel<TTableClass> : InputModelBase
+    public class SetDataInputModel<TTableClass> : InputModelBase
     {
         public TTableClass TableClass { get; set; }
     }

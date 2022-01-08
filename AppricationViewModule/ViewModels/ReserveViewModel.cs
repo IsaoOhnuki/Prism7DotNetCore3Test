@@ -7,6 +7,7 @@ using MvvmCommonLibrary.Mvvm;
 using Prism.Commands;
 using Prism.Regions;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -137,33 +138,48 @@ namespace AppricationViewModule.ViewModels
             StartDateTime = DateTime.Now;
             EndDateTime = DateTime.Now;
 
-            SearchCommand = new DelegateCommand(
-                () => GetPeriodReserve(new Period() { Start = StartDateTime, End = EndDateTime }));
-
-            CreateCommand = new DelegateCommand(
-                () => DoTransitionPage(AppViewConst.ContentRegion_AppViewMainContent, GetViewName(true), AppViewConst.View_ReserveEdit));
+            SearchCommand = new DelegateCommand(() => GetPeriodReserve());
+            CreateCommand = new DelegateCommand(() => CreateReserve());
         }
 
-        public void GetPeriodReserve(Period period)
+        public void CreateReserve()
+        {
+            GetDataResultModel<TReserve> resultModel =
+                ApplicationLogic.CreateReserve(new CreateReserveInputModel()
+                {
+                    StartDateTime = DateTime.Now,
+                    EndDateTime = DateTime.Now,
+                });
+            DoTransitionPage(
+                AppViewConst.ContentRegion_AppViewMainContent,
+                    GetViewName(true),
+                        AppViewConst.View_ReserveEdit,
+                            resultModel.TableClass);
+        }
+
+        public void GetPeriodReserve()
         {
             GetPeriodReserveInputModel inputModel = new GetPeriodReserveInputModel
             {
-                ReserveStart = period.Start,
-                ReserveEnd = period.End,
+                ReserveStart = StartDateTime,
+                ReserveEnd = EndDateTime,
             };
             GetDataListResultModel<TReserve> resultModel = ApplicationLogic.GetPeriodReserve(inputModel);
             Reserves = new ObservableCollection<TReserve>();
             Reserves.AddRange(resultModel.DataList);
         }
 
-        public override void InisiarizeView(NavigationParameters navigationParameters)
+        public override void InisiarizeView(object parameter)
         {
 
         }
 
-        public override void PreviousInisiarizeView(NavigationParameters navigationParameters)
+        public override void PreviousInisiarizeView(object parameter)
         {
-
+            if (PreviousView == AppViewConst.View_ReserveEdit)
+            {
+                bool? success = parameter as bool?;
+            }
         }
     }
 }

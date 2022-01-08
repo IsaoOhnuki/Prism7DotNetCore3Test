@@ -34,4 +34,7 @@
       <LastGenOutput>SqlResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CommonLogic\" />
+  </ItemGroup>
 </Project>

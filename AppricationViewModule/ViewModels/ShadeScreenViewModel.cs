@@ -12,11 +12,11 @@ namespace AppricationViewModule.ViewModels
 
         }
 
-        public override void InisiarizeView(NavigationParameters navigationParameters)
+        public override void InisiarizeView(object parameter)
         {
         }
 
-        public override void PreviousInisiarizeView(NavigationParameters navigationParameters)
+        public override void PreviousInisiarizeView(object parameter)
         {
         }
     }

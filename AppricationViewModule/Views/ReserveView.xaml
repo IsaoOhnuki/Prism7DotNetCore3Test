@@ -11,7 +11,7 @@
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
              av:DesignWidth="644.089" av:DesignHeight="316.832">
-    <Grid>
+    <Grid Margin="30,20,30,20">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>

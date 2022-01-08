@@ -2,9 +2,9 @@
 
 namespace LogicCommonLibrary.InputModels
 {
-    public class SetTableInputModel<TTableClass> : DataAccessInputModel
+    public class TableClassInputModel<TTableClass> : DataAccessInputModel
     {
-        public SetTableInputModel(IDatabaseConnection databaseConnection)
+        public TableClassInputModel(IDatabaseConnection databaseConnection)
             : base(databaseConnection)
         {
         }

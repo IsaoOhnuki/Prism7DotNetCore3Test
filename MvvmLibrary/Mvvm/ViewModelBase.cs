@@ -6,6 +6,7 @@ using Prism.Navigation;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
+using System.Collections.Generic;
 
 namespace MvvmCommonLibrary.Mvvm
 {
@@ -20,6 +21,8 @@ namespace MvvmCommonLibrary.Mvvm
         public string PreviousView { get; set; }
 
         public string TransitionView { get; set; }
+
+        public object TransitionParameter { get; set; }
 
         public ViewModelBase(ILogService logService, IRegionManager regionManager, IMessageService messageService)
         {
@@ -41,19 +44,34 @@ namespace MvvmCommonLibrary.Mvvm
             }
         }
 
-        public void DoTransitionPage(string contentRegion, string fromPage, string toPage)
+        public void DoTransitionPage(string contentRegion, string fromPage, string toPage,
+            object parameter = null)
         {
             NavigationParameters navigationParam = new NavigationParameters
             {
                 { MvvmConst.NavigationParameterKey_PreviousView, fromPage },
                 { MvvmConst.NavigationParameterKey_TransitionView, toPage },
+                { MvvmConst.NavigationParameterKey_TransitionBack, false },
+                { MvvmConst.NavigationParameterKey_TransitionParameter, parameter },
             };
             RegionManager.RequestNavigate(contentRegion, toPage, navigationParam);
         }
 
-        public abstract void InisiarizeView(NavigationParameters navigationParameters);
+        public void DoBackTransition(string contentRegion, object parameter = null)
+        {
+            NavigationParameters navigationParam = new NavigationParameters
+            {
+                { MvvmConst.NavigationParameterKey_PreviousView, TransitionView },
+                { MvvmConst.NavigationParameterKey_TransitionView, PreviousView },
+                { MvvmConst.NavigationParameterKey_TransitionBack, true },
+                { MvvmConst.NavigationParameterKey_TransitionParameter, parameter },
+            };
+            RegionManager.RequestNavigate(contentRegion, PreviousView, navigationParam);
+        }
 
-        public abstract void PreviousInisiarizeView(NavigationParameters navigationParameters);
+        public abstract void InisiarizeView(object parameter);
+
+        public abstract void PreviousInisiarizeView(object parameter);
 
         public virtual ButtonResult ShowMessage(MessageDialogStyle messageDialogStyle, string message, string title = null)
         {
@@ -96,8 +114,17 @@ namespace MvvmCommonLibrary.Mvvm
             // 遷移パラメータを取得する
             TransitionView = navigationContext.Parameters[MvvmConst.NavigationParameterKey_TransitionView] as string;
             PreviousView = navigationContext.Parameters[MvvmConst.NavigationParameterKey_PreviousView] as string;
+            TransitionParameter = navigationContext.Parameters[MvvmConst.NavigationParameterKey_TransitionParameter];
+            bool? transitionBack = navigationContext.Parameters[MvvmConst.NavigationParameterKey_TransitionBack] as bool?;
 
-            InisiarizeView(navigationContext.Parameters);
+            if (transitionBack.HasValue && transitionBack.Value)
+            {
+                PreviousInisiarizeView(TransitionParameter);
+            }
+            else
+            {
+                InisiarizeView(TransitionParameter);
+            }
         }
 
         public virtual void Destroy()
