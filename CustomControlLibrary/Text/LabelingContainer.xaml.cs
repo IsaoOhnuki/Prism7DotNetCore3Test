@@ -167,32 +167,6 @@ namespace CustomControlLibrary.Text
                 typeof(LabelingContainer),
                 new FrameworkPropertyMetadata(default));
 
-        //public new HorizontalAlignment HorizontalContentAlignment
-        //{
-        //    get => (HorizontalAlignment)GetValue(HorizontalContentAlignmentProperty);
-        //    set => SetValue(HorizontalContentAlignmentProperty, value);
-        //}
-
-        //public static new readonly DependencyProperty HorizontalContentAlignmentProperty =
-        //    DependencyProperty.Register(
-        //        nameof(HorizontalContentAlignment),
-        //        typeof(HorizontalAlignment),
-        //        typeof(LabelingContainer),
-        //        new FrameworkPropertyMetadata(default));
-
-        //public new VerticalAlignment VerticalContentAlignment
-        //{
-        //    get => (VerticalAlignment)GetValue(VerticalContentAlignmentProperty);
-        //    set => SetValue(VerticalContentAlignmentProperty, value);
-        //}
-
-        //public static new readonly DependencyProperty VerticalContentAlignmentProperty =
-        //    DependencyProperty.Register(
-        //        nameof(VerticalContentAlignment),
-        //        typeof(VerticalAlignment),
-        //        typeof(LabelingContainer),
-        //        new FrameworkPropertyMetadata(default));
-
         public CrossAlignment LabelingPosition
         {
             get => (CrossAlignment)GetValue(LabelingPositionProperty);

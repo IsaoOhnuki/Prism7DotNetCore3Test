@@ -7,7 +7,6 @@
              xmlns:tp="clr-namespace:CustomControlLibrary.TimePicker;assembly=CustomControlLibrary"
              xmlns:cb="clr-namespace:CustomControlLibrary.Button;assembly=CustomControlLibrary"
              xmlns:lc="clr-namespace:CustomControlLibrary.Text;assembly=CustomControlLibrary"
-             xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
              xmlns:local="clr-namespace:AppricationViewModule.Views"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
@@ -19,40 +18,21 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <lc:LabelingContainer Text="START" Margin="0,0,10,0" LabelingPosition="Bottom">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
-                    <DatePicker SelectedDate="{Binding StartDate}" VerticalAlignment="Center"/>
-                    <tp:TimePicker SelectedTime="{Binding StartTime}" VerticalAlignment="Center" Width="60"/>
+            <lc:LabelingContainer Text="START" Margin="0,0,10,0">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding StartDate}"/>
+                    <tp:TimePicker SelectedTime="{Binding StartTime}" Width="60"/>
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="END" Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker SelectedDate="{Binding EndDate}" VerticalAlignment="Center"/>
-                    <tp:TimePicker SelectedTime="{Binding EndTime}" VerticalAlignment="Center" Width="60"/>
+                    <DatePicker SelectedDate="{Binding EndDate}"/>
+                    <tp:TimePicker SelectedTime="{Binding EndTime}" Width="60"/>
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="" Margin="0,0,10,0">
-                <cb:CommandButton Command="{Binding CreateCommand}" Text="CREATE" VerticalAlignment="Center" Height="24" Width="100"/>
+                <cb:CommandButton Command="{Binding CreateCommand}" Text="CREATE"/>
             </lc:LabelingContainer>
         </StackPanel>
-        <lc:LabelingContainer Grid.Row="1" Text="0123">
-            <bc:BaseTextBoxControl Background="Blue"/>
-        </lc:LabelingContainer>
-        <Grid Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="0*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="0*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="1" Background="Gainsboro" Text="012"/>
-            <ContentControl Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
-                <TextBox Background="Gainsboro" Text="012"/>
-            </ContentControl>
-        </Grid>
     </Grid>
 </UserControl>

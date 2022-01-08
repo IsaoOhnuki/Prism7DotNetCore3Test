@@ -6,7 +6,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tp="clr-namespace:CustomControlLibrary.TimePicker;assembly=CustomControlLibrary"
              xmlns:lc="clr-namespace:CustomControlLibrary.Text;assembly=CustomControlLibrary"
-             xmlns:dp="clr-namespace:CustomControlLibrary.Panel;assembly=CustomControlLibrary"
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
@@ -21,54 +20,52 @@
     <UserControl.FontSize>
         20
     </UserControl.FontSize>
-    <dp:DialogPanel>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0"
-                        Orientation="Horizontal">
-                <lc:LabelingContainer LabelingPosition="Top"
-                                      Text="START">
-                    <StackPanel Orientation="Horizontal">
-                        <DatePicker SelectedDate="{Binding StartDate}"
-                                    Margin="0,0,10,0"/>
-                        <tp:TimePicker SelectedTime="{Binding StartTime}"
-                                       Margin="0,0,10,0"
-                                       Width="100"/>
-                    </StackPanel>
-                </lc:LabelingContainer>
-                <lc:LabelingContainer Text="BLOCK">
-                    <tp:TimePicker SelectedTime="{Binding StartBlockTime}"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <lc:LabelingContainer LabelingPosition="Top"
+                                  Text="START">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding StartDate}"
+                                Margin="0,0,10,0"/>
+                    <tp:TimePicker SelectedTime="{Binding StartTime}"
+                                   Margin="0,0,10,0"
                                    Width="100"/>
-                </lc:LabelingContainer>
-            </StackPanel>
-            <StackPanel Grid.Row="1"
+                </StackPanel>
+            </lc:LabelingContainer>
+            <lc:LabelingContainer Text="BLOCK">
+                <tp:TimePicker SelectedTime="{Binding StartBlockTime}"
+                               Width="100"/>
+            </lc:LabelingContainer>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
                         Orientation="Horizontal">
-                <lc:LabelingContainer LabelingPosition="Top"
-                                      Text="END">
-                    <StackPanel Orientation="Horizontal">
-                        <DatePicker SelectedDate="{Binding EndDate}"
-                                    Margin="0,0,10,0"/>
-                        <tp:TimePicker SelectedTime="{Binding EndTime}"
-                                       Margin="0,0,10,0"
-                                       Width="100"/>
-                    </StackPanel>
-                </lc:LabelingContainer>
-                <lc:LabelingContainer Text="BLOCK" LabelVisible="True" LabelingPosition="Top">
-                    <tp:TimePicker SelectedTime="{Binding EndBlockTime}"
+            <lc:LabelingContainer LabelingPosition="Top"
+                                  Text="END">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker SelectedDate="{Binding EndDate}"
+                                Margin="0,0,10,0"/>
+                    <tp:TimePicker SelectedTime="{Binding EndTime}"
+                                   Margin="0,0,10,0"
                                    Width="100"/>
-                </lc:LabelingContainer>
-            </StackPanel>
-            <lc:LabelingContainer Grid.Row="2" Text="Memo">
-                <lc:SingleLineTextBox Text="{Binding ReserveMemo}"/>
+                </StackPanel>
             </lc:LabelingContainer>
-            <lc:LabelingContainer Grid.Row="3" Text="Memo1" LabelingPosition="Bottom">
-                <lc:MultiLineTextBox Text="{Binding ReserveMemo1}" VerticalAlignment="Stretch"/>
+            <lc:LabelingContainer Text="BLOCK" LabelVisible="True" LabelingPosition="Top">
+                <tp:TimePicker SelectedTime="{Binding EndBlockTime}"
+                               Width="100"/>
             </lc:LabelingContainer>
-        </Grid>
-    </dp:DialogPanel>
+        </StackPanel>
+        <lc:LabelingContainer Grid.Row="2" Text="Memo">
+            <lc:SingleLineTextBox Text="{Binding ReserveMemo}"/>
+        </lc:LabelingContainer>
+        <lc:LabelingContainer Grid.Row="3" Text="Memo1" LabelingPosition="Top">
+            <lc:MultiLineTextBox Text="{Binding ReserveMemo1}"/>
+        </lc:LabelingContainer>
+    </Grid>
 </UserControl>
