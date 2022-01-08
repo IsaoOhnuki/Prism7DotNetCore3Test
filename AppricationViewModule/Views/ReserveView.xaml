@@ -19,8 +19,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <lc:LabelingContainer Text="START" Margin="0,0,10,0">
-                <StackPanel Orientation="Horizontal">
+            <lc:LabelingContainer Text="START" Margin="0,0,10,0" LabelingPosition="Bottom">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
                     <DatePicker SelectedDate="{Binding StartDate}" VerticalAlignment="Center"/>
                     <tp:TimePicker SelectedTime="{Binding StartTime}" VerticalAlignment="Center" Width="60"/>
                 </StackPanel>
@@ -35,15 +35,24 @@
                 <cb:CommandButton Command="{Binding CreateCommand}" Text="CREATE" VerticalAlignment="Center" Height="24" Width="100"/>
             </lc:LabelingContainer>
         </StackPanel>
-        <ContentControl Grid.Row="1">
-            <ScrollViewer Background="Beige" VerticalScrollBarVisibility="Auto">
-                <bc:BaseTextBoxControl />
-            </ScrollViewer>
-        </ContentControl>
-        <ContentControl Grid.Row="2">
-            <bc:BaseScrollViewerControl Background="GhostWhite" VerticalScrollBarVisibility="Auto">
-                <bc:BaseTextBoxControl/>
-            </bc:BaseScrollViewerControl>
-        </ContentControl>
+        <lc:LabelingContainer Grid.Row="1" Text="0123">
+            <bc:BaseTextBoxControl Background="Blue"/>
+        </lc:LabelingContainer>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="1" Background="Gainsboro" Text="012"/>
+            <ContentControl Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
+                <TextBox Background="Gainsboro" Text="012"/>
+            </ContentControl>
+        </Grid>
     </Grid>
 </UserControl>

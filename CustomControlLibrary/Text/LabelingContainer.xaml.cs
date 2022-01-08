@@ -58,99 +58,101 @@ namespace CustomControlLibrary.Text
                     }
                     ));
 
-        internal RowDefinition TopHeight
+        internal GridLength TopHeight
         {
-            get => (RowDefinition)GetValue(TopHeightProperty);
+            get => (GridLength)GetValue(TopHeightProperty);
             set => SetValue(TopHeightProperty, value);
         }
 
         internal static readonly DependencyProperty TopHeightProperty =
             DependencyProperty.Register(
                 nameof(TopHeight),
-                typeof(RowDefinition),
+                typeof(GridLength),
                 typeof(LabelingContainer),
-                new FrameworkPropertyMetadata(default));
+                new FrameworkPropertyMetadata(default(GridLength)));
 
-        internal RowDefinition BottomHeight
+        internal GridLength BottomHeight
         {
-            get => (RowDefinition)GetValue(BottomHeightProperty);
+            get => (GridLength)GetValue(BottomHeightProperty);
             set => SetValue(BottomHeightProperty, value);
         }
 
         internal static readonly DependencyProperty BottomHeightProperty =
             DependencyProperty.Register(
                 nameof(BottomHeight),
-                typeof(RowDefinition),
+                typeof(GridLength),
                 typeof(LabelingContainer),
-                new FrameworkPropertyMetadata(default));
+                new FrameworkPropertyMetadata(default(GridLength)));
 
-        internal ColumnDefinition LeftWidth
+        internal GridLength LeftWidth
         {
-            get => (ColumnDefinition)GetValue(LeftWidthProperty);
+            get => (GridLength)GetValue(LeftWidthProperty);
             set => SetValue(LeftWidthProperty, value);
         }
 
         internal static readonly DependencyProperty LeftWidthProperty =
             DependencyProperty.Register(
                 nameof(LeftWidth),
-                typeof(ColumnDefinition),
+                typeof(GridLength),
                 typeof(LabelingContainer),
-                new FrameworkPropertyMetadata(default));
+                new FrameworkPropertyMetadata(default(GridLength)));
 
-        internal ColumnDefinition RightWidth
+        internal GridLength RightWidth
         {
-            get => (ColumnDefinition)GetValue(RightWidthProperty);
+            get => (GridLength)GetValue(RightWidthProperty);
             set => SetValue(RightWidthProperty, value);
         }
 
         internal static readonly DependencyProperty RightWidthProperty =
             DependencyProperty.Register(
                 nameof(RightWidth),
-                typeof(ColumnDefinition),
+                typeof(GridLength),
                 typeof(LabelingContainer),
-                new FrameworkPropertyMetadata(default));
+                new FrameworkPropertyMetadata(default(GridLength)));
 
-        public RowDefinition LabelHeight
+        public GridLength LabelHeight
         {
-            get => (RowDefinition)GetValue(LabelHeightProperty);
+            get => (GridLength)GetValue(LabelHeightProperty);
             set => SetValue(LabelHeightProperty, value);
         }
 
         public static readonly DependencyProperty LabelHeightProperty =
             DependencyProperty.Register(
                 nameof(LabelHeight),
-                typeof(RowDefinition),
+                typeof(GridLength),
                 typeof(LabelingContainer),
                 new FrameworkPropertyMetadata(
-                    default,
+                    defaultValue: GridLength.Auto,
                     FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
-                    (d, e) =>
-                    {
-                        if (d is LabelingContainer control)
+                        (d, e) =>
                         {
-                            if (e.NewValue is string str)
+                            if (d is LabelingContainer control)
                             {
-
+                                ControlRender(control, control.LabelingPosition);
                             }
-                            else if (e.NewValue is RowDefinition def)
-                            {
+                        }));
 
-                            }
-                        }
-                    }));
-
-        public ColumnDefinition LabelWidth
+        public GridLength LabelWidth
         {
-            get => (ColumnDefinition)GetValue(LabelWidthProperty);
+            get => (GridLength)GetValue(LabelWidthProperty);
             set => SetValue(LabelWidthProperty, value);
         }
 
         public static readonly DependencyProperty LabelWidthProperty =
             DependencyProperty.Register(
                 nameof(LabelWidth),
-                typeof(ColumnDefinition),
+                typeof(GridLength),
                 typeof(LabelingContainer),
-                new FrameworkPropertyMetadata(default));
+                new FrameworkPropertyMetadata(
+                    defaultValue: GridLength.Auto,
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                        (d, e) =>
+                        {
+                            if (d is LabelingContainer control)
+                            {
+                                ControlRender(control, control.LabelingPosition);
+                            }
+                        }));
 
         public new object Content
         {
@@ -165,31 +167,31 @@ namespace CustomControlLibrary.Text
                 typeof(LabelingContainer),
                 new FrameworkPropertyMetadata(default));
 
-        public new HorizontalAlignment HorizontalContentAlignment
-        {
-            get => (HorizontalAlignment)GetValue(HorizontalContentAlignmentProperty);
-            set => SetValue(HorizontalContentAlignmentProperty, value);
-        }
+        //public new HorizontalAlignment HorizontalContentAlignment
+        //{
+        //    get => (HorizontalAlignment)GetValue(HorizontalContentAlignmentProperty);
+        //    set => SetValue(HorizontalContentAlignmentProperty, value);
+        //}
 
-        public static new readonly DependencyProperty HorizontalContentAlignmentProperty =
-            DependencyProperty.Register(
-                nameof(HorizontalContentAlignment),
-                typeof(HorizontalAlignment),
-                typeof(LabelingContainer),
-                new FrameworkPropertyMetadata(default));
+        //public static new readonly DependencyProperty HorizontalContentAlignmentProperty =
+        //    DependencyProperty.Register(
+        //        nameof(HorizontalContentAlignment),
+        //        typeof(HorizontalAlignment),
+        //        typeof(LabelingContainer),
+        //        new FrameworkPropertyMetadata(default));
 
-        public new VerticalAlignment VerticalContentAlignment
-        {
-            get => (VerticalAlignment)GetValue(VerticalContentAlignmentProperty);
-            set => SetValue(VerticalContentAlignmentProperty, value);
-        }
+        //public new VerticalAlignment VerticalContentAlignment
+        //{
+        //    get => (VerticalAlignment)GetValue(VerticalContentAlignmentProperty);
+        //    set => SetValue(VerticalContentAlignmentProperty, value);
+        //}
 
-        public static new readonly DependencyProperty VerticalContentAlignmentProperty =
-            DependencyProperty.Register(
-                nameof(VerticalContentAlignment),
-                typeof(VerticalAlignment),
-                typeof(LabelingContainer),
-                new FrameworkPropertyMetadata(default));
+        //public static new readonly DependencyProperty VerticalContentAlignmentProperty =
+        //    DependencyProperty.Register(
+        //        nameof(VerticalContentAlignment),
+        //        typeof(VerticalAlignment),
+        //        typeof(LabelingContainer),
+        //        new FrameworkPropertyMetadata(default));
 
         public CrossAlignment LabelingPosition
         {
@@ -204,49 +206,55 @@ namespace CustomControlLibrary.Text
                 typeof(LabelingContainer),
                 new FrameworkPropertyMetadata(
                     CrossAlignment.Top,
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                     (d, e) =>
                     {
                         if (d is LabelingContainer control)
                         {
-                            switch ((CrossAlignment)e.NewValue)
-                            {
-                                case CrossAlignment.Left:
-                                    control.LabelRow = 1;
-                                    control.LabelColumn = 0;
-                                    control.TopHeight = new RowDefinition { Height = GridLength.Auto };
-                                    control.BottomHeight = new RowDefinition { Height = GridLength.Auto };
-                                    control.LeftWidth = new ColumnDefinition { Width = (GridLength)new GridLengthConverter().ConvertFrom(control.LabelWidth) };
-                                    control.RightWidth = new ColumnDefinition { Width = GridLength.Auto };
-                                    break;
-                                case CrossAlignment.Top:
-                                    control.LabelRow = 0;
-                                    control.LabelColumn = 1;
-                                    control.TopHeight = new RowDefinition { Height = (GridLength)new GridLengthConverter().ConvertFrom(control.LabelHeight) };
-                                    control.BottomHeight = new RowDefinition { Height = GridLength.Auto };
-                                    control.LeftWidth = new ColumnDefinition { Width = GridLength.Auto };
-                                    control.RightWidth = new ColumnDefinition { Width = GridLength.Auto };
-                                    break;
-                                case CrossAlignment.Right:
-                                    control.LabelRow = 0;
-                                    control.LabelColumn = 1;
-                                    control.TopHeight = new RowDefinition { Height = GridLength.Auto };
-                                    control.BottomHeight = new RowDefinition { Height = GridLength.Auto };
-                                    control.RightWidth = new ColumnDefinition { Width = (GridLength)new GridLengthConverter().ConvertFrom(control.LabelWidth) };
-                                    control.LeftWidth = new ColumnDefinition { Width = GridLength.Auto };
-                                    break;
-                                case CrossAlignment.Bottom:
-                                    control.LabelRow = 2;
-                                    control.LabelColumn = 1;
-                                    control.TopHeight = new RowDefinition { Height = GridLength.Auto };
-                                    control.BottomHeight = new RowDefinition { Height = (GridLength)new GridLengthConverter().ConvertFrom(control.LabelHeight) };
-                                    control.LeftWidth = new ColumnDefinition { Width = GridLength.Auto };
-                                    control.RightWidth = new ColumnDefinition { Width = GridLength.Auto };
-                                    break;
-                                default:
-                                    throw new NotImplementedException();
-                            }
+                            ControlRender(control, (CrossAlignment)e.NewValue);
                         }
                     }));
+
+        private static void ControlRender(LabelingContainer control, CrossAlignment alignment)
+        {
+            switch (alignment)
+            {
+                case CrossAlignment.Left:
+                    control.LabelRow = 1;
+                    control.LabelColumn = 0;
+                    control.TopHeight = new GridLength(0, GridUnitType.Star);
+                    control.BottomHeight = new GridLength(0, GridUnitType.Star);
+                    control.LeftWidth = control.LabelWidth;
+                    control.RightWidth = new GridLength(0, GridUnitType.Star);
+                    break;
+                case CrossAlignment.Top:
+                    control.LabelRow = 0;
+                    control.LabelColumn = 1;
+                    control.TopHeight = control.LabelHeight;
+                    control.BottomHeight = new GridLength(0, GridUnitType.Star);
+                    control.LeftWidth = new GridLength(0, GridUnitType.Star);
+                    control.RightWidth = new GridLength(0, GridUnitType.Star);
+                    break;
+                case CrossAlignment.Right:
+                    control.LabelRow = 1;
+                    control.LabelColumn = 2;
+                    control.TopHeight = new GridLength(0, GridUnitType.Star);
+                    control.BottomHeight = new GridLength(0, GridUnitType.Star);
+                    control.LeftWidth = new GridLength(0, GridUnitType.Star);
+                    control.RightWidth = control.LabelWidth;
+                    break;
+                case CrossAlignment.Bottom:
+                    control.LabelRow = 2;
+                    control.LabelColumn = 1;
+                    control.TopHeight = new GridLength(0, GridUnitType.Star);
+                    control.BottomHeight = control.LabelHeight;
+                    control.LeftWidth = new GridLength(0, GridUnitType.Star);
+                    control.RightWidth = new GridLength(0, GridUnitType.Star);
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
 
         internal int LabelRow
         {

@@ -66,8 +66,8 @@
             <lc:LabelingContainer Grid.Row="2" Text="Memo">
                 <lc:SingleLineTextBox Text="{Binding ReserveMemo}"/>
             </lc:LabelingContainer>
-            <lc:LabelingContainer Grid.Row="3" Text="Memo1">
-                <lc:MultiLineTextBox Text="{Binding ReserveMemo1}"/>
+            <lc:LabelingContainer Grid.Row="3" Text="Memo1" LabelingPosition="Bottom">
+                <lc:MultiLineTextBox Text="{Binding ReserveMemo1}" VerticalAlignment="Stretch"/>
             </lc:LabelingContainer>
         </Grid>
     </dp:DialogPanel>

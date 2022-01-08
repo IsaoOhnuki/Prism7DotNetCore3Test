@@ -16,14 +16,14 @@
     </UserControl.Resources>
     <Grid Background="#FFDA9FAA" ShowGridLines="True">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="{Binding TopHeight, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="{Binding BottomHeight, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="{Binding LeftWidth, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="{Binding RightWidth, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
         </Grid.ColumnDefinitions>
         <bc:BaseLabelControl Grid.Row="{Binding LabelRow, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
                              Grid.Column="{Binding LabelColumn, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
@@ -32,7 +32,8 @@
                              Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Background="#FFC076DC"/>
         <ContentControl Grid.Row="1" Grid.Column="1"
                         Content="{Binding Content, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                        HorizontalContentAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                        VerticalContentAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Background="#FF77DCAA"/>
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="#FF77DCAA"/>
     </Grid>
 </UserControl>
