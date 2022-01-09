@@ -1,6 +1,8 @@
 ﻿using AppricationViewModule.Models;
+using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Models.Database;
+using ModelLibrary.Models.Database.Enumerate;
 using ModelLibrary.ResultModels;
 using ModelLibrary.Services;
 using MvvmCommonLibrary.Mvvm;
@@ -18,9 +20,15 @@ namespace AppricationViewModule.ViewModels
     {
         public IApplicationLogic ApplicationLogic { get; private set; }
 
-        public ICommand CreateCommand { get; private set; }
+        public ICommand CreateReserveCommand { get; private set; }
+
+        public ICommand CreateEstimateReserveCommand { get; private set; }
+
+        public ICommand CreateBlockReserveCommand { get; private set; }
 
         public ICommand SearchCommand { get; private set; }
+
+        public ICommand ShowSelectedItemCommand { get; private set; }
 
         private DateTime _startDate;
 
@@ -114,9 +122,9 @@ namespace AppricationViewModule.ViewModels
             }
         }
 
-        private TReserve _currentReserve;
+        private ReserveItemModel _currentReserve;
 
-        public TReserve CurrentReserve
+        public ReserveItemModel CurrentReserve
         {
             get => _currentReserve;
             set => SetProperty(ref _currentReserve, value);
@@ -137,17 +145,37 @@ namespace AppricationViewModule.ViewModels
             ApplicationLogic = applicationLogic;
 
             SearchCommand = new DelegateCommand(() => SearchPeriodReserve());
-            CreateCommand = new DelegateCommand(() => CreateReserve());
+            CreateReserveCommand = new DelegateCommand(() => CreateReserve(ReserveState.Reserve));
+            CreateBlockReserveCommand = new DelegateCommand(() => CreateReserve(ReserveState.Block));
+            CreateEstimateReserveCommand = new DelegateCommand(() => CreateReserve(ReserveState.Estimate));
+            ShowSelectedItemCommand = new DelegateCommand<object>(x => EditReserve(x));
         }
 
-        public void CreateReserve()
+        public void EditReserve(object current)
+        {
+            DoTransitionPage(
+                AppViewConst.ContentRegion_AppViewMainContent,
+                    GetViewName(true),
+                        AppViewConst.View_ReserveEdit,
+                            (current as ReserveItemModel).Reserve);
+        }
+
+        public void CreateReserve(ReserveState reserveState)
         {
             GetDataResultModel<TReserve> resultModel =
                 ApplicationLogic.CreateReserve(new CreateReserveInputModel()
                 {
                     StartDateTime = DateTime.Now,
                     EndDateTime = DateTime.Now,
+                    ReserveState = reserveState,
                 });
+
+            if (!resultModel.Result)
+            {
+                ShowMessage(MessageDialogStyle.ErrorMessage, resultModel.Messages[0]);
+                return;
+            }
+
             DoTransitionPage(
                 AppViewConst.ContentRegion_AppViewMainContent,
                     GetViewName(true),
@@ -161,6 +189,7 @@ namespace AppricationViewModule.ViewModels
             {
                 ReserveStart = StartDateTime,
                 ReserveEnd = EndDateTime,
+                WhereString = "AND TR.State <> 0",
             };
             GetDataListResultModel<TReserve> resultModel = ApplicationLogic.GetPeriodReserve(inputModel);
             Reserves = new ObservableCollection<ReserveItemModel>();

@@ -69,16 +69,27 @@ namespace MvvmCommonLibrary.Mvvm
             RegionManager.RequestNavigate(contentRegion, PreviousView, navigationParam);
         }
 
-        public abstract void InisiarizeView(object parameter);
-
-        public abstract void PreviousInisiarizeView(object parameter);
-
         public virtual ButtonResult ShowMessage(MessageDialogStyle messageDialogStyle, string message, string title = null)
         {
             MessageInputModel messageInput = new MessageInputModel
             {
                 Title = title ?? MessageService.GetMessage(MessageId.ConfirmMessageTitle),
                 Message = new MessageModel(message),
+                MessageDialogStyle = messageDialogStyle,
+                LeftButtonCaption = MessageService.GetMessage(MessageId.CancelButtonCaption),
+                RightButtonCaption = MessageService.GetMessage(MessageId.OkButtonCaption),
+                CenterButtonText = MessageService.GetMessage(MessageId.CloseButtonCaption),
+            };
+            ButtonResult result = MessageService.ShowMessage(messageInput);
+            return result;
+        }
+
+        public virtual ButtonResult ShowMessage(MessageDialogStyle messageDialogStyle, MessageModel message, string title = null)
+        {
+            MessageInputModel messageInput = new MessageInputModel
+            {
+                Title = title ?? MessageService.GetMessage(MessageId.ConfirmMessageTitle),
+                Message = message,
                 MessageDialogStyle = messageDialogStyle,
                 LeftButtonCaption = MessageService.GetMessage(MessageId.CancelButtonCaption),
                 RightButtonCaption = MessageService.GetMessage(MessageId.OkButtonCaption),
@@ -126,6 +137,10 @@ namespace MvvmCommonLibrary.Mvvm
                 InisiarizeView(TransitionParameter);
             }
         }
+
+        public abstract void InisiarizeView(object parameter);
+
+        public abstract void PreviousInisiarizeView(object parameter);
 
         public virtual void Destroy()
         {

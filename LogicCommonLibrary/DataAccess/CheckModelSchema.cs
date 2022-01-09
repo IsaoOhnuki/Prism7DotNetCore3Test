@@ -103,7 +103,9 @@ namespace LogicCommonLibrary.DataAccess
                     continue;
                 }
                 if (!type.PropertyType.IsGenericType &&
-                    col.DataType != type.PropertyType)
+                    col.DataType != type.PropertyType &&
+                    col.DataType != typeof(int) &&
+                    type.PropertyType != typeof(Enum))
                 {
                     // 同じDBカラム型で無ければパスする。
                     continue;

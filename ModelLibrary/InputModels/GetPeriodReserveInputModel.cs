@@ -8,5 +8,7 @@ namespace ModelLibrary.InputModels
         public DateTime ReserveStart { get; set; }
 
         public DateTime ReserveEnd { get; set; }
+
+        public string WhereString { get; set; }
     }
 }

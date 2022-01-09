@@ -1,6 +1,7 @@
 ﻿using ModelLibrary.Enumerate;
 using ModelLibrary.InputModels;
 using ModelLibrary.Models.Database;
+using ModelLibrary.Models.Database.Enumerate;
 using ModelLibrary.ResultModels;
 using ModelLibrary.Services;
 using MvvmCommonLibrary.Mvvm;
@@ -19,6 +20,22 @@ namespace AppricationViewModule.ViewModels
         public ICommand OkCommand { get; private set; }
 
         public ICommand CancelCommand { get; private set; }
+
+        private int _reserveId;
+
+        public int ReserveId
+        {
+            get => _reserveId;
+            set => SetProperty(ref _reserveId, value);
+        }
+
+        private ReserveState _state;
+
+        public ReserveState State
+        {
+            get => _state;
+            set => SetProperty(ref _state, value);
+        }
 
         private DateTime _startDate;
 
@@ -168,25 +185,38 @@ namespace AppricationViewModule.ViewModels
             }
         }
 
+        private DateTime _optimist;
+        public DateTime Optimist
+        {
+            get => _optimist;
+            set => SetProperty(ref _optimist, value);
+        }
+
         public TReserve SelectedReserve
         {
             get => new TReserve()
             {
+                ReserveId = ReserveId,
+                State = State,
                 ReserveStart = StartDateTime,
                 ReserveEnd = EndDateTime,
                 BlockStart = StartDate + StartBlockTime,
                 BlockEnd = EndDate + EndBlockTime,
                 ReserveMemo = ReserveMemo,
                 ReserveMemo1 = ReserveMemo1,
+                Optimist = Optimist,
             };
             set
             {
+                ReserveId = value.ReserveId;
+                State = value.State;
                 StartDateTime = value.ReserveStart;
                 EndDateTime = value.ReserveEnd;
                 StartBlockTime = value.BlockStart.TimeOfDay;
                 EndBlockTime = value.BlockEnd.TimeOfDay;
                 ReserveMemo = value.ReserveMemo;
                 ReserveMemo1 = value.ReserveMemo1;
+                Optimist = value.Optimist;
             }
         }
 
@@ -207,13 +237,30 @@ namespace AppricationViewModule.ViewModels
                 MessageService.GetMessage(MessageId.InformationMessageTitle));
             if (result == ButtonResult.OK)
             {
-                CountResultModel resultModel =
-                    ApplicationLogic.InsertReserve(new SetDataInputModel<TReserve>()
+                SetDataInputModel<TReserve> inputModel =
+                    new SetDataInputModel<TReserve>()
                     {
                         TableClass = SelectedReserve,
-                    });
-                DoBackTransition(AppViewConst.ContentRegion_AppViewMainContent,
-                    resultModel.Count == 1);
+                    };
+
+                CountResultModel resultModel;
+                if (inputModel.TableClass.ReserveId == 0)
+                {
+                    resultModel = ApplicationLogic.InsertReserve(inputModel);
+                }
+                else
+                {
+                    resultModel = ApplicationLogic.UpdateReserve(inputModel);
+                }
+
+                if (!resultModel.Result)
+                {
+                    ShowMessage(MessageDialogStyle.ErrorMessage, resultModel.Messages[0]);
+                }
+
+                DoBackTransition(
+                    AppViewConst.ContentRegion_AppViewMainContent,
+                        resultModel.Count == 1);
             }
         }
 

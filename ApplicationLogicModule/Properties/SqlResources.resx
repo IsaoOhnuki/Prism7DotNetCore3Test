@@ -124,6 +124,7 @@ FROM
   TReserve TR 
 WHERE
   TR.ReserveEnd &gt;= @ReserveStart AND
-  TR.ReserveStart &lt;= @ReserveEnd;</value>
+  TR.ReserveStart &lt;= @ReserveEnd
+{0};</value>
   </data>
 </root>

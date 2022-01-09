@@ -4,14 +4,16 @@ using DBMaigration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace DBMaigration.Migrations.AppDb
+namespace DBMaigration.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220109111029_AppDatabase")]
+    partial class AppDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,7 +132,7 @@ namespace DBMaigration.Migrations.AppDb
 
             modelBuilder.Entity("ModelLibrary.Models.Database.TReserve", b =>
                 {
-                    b.Property<int>("TReserveId")
+                    b.Property<int>("ReserveId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -160,7 +162,7 @@ namespace DBMaigration.Migrations.AppDb
                     b.Property<int>("State")
                         .HasColumnType("int");
 
-                    b.HasKey("TReserveId");
+                    b.HasKey("ReserveId");
 
                     b.ToTable("TReserve");
                 });

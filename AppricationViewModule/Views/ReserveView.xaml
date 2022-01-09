@@ -8,6 +8,7 @@
              xmlns:cb="clr-namespace:CustomControlLibrary.Button;assembly=CustomControlLibrary"
              xmlns:lc="clr-namespace:CustomControlLibrary.Text;assembly=CustomControlLibrary"
              xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:AppricationViewModule.Views"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
@@ -32,23 +33,37 @@
                 <cb:CommandButton Command="{Binding SearchCommand}" Text="SEARCH" Width="40"/>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="" Margin="0,0,10,0">
-                <cb:CommandButton Command="{Binding CreateCommand}" Text="CREATE" Width="150"/>
+                <cb:CommandButton Command="{Binding CreateReserveCommand}" Text="CREATE" Width="150"/>
             </lc:LabelingContainer>
         </StackPanel>
         <ListBox Grid.Row="1"
                  BorderBrush="{x:Null}"
+                 BorderThickness="0"
+                 SelectedItem="{Binding CurrentReserve}"
                  ItemsSource="{Binding Reserves}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border Margin="5"
-                            BorderThickness="1"
-                            BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" HorizontalAlignment="Right">
+                    <Border BorderThickness="1"
+                            BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
+                            HorizontalAlignment="Stretch">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Row="0"
+                                        Orientation="Horizontal">
                                 <lc:LabelingContainer Text="reserve start">
                                     <bc:BaseTextBlockControl Text="{Binding ReserveStart, StringFormat=yyyy/MM/dd}"/>
                                 </lc:LabelingContainer>
@@ -62,6 +77,12 @@
                                     <bc:BaseTextBlockControl Text="{Binding BlockEnd}"/>
                                 </lc:LabelingContainer>
                             </StackPanel>
+                            <cb:CommandButton Grid.Column="1"
+                                              Text="*"
+                                              FontSize="10"
+                                              CommandParameter="{Binding }"
+                                              Command="{Binding Path=DataContext.ShowSelectedItemCommand,
+                                RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

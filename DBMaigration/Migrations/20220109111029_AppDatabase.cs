@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DBMaigration.Migrations.AppDb
+namespace DBMaigration.Migrations
 {
     public partial class AppDatabase : Migration
     {
@@ -67,7 +67,7 @@ namespace DBMaigration.Migrations.AppDb
                 name: "TReserve",
                 columns: table => new
                 {
-                    TReserveId = table.Column<int>(type: "int", nullable: false)
+                    ReserveId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     State = table.Column<int>(type: "int", nullable: false),
                     BlockStart = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -80,7 +80,7 @@ namespace DBMaigration.Migrations.AppDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TReserve", x => x.TReserveId);
+                    table.PrimaryKey("PK_TReserve", x => x.ReserveId);
                 });
         }
 

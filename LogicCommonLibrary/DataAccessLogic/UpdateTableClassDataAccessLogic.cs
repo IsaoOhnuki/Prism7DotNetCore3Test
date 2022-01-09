@@ -17,7 +17,7 @@ namespace LogicCommonLibrary.DataAccessLogic
         {
             LogStartMethod();
 
-            GetCommandQuery<TReserve>.GetInsertQuery(out string query, out List<SqlParameter> sqlParameters);
+            GetCommandQuery<TReserve>.GetUpdateQuery(out string query, out List<SqlParameter> sqlParameters);
             NonQueryDataAccess nonQueryDataAccess = new NonQueryDataAccess(inputModel.DatabaseConnection,
                 query,
                 GetCommandQuery<TTableClass>.GetQueryParameter(sqlParameters, CheckModelSchema.GetModelSchema<TReserve>(inputModel.DatabaseConnection.Connection),

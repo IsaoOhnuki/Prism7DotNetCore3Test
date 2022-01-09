@@ -5,7 +5,7 @@ using ModelLibrary.ResultModels;
 namespace ApplicationLogicModule.ApplicationLogics
 {
     public class CreateTableClassApplicationLogic<TTableClass, TInputModel> : ApplicationLogicBase<GetDataResultModel<TTableClass>, TInputModel>
-        where TTableClass : class
+        where TTableClass : class, new()
         where TInputModel : class
     {
         protected override GetDataResultModel<TTableClass> OnExecute(TInputModel inputModel)

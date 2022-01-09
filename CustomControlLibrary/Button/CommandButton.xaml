@@ -131,10 +131,11 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <bc:BaseButtonControl VerticalContentAlignment="Stretch"
-            HorizontalContentAlignment="Stretch"
-            Command="{Binding Command, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-            d:ContentTemplate="{StaticResource helpStyleTemplate}"
-            Content="{Binding CommandStatus, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-            ContentTemplateSelector="{StaticResource commandStatusButtonDataTemplateSelector}">
+                          HorizontalContentAlignment="Stretch"
+                          Command="{Binding Command, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                          CommandParameter="{Binding CommandParameter, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                          d:ContentTemplate="{StaticResource helpStyleTemplate}"
+                          Content="{Binding CommandStatus, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                          ContentTemplateSelector="{StaticResource commandStatusButtonDataTemplateSelector}">
     </bc:BaseButtonControl>
 </UserControl>

@@ -26,6 +26,7 @@ namespace ApplicationLogicModule.ApplicationLogics
                 {
                     ReserveStart = inputModel.ReserveStart,
                     ReserveEnd = inputModel.ReserveEnd,
+                    WhereString = inputModel.WhereString,
                 };
             GetDataListResultModel<TReserve> resultModel =
                 DoApplicationLogic<GetPeriodReserveApplicationLogic, GetDataListResultModel<TReserve>,

@@ -10,7 +10,7 @@ namespace ModelLibrary.Models.Database
     public class TReserve
     {
         [Key]
-        public int TReserveId { get; set; }
+        public int ReserveId { get; set; }
 
         public ReserveState State { get; set; }
 

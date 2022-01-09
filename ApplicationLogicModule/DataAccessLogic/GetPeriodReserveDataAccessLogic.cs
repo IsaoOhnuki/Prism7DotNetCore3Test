@@ -18,9 +18,9 @@ namespace ApplicationLogicModule.DataAccessLogic
         {
             LogStartMethod();
 
-            string query = SqlResources.GetPeriodReserve;
+            string query = string.Format(SqlResources.GetPeriodReserve, inputModel.WhereString);
 
-            List<SqlParameter> sqlParameters = new List<SqlParameter>()
+            List <SqlParameter> sqlParameters = new List<SqlParameter>()
             {
                 new QueryParameter("@ReserveStart ", SqlDbType.DateTime2, inputModel.ReserveStart),
                 new QueryParameter("@ReserveEnd", SqlDbType.DateTime2, inputModel.ReserveEnd),

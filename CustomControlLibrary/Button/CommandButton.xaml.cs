@@ -62,6 +62,19 @@ namespace CustomControlLibrary.Button
                 typeof(CommandButton),
                 new FrameworkPropertyMetadata(default(ICommand)));
 
+        public object CommandParameter
+        {
+            get => GetValue(CommandParameterProperty);
+            set => SetValue(CommandParameterProperty, value);
+        }
+
+        public static readonly DependencyProperty CommandParameterProperty =
+            DependencyProperty.Register(
+                nameof(CommandParameter),
+                typeof(object),
+                typeof(CommandButton),
+                new FrameworkPropertyMetadata(default));
+
         public CommandButton()
         {
             InitializeComponent();
