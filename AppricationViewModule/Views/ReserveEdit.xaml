@@ -70,6 +70,8 @@
         </lc:LabelingContainer>
         <db:DialogButtonBar Grid.Row="4"
                             OkCommand="{Binding OkCommand}"
-                            CancelCommand="{Binding CancelCommand}"/>
+                            OkCaption="保存"
+                            CancelCommand="{Binding CancelCommand}"
+                            CancelCaption="戻る"/>
     </Grid>
 </UserControl>

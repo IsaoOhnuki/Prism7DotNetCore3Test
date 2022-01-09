@@ -7,6 +7,7 @@
              xmlns:tp="clr-namespace:CustomControlLibrary.TimePicker;assembly=CustomControlLibrary"
              xmlns:cb="clr-namespace:CustomControlLibrary.Button;assembly=CustomControlLibrary"
              xmlns:lc="clr-namespace:CustomControlLibrary.Text;assembly=CustomControlLibrary"
+             xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
              xmlns:local="clr-namespace:AppricationViewModule.Views"
              mc:Ignorable="av"
              prism:ViewModelLocator.AutoWireViewModel="True"
@@ -15,27 +16,56 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <lc:LabelingContainer Text="START" Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal">
                     <DatePicker SelectedDate="{Binding StartDate}"/>
-                    <tp:TimePicker SelectedTime="{Binding StartTime}" Width="60"/>
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="END" Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal">
                     <DatePicker SelectedDate="{Binding EndDate}"/>
-                    <tp:TimePicker SelectedTime="{Binding EndTime}" Width="60"/>
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="" Margin="0,0,10,0">
                 <cb:CommandButton Command="{Binding SearchCommand}" Text="SEARCH" Width="40"/>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="" Margin="0,0,10,0">
-                <cb:CommandButton Command="{Binding CreateCommand}" Text="CREATE"/>
+                <cb:CommandButton Command="{Binding CreateCommand}" Text="CREATE" Width="150"/>
             </lc:LabelingContainer>
         </StackPanel>
+        <ListBox Grid.Row="1"
+                 BorderBrush="{x:Null}"
+                 ItemsSource="{Binding Reserves}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="5"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" HorizontalAlignment="Right">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <lc:LabelingContainer Text="reserve start">
+                                    <bc:BaseTextBlockControl Text="{Binding ReserveStart, StringFormat=yyyy/MM/dd}"/>
+                                </lc:LabelingContainer>
+                                <lc:LabelingContainer Text="block start">
+                                    <bc:BaseTextBlockControl Text="{Binding BlockStart}"/>
+                                </lc:LabelingContainer>
+                                <lc:LabelingContainer Text="reserve end">
+                                    <bc:BaseTextBlockControl Text="{Binding ReserveEnd, StringFormat=yyyy/MM/dd}"/>
+                                </lc:LabelingContainer>
+                                <lc:LabelingContainer Text="block end">
+                                    <bc:BaseTextBlockControl Text="{Binding BlockEnd}"/>
+                                </lc:LabelingContainer>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

@@ -1,10 +1,10 @@
-﻿using LogicCommonLibrary.CommonLogic;
+﻿using ApplicationLogicModule.BusinessLogics;
 using LogicCommonLibrary.LogicBase;
 using ModelLibrary.ResultModels;
 
-namespace LogicCommonLibrary.BusinessLogics
+namespace ApplicationLogicModule.ApplicationLogics
 {
-    public class CreateTableClassBusunessLogic<TTableClass, TInputModel> : BusinessLogicBase<GetDataResultModel<TTableClass>, TInputModel>
+    public class CreateTableClassApplicationLogic<TTableClass, TInputModel> : ApplicationLogicBase<GetDataResultModel<TTableClass>, TInputModel>
         where TTableClass : class
         where TInputModel : class
     {
@@ -13,7 +13,7 @@ namespace LogicCommonLibrary.BusinessLogics
             LogStartMethod();
 
             GetDataResultModel<TTableClass> resultModel =
-                DoCommonLogic<CreateDataCommonLogic<TTableClass, TInputModel>, GetDataResultModel<TTableClass>, TInputModel>(inputModel);
+                DoBusinessLogic<CreateTableClassBusunessLogic<TTableClass, TInputModel>, GetDataResultModel<TTableClass>, TInputModel>(inputModel);
 
             LogEndMethod();
             return resultModel;

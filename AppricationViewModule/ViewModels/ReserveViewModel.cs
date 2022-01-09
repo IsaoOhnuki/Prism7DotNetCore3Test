@@ -9,6 +9,7 @@ using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
@@ -121,9 +122,9 @@ namespace AppricationViewModule.ViewModels
             set => SetProperty(ref _currentReserve, value);
         }
 
-        private ObservableCollection<TReserve> _reserves;
+        private ObservableCollection<ReserveItemModel> _reserves;
 
-        public ObservableCollection<TReserve> Reserves
+        public ObservableCollection<ReserveItemModel> Reserves
         {
             get => _reserves;
             set => SetProperty(ref _reserves, value);
@@ -135,10 +136,7 @@ namespace AppricationViewModule.ViewModels
         {
             ApplicationLogic = applicationLogic;
 
-            StartDateTime = DateTime.Now;
-            EndDateTime = DateTime.Now;
-
-            SearchCommand = new DelegateCommand(() => GetPeriodReserve());
+            SearchCommand = new DelegateCommand(() => SearchPeriodReserve());
             CreateCommand = new DelegateCommand(() => CreateReserve());
         }
 
@@ -157,7 +155,7 @@ namespace AppricationViewModule.ViewModels
                             resultModel.TableClass);
         }
 
-        public void GetPeriodReserve()
+        public void SearchPeriodReserve()
         {
             GetPeriodReserveInputModel inputModel = new GetPeriodReserveInputModel
             {
@@ -165,13 +163,16 @@ namespace AppricationViewModule.ViewModels
                 ReserveEnd = EndDateTime,
             };
             GetDataListResultModel<TReserve> resultModel = ApplicationLogic.GetPeriodReserve(inputModel);
-            Reserves = new ObservableCollection<TReserve>();
-            Reserves.AddRange(resultModel.DataList);
+            Reserves = new ObservableCollection<ReserveItemModel>();
+            Reserves.AddRange(resultModel.DataList.Select(x => new ReserveItemModel { Reserve = x }));
         }
 
         public override void InisiarizeView(object parameter)
         {
+            StartDateTime = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            EndDateTime = StartDateTime.AddMonths(1).AddDays(-1);
 
+            SearchPeriodReserve();
         }
 
         public override void PreviousInisiarizeView(object parameter)
@@ -179,6 +180,10 @@ namespace AppricationViewModule.ViewModels
             if (PreviousView == AppViewConst.View_ReserveEdit)
             {
                 bool? success = parameter as bool?;
+                if (success.HasValue && success.Value)
+                {
+                    SearchPeriodReserve();
+                }
             }
         }
     }

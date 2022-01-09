@@ -10,9 +10,13 @@
     <StackPanel Orientation="Horizontal"
                 FlowDirection="RightToLeft">
         <cb:CommandButton Margin="20,0,0,0"
+                          Text="{Binding OkCaption, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                          Width="120"
                           CommandStatus="Ok"
                           Command="{Binding OkCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
         <cb:CommandButton Margin="20,0,0,0"
+                          Text="{Binding CancelCaption, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                          Width="120"
                           CommandStatus="Cancel"
                           Command="{Binding CancelCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
     </StackPanel>

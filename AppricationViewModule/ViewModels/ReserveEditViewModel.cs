@@ -1,10 +1,12 @@
-﻿using ModelLibrary.InputModels;
+﻿using ModelLibrary.Enumerate;
+using ModelLibrary.InputModels;
 using ModelLibrary.Models.Database;
 using ModelLibrary.ResultModels;
 using ModelLibrary.Services;
 using MvvmCommonLibrary.Mvvm;
 using Prism.Commands;
 using Prism.Regions;
+using Prism.Services.Dialogs;
 using System;
 using System.Windows.Input;
 
@@ -200,13 +202,19 @@ namespace AppricationViewModule.ViewModels
 
         public void Ok()
         {
-            CountResultModel resultModel =
-                ApplicationLogic.InsertReserve(new SetDataInputModel<TReserve>()
-                {
-                    TableClass = SelectedReserve,
-                });
-            DoBackTransition(AppViewConst.ContentRegion_AppViewMainContent,
-                resultModel.Count == 1);
+            ButtonResult result = ShowMessage(MessageDialogStyle.ConfirmMessage,
+                MessageService.GetMessage(MessageId.ConfirmMessageTitle),
+                MessageService.GetMessage(MessageId.InformationMessageTitle));
+            if (result == ButtonResult.OK)
+            {
+                CountResultModel resultModel =
+                    ApplicationLogic.InsertReserve(new SetDataInputModel<TReserve>()
+                    {
+                        TableClass = SelectedReserve,
+                    });
+                DoBackTransition(AppViewConst.ContentRegion_AppViewMainContent,
+                    resultModel.Count == 1);
+            }
         }
 
         public void Cancel()

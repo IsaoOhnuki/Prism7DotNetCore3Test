@@ -61,6 +61,8 @@
                                               Background="{StaticResource NormalButtonColor}"
                                               BorderThickness="0,0.5,0,0"
                                               BorderBrush="DarkGray"
+                                              HorizontalContentAlignment="Center"
+                                              VerticalContentAlignment="Center"
                                               FontSize="{StaticResource BaseFontSize}"
                                               Command="{Binding CenterButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
                             <bc:BaseImageLabelControl Text="{Binding CenterButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
@@ -79,6 +81,7 @@
                                                   BorderThickness="0,0.5,0.3,0"
                                                   BorderBrush="DarkGray"
                                                   HorizontalContentAlignment="Center"
+                                                  VerticalContentAlignment="Center"
                                                   FontSize="{StaticResource BaseFontSize}"
                                                   Command="{Binding LeftButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
                                 <bc:BaseImageLabelControl Text="{Binding LeftButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
@@ -89,6 +92,8 @@
                                                   Background="{StaticResource OkButtonColor}"
                                                   BorderThickness="0.3,0.5,0,0"
                                                   BorderBrush="DarkGray"
+                                                  HorizontalContentAlignment="Center"
+                                                  VerticalContentAlignment="Center"
                                                   FontSize="{StaticResource BaseFontSize}"
                                                   Command="{Binding RightButtonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
                                 <bc:BaseImageLabelControl Text="{Binding RightButtonText, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"

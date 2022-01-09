@@ -4,7 +4,7 @@ using ModelLibrary.Models.Database;
 using ModelLibrary.ResultModels;
 using System;
 
-namespace LogicCommonLibrary.CommonLogic
+namespace ApplicationLogicModule.CommonLogic
 {
     public class CreateDataCommonLogic<TTableClass, TInputModel> : CommonLogicBase<GetDataResultModel<TTableClass>, TInputModel>
         where TTableClass : class
