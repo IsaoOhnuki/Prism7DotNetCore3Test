@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DBMaigration.Migrations.AppDb
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220109111029_AppDatabase")]
+    [Migration("20220110010802_AppDatabase")]
     partial class AppDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -159,7 +159,10 @@ namespace DBMaigration.Migrations.AppDb
                     b.Property<DateTime>("ReserveStart")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("State")
+                    b.Property<int>("ReserveState")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReserveType")
                         .HasColumnType("int");
 
                     b.HasKey("ReserveId");

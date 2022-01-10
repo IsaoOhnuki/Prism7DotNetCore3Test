@@ -69,7 +69,8 @@ namespace DBMaigration.Migrations.AppDb
                 {
                     ReserveId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    State = table.Column<int>(type: "int", nullable: false),
+                    ReserveState = table.Column<int>(type: "int", nullable: false),
+                    ReserveType = table.Column<int>(type: "int", nullable: false),
                     BlockStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BlockEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ReserveStart = table.Column<DateTime>(type: "datetime2", nullable: false),

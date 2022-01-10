@@ -157,7 +157,10 @@ namespace DBMaigration.Migrations.AppDb
                     b.Property<DateTime>("ReserveStart")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("State")
+                    b.Property<int>("ReserveState")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReserveType")
                         .HasColumnType("int");
 
                     b.HasKey("ReserveId");
