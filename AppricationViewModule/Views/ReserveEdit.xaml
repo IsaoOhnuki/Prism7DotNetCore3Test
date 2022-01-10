@@ -4,6 +4,7 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:bc="clr-namespace:CustomControlLibrary.CustomBaseControl;assembly=CustomControlLibrary"
              xmlns:tp="clr-namespace:CustomControlLibrary.TimePicker;assembly=CustomControlLibrary"
              xmlns:lc="clr-namespace:CustomControlLibrary.Text;assembly=CustomControlLibrary"
              xmlns:db="clr-namespace:CustomControlLibrary.Button;assembly=CustomControlLibrary"
@@ -41,7 +42,7 @@
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="BLOCK">
-                <tp:TimePicker SelectedTime="{Binding SelectedReserve.StartBlockTime}"
+                <tp:TimePicker SelectedTime="{Binding SelectedReserve.BlockStartTime}"
                                Width="100"/>
             </lc:LabelingContainer>
         </StackPanel>
@@ -58,7 +59,7 @@
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="BLOCK" LabelVisible="True" LabelingPosition="Top">
-                <tp:TimePicker SelectedTime="{Binding SelectedReserve.EndBlockTime}"
+                <tp:TimePicker SelectedTime="{Binding SelectedReserve.BlockEndTime}"
                                Width="100"/>
             </lc:LabelingContainer>
         </StackPanel>

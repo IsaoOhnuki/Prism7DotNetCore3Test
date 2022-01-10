@@ -16,7 +16,9 @@ namespace CustomControlLibrary.CustomBaseControl
                 nameof(Text),
                 typeof(string),
                 typeof(BaseTextBoxControl),
-                new FrameworkPropertyMetadata(defaultValue: "BaseTextBoxControl"));
+                new FrameworkPropertyMetadata(
+                    defaultValue: "BaseTextBoxControl",
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public Thickness TextMargin
         {

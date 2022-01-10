@@ -64,17 +64,17 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Row="0"
                                         Orientation="Horizontal">
-                                <lc:LabelingContainer Text="reserve start">
-                                    <bc:BaseTextBlockControl Text="{Binding ReserveStart, StringFormat=yyyy/MM/dd}"/>
+                                <lc:LabelingContainer Margin="0,0,5,0" Text="reserve start">
+                                    <bc:BaseTextBlockControl Text="{Binding Reserve.ReserveStart, StringFormat={}{0:yyyy/MM/dd HH:mm}}"/>
                                 </lc:LabelingContainer>
-                                <lc:LabelingContainer Text="block start">
-                                    <bc:BaseTextBlockControl Text="{Binding BlockStart}"/>
+                                <lc:LabelingContainer Margin="0,0,5,0" Text="block start">
+                                    <bc:BaseTextBlockControl Text="{Binding BlockStartTime, StringFormat={}{0:\\-hh\\:mm}}"/>
                                 </lc:LabelingContainer>
-                                <lc:LabelingContainer Text="reserve end">
-                                    <bc:BaseTextBlockControl Text="{Binding ReserveEnd, StringFormat=yyyy/MM/dd}"/>
+                                <lc:LabelingContainer Margin="0,0,5,0" Text="reserve end">
+                                    <bc:BaseTextBlockControl Text="{Binding Reserve.ReserveEnd, StringFormat={}{0:yyyy/MM/dd HH:mm}}"/>
                                 </lc:LabelingContainer>
-                                <lc:LabelingContainer Text="block end">
-                                    <bc:BaseTextBlockControl Text="{Binding BlockEnd}"/>
+                                <lc:LabelingContainer Margin="0,0,5,0" Text="block end">
+                                    <bc:BaseTextBlockControl Text="{Binding BlockEndTime, StringFormat={}{0:hh\\:mm}}"/>
                                 </lc:LabelingContainer>
                             </StackPanel>
                             <cb:CommandButton Grid.Column="1"

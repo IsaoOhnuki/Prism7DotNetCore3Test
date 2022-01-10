@@ -188,7 +188,7 @@ namespace AppricationViewModule.ViewModels
             {
                 ReserveStart = StartDateTime,
                 ReserveEnd = EndDateTime,
-                WhereString = "AND TR.State <> 0",
+                //WhereString = "AND TR.ReserveState <> 0",
             };
             GetDataListResultModel<TReserve> resultModel = ApplicationLogic.GetPeriodReserve(inputModel);
             Reserves = new ObservableCollection<ReserveItemModel>();

@@ -16,11 +16,12 @@ namespace AppricationViewModule.Models
                 return new TReserve
                 {
                     ReserveId = ReserveId,
+                    ReserveType = ReserveType,
                     ReserveState = ReserveState,
-                    ReserveStart = ReserveStart,
-                    ReserveEnd = ReserveEnd,
-                    BlockStart = ReserveStart + BlockStart,
-                    BlockEnd = ReserveEnd + BlockEnd,
+                    ReserveStart = StartDate + StartTime,
+                    ReserveEnd = EndDate + EndTime,
+                    BlockStart = StartDate + StartTime + BlockStartTime,
+                    BlockEnd = EndDate + EndTime + BlockEndTime,
                     ReserveMemo = ReserveMemo,
                     ReserveMemo1 = ReserveMemo1,
                     Optimist = Optimist,
@@ -29,11 +30,14 @@ namespace AppricationViewModule.Models
             set
             {
                 ReserveId = value.ReserveId;
+                ReserveType = value.ReserveType;
                 ReserveState = value.ReserveState;
-                ReserveStart = value.ReserveStart;
-                ReserveEnd = value.ReserveEnd;
-                BlockStart = value.BlockStart - value.ReserveStart;
-                BlockEnd = value.BlockEnd - value.ReserveEnd;
+                StartDate = value.ReserveStart.Date;
+                EndDate = value.ReserveEnd.Date;
+                StartTime = value.ReserveStart.TimeOfDay;
+                EndTime = value.ReserveEnd.TimeOfDay;
+                BlockStartTime = value.BlockStart - value.ReserveStart;
+                BlockEndTime = value.BlockEnd - value.ReserveEnd;
                 ReserveMemo = value.ReserveMemo;
                 ReserveMemo1 = value.ReserveMemo1;
                 Optimist = value.Optimist;
@@ -61,32 +65,46 @@ namespace AppricationViewModule.Models
             set => SetProperty(ref _reserveType, value);
         }
 
-        private DateTime _reserveStart;
-        public DateTime ReserveStart
+        private DateTime _startDate;
+        public DateTime StartDate
         {
-            get => _reserveStart;
-            set => SetProperty(ref _reserveStart, value);
+            get => _startDate;
+            set => SetProperty(ref _startDate, value);
         }
 
-        private DateTime _reserveEnd;
-        public DateTime ReserveEnd
+        private DateTime _endDate;
+        public DateTime EndDate
         {
-            get => _reserveEnd;
-            set => SetProperty(ref _reserveEnd, value);
+            get => _endDate;
+            set => SetProperty(ref _endDate, value);
         }
 
-        private TimeSpan _blockStart;
-        public TimeSpan BlockStart
+        private TimeSpan _startTime;
+        public TimeSpan StartTime
         {
-            get => _blockStart;
-            set => SetProperty(ref _blockStart, value);
+            get => _startTime;
+            set => SetProperty(ref _startTime, value);
         }
 
-        private TimeSpan _blockEnd;
-        public TimeSpan BlockEnd
+        private TimeSpan _endTime;
+        public TimeSpan EndTime
         {
-            get => _blockEnd;
-            set => SetProperty(ref _blockEnd, value);
+            get => _endTime;
+            set => SetProperty(ref _endTime, value);
+        }
+
+        private TimeSpan _blockStartTime;
+        public TimeSpan BlockStartTime
+        {
+            get => _blockStartTime;
+            set => SetProperty(ref _blockStartTime, value);
+        }
+
+        private TimeSpan _blockEndTime;
+        public TimeSpan BlockEndTime
+        {
+            get => _blockEndTime;
+            set => SetProperty(ref _blockEndTime, value);
         }
 
         private string _reserveMemo;

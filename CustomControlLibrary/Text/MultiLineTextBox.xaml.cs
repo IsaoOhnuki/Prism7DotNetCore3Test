@@ -19,7 +19,9 @@ namespace CustomControlLibrary.Text
                 nameof(Text),
                 typeof(string),
                 typeof(MultiLineTextBox),
-                new FrameworkPropertyMetadata(defaultValue: "MultiLineTextBox"));
+                new FrameworkPropertyMetadata(
+                    defaultValue: "MultiLineTextBox",
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public MultiLineTextBox()
         {

@@ -20,7 +20,7 @@
                              HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
                              AcceptsReturn="{TemplateBinding AcceptsReturn}"
                              Margin="{TemplateBinding TextMargin}"
-                             Text="{TemplateBinding Text}">
+                             Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}">
                     </TextBox>
                 </ControlTemplate>
             </Setter.Value>

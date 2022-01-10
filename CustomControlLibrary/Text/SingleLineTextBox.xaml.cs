@@ -19,7 +19,9 @@ namespace CustomControlLibrary.Text
                 nameof(Text),
                 typeof(string),
                 typeof(SingleLineTextBox),
-                new FrameworkPropertyMetadata(defaultValue: "SingleLineTextBox"));
+                new FrameworkPropertyMetadata(
+                    defaultValue: "SingleLineTextBox",
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public SingleLineTextBox()
         {
