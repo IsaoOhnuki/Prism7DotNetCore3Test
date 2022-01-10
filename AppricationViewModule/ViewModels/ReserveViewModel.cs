@@ -145,9 +145,9 @@ namespace AppricationViewModule.ViewModels
             ApplicationLogic = applicationLogic;
 
             SearchCommand = new DelegateCommand(() => SearchPeriodReserve());
-            CreateReserveCommand = new DelegateCommand(() => CreateReserve(ReserveState.Reserve));
-            CreateBlockReserveCommand = new DelegateCommand(() => CreateReserve(ReserveState.Block));
-            CreateEstimateReserveCommand = new DelegateCommand(() => CreateReserve(ReserveState.Estimate));
+            CreateReserveCommand = new DelegateCommand(() => CreateReserve(ReserveType.Reserve));
+            CreateBlockReserveCommand = new DelegateCommand(() => CreateReserve(ReserveType.Block));
+            CreateEstimateReserveCommand = new DelegateCommand(() => CreateReserve(ReserveType.Estimate));
             ShowSelectedItemCommand = new DelegateCommand<object>(x => EditReserve(x));
         }
 
@@ -160,14 +160,13 @@ namespace AppricationViewModule.ViewModels
                             (current as ReserveItemModel).Reserve);
         }
 
-        public void CreateReserve(ReserveState reserveState)
+        public void CreateReserve(ReserveType reserveType)
         {
             GetDataResultModel<TReserve> resultModel =
                 ApplicationLogic.CreateReserve(new CreateReserveInputModel()
                 {
                     StartDateTime = DateTime.Now,
-                    EndDateTime = DateTime.Now,
-                    ReserveState = reserveState,
+                    ReserveType = reserveType,
                 });
 
             if (!resultModel.Result)

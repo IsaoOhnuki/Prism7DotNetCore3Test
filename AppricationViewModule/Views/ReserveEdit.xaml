@@ -33,15 +33,15 @@
             <lc:LabelingContainer LabelingPosition="Top"
                                   Text="START">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker SelectedDate="{Binding StartDate}"
+                    <DatePicker SelectedDate="{Binding SelectedReserve.StartDate}"
                                 Margin="0,0,10,0"/>
-                    <tp:TimePicker SelectedTime="{Binding StartTime}"
+                    <tp:TimePicker SelectedTime="{Binding SelectedReserve.StartTime}"
                                    Margin="0,0,10,0"
                                    Width="100"/>
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="BLOCK">
-                <tp:TimePicker SelectedTime="{Binding StartBlockTime}"
+                <tp:TimePicker SelectedTime="{Binding SelectedReserve.StartBlockTime}"
                                Width="100"/>
             </lc:LabelingContainer>
         </StackPanel>
@@ -50,23 +50,23 @@
             <lc:LabelingContainer LabelingPosition="Top"
                                   Text="END">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker SelectedDate="{Binding EndDate}"
+                    <DatePicker SelectedDate="{Binding SelectedReserve.EndDate}"
                                 Margin="0,0,10,0"/>
-                    <tp:TimePicker SelectedTime="{Binding EndTime}"
+                    <tp:TimePicker SelectedTime="{Binding SelectedReserve.EndTime}"
                                    Margin="0,0,10,0"
                                    Width="100"/>
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="BLOCK" LabelVisible="True" LabelingPosition="Top">
-                <tp:TimePicker SelectedTime="{Binding EndBlockTime}"
+                <tp:TimePicker SelectedTime="{Binding SelectedReserve.EndBlockTime}"
                                Width="100"/>
             </lc:LabelingContainer>
         </StackPanel>
         <lc:LabelingContainer Grid.Row="2" Text="Memo">
-            <lc:SingleLineTextBox Text="{Binding ReserveMemo}"/>
+            <lc:SingleLineTextBox Text="{Binding SelectedReserve.ReserveMemo}"/>
         </lc:LabelingContainer>
         <lc:LabelingContainer Grid.Row="3" Text="Memo1" LabelingPosition="Top">
-            <lc:MultiLineTextBox Text="{Binding ReserveMemo1}"/>
+            <lc:MultiLineTextBox Text="{Binding SelectedReserve.ReserveMemo1}"/>
         </lc:LabelingContainer>
         <db:DialogButtonBar Grid.Row="4"
                             OkCommand="{Binding OkCommand}"

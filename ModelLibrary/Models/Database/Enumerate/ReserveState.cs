@@ -4,13 +4,10 @@ using System.Text;
 
 namespace ModelLibrary.Models.Database.Enumerate
 {
-    public enum ReserveState
+    public enum ReserveState : byte
     {
-        Delete,
-        Reserve,
-        Block,
-        Estimate,
-        Success,
-        Failure,
+        Virtual,
+        True,
+        False,
     }
 }

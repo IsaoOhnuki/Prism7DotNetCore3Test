@@ -103,9 +103,11 @@ namespace LogicCommonLibrary.DataAccess
                     continue;
                 }
                 if (!type.PropertyType.IsGenericType &&
-                    col.DataType != type.PropertyType &&
-                    col.DataType != typeof(int) &&
-                    type.PropertyType != typeof(Enum))
+                    type.PropertyType != col.DataType &&
+                    !(type.PropertyType == typeof(Enum) &&
+                    (col.DataType == typeof(int) ||
+                    col.DataType == typeof(byte) ||
+                    col.DataType == typeof(short))))
                 {
                     // 同じDBカラム型で無ければパスする。
                     continue;

@@ -8,8 +8,6 @@ namespace ModelLibrary.InputModels
     {
         public DateTime StartDateTime { get; set; }
 
-        public DateTime EndDateTime { get; set; }
-
-        public ReserveState ReserveState { get; set; }
+        public ReserveType ReserveType { get; set; }
     }
 }

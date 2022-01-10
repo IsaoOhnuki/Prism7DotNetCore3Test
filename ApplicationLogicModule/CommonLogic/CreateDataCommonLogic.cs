@@ -2,6 +2,7 @@
 using ModelLibrary.InputModels;
 using ModelLibrary.Models;
 using ModelLibrary.Models.Database;
+using ModelLibrary.Models.Database.Enumerate;
 using ModelLibrary.ResultModels;
 using System.Collections.Generic;
 
@@ -43,11 +44,12 @@ namespace ApplicationLogicModule.CommonLogic
         {
             return new TReserve()
             {
-                State = inputModel.ReserveState,
+                ReserveState = ReserveState.Virtual,
+                ReserveType = inputModel.ReserveType,
                 ReserveStart = inputModel.StartDateTime,
-                ReserveEnd = inputModel.EndDateTime,
+                ReserveEnd = inputModel.StartDateTime.AddHours(3),
                 BlockStart = inputModel.StartDateTime.AddHours(-1),
-                BlockEnd = inputModel.EndDateTime.AddHours(1),
+                BlockEnd = inputModel.StartDateTime.AddHours(4),
                 ReserveMemo1 = "Reserve",
             };
         }

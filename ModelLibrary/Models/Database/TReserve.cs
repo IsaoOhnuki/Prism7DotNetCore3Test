@@ -12,7 +12,9 @@ namespace ModelLibrary.Models.Database
         [Key]
         public int ReserveId { get; set; }
 
-        public ReserveState State { get; set; }
+        public ReserveState ReserveState { get; set; }
+
+        public ReserveType ReserveType { get; set; }
 
         [LessThan(nameof(ReserveStart))]
         public DateTime BlockStart { get; set; }

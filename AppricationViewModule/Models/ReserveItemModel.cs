@@ -16,7 +16,7 @@ namespace AppricationViewModule.Models
                 return new TReserve
                 {
                     ReserveId = ReserveId,
-                    State = State,
+                    ReserveState = ReserveState,
                     ReserveStart = ReserveStart,
                     ReserveEnd = ReserveEnd,
                     BlockStart = ReserveStart + BlockStart,
@@ -29,7 +29,7 @@ namespace AppricationViewModule.Models
             set
             {
                 ReserveId = value.ReserveId;
-                State = value.State;
+                ReserveState = value.ReserveState;
                 ReserveStart = value.ReserveStart;
                 ReserveEnd = value.ReserveEnd;
                 BlockStart = value.BlockStart - value.ReserveStart;
@@ -47,11 +47,18 @@ namespace AppricationViewModule.Models
             set => SetProperty(ref _reserveId, value);
         }
 
-        private ReserveState _state;
-        public ReserveState State
+        private ReserveState _reserveState;
+        public ReserveState ReserveState
         {
-            get => _state;
-            set => SetProperty(ref _state, value);
+            get => _reserveState;
+            set => SetProperty(ref _reserveState, value);
+        }
+
+        private ReserveType _reserveType;
+        public ReserveType ReserveType
+        {
+            get => _reserveType;
+            set => SetProperty(ref _reserveType, value);
         }
 
         private DateTime _reserveStart;
