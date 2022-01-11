@@ -20,7 +20,7 @@ namespace AppricationViewModule.Models
                     ReserveState = ReserveState,
                     ReserveStart = StartDate + StartTime,
                     ReserveEnd = EndDate + EndTime,
-                    BlockStart = StartDate + StartTime + BlockStartTime,
+                    BlockStart = StartDate + StartTime - BlockStartTime,
                     BlockEnd = EndDate + EndTime + BlockEndTime,
                     ReserveMemo = ReserveMemo,
                     ReserveMemo1 = ReserveMemo1,
@@ -36,7 +36,7 @@ namespace AppricationViewModule.Models
                 EndDate = value.ReserveEnd.Date;
                 StartTime = value.ReserveStart.TimeOfDay;
                 EndTime = value.ReserveEnd.TimeOfDay;
-                BlockStartTime = value.BlockStart - value.ReserveStart;
+                BlockStartTime = value.ReserveStart - value.BlockStart;
                 BlockEndTime = value.BlockEnd - value.ReserveEnd;
                 ReserveMemo = value.ReserveMemo;
                 ReserveMemo1 = value.ReserveMemo1;

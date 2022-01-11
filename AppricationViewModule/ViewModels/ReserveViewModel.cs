@@ -30,66 +30,6 @@ namespace AppricationViewModule.ViewModels
 
         public ICommand ShowSelectedItemCommand { get; private set; }
 
-        private DateTime _startDate;
-
-        public DateTime StartDate
-        {
-            get => _startDate;
-            set
-            {
-                if (StartDate != value)
-                {
-                    SetProperty(ref _startDate, value);
-                    StartDateTime = StartDate + StartTime;
-                }
-            }
-        }
-
-        private DateTime _endDate;
-
-        public DateTime EndDate
-        {
-            get => _endDate;
-            set
-            {
-                if (EndDate != value)
-                {
-                    SetProperty(ref _endDate, value);
-                    EndDateTime = EndDate + EndTime;
-                }
-            }
-        }
-
-        private TimeSpan _startTime;
-
-        public TimeSpan StartTime
-        {
-            get => _startTime;
-            set
-            {
-                if (StartTime != value)
-                {
-                    SetProperty(ref _startTime, value);
-                    StartDateTime = StartDate + StartTime;
-                }
-            }
-        }
-
-        private TimeSpan _endTime;
-
-        public TimeSpan EndTime
-        {
-            get => _endTime;
-            set
-            {
-                if (EndTime != value)
-                {
-                    SetProperty(ref _endTime, value);
-                    EndDateTime = EndDate + EndTime;
-                }
-            }
-        }
-
         private DateTime _startDateTime;
 
         public DateTime StartDateTime
@@ -100,8 +40,6 @@ namespace AppricationViewModule.ViewModels
                 if (StartDateTime != value)
                 {
                     SetProperty(ref _startDateTime, value);
-                    StartDate = value.Date;
-                    StartTime = value.TimeOfDay;
                 }
             }
         }
@@ -116,8 +54,6 @@ namespace AppricationViewModule.ViewModels
                 if (EndDateTime != value)
                 {
                     SetProperty(ref _endDateTime, value);
-                    EndDate = value.Date;
-                    EndTime = value.TimeOfDay;
                 }
             }
         }

@@ -21,12 +21,12 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <lc:LabelingContainer Text="START" Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker SelectedDate="{Binding StartDate}"/>
+                    <DatePicker SelectedDate="{Binding StartDateTime}"/>
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="END" Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker SelectedDate="{Binding EndDate}"/>
+                    <DatePicker SelectedDate="{Binding EndDateTime}"/>
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="" Margin="0,0,10,0">
@@ -68,7 +68,7 @@
                                     <bc:BaseTextBlockControl Text="{Binding Reserve.ReserveStart, StringFormat={}{0:yyyy/MM/dd HH:mm}}"/>
                                 </lc:LabelingContainer>
                                 <lc:LabelingContainer Margin="0,0,5,0" Text="block start">
-                                    <bc:BaseTextBlockControl Text="{Binding BlockStartTime, StringFormat={}{0:\\-hh\\:mm}}"/>
+                                    <bc:BaseTextBlockControl Text="{Binding BlockStartTime, StringFormat={}{0:hh\\:mm}}"/>
                                 </lc:LabelingContainer>
                                 <lc:LabelingContainer Margin="0,0,5,0" Text="reserve end">
                                     <bc:BaseTextBlockControl Text="{Binding Reserve.ReserveEnd, StringFormat={}{0:yyyy/MM/dd HH:mm}}"/>
@@ -76,8 +76,15 @@
                                 <lc:LabelingContainer Margin="0,0,5,0" Text="block end">
                                     <bc:BaseTextBlockControl Text="{Binding BlockEndTime, StringFormat={}{0:hh\\:mm}}"/>
                                 </lc:LabelingContainer>
+                                <lc:LabelingContainer Margin="0,0,5,0" Text="memo">
+                                    <bc:BaseTextBlockControl Text="{Binding ReserveMemo}"/>
+                                </lc:LabelingContainer>
                             </StackPanel>
-                            <cb:CommandButton Grid.Column="1"
+                            <lc:LabelingContainer Grid.Row="1"
+                                                  Text="memo1">
+                                <bc:BaseTextBlockControl Text="{Binding ReserveMemo1}"/>
+                            </lc:LabelingContainer>
+                            <cb:CommandButton Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
                                               Text="*"
                                               FontSize="10"
                                               CommandParameter="{Binding }"
