@@ -20,6 +20,8 @@
                             VerticalAlignment="{TemplateBinding VerticalAlignment}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            IsEnabled="{TemplateBinding IsEnabled}"
+                            Visibility="{TemplateBinding Visibility}"
                             Content="{TemplateBinding Content}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
                             ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"

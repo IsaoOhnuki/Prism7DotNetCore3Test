@@ -8,6 +8,7 @@ using MvvmCommonLibrary.Mvvm;
 using Prism.Commands;
 using Prism.Regions;
 using Prism.Services.Dialogs;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace AppricationViewModule.ViewModels
@@ -20,11 +21,20 @@ namespace AppricationViewModule.ViewModels
 
         public ICommand CancelCommand { get; private set; }
 
+        public bool OkEnable
+        {
+            get => SelectedReserve == null ? false : SelectedReserve.OldItem.ReserveId == 0 || SelectedReserve.Editing;
+        }
+
         private ReserveItemModel _selectedReserve;
         public ReserveItemModel SelectedReserve
         {
             get => _selectedReserve;
-            set => SetProperty(ref _selectedReserve, value);
+            set
+            {
+                SetProperty(ref _selectedReserve, value);
+                RaisePropertyChanged(nameof(OkEnable));
+            }
         }
 
         public ReserveEditViewModel(ILogService logService, IRegionManager regionManager, IMessageService messageService,
@@ -47,7 +57,7 @@ namespace AppricationViewModule.ViewModels
                 SetDataInputModel<TReserve> inputModel =
                     new SetDataInputModel<TReserve>()
                     {
-                        TableClass = SelectedReserve.Reserve,
+                        TableClass = SelectedReserve.Item,
                     };
 
                 CountResultModel resultModel;
@@ -80,8 +90,14 @@ namespace AppricationViewModule.ViewModels
         {
             SelectedReserve = new ReserveItemModel()
             {
-                Reserve = parameter as TReserve,
+                Item = parameter as TReserve,
             };
+            SelectedReserve.PropertyChanged += SelectedReserve_PropertyChanged;
+        }
+
+        private void SelectedReserve_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            RaisePropertyChanged(nameof(OkEnable));
         }
 
         public override void PreviousInisiarizeView(object parameter)

@@ -16,6 +16,8 @@
                            FontWeight="{TemplateBinding FontWeight}"
                            FontStretch="{TemplateBinding FontStretch}"
                            FontStyle="{TemplateBinding FontStyle}"
+                           IsEnabled="{TemplateBinding IsEnabled}"
+                           Visibility="{TemplateBinding Visibility}"
                            Margin="{TemplateBinding TextMargin}"
                            Content="{TemplateBinding Text}">
                     </Label>

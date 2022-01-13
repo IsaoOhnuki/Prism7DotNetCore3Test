@@ -35,6 +35,58 @@ namespace CustomControlLibrary.Button
                 typeof(DialogButtonBar),
                 new FrameworkPropertyMetadata(default(string)));
 
+        public bool OkButtonIsEnabled
+        {
+            get => (bool)GetValue(OkButtonIsEnabledProperty);
+            set => SetValue(OkButtonIsEnabledProperty, value);
+        }
+
+        public static readonly DependencyProperty OkButtonIsEnabledProperty =
+            DependencyProperty.Register(
+                nameof(OkButtonIsEnabled),
+                typeof(bool),
+                typeof(DialogButtonBar),
+                new FrameworkPropertyMetadata(defaultValue: true));
+
+        public bool CancelButtonIsEnabled
+        {
+            get => (bool)GetValue(CancelButtonIsEnabledProperty);
+            set => SetValue(CancelButtonIsEnabledProperty, value);
+        }
+
+        public static readonly DependencyProperty CancelButtonIsEnabledProperty =
+            DependencyProperty.Register(
+                nameof(CancelButtonIsEnabled),
+                typeof(bool),
+                typeof(DialogButtonBar),
+                new FrameworkPropertyMetadata(defaultValue: true));
+
+        public Visibility OkButtonVisibility
+        {
+            get => (Visibility)GetValue(OkButtonVisibilityProperty);
+            set => SetValue(OkButtonVisibilityProperty, value);
+        }
+
+        public static readonly DependencyProperty OkButtonVisibilityProperty =
+            DependencyProperty.Register(
+                nameof(OkButtonVisibility),
+                typeof(Visibility),
+                typeof(DialogButtonBar),
+                new FrameworkPropertyMetadata(default(Visibility)));
+
+        public Visibility CancelButtonVisibility
+        {
+            get => (Visibility)GetValue(CancelButtonVisibilityProperty);
+            set => SetValue(CancelButtonVisibilityProperty, value);
+        }
+
+        public static readonly DependencyProperty CancelButtonVisibilityProperty =
+            DependencyProperty.Register(
+                nameof(CancelButtonVisibility),
+                typeof(Visibility),
+                typeof(DialogButtonBar),
+                new FrameworkPropertyMetadata(default(Visibility)));
+
         public ICommand OkCommand
         {
             get => (ICommand)GetValue(OkCommandProperty);

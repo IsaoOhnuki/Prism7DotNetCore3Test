@@ -7,9 +7,11 @@ using System.Text;
 
 namespace AppricationViewModule.Models
 {
-    public class ReserveItemModel : ModelBase
+    public class ReserveItemModel : ItemModelBase<TReserve>
     {
-        public TReserve Reserve
+        public override TReserve OldItem { get; protected set; }
+
+        public override TReserve Item
         {
             get
             {
@@ -29,6 +31,7 @@ namespace AppricationViewModule.Models
             }
             set
             {
+                OldItem = value;
                 ReserveId = value.ReserveId;
                 ReserveType = value.ReserveType;
                 ReserveState = value.ReserveState;
@@ -41,6 +44,24 @@ namespace AppricationViewModule.Models
                 ReserveMemo = value.ReserveMemo;
                 ReserveMemo1 = value.ReserveMemo1;
                 Optimist = value.Optimist;
+            }
+        }
+
+        public override bool Editing
+        {
+            get
+            {
+                return ReserveId != OldItem.ReserveId ||
+                    ReserveType != OldItem.ReserveType ||
+                    ReserveState != OldItem.ReserveState ||
+                    StartDate != OldItem.ReserveStart.Date ||
+                    EndDate != OldItem.ReserveEnd.Date ||
+                    StartTime != OldItem.ReserveStart.TimeOfDay ||
+                    EndTime != OldItem.ReserveEnd.TimeOfDay ||
+                    BlockStartTime != OldItem.ReserveStart - OldItem.BlockStart ||
+                    BlockEndTime != OldItem.BlockEnd - OldItem.ReserveEnd ||
+                    ReserveMemo != OldItem.ReserveMemo ||
+                    ReserveMemo1 != OldItem.ReserveMemo1;
             }
         }
 

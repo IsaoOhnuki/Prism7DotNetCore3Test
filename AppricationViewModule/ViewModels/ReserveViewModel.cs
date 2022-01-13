@@ -93,7 +93,7 @@ namespace AppricationViewModule.ViewModels
                 AppViewConst.ContentRegion_AppViewMainContent,
                     GetViewName(true),
                         AppViewConst.View_ReserveEdit,
-                            (current as ReserveItemModel).Reserve);
+                            (current as ReserveItemModel).Item);
         }
 
         public void CreateReserve(ReserveType reserveType)
@@ -128,7 +128,7 @@ namespace AppricationViewModule.ViewModels
             };
             GetDataListResultModel<TReserve> resultModel = ApplicationLogic.GetPeriodReserve(inputModel);
             Reserves = new ObservableCollection<ReserveItemModel>();
-            Reserves.AddRange(resultModel.DataList.Select(x => new ReserveItemModel { Reserve = x }));
+            Reserves.AddRange(resultModel.DataList.Select(x => new ReserveItemModel { Item = x }));
         }
 
         public override void InisiarizeView(object parameter)

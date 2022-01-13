@@ -39,13 +39,14 @@
         <ListBox Grid.Row="1"
                  BorderBrush="{x:Null}"
                  BorderThickness="0"
+                 Background="AliceBlue"
                  SelectedItem="{Binding CurrentReserve}"
                  ItemsSource="{Binding Reserves}">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="{x:Type ListBoxItem}">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     <Setter Property="Padding" Value="0"/>
-                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderThickness" Value="0"/>
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
@@ -65,13 +66,13 @@
                             <StackPanel Grid.Row="0"
                                         Orientation="Horizontal">
                                 <lc:LabelingContainer Margin="0,0,5,0" Text="reserve start">
-                                    <bc:BaseTextBlockControl Text="{Binding Reserve.ReserveStart, StringFormat={}{0:yyyy/MM/dd HH:mm}}"/>
+                                    <bc:BaseTextBlockControl Text="{Binding Item.ReserveStart, StringFormat={}{0:yyyy/MM/dd HH:mm}}"/>
                                 </lc:LabelingContainer>
                                 <lc:LabelingContainer Margin="0,0,5,0" Text="block start">
                                     <bc:BaseTextBlockControl Text="{Binding BlockStartTime, StringFormat={}{0:hh\\:mm}}"/>
                                 </lc:LabelingContainer>
                                 <lc:LabelingContainer Margin="0,0,5,0" Text="reserve end">
-                                    <bc:BaseTextBlockControl Text="{Binding Reserve.ReserveEnd, StringFormat={}{0:yyyy/MM/dd HH:mm}}"/>
+                                    <bc:BaseTextBlockControl Text="{Binding Item.ReserveEnd, StringFormat={}{0:yyyy/MM/dd HH:mm}}"/>
                                 </lc:LabelingContainer>
                                 <lc:LabelingContainer Margin="0,0,5,0" Text="block end">
                                     <bc:BaseTextBlockControl Text="{Binding BlockEndTime, StringFormat={}{0:hh\\:mm}}"/>
