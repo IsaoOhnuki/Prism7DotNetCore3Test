@@ -67,7 +67,7 @@ namespace ApplicationLogicModule.Properties {
         ///  TReserve TR 
         ///WHERE
         ///  TR.ReserveEnd &gt;= @ReserveStart AND
-        ///  TR.ReserveStart &lt;= @ReserveEnd
+        ///  TR.ReserveStart &lt; @ReserveEnd
         ///{0}; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string GetPeriodReserve {

@@ -21,22 +21,23 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <lc:LabelingContainer Text="START" Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker SelectedDate="{Binding StartDateTime}"/>
+                    <DatePicker TabIndex="2" SelectedDate="{Binding StartDateTime}"/>
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="END" Margin="0,0,10,0">
                 <StackPanel Orientation="Horizontal">
-                    <DatePicker SelectedDate="{Binding EndDateTime}"/>
+                    <DatePicker TabIndex="3" SelectedDate="{Binding EndDateTime}"/>
                 </StackPanel>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="" Margin="0,0,10,0">
-                <cb:CommandButton Command="{Binding SearchCommand}" Text="SEARCH" Width="40"/>
+                <cb:CommandButton TabIndex="4" Command="{Binding SearchCommand}" Text="SEARCH" Width="40"/>
             </lc:LabelingContainer>
             <lc:LabelingContainer Text="" Margin="0,0,10,0">
-                <cb:CommandButton Command="{Binding CreateReserveCommand}" Text="CREATE" Width="150"/>
+                <cb:CommandButton TabIndex="5" Command="{Binding CreateReserveCommand}" Text="CREATE" Width="150"/>
             </lc:LabelingContainer>
         </StackPanel>
         <ListBox Grid.Row="1"
+                 TabIndex="1"
                  BorderBrush="{x:Null}"
                  BorderThickness="0"
                  Background="AliceBlue"
@@ -88,6 +89,8 @@
                             <cb:CommandButton Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
                                               Text="*"
                                               FontSize="10"
+                                              HorizontalAlignment="Right"
+                                              VerticalAlignment="Top"
                                               CommandParameter="{Binding }"
                                               Command="{Binding Path=DataContext.ShowSelectedItemCommand,
                                 RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"/>

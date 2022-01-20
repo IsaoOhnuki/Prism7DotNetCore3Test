@@ -123,7 +123,7 @@ namespace AppricationViewModule.ViewModels
             GetPeriodReserveInputModel inputModel = new GetPeriodReserveInputModel
             {
                 ReserveStart = StartDateTime,
-                ReserveEnd = EndDateTime,
+                ReserveEnd = EndDateTime.AddDays(1),
                 //WhereString = "AND TR.ReserveState <> 0",
             };
             GetDataListResultModel<TReserve> resultModel = ApplicationLogic.GetPeriodReserve(inputModel);
